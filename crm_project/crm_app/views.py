@@ -41,8 +41,9 @@ def customer(request):
     return render(request,"customer.html",{'customer':customer})
 
 def add_customer(request):
+    form = CustomerAddForm()
     if request.method == 'POST':
-        form = CustomerAddForm(request.POST,request.FILES)
+        form = CustomerAddForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('crm_app:customers')

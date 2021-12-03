@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.fields import CharField
 
 # Create your models here.
 class Customer(models.Model):
@@ -18,4 +19,23 @@ class Customer(models.Model):
     category = models.CharField(choices=category_choices,max_length=100,default='1')
     whatsapp_number = models.CharField(max_length=10)
 
-    
+
+class Leads(models.Model):
+    no = models.IntegerField()
+    date = models.DateField()
+    company_name = models.CharField(max_length=250)
+    phone1 = models.CharField(max_length=10)
+    phone2 = models.CharField(max_length=10)
+    owner = models.CharField(max_length=250)
+    choice = (
+        ('IT','IT'),
+        ('NON IT','NON IT')
+    )
+    department = models.CharField(max_length=10,choices=choice, default='1')
+    requirements = models.CharField(max_length=250)
+    remarks = models.CharField(max_length=250)
+    stage1 = models.CharField(max_length=250)
+    stage2 = models.CharField(max_length=250)
+
+
+

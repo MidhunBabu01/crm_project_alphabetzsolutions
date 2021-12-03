@@ -978,16 +978,16 @@
                                                         <th>Email</th>
                                                         {% comment %} <th>Photo</th> {% endcomment %}
                                                         <th>GST</th>
+                                                        <th>category</th>
                                                         <th>Location</th>
                                                         <th>Whatsapp Number</th>
                                                     </tr>
                                                 </thead>
                                                 {% for i in customer %}
                                                 <tbody>
-
                                                     <tr>
                                                         <td>
-                                                            {% comment %} {{i.image.url}} {% endcomment %}
+                                                           {% comment %} {{i.image.url}}  {% endcomment %}
                                 
                                                             {{i.name}}
                                                         </td>
@@ -1004,6 +1004,9 @@
                                                         <td>
                                                             {{i.gst}}
                                                             {% comment %} <img src="{{i.photo.url}}" alt="user" class="rounded-circle h-auto avatar-xs me-2"> {% endcomment %}
+                                                        </td>
+                                                        <td>
+                                                            {{i.category}}
                                                         </td>
                                                         <td>
                                                             <span class="badge bg-success bg-soft text-success">{{i.loaction}}</span>
