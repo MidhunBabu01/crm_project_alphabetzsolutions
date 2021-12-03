@@ -1,4 +1,7 @@
 from django.shortcuts import redirect, render
+from .models import Customer
+from .forms import CustomerAddForm
+
 
 # Create your views here.
 def index(request):
@@ -30,4 +33,20 @@ def register(request):
 
 def starter(request):
     return render(request,'pages-starter.html')
+
+
+
+def customer(request):
+    customer = Customer.objects.all() 
+    return render(request,"customer.html",{'customer':customer})
+
+def add_customer(request):
+    if request.method == 'POST':
+        form = CustomerAddForm(request.POST,request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('crm_app:customers')
+    else:
+        form = CustomerAddForm()
+    return render(request,'addcustomer.html',{'form':form})
 
