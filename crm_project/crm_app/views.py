@@ -1,16 +1,12 @@
+from django.core.exceptions import RequestAborted
 from django.shortcuts import redirect, render
-from .models import Customer
-from .forms import CustomerAddForm
+from .models import Customer, Leads
+from .forms import CustomerAddForm,LeadAddForm
 
 
 # Create your views here.
 def index(request):
     return render(request,'index.html')
-
-
-
-def calendar(request):
-    return render(request,"calendar.html")
 
 
 def chat(request):
@@ -22,7 +18,7 @@ def login(request):
         username = request.POST.get('username')
         password = request.POST.get('userpassword')
         if username == 'Midhun' and password=='123':
-            return redirect('crm_app:index')
+            return redirect('crm_app:leads')
         else:
             return redirect('crm_app:login')
     return render(request,'login.html')
@@ -51,3 +47,30 @@ def add_customer(request):
         form = CustomerAddForm()
     return render(request,'addcustomer.html',{'form':form})
 
+
+def leads(request):
+    leads = Leads.objects.all()
+    return render(request,"leads.html",{'leads':leads})
+
+def add_leads(request):
+    fm = LeadAddForm()
+    if request.method == 'POST':
+        fm = LeadAddForm(request.POST,request.FILES)
+        if fm.is_valid():
+            fm.save()
+            return redirect('crm_app:leads')
+    else:
+        fm = LeadAddForm()
+    return render(request,'add_leads.html',{'form':fm})
+
+
+
+
+def junk_leads(request):
+    junk_leads = Leads.objects.filter(lead_status='junk_leads')
+    return render(request,'junk_leads.html',{'junk_leads':junk_leads})
+
+
+def open_leads(request):
+    open_leads = Leads.objects.filter(lead_status="open_leads")
+    return render(request,'open_leads.html')
