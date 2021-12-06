@@ -16,5 +16,8 @@ urlpatterns = [
     path('add-leads/', views.add_leads, name='add_leads'),
     path('junk-leads/', views.junk_leads, name='junk_leads'), 
     path('open-leads/', views.open_leads, name='open_leads'),
+    path('closed-leads/', views.closed_leads, name='closed_leads'),
+    path('customer-profile/<int:customer_id>', views.customer_profile, name='customer_profile'),
+    path('quotation-invoice/', views.Quotation, name='quotation_invoice'),
 
 ]

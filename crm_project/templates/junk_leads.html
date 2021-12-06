@@ -935,13 +935,13 @@
                                                         <a class="dropdown-toggle text-reset" href="#"
                                                             data-bs-toggle="dropdown" aria-haspopup="true"
                                                             aria-expanded="false">
-                                                            <span class="text-muted">Status:</span> <span class="fw-semibold">All Leads<i class="mdi mdi-chevron-down ms-1"></i></span>
+                                                            <span class="text-muted">Status:</span> <span class="fw-semibold">Junk Leads<i class="mdi mdi-chevron-down ms-1"></i></span>
                                                         </a>
         
                                                         <div class="dropdown-menu dropdown-menu-end">
-                                                            <a class="dropdown-item" href="#">Junk Leads</a>
-                                                            <a class="dropdown-item" href="#">Open Leads</a>
-                                                            <a class="dropdown-item" href="#">Closed Leads</a>
+                                                            {% comment %} <a class="dropdown-item" href="{% url 'crm_app:junk_leads' %}">Junk Leads</a> {% endcomment %}
+                                                            <a class="dropdown-item" href="{% url 'crm_app:open_leads' %}">Open Leads</a>
+                                                            <a class="dropdown-item" href="{% url 'crm_app:closed_leads' %}">Closed Leads</a>
                                                             
                                                             
                                                         </div>
@@ -968,7 +968,7 @@
                                             </ul>
                                         </div>
 
-                                        <h4 class="card-title mb-4">1</h4>
+                                        <h4 class="card-title mb-4">Junk Leads</h4>
                                         <a href="{% url 'crm_app:add_leads' %}" class="btn btn-success">Add New Leads</a>
                                         <div class="table-responsive">
                                             <table class="table table-hover table-borderless align-middle table-centered table-nowrap mb-0">

@@ -73,4 +73,17 @@ def junk_leads(request):
 
 def open_leads(request):
     open_leads = Leads.objects.filter(lead_status="open_leads")
-    return render(request,'open_leads.html')
+    return render(request,'open_leads.html',{'open_leads':open_leads})
+
+def closed_leads(request):
+    closed_leads = Leads.objects.filter(lead_status="close_leads")
+    return render(request,'closed_leads.html',{'close_leads':closed_leads})
+
+
+def customer_profile(request,customer_id):
+    customer_profile= Customer.objects.filter(id=customer_id)
+    return render(request,'user_profile.html',{'customer_profile':customer_profile})
+
+
+def Quotation(request):
+    return render(request,"quotation_invoice.html")

@@ -452,7 +452,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                                    <h4 class="mb-sm-0 font-size-18"></h4>
+                                    <h4 class="mb-sm-0 font-size-18">Leads</h4>
 
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
@@ -935,12 +935,13 @@
                                                         <a class="dropdown-toggle text-reset" href="#"
                                                             data-bs-toggle="dropdown" aria-haspopup="true"
                                                             aria-expanded="false">
-                                                            <span class="text-muted">Status:</span> <span class="fw-semibold">Active<i class="mdi mdi-chevron-down ms-1"></i></span>
+                                                            <span class="text-muted">Status:</span> <span class="fw-semibold">Closed Leads<i class="mdi mdi-chevron-down ms-1"></i></span>
                                                         </a>
         
                                                         <div class="dropdown-menu dropdown-menu-end">
-                                                            <a class="dropdown-item" href="#">Active</a>
-                                                            <a class="dropdown-item" href="#">Blocked</a>
+                                                            <a class="dropdown-item" href="{% url 'crm_app:closed_leads' %}">Closed Leads</a>
+                                                            <a class="dropdown-item" href="{% url 'crm_app:open_leads' %}">Open Leads</a>
+                                                            <a class="dropdown-item" href="{% url 'crm_app:junk_leads' %}">Junk Leads</a>
                                                         </div>
                                                     </div>
                                                 </li>
@@ -965,61 +966,64 @@
                                             </ul>
                                         </div>
 
-                                        <h4 class="card-title mb-4">All Customers</h4>
-                                        <a href="{% url 'crm_app:add_customer' %}" class="btn btn-success">Add New Customer</a>
+                                        <h4 class="card-title mb-4">Closed Leads</h4>
+                                        <a href="{% url 'crm_app:add_leads' %}" class="btn btn-success">Add New Leads</a>
                                         <div class="table-responsive">
                                             <table class="table table-hover table-borderless align-middle table-centered table-nowrap mb-0">
                                                 <thead class="table-light">
                                                     <tr>
-                                                        <th>Name</th>
-                                                        <th>Photo</th>
+                                                        <th>Sl.No</th>
+                                                        <th>Date</th>
+                                                        <th>Company Name</th>
                                                         <th>Address</th>
-                                                        {% comment %} <th>Contact Number</th> {% endcomment %}
-                                                        <th>Phone</th>
-                                                        <th>Email</th>
-                                                        {% comment %} <th>Photo</th> {% endcomment %}
-                                                        <th>GST</th>
-                                                        <th>category</th>
-                                                        <th>Location</th>
-                                                        <th>Whatsapp Number</th>
+                                                        <th>Phone Number 1</th>
+                                                        <th>Phone Number 2</th>
+                                                        <th>Owner/Contact Person</th>
+                                                        <th>IT/NON IT</th>
+                                                        <th>Requirements</th>
+                                                        <th>Stage 1</th>
+                                                        <th>Stage 2</th>
                                                     </tr>
                                                 </thead>
-                                                {% for i in customer %}
+                                                {% for i in close_leads %} 
                                                 <tbody>
                                                     <tr>
                                                         <td>
-                                                            <a href="{% url 'crm_app:customer_profile' i.id %}">{{i.name}}</a>
-                                                        </td>
-
-                                                        <td>
-                                                            <img src="{{i.image.url}}" style="height:80px;width:60px;">
-                                                        </td>
-
-
-                                                        <td>
-                                                            <span> {{i.address}}</span>
+                                                           {{i.no}}  
                                                         </td>
                                                         <td>
-                                                            {{i.phone}}
+                                                            {% comment %} <img src="{{i.photo.url}}" alt="user" class="rounded-circle h-auto avatar-xs me-2"> {% endcomment %}
+                                                            <span>{{i.date}}</span>
                                                         </td>
                                                         <td>
-                                                            {{i.email}}
+                                                            {{i.company_name}}
                                                         </td>
                                                         <td>
-                                                            {{i.gst}}
+                                                            {{i.address}}
+                                                        </td>
+                                                        <td>
+                                                            {{i.phone1}}
                                                             {% comment %} <img src="{{i.photo.url}}" alt="user" class="rounded-circle h-auto avatar-xs me-2"> {% endcomment %}
                                                         </td>
                                                         <td>
-                                                            {{i.category}}
+                                                            {{i.phone2}}
                                                         </td>
                                                         <td>
-                                                            <span class="badge bg-success bg-soft text-success">{{i.loaction}}</span>
+                                                            <span class="badge bg-success bg-soft text-success">{{i.owner}}</span>
                                                         </td>
                                                         <td>
-                                                            {{i.whatsapp_number}}
+                                                            {{i.department}}
                                                         </td>
                                                         <td>
-                                                            
+                                                            {{i.requirements}}
+                                                        </td>
+
+                                                        <td>
+                                                            {{i.stage1}}
+                                                        </td>
+
+                                                        <td>
+                                                            {{i.stage2}}
                                                         </td>
                                                         {% comment %} <td>
                                                             <div class="dropdown">

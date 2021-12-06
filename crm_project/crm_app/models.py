@@ -14,13 +14,22 @@ class Customer(models.Model):
     image = models.ImageField(upload_to="pictures")
     loaction = models.CharField(max_length=50)
     category_choices = (
-        ("test1", "test1"),
-        ("test2", "test3"),
+        ("Person", "Person"),
+        ("Contractor", "Contractor"),
+        ("Company", "Company"),
     )
     gst = models.CharField(max_length=50,blank=True)
     category = models.CharField(choices=category_choices,max_length=100,default='1')
     whatsapp_number = models.CharField(max_length=10)
+    last_transaction = models.CharField(max_length=250,blank=True)
+    total_transaction = models.CharField(max_length=250,blank=True)
 
+
+
+
+
+
+    
 
 class Leads(models.Model):
     def __str__(self):
