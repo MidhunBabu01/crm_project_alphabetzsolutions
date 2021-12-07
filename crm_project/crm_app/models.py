@@ -64,3 +64,24 @@ class Quotation(models.Model):
     prodt_rate = models.IntegerField()
     gst = models.CharField(max_length=50)
     photo = models.ImageField(upload_to='pictures')
+
+
+class Quotation_Invoice(models.Model):
+    # invoice
+    company_name = models.CharField(max_length=250)
+    company_address = models.CharField(max_length=250)
+    # billing
+    customer_name = models.CharField(max_length=250)
+    customer_address = models.CharField(max_length=250)
+    date = models.DateField()
+    due_date = models.DateField()
+    item_name = models.CharField(max_length=250)
+    qty = models.IntegerField()
+    rate = models.IntegerField()
+    amount = models.IntegerField()
+    gst = models.BooleanField(default=False)
+    notes = models.CharField(max_length=250)
+    terms_and_conditions = models.CharField(max_length=250)
+
+
+
