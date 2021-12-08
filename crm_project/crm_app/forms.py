@@ -55,12 +55,12 @@ class Quotation_invoice_form(forms.ModelForm):
         model = Quotation_Invoice
         fields = '__all__'
         widgets = {
-            'company_name' : forms.TextInput(attrs={'placeholder':'company name'}),
-            'company_address' : forms.TextInput(attrs={'placeholder':'company address'}),
+            'company_name' : forms.Select(attrs={'class':'form-control'}),
+            'company_address' : forms.Textarea(attrs={'placeholder':'company address'}),
             'customer_name' : forms.TextInput(attrs={'placeholder':'customer name'}),
             'customer_address' : forms.TextInput(attrs={'placeholder':'customer address'}),
             'item_name' : forms.TextInput(attrs={'placeholder':'add item'}),
-            'qty': forms.TextInput(attrs={'placeholder':'qty'}),
+            'qty': forms.NumberInput(attrs={'placeholder':'qty'}),
             'rate': forms.TextInput(attrs={'placeholder':'rate'}),
             'amount': forms.TextInput(attrs={'placeholder':'amount'}),
             'notes': forms.TextInput(),

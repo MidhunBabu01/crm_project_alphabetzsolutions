@@ -86,5 +86,8 @@ def customer_profile(request,customer_id):
 
 
 def Quotation_invoice(request):
-    forms = Quotation_invoice_form()
+    details = {
+        'company_address':'TC 13/1113 Thopil LineMedical College PO, Kumarapuram -695011Trivandrum, Kerala'
+        }
+    forms = Quotation_invoice_form(initial=details)
     return render(request,"quotation_invoice.html",{'forms':forms})

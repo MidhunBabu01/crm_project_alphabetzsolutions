@@ -244,11 +244,13 @@
                             <div class="invoice-block-2" style="display: flex;justify-content: space-between;align-items: center;">
                                 <div class="company-details" style="width: 40%;position: relative;">
                                     <div class="company-name">
+                                        <label for="id_company_name">Company Name</label>
                                         {{forms.company_name}}
                                         {% comment %} <input type="text" id="user-company" maxlength="200" name="user_company" placeholder="Your Company Name" style="border: 1px solid #6A6A6A;padding: 0 10px;width: 100%;height: 40px;
             border-radius: 5px;margin: 10px 0;" /> {% endcomment %}
                                     </div>
                                     <div class="company-addr">
+                                        <label for="id_company_address">Company Address</label>
                                         {{forms.company_address}}
                                     {% comment %} <input type="text" rows="4"  id="user-company-addr" maxlength="1000" name="user_addr" placeholder="Company Address" style="border: 1px solid #6A6A6A;height: 70px;padding: 0 10px;
             width: 100%;border-radius: 5px;margin: 10px 0;resize: none;"></input> {% endcomment %}

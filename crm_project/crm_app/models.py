@@ -70,8 +70,13 @@ class Quotation_Invoice(models.Model):
     def __str__(self):
         return self.company_name()
     # invoice
-    company_name = models.CharField(max_length=250)
-    company_address = models.CharField(max_length=250)
+    choice = (
+        ('Alphabet Solutionz','Alphabet Solutionz'),
+        ('Alphabet Technologies','Alphabet Technologies')
+    )
+    company_name = models.CharField(max_length=250,choices=choice,default='1')
+
+    company_address = models.TextField(max_length=250)
     # billing
     customer_name = models.CharField(max_length=250)
     customer_address = models.CharField(max_length=250)
