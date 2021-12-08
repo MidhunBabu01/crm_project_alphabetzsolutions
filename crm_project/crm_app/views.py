@@ -1,7 +1,7 @@
 from django.core.exceptions import RequestAborted
 from django.shortcuts import redirect, render
 from .models import Customer, Leads
-from .forms import CustomerAddForm,LeadAddForm
+from .forms import CustomerAddForm,LeadAddForm,Quotation_invoice_form
 
 
 # Create your views here.
@@ -85,5 +85,6 @@ def customer_profile(request,customer_id):
     return render(request,'user_profile.html',{'customer_profile':customer_profile})
 
 
-def Quotation(request):
-    return render(request,"quotation_invoice.html")
+def Quotation_invoice(request):
+    forms = Quotation_invoice_form()
+    return render(request,"quotation_invoice.html",{'forms':forms})

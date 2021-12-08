@@ -67,6 +67,8 @@ class Quotation(models.Model):
 
 
 class Quotation_Invoice(models.Model):
+    def __str__(self):
+        return self.company_name()
     # invoice
     company_name = models.CharField(max_length=250)
     company_address = models.CharField(max_length=250)

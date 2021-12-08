@@ -18,6 +18,6 @@ urlpatterns = [
     path('open-leads/', views.open_leads, name='open_leads'),
     path('closed-leads/', views.closed_leads, name='closed_leads'),
     path('customer-profile/<int:customer_id>', views.customer_profile, name='customer_profile'),
-    path('quotation-invoice/', views.Quotation, name='quotation_invoice'),
+    path('quotation-invoice/', views.Quotation_invoice, name='quotation_invoice'),
 
 ]
