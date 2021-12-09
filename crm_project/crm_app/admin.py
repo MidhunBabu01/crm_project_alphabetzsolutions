@@ -4,3 +4,4 @@ from .models import Customer,Leads,Quotation_Invoice
 admin.site.register(Customer)
 admin.site.register(Leads)
 admin.site.register(Quotation_Invoice)
+# admin.site.register(Products)

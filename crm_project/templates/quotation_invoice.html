@@ -1,4 +1,5 @@
 {% load static %}
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -138,1929 +139,1120 @@
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K2VV52M"
-                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-
-
-
-<div id="app" style="padding-top:64px;">
-                                                                            <div align="center" class="download-nav" style="background: #F2F2F2;color: #1D3843;height: 35px;top: 0;position: fixed;width: 100%;padding-top: 9px;z-index: 2;"></div>
-                                        <nav id="main-navigation">
-                        <div class="nav-wrapper">
-                            <div class="container" style="width:90%;">
-                                <div class="fixed-nav">
-                                    
-                                    
-                                    
-                                    <a href="index.html" class="brand-logo" >
-                                        
-                                        <img src="https://vyaparwebsiteimages.vypcdn.in/logo1.svg" width="170" height="38" alt="VYAPAR logo, billing app" title=" vyapar logo, GST Software">
-                                    </a>
-                                    
-                                    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-                                    
-                                    <ul id="nav-mobile" class="right hide-on-med-and-down">
-                                        <li><a onclick="" href="index.html">Home</a></li>
-                                        // <!--                            <li><a href="#">Blog</a></li>-->
-
-                                        
-                                        <li><a onclick="" href="pricing.html">Pricing</a></li>
-                                        <li><a onclick="" href="gst-billing-app.html">About Us</a></li>
-                                        <li><a onclick="" href="gst-accounting-pc.html">Desktop</a></li>
-                                        <li><a onclick="" href="blog/index.html">Blog</a></li>
-                                        <li><a onclick="" href="faq.html">FAQ</a></li>
-                                        
-
-                                                                                    <li><a href="distributor/create.html">Partner with us</a></li>
-                                        
-                                        <!-- Authentication Links -->
-                                                                                    <li><a href="login.html">Login</a></li>
-                                            
-                                        
-                                </div>
-                                
-                                <ul class="side-nav" id="mobile-demo">
-                                                                            <li><a href="login.html">Login</a></li>
-                                                                        <li><a href="index.html">Home</a></li>
-                                    <li><a href="pricing.html">Pricing</a></li>
-                                    <li><a href="tutorials.html">Tutorials</a></li>
-                                    <li><a onclick="" href="gst-billing-app.html">About Us</a></li>
-                                    <li><a href="gst-accounting-pc.html">Desktop</a></li>
-                                    <li><a onclick="" href="blog/index.html">Blog</a></li>
-                                                                        <li><a href="faq.html">FAQ</a></li>
-                                    
-
-                                                                                    <li><a href="distributor/create.html">Partner with us</a></li>
-                                        
-                                                                        
-
-                                </ul>
-                                
-                                <ul class="nav navbar-nav navbar-right">
-
-                                </ul>
-                            </div>
-                        </div>
-                    </nav>
+<div class="invoice-wrapper">
+        
+    <form method="post" id="invoice-form" action="https://vyaparapp.in/invoice-generator/pdf-invoice/1" enctype="multipart/form-data">
+        <input type="hidden" name="_token" value="m1IraA51xIYNxu4cXQx4o23pFpAajbS2wUNaXz5n">
+        
+        <div class="invoice-options">
+            <div class="invoice-theme-wrapper">
+                <div class="main-invoice-wrap">
+                    <div class="invoice-theme-1 process step-1" style="display: block;">
+                        <div class="invoice-block-1" style="display: flex;justify-content: space-between;align-items: center;">
+                            <div class="invoice-txt" style="font-size: 2.5rem;font-weight: bold;color: #676767;"><span>INVOICE</span></div>
                             
+                            
+                            
+                            
+                            
+                            
+                            
+                        </div>
+                        <div class="invoice-block-2" style="display: flex;justify-content: space-between;align-items: center;">
+                            <div class="company-details" style="width: 40%;position: relative;">
+                                <div class="company-name">
+                                    <label for="id_company_name">Company Name</label>
+                                    <select name="company_name" class="form-control" id="id_company_name">
+<option value="Alphabet Solutionz">Alphabet Solutionz</option>
 
+<option value="Alphabet Technologies">Alphabet Technologies</option>
 
-            <div class="main-content">
+</select>
+                                    
+                                </div>
+                                <div class="company-addr">
+                                    <label for="id_company_address">Company A</label>
+                                    <textarea name="company_address" cols="40" rows="10" placeholder="company address" maxlength="250" required="" id="id_company_address">TC 13/1113 Thopil LineMedical College PO, Kumarapuram -695011Trivandrum, Kerala</textarea>
+                                
+        
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 0em; width:40%">
+                                
+                                
+                            </div>
+                        </div>
+                        <p class="bill-txt">Bill To:</p>
+                        <div class="invoice-block-3">
+                            <div class="customer-details" style="width: 40%;position: relative;">
+                                <div class="cust-details">
+                                    <div class="cust-name">
+                                        <input type="text" name="customer_name" placeholder="customer name" maxlength="250" required="" id="id_customer_name">
+                                        
+                                    </div>
+                                    <div class="cust-addr">
+                                        <input type="text" name="customer_address" placeholder="customer address" maxlength="250" required="" id="id_customer_address">
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cust-invoice-date">
+                                <div class="date">
+                                    Date : <input type="date" name="inv-date" id="inv-date" value="2021-12-07">
+                                </div>
+                                <div class="due-date">
+                                    Due Date: <input type="date" name="due-date" id="due-date" min="2021-12-08">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-details">
+                            <table class="product-table">
+                                <thead>
+                                <tr><th width="5%">S.N.</th>
+                                <th width="40%">Item Name</th>
+                                <th width="12%">Item Code</th>
+                                <th width="20%">Rate</th>
+                                <th width="25%">Quantity</th>
+                                <th width='20%'>UOM</th>
+                                <th width="25%">Warranty</th>
+                                <th width="20%">HSN code</th>
+                                <tbody>
+                                <tr class="items-list">
+                                    <td class="serial_no">1</td>
+                                    <td>
+                                        
+                                        {% comment %} <input type="text" name="item_name" placeholder="add item" maxlength="250" required="" id="id_item_name"> {% endcomment %}
+                                        {{forms.item_name}}
+                                    </td>
+                                    <td>
+                                            {% comment %} <input type="number" name="quantity" class="quantity" required="" id="id_quantity"> {% endcomment %}
+                                            {{forms.item_code}}
+                                    </td>
+                                    <td class="rate">
+                                        <span class="currency-change type-inr">₹ </span>
+                                        {% comment %} <input type="number" name="rate" placeholder="rate" required="" id="id_rate" class="rate"> {% endcomment %}
+                                        {{forms.rate}}
+                                    </td>
+                                    <td class="amount">
 
-                    <div class="invoice-wrapper">
-        <form method="post" id="invoice-form" action="https://vyaparapp.in/invoice-generator/pdf-invoice/1" enctype="multipart/form-data">
-            <input type="hidden" name="_token" value="m1IraA51xIYNxu4cXQx4o23pFpAajbS2wUNaXz5n">
-            <div class="header-block-container">
-                <input type="hidden" id="step-count" value="1" />
-                <h1 class="h3-head">Free Invoice Generator Software Online</h1>
-                <h2 class="sub-head">Create Invoices, Print & Share them NOW!</h2>
-                <ol class="progtrckr" data-progtrckr-steps="6">
-                    <li class="progtrckr-todo li-step1">Enter Details
-                        <div class="inv-icons"><i class="fas fa-edit"></i></div>
-                    </li>
-                    <li class="progtrckr-todo li-step2">Preview
-                        <div class="inv-icons"><i class="fas fa-paint-brush"></i></div>
-                    </li>
-                    <li class="progtrckr-todo li-step3">Share/ Download
-                        <div class="inv-icons"><i class="far fa-share-square"></i></div>
-                    </li>
-                </ol>
-            </div>
-            <div class="invoice-options">
-                <div class="invoice-theme-wrapper">
-                    <div class="main-invoice-wrap">
-                        <div class="invoice-theme-1 process step-1">
-                            <div class="invoice-block-1" style="display: flex;justify-content: space-between;align-items: center;">
-                                <div class="invoice-txt" style="font-size: 2.5rem;font-weight: bold;color: #676767;"><span>INVOICE</span></div>
+                                        {{forms.quantity}}
+                                        {% comment %} <input type="number" name="amount" required="" id="id_amount"> {% endcomment %}
+                                        
+                                    </td>
+                                    <td class="amount">
+                                        {{forms.UOM}}
+                                    </td>
+                                    <td class="amount">
+                                        {{forms.warranty}}
+                                    </td>
+                                    <td class="amount">
+                                        {{forms.hsn_code}}
+                                    </td>
+                                    <td class="remove-item" style="font-size: 20px; font-weight: bold; cursor: pointer;"><i class="far fa-times-circle"></i></td>
+                                    
+                                </tr>
+                                
+                                </tbody>
+                            </table>
+                            <button id="addrowitem">+ Add Item</button>
+                            {% comment %} <h3 class="head-txt width-40">Does your invoice include GST?</h3>
+                            <div class="row">
+                                <div class="col-6">
+                                    <input type="radio" id="yes" name="gst" value="yes" style="display: block; width: auto;">
+                                    <label for="yes">Yes</label>
+                                    <input type="radio" id="no" name="gst" value="no" style="display: block; width: auto;" checked="">
+                                    <label for="no">No</label>
+                                </div>
+                                <div class="col-6">
+                                    <div class="total-amount-wrap border-box" id="gst-div" style="display: none; margin-top: -20px"><span>GST %: &nbsp;&nbsp;</span><input type="number" name="gst" id="gst" placeholder="0.00%" min="0"> </div>
+                                    <input type="hidden" id="amount-without-gst" name="amount-without-gst">
+                                </div>
+                            </div> {% endcomment %}
+                            <div class="total-amount-wrap border-box"><span>Total : &nbsp;&nbsp;</span><span class="currency-total">₹</span> <input type="number" name="total_amt" id="total-amount" placeholder="00.00" min="0" readonly=""> </div>
+                        </div>
+                        <div class="other-notes">
+                            <div class="notes-wrap">
+                                <h3 class="head-txt width-40">Notes:</h3>
+                                <input type="text" name="notes" maxlength="250" required="" id="id_notes">
+                                
+                            </div>
+                            <div class="tnc-wrap">
+                                <h3 class="head-txt width-40">Terms &amp; Conditions:</h3>
+                                <input type="text" name="terms_and_conditions" maxlength="250" required="" id="id_terms_and_conditions">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="choose-template process step-2">
+                        <div id="slider">
+                            <div id="slider-nav">
+                                <a href="#" data-slide="0" data-theme="1" class="current">Preview</a>
                                 
                                 
-                                
-                                
+                            </div>
+                            <div id="slider-wrapper">
+                                <div class="slide">
+                                    <div id="content" style="width: 90%;"></div>
+                                </div>
                                 
                                 
                                 
                             </div>
-                            <div class="invoice-block-2" style="display: flex;justify-content: space-between;align-items: center;">
-                                <div class="company-details" style="width: 40%;position: relative;">
-                                    <div class="company-name">
-                                        <label for="id_company_name">Company Name</label>
-                                        {{forms.company_name}}
-                                        {% comment %} <input type="text" id="user-company" maxlength="200" name="user_company" placeholder="Your Company Name" style="border: 1px solid #6A6A6A;padding: 0 10px;width: 100%;height: 40px;
-            border-radius: 5px;margin: 10px 0;" /> {% endcomment %}
-                                    </div>
-                                    <div class="company-addr">
-                                        <label for="id_company_address">Company Address</label>
-                                        {{forms.company_address}}
-                                    {% comment %} <input type="text" rows="4"  id="user-company-addr" maxlength="1000" name="user_addr" placeholder="Company Address" style="border: 1px solid #6A6A6A;height: 70px;padding: 0 10px;
-            width: 100%;border-radius: 5px;margin: 10px 0;resize: none;"></input> {% endcomment %}
+                        </div>
+                    </div>
+                    <div class="share-n-download process step-3">
+                        <p class="msg-txt">Yay! Your Invoice is ready. Choose one of the following options:</p>
+                        <div class="share-dwnld-options">
+                            <div class="options-block send-invoice">
+                                <i class="fas fa-paper-plane"></i>
+                                <p>Send</p>
+                            </div>
+                            <div class="options-block download-invoice">
+                                <i class="fas fa-file-pdf"></i>
+                                <p>Download</p>
+                            </div>
+                            <div class="options-block printe-invoice">
+                                <i class="fas fa-print"></i>
+                                <p>Print</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="next-button">
+                    <button type="button" id="prev-option" disabled="disabled">Previous</button>
+                    <button type="button" id="next-option">Next</button>
+                </div>
+            </div>
             
-                                    </div>
-                                </div>
-                                <div class="row" style="margin-top: 0em; width:40%">
-                                    <div class="custom-file col-4">
-                                        <img id="logo-image" width="150" height="120" style="display: none; padding-bottom:10px;" />
-                                        <div style="border: 1px solid; padding-top:1em; padding-bottom:1em; text-align:center; background-color: #F7F7F7; border-radius: 5px; color: #676767; border-style:dashed" id='file-div'>
-                                            <label for="file" style=" font-size: 15px;" id="file-placeholder"><b><i class="fa fa-picture-o" aria-hidden="true" style="font-size: 30px"></i><br>Add your company's logo (100x80 px)</b></label>
-                                            <input type="file"  accept="image/jpeg, image/png" name="file" id="file" style="display: none; padding-bottom:10px" onchange="loadFile(event)">
-                                        </div>
-                                    </div>
-                                    {% comment %} <div class="invoice-serial col-4" style="margin-top:1em;">
-                                        <div class="serial-no-invoice"><span>#</span></div>
-                                        <input type="text" class="invoice-number" maxlength="25" name="invoice_no" placeholder="Invoice no." />
-                                    </div> {% endcomment %}
-                                </div>
-                            </div>
-                            <p class="bill-txt">Bill To:</p>
-                            <div class="invoice-block-3">
-                                <div class="customer-details" style="width: 40%;position: relative;">
-                                    <div class="cust-details">
-                                        <div class="cust-name">
-                                            {{forms.customer_name}}
-                                            {% comment %} <input type="text" id="customer-name" maxlength="200" name="cust_name" placeholder="Customer's Name" style="border: 1px solid #6A6A6A;padding: 0 10px;width: 100%;height: 40px;
-            border-radius: 5px;margin: 10px 0;" /> {% endcomment %}
-                                        </div>
-                                        <div class="cust-addr">
-                                            {{forms.customer_address}}
-                                        {% comment %} <textarea  id="customer-addr" maxlength="1000" name="cust_addr" placeholder="Customer Address" style="border: 1px solid #6A6A6A;height: 70px;padding: 0 10px;
-            width: 100%;border-radius: 5px;margin: 10px 0;resize: none;"></textarea> {% endcomment %}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="cust-invoice-date">
-                                    <div class="date">
-                                        Date : <input type="date" name="inv-date" id="inv-date" value="2021-12-07" />
-                                    </div>
-                                    <div class="due-date">
-                                        Due Date: <input type="date" name="due-date" id="due-date" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product-details">
-                                <table class="product-table">
-                                    <thead>
-                                    <th width="5%">S.N.</th>
-                                    <th width="40%">Item</th>
-                                    <th width="12%">Quantity</th>
-                                    <th width="20%">Rate</th>
-                                    <th width="20%">Amount</th>
-                                    <th width="3%"></th>
-                                    </thead>
-                                    <tbody>
-                                    <tr class="items-list">
-                                        <td class="serial_no">1</td>
-                                        <td>
-                                            {{forms.item_name}}
-                                            {% comment %} <input type="text" id="pr-name" maxlength="200" name="pr[0][name]" placeholder="Add Item" /> {% endcomment %}
-                                        </td>
-                                        <td>
-                                            {{forms.qty}}
-                                            {% comment %} <input type="number" id="pr-qty" name="pr[0][qty]" placeholder="0" class="text-right" min="0" /> {% endcomment %}
-                                        </td>
-                                        <td class="rate">
-                                            <span class="currency-change type-inr">&#8377; </span>
-                                            {{forms.rate}}
-                                            {% comment %} <input type="number" id="pr-rate" name="pr[0][rate]" placeholder="0.00" class="text-right" min="0" /> {% endcomment %}
-                                        </td>
-                                        <td class="amount">
-                                            <span class="currency-change type-inr">&#8377; </span>
-                                            {{forms.amount}}
-                                            {% comment %} <input type="number" id="pr-amount" name="pr[0][amount]" placeholder="0.00" class="text-right" min="0" /> {% endcomment %}
-                                        </td>
-                                        <td class="remove-item" style="font-size: 20px; font-weight: bold; cursor: pointer;"><i class="far fa-times-circle"></i></td>
-                                    </tr>
-                                    
-                                    </tbody>
-                                </table>
-                                <button id="addrowitem">+ Add Item</button>
-                                <h3 class="head-txt width-40">Does your invoice include GST?</h3>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <input type="radio" id="yes" name="gst" value="yes" style="display: block; width: auto;">
-                                        <label for="yes">Yes</label>
-                                        <input type="radio" id="no" name="gst" value="no" style="display: block; width: auto;" checked >
-                                        <label for="no">No</label>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="total-amount-wrap border-box" id="gst-div" style="display: none; margin-top: -20px"><span>GST %: &nbsp;&nbsp;</span><input type="number" name="gst" id="gst" placeholder="0.00%" min="0"/> </div>
-                                        <input type="hidden" id="amount-without-gst" name="amount-without-gst">
-                                    </div>
-                                </div>
-                                <div class="total-amount-wrap border-box"><span>Total : &nbsp;&nbsp;</span><span class="currency-total">&#8377;</span> <input type="number" name="total_amt" id="total-amount" placeholder="00.00" min="0" readonly/> </div>
-                            </div>
-                            <div class="other-notes">
-                                <div class="notes-wrap">
-                                    <h3 class="head-txt width-40">Notes:</h3>
-                                    {{forms.notes}}
-                                    {% comment %} <textarea name="notes_desc" maxlength="2000" class="desc-notes border-box"></textarea> {% endcomment %}
-                                </div>
-                                <div class="tnc-wrap">
-                                    <h3 class="head-txt width-40">Terms & Conditions:</h3>
-                                    {{forms.terms_and_conditions}}
-                                    {% comment %} <textarea name="tnc_desc" maxlength="2000" class="desc-tnc border-box">Thanks for doing business with us !</textarea> {% endcomment %}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="choose-template process step-2">
-                            <div id="slider">
-                                <div id="slider-nav">
-                                    <a href="#" data-slide="0" data-theme="1" class="current">Preview</a>
-                                    
-                                    
-                                </div>
-                                <div id="slider-wrapper">
-                                    <div class="slide">
-                                        <div id="content" style="width: 90%;"></div>
-                                    </div>
-                                    
-                                    
-                                    
-                                </div>
-                            </div>
-                        </div>
-                        <div class="share-n-download process step-3">
-                            <p class="msg-txt">Yay! Your Invoice is ready. Choose one of the following options:</p>
-                            <div class="share-dwnld-options">
-                                <div class="options-block send-invoice">
-                                    <i class="fas fa-paper-plane"></i>
-                                    <p>Send</p>
-                                </div>
-                                <div class="options-block download-invoice">
-                                    <i class="fas fa-file-pdf"></i>
-                                    <p>Download</p>
-                                </div>
-                                <div class="options-block printe-invoice">
-                                    <i class="fas fa-print"></i>
-                                    <p>Print</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="next-button">
-                        <button type="button" id="prev-option">Previous</button>
-                        <button type="button" id="next-option">Next</button>
-                    </div>
-                </div>
-                {% comment %} <div class="download-options">
-                    <div class="block-download">
-                        <div class="download-wrap">
-                            <p>A Better Alternative to Invoice Generator</p>
-                            <h4>Try Vyapar</h4>
-                            <div class="badges-wrap">
-                                <a href="https://billing.vyaparapp.in/Vyapar-Install"><img class="google-badge" alt="Vyapar on Play store" src="../vyaparwebsiteimages.vypcdn.in/img/invoice-themes/badge/And.png" /></a>
-                                <a href="javascript:;" onclick="dwnldDesktopApplication();"><img class="window-badge"  alt="Vyapar for Windows" src="../vyaparwebsiteimages.vypcdn.in/img/invoice-themes/badge/Win.png" /></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="block-reachout">
-                        <p style="font-weight: bold; font-size: 1.1rem;">Reach out for Help!</p>
-                        <p><i class="fas fa-phone"></i><span style="margin-left: 20px;">+91-9333-911-911</span></p>
-                        <p><i class="fab fa-whatsapp"></i><span style="margin-left: 20px;">+91-6366-827-420</span></p>
-                        <p><i class="far fa-envelope"></i><span style="margin-left: 20px;">contact@vyaparapp.in</span></p>
-                    </div>
-                </div>
-            </div> {% endcomment %}
-            
-        </form>
-    </div>
-    {% comment %} <div class="marketing-part">
-        <div class="invoicing-txt-wrap row">
-            <h2 class="bottom-header">How to generate an invoice using the online invoice generator?</h2>
-            <div class="width-resp">
-                <div class="row">
-                    <div class="col-12">
-                        <p class="invoice-txt-p">
-                            Sending appealing invoices to your customers can help you build your brand image. You don’t need to spend a lot of time creating an invoice each time for your customer. Instead, you can opt for Vyapar invoice generator to create an invoice online. You can create a professional invoice with a few simple steps.
-                        </p>
-                    </div>
-                </div>
-                <div class="row feature-wrap">
-                    <div class="col s12 m4 l4">
-                        <h4 class="feature-head">Step 1: Enter Details</h4>
-                        <p class="feature-txt">
-                            Add the necessary details about your business and your customer along with the date of billing. With Vyapar, you can add any number of items and leave notes about the invoice to make everything clear.
-                        </p>
-                    </div>
-                    <div class="col s12 m4 l4">
-                        <h4 class="feature-head">Step 2: Preview</h4>
-                        <p class="feature-txt">
-                            After entering the details, you can check out how your invoice looks through the preview. If you feel that any changes are required, you can go to the previous tab in the online invoice generator and make the changes.
-                        </p>
-                    </div>
-                    <div class="col s12 m4 l4">
-                        <h4 class="feature-head">Step 3: Share/Download</h4>
-                        <p class="feature-txt">
-                            Once finished, you can send the invoice to your customer, or print and download the invoice using the Vyapar online invoice generator.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="invoicing-txt-wrap row">
-            <h2 class="bottom-header">A Better Alternative to Invoice Generator / Maker</h2>
-            <div class="width-resp">
-                <div class="row">
-                    <div class="col s12 m6 l6">
-                        <p class="invoice-txt-p">
-                            Creating invoices is not enough. To be successful in your business, you need to track invoices, payments, stocks and all that matters. When your business grows, you’ll find yourself spending a lot of time on excel tracking business metrics rather than focusing on areas of growth.
-                        </p>
-                    </div>
-                    <div class="col s12 m6 l6">
-                        <p class="invoice-txt-p">
-                            What if there is a solution? What if you still make invoices as easily as before and there is a system in place to track everything and give you insights on receivables, payables, cash flows, stock and business status? What if it allows you to <span style="color: #1789FC; cursor: pointer;" onclick="window.location.href='blog/vyapar-app-complete-feature-list-all-about-your-favorite-billing-software/index.html';">send payment reminders to clients</span> for faster payment cycles.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="download-wrap-btm row">
-            <div class="width-resp">
-                <div class="row valign-wrapper download-wrapper">
-                    <div class="col s12 m8 l7 download-divs">
-                        <p class="business-txt">“If you are a small business ready to make the big leap, this application is for you.”</p>
-                    </div>
-                    <div class="col s12 m4 l5 download-divs desktop-dwnld-btn">
-                        <a class="dwnld-desktop-application" href="javascript:;" onclick="dwnldDesktopApplication()" style="text-align: center;">
-                            <div class="dwnld-btn" style="border-radius: 30px">
-                                <i class="fa fa-windows" style="color:white;"></i>
-                                <button>Download for Desktop</button>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col s12 m4 l5 download-divs mobile-dwnld-btn">
-                        <a class="dwnld-desktop-application" href="https://billing.vyaparapp.in/Vyapar-Install" style="text-align: center;">
-                            <div class="dwnld-btn" style="border-radius: 30px">
-                                <i class="fa fa-android" style="color:white;"></i>
-                                <button>Download for Mobile</button>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="what-you-expect row">
-            <h2 class="bottom-header margin-50">What can you expect from Vyapar Software?</h2>
-            <div class="width-resp">
-                <div class="row feature-wrap">
-                    <div class="col s12 m4 l4">
-                        <div class="feature-img"><img alt="Send Estimates & Quotations by Invoice Generator" src="../vyaparwebsiteimages.vypcdn.in/img/invoice-themes/features/Asset%2054.png"/></div>
-                        <h4 class="feature-head">Send Estimates & Quotations</h4>
-                        <p class="feature-txt">
-                            Send professional quotes with complete details regarding your pricing estimates and GST. Using this invoice generator, you can provide the estimates to your customers with just a few clicks. Good quality quotes show your brands identity to your potential customers, giving Vyapar users a competitive edge over others who text mail quotations.
-                            <span class="more">
-                                free invoice generator helps you make a quote that can speak more than your prices, givingvoice to your brand and allowing you to convert more leads into paying customers. Moreover, once you get the deal, convert these quotations to invoices without much hassle, thereby making the process seamless.
-                            </span>
-                            <span class="read-more-less-link">Read more</span>
-                        </p>
+        
+    
+</div></form>
 
-                    </div>
-                    <div class="col s12 m4 l4">
-                        <div class="feature-img"><img alt="Track Sale/Purchase Orders by Invoice Generator" src="../vyaparwebsiteimages.vypcdn.in/img/invoice-themes/features/Asset%2053.png"/></div>
-                        <h4 class="feature-head">Track Sale/Purchase Orders</h4>
-                        <p class="feature-txt">
-                            Managing your orders gets simpler with our online invoice generator. You have complete controlover the <span style="color: #1789FC; cursor: pointer;" onclick="window.location.href='blog/vyapar-app-complete-feature-list-all-about-your-favorite-billing-software/index.html';">tracking of sale/purchase orders</span> right from the time they are placed until they get delivered. It helps you simplify the process by ensuring that every task is performed right on time.
-                            <span class="more">
-                                Moreover, you can set up reminders within the app so that you do not forget to dispatch them ontime. Using Vyapar, you will be able to close the deals effortlessly. Our online GST invoice generator will allow you to choose from multiple GST sale/purchase formats.
-                            </span>
-                            <span class="read-more-less-link">Read more</span>
-                        </p>
-                    </div>
-                    <div class="col s12 m4 l4">
-                        <div class="feature-img"><img alt="Know Receivables & Payables by Invoice Generator" src="../vyaparwebsiteimages.vypcdn.in/img/invoice-themes/features/Group%2069.png"/></div>
-                        <h4 class="feature-head">Know Receivables & Payables</h4>
-                        <p class="feature-txt">
-                            Cash flow is essential for a business to operate smoothly, and keeping track of the receivables and payables allow businesses to plan ahead of time to ensure that they have enough liquidity for the operations. Using Vyapar, you can fill in your cashbook by using the invoice generator for free and ensure that you have access to your outstanding bills with one click.
-                            <span class="more">
-                                You can set the remainders to collect payments from your customers before due dates and send them reminders if they fail to make it on time. It will help you check on people who have not yet paid your invoices so that you can take essential actions and keep your finances from getting defaulted.
-                            </span>
-                            <span class="read-more-less-link">Read more</span>
-                        </p>
-                    </div>
-                    <div class="col s12 m4 l4">
-                        <div class="feature-img"><img alt="Know your Status by Invoice Generator" src="../vyaparwebsiteimages.vypcdn.in/img/invoice-themes/features/Group%2070.png"/></div>
-                        <h4 class="feature-head">Know your Business Status</h4>
-                        <p class="feature-txt">
-                            You can <span style="color: #1789FC; cursor: pointer;" onclick="window.location.href='blog/vyapar-app-complete-feature-list-all-about-your-favorite-billing-software/index.html';">track the financial health</span> and status of your business from anywhere using <span style="color: #1789FC; cursor: pointer;" onclick="window.location.href='index.html';">Vyappar app</span>. So if you go out on vacation, you need not worry much as you can keep a check on your business, make sure everything is right on track using our free invoice generator.
-                            <span class="more">
-                                It provides a better framework and more control over the business. Our GST invoice generator gives an overall analysis of how your company did in the past, how is it doing currency, and howwill it perform in future. It will help you modify your strategies to boost your business growth.
-                            </span>
-                            <span class="read-more-less-link">Read more</span>
-                        </p>
-                    </div>
-                    <div class="col s12 m4 l4">
-                        <div class="feature-img"><img alt="Get Insights through Reports by Invoice Generator" src="../vyaparwebsiteimages.vypcdn.in/img/invoice-themes/features/Group%2071.png"/></div>
-                        <h4 class="feature-head">Get Insights through Reports</h4>
-                        <p class="feature-txt">
-                            Believing in your products is the first step, but analysing loop hopes and modifying strategies to improve and boost growth is much more critical. By analysing reports, businesses can improve their profitability, and you can use the Vyapar online invoice generator to create reports online for free.
-                            <span class="more">
-                                Reports are useful in demonstrating the complete analysis of your business. Through Vyapar invoice generator, you get a comprehensive review of your business that helps you track the profit and loss in each segment of your company. It allows you to make safer informed decisions rather than going for a bad gut feeling.
-                            </span>
-                            <span class="read-more-less-link">Read more</span>
-                        </p>
-                    </div>
-                    <div class="col s12 m4 l4">
-                        <div class="feature-img"><img alt="Record & Manage Expenses" src="../vyaparwebsiteimages.vypcdn.in/img/invoice-themes/features/Group%2072.png"/></div>
-                        <h4 class="feature-head">Record & Manage Expenses</h4>
-                        <p class="feature-txt">
-                            Businesses require cash flow to operate flawlessly, and you can track your expenses and earnings from day one to ensure you have enough reserves. Vyapar online invoice generator tool helps you keep track of the smallest expenses so that you can manage your costs accordingly.
-                            <span class="more">
-                                With Vyapar, you can generate the invoices of expenses, and it will make it visible in your dashboard so that you have a clear idea about profits. It will help you save time during tax filing as you can use the online GST invoice generator to create a GST invoice in one click.
-                            </span>
-                            <span class="read-more-less-link">Read more</span>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="invoice-benefits row">
-            <h2 class="bottom-header margin-50">What can you do with Vyapar Software?</h2>
-            <div class="width-resp">
-                <div class="col s12 m6 l6 all-benefits">
-                    <p><span class="checkmark-cls"><i class="fas fa-check"></i></span><span>Invoice anywhere with just your smartphone. </span></p>
-                    <p><span class="checkmark-cls"><i class="fas fa-check"></i></span><span>Create and share unlimited GST invoices for FREE.  </span></p>
-                    <p><span class="checkmark-cls"><i class="fas fa-check"></i></span><span>Saves you from retyping invoicing details. </span></p>
-                    <p><span class="checkmark-cls"><i class="fas fa-check"></i></span><span>Choose from plenty of templates.  </span></p>
-                    <p><span class="checkmark-cls"><i class="fas fa-check"></i></span><span>Share invoices whichever way you like - SMS, Email, WhatsApp, Paper. </span></p>
-                    <p><span class="checkmark-cls"><i class="fas fa-check"></i></span><span>Customize invoices in multiple ways to fit your business needs. </span></p>
-                    <p><span class="checkmark-cls"><i class="fas fa-check"></i></span><span>Track paid, unpaid and partially paid invoices.</span></p>
-                </div>
-                <div class="col s12 m6 l6 all-benefits">
-                    <p><span class="checkmark-cls"><i class="fas fa-check"></i></span><span>Create estimates/quotations on the go, convert them to invoices. </span></p>
-                    <p><span class="checkmark-cls"><i class="fas fa-check"></i></span><span>Pick your way to get paid - cash, card, online transfer. </span></p>
-                    <p><span class="checkmark-cls"><i class="fas fa-check"></i></span><span>Send payment reminders to customers with overdue invoices.</span></p>
-                    <p><span class="checkmark-cls"><i class="fas fa-check"></i></span><span>Add pay now link on your invoice and collect payments faster online.</span></p>
-                    <p><span class="checkmark-cls"><i class="fas fa-check"></i></span><span>Generate GSTR-1, GSTR-2, GSTR-3B & GSTR-9 in one click.</span></p>
-                </div>
-            </div>
-        </div>
-        <div class="why-use-invoice-gen row">
-            <h2 class="bottom-header margin-50">Why use our FREE Invoicing Software?</h2>
-            <div class="width-resp">
-                <div class="row">
-                    <div class="col s12 m6 l6 why-block-wrap">
-                        <div class="divider"></div>
-                        <div class="section">
-                            <h5>Super Easy-to-Use</h5>
-                            <p>No technical or accounting knowledge is required to use this App. Download & start using it right away.</p>
-                        </div>
-                        <div class="divider"></div>
-                        <div class="section">
-                            <h5>Saves Time</h5>
-                            <p>Save time compared to manually creating invoices. Create invoices on the spot with just your smartphone.</p>
-                        </div>
-                        <div class="divider"></div>
-                        <div class="section">
-                            <h5>Get Paid Faster</h5>
-                            <p>Adding Payment links directly on invoices ensures you get paid 2X times faster the right way.</p>
-                        </div>
-                    </div>
-                    <div class="col s12 m6 l6 why-block-wrap">
-                        <div class="divider"></div>
-                        <div class="section">
-                            <h5>Easy Tax Filing</h5>
-                            <p>Your invoices are processed & <span style="color: #1789FC; cursor: pointer;" onclick="window.location.href='blog/vyapar-app-complete-feature-list-all-about-your-favorite-billing-software/index.html';">GSTR reports are generated</span> for you to file them on time.</p>
-                        </div>
-                        <div class="divider"></div>
-                        <div class="section">
-                            <h5>It's 100% Secure</h5>
-                            <p>Your data remains only on your device, No one else can access your data except you.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="download-wrap-btm row">
-            <div class="width-resp">
-                <div class="row valign-wrapper download-wrapper">
-                    <div class="col s12 m8 l7 download-divs">
-                        <p class="business-txt-lg">Ready to go beyond just Invoicing?</p>
-                        <p class="business-txt">Get FREE Invoice Generator Software NOW!</p>
-                    </div>
-                    <div class="col s12 m4 l5 download-divs desktop-dwnld-btn">
-                        <a class="dwnld-desktop-application" href="javascript:;" onclick="dwnldDesktopApplication()" style="text-align: center;">
-                            <div class="dwnld-btn" style="border-radius: 30px">
-                                <i class="fa fa-windows" style="color:white;"></i>
-                                <button>Download for Desktop</button>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col s12 m4 l5 download-divs mobile-dwnld-btn">
-                        <a class="dwnld-desktop-application" href="https://billing.vyaparapp.in/Vyapar-Install" style="text-align: center;">
-                            <div class="dwnld-btn" style="border-radius: 30px">
-                                <i class="fa fa-android" style="color:white;"></i>
-                                <button>Download for Mobile</button>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="invoicing-txt-wrap row">
-            <h2 class="bottom-header">Everything you need to know about Invoicing</h2>
-            <div class="width-resp">
-                <div class="row">
-                    <div class="col s12 m6 l6">
-                        <h5 style="text-align: left; color: #ED1A3B"><b>What is an Invoice?</b></h5>
-                        <p class="invoice-txt-p">
-                            An invoice refers to the document that lists all the products and services purchased by the buyer. The seller issues an invoice to receive the payment for the services purchased by the buyer. It includes the payment terms as per the agreement. The prices for the items listed in the invoice are taken from the quote accepted by the buyer. The invoice is issued right after the delivery is made to the customer.
-                        </p>
-                    </div>
-                    <div class="col s12 m6 l6">
-                        <h5 style="text-align: left; color: #ED1A3B"><b>What is an invoice used for?</b></h5>
-                        <p class="invoice-txt-p">
-                            Invoices are used for business accounting purposes. They are proof of all the sales made by a business. Some important uses of invoices are listed below.<br><br>
-                            1. Requesting payment from customers and tracking them<br>
-                            2. Tracking inventory through sale numbers<br>
-                            <span class="more">
-                                3. Analyzing sale reports and forecasting future sales<br>
-                                4. Keeping track of current sales and active orders<br>
-                                5. Recording revenue made by the business for tax purposes
-                            </span>
-                            <span class="read-more-less-link">Read more</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col s12 m6 l6">
-                        <h5 style="text-align: left; color: #ED1A3B"><b>What is an online invoice generator?</b></h5>
-                        <p class="invoice-txt-p">
-                            An online invoice maker is a tool that helps a business create an invoice within minutes. Vyapar offers online invoicing to its users for free. You can visit the website and start building a new invoice for your customer for free in three simple steps. Online invoice generator makes seamless for a business to receive payments against the sales they have made. It allows the addition of all essential details related to the transaction. Vyapar also enables you to create professional invoices at no extra cost.
-                        </p>
-                    </div>
-                    <div class="col s12 m6 l6">
-                        <h5 style="text-align: left; color: #ED1A3B"><b>Why Use Our Online Invoice generator?</b></h5>
-                        <p class="invoice-txt-p">
-                            Sending invoices is a vital aspect of a business. You need to maintain the cash flow in a company to make sure it keeps running. To make it happen, you need to ensure that payments do not get delayed. Payments are made against the seller’s invoice, so to get paid faster, you need to send your invoice to your buyer as soon as they receive the order. Our online invoice maker tool allows you to receive payments from your customers without any hassle.
-                            <span class="more">
-                                You can use our invoice maker to create appealing invoices to showcase your professionalism. Further, you can keep the records of the transaction for use in future while filing for taxes.
-                            </span>
-                            <span class="read-more-less-link">Read more</span>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="why-use-invoice-gen row" style="background-color: #F2F2F2">
-            <h2 class="bottom-header margin-50">Benefits of Using an Online Invoice Maker</h2>
-            <p style="text-align: center; font-size:18px; padding-bottom:3em;">There are many unique benefits associated with an online invoice generator.<br> Here is a list of some significant advantages of using an online invoice maker.</p>
-            <div class="width-resp">
-                <div class="row">
-                    <div class="col s12 m12 l12 why-block-wrap">
-                        <div class="divider"></div>
-                        <div class="section">
-                            <span class="checkmark-cls"><i class="fas fa-file-invoice" style="font-size: 50px"></i><h5>Free invoicing</h5>
-                            <p style="color: #666666">You need not pay anything to use the best online invoice generator. Vyapar allows users to create an invoice for free on any device and web browser.</p>
-                            </span>
-                        </div>
-                        <div class="divider"></div>
-                        <div class="section">
-                            <span class="checkmark-cls"><i class="fas fa-desktop" style="font-size: 50px"></i><h5>Simple user interface</h5>
-                                <p style="color: #666666">
-                                    The website offers easy to use interface to create invoices. Anyone can make an invoice using Vyapar in just three steps. You can access the website anytime to create a free invoice.
-                                </p>
-                            </span>
-                        </div>
-                        <div class="divider"></div>
-                        <div class="section">
-                            <span class="checkmark-cls"><i class="fas fa-download" style="font-size: 50px"></i><h5>Download / Share invoices</h5>
-                                <p style="color:#666666">
-                                    Once completed, you can share your final invoice to your customer right away. You can download our invoice in PDF format or share it by attaching it to your e-mail. Also, you can print the invoice and send a physical copy to your customer.
-                                </p>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="why-use-invoice-gen row">
-            <h2 class="bottom-header margin-50">Tips to Make a Great invoice</h2>
-            <div class="width-resp">
-                <div class="row">
-                    <div class="col s12 m6 l6 why-block-wrap">
-                        <div class="divider"></div>
-                        <div class="section">
-                            <h5><i class="fas fa-lightbulb-o" style="padding-right: 5px; font-size:25px"></i>Add the correct recipient details</h5>
-                            <p>
-                                Make sure to have the right information about your buyer in the invoice. Adding incorrect information can delay the payment as your client will not receive the invoice.
-                            </p>
-                        </div>
-                        <div class="divider"></div>
-                        <div class="section">
-                            <h5><i class="fas fa-lightbulb-o" style="padding-right: 5px; font-size:25px"></i>Add your business contact details</h5>
-                            <p>
-                                You can add your business logo, name, color, and fonts in an invoice to make sure it remains compatible with your brands’ image. It will make your invoice look professional, helping you build trust and faith among customers.
-                            </p>
-                        </div>
-                        <div class="divider"></div>
-                        <div class="section">
-                            <h5><i class="fas fa-lightbulb-o" style="padding-right: 5px; font-size:25px"></i>Mention payment terms</h5>
-                            <p>
-                                As both buyer and seller agreed on the payment terms as per the quotation provided by the seller. The invoice is sent out when the order is completed. By having payment terms discussed beforehand, you can make sure you get paid on time.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col s12 m6 l6 why-block-wrap">
-                        <div class="divider"></div>
-                        <div class="section">
-                            <h5><i class="fas fa-lightbulb-o" style="padding-right: 5px; font-size:25px"></i>Value simplicity and minimalism</h5>
-                            <p>
-                                Too much technical information will make your invoice challenging to understand. So, try to embrace simplicity and minimalism within your invoice.
-                                <span class="more">
-                                    Avoid adding unnecessary details that lack clarity.
-                                </span>
-                                <span class="read-more-less-link">Read more</span>
-                            </p>
-                        </div>
-                        <div class="divider"></div>
-                        <div class="section">
-                            <h5><i class="fas fa-lightbulb-o" style="padding-right: 5px; font-size:25px"></i>Provide multiple payment options</h5>
-                            <p>
-                                Make sure to offer numerous payment options in your invoice. It will provide your seller with the most suitable choice for them. Having detail transactions enables, you can get paid in minutes of sending an invoice.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="why-use-invoice-gen row" style="background-color: #F2F2F2">
-            <h2 class="bottom-header margin-50">Mistakes to avoid while creating an invoice</h2>
-            <p class="invoice-txt-p" style="text-align: center">
-                An invoice can get rejected if it is not created with the utmost care. You need to make sure to provide the complete details<br> of the transaction in the invoice. Some common invoicing mistakes are listed as follows:
-            </p>
-            <div class="width-resp">
-                <div class="row">
-                    <div class="col s12 m12 l12 why-block-wrap">
-                        <div class="divider"></div>
-                        <div class="section">
-                            <span class="checkmark-cls"><i class="fas fa-calendar" style="font-size: 50px"></i><h5>Wrong date</h5>
-                            <p style="color: #666666">
-                                The invoice should include the date on which it is issued. Not mentioning the date correctly can make it difficult to track the financials while filing taxes.
-                            </p>
-                            </span>
-                        </div>
-                        <div class="divider"></div>
-                        <div class="section">
-                            <span class="checkmark-cls"><i class="fas fa-info-circle" style="font-size: 50px"></i><h5>Inappropriate data</h5>
-                                <p style="color: #666666">
-                                    Make sure to add the correct details of each item you provided to the buyer. Having incomplete lists can affect the total and get your invoice rejected.
-                                </p>
-                            </span>
-                        </div>
-                        <div class="divider"></div>
-                        <div class="section">
-                            <span class="checkmark-cls"><i class="fas fa-calculator" style="font-size: 50px"></i><h5>Totaling error</h5>
-                                <p style="color: #666666">
-                                    Totaling the invoice manually can lead to human errors. So, make sure to cross-check the total in your invoice before handing it over to your client. Avoid adding wrong taxes or charges that are not supposed to be included.
-                                </p>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="download-wrap-btm row">
-            <div class="width-resp">
-                <div class="row valign-wrapper download-wrapper">
-                    <div class="col s12 m8 l7 download-divs">
-                        <p class="business-txt-lg">Why stop at Invoicing? Try Vyapar!</p>
-                        <p class="business-txt desktop-dwnld-btn">Download Vyapar Desktop App for all your business needs!</p>
-                        <p class="business-txt mobile-dwnld-btn">Download Vyapar Android App for all your business needs!</p>
-                    </div>
-                    <div class="col s12 m4 l5 download-divs desktop-dwnld-btn">
-                        <a class="dwnld-desktop-application" href="javascript:;" onclick="dwnldDesktopApplication()" style="text-align: center;">
-                            <div class="dwnld-btn" style="border-radius: 30px">
-                                <i class="fa fa-windows" style="color:white;"></i>
-                                <button>Download for Desktop</button>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col s12 m4 l5 download-divs mobile-dwnld-btn">
-                        <a class="dwnld-desktop-application" href="https://billing.vyaparapp.in/Vyapar-Install" style="text-align: center;">
-                            <div class="dwnld-btn" style="border-radius: 30px">
-                                <i class="fa fa-android" style="color:white;"></i>
-                                <button>Download for Mobile</button>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="invoicing-txt-wrap row" style="background-color: #EBEBEB">
-            <h2 class="bottom-header">Invoice generator for freelancers</h2>
-            <div class="width-resp">
-                <div class="row">
-                    <div class="col-12">
-                        <p class="invoice-txt-p">
-                            Freelancers often struggle to receive payment once the services are provided to the customers. At times, freelancer work without advance, and thus rely on invoices to get paid once they finish the project. To collect payment faster, setting up an invoice is the first step. Freelancers can create an invoice using our online invoicing software.<br>
-                            To make a useful invoice here is a quick overview of the invoice that you should create.<br><br>
-                            1. It should contain a unique invoice number.<br>
-                            2. Have a date of issue of invoice<br>
-                            3. Due date for payment should be mentioned<br>
-                            4. Business name, address, and contact details<br>
-                            5. Customers contact information<br>
-                            6. Lists of products and services requested by the buyer<br>
-                            7. Rates, taxes, and charges involved<br>
-                            8. Payment terms, conditions, and additional notes<br>
-                            9. Authorized signature.<br>
-                            10. Online payment links.
-                            <span class="more">
-                                <br><br>Once you understand what you need to have in your invoice, any freelancer can follow these steps to create a professional invoice using our online invoice generator.<br><br>
-                                <b>Step-1: Setting up terms of service</b><br>
-                                Every freelance project has its requirements. Every time you receive a new order, make sure to set up the project terms clearly with the buyer. Create a personalized invoice agreement for your clients. Taking terms clearly will help you get paid faster. So, create a quote for your client and get it signed. It will act as a document that is proof that the client agreed to pay a specific amount once the requests are fulfilled.<br><br>
-                                <b>Step-2: Simple invoice for clear communication</b><br>
-                                Please keep your invoice error-free and make it specific to the services you are providing to your client. Having the slightest error can lead to its rejection, making your payment delayed. Keep it short and simple so that it is easily understandable. Adding technical jargon will only addconfusion within the invoice. So, using a simple online invoice maker tool is the right choice to make.<br><br>
-                                <b>Step-3: Payment terms and conditions</b><br>
-                                Defining a payment policy term can help you get paid faster. You can set up a day and time for invoice payments with your recurring client so that it becomes convenient for them to pay you. Further, clearing the payment terms with a new client can help you collect payments faster than continuous follow-up after project submission. It allows clients to keep money in hand as they know when to expect your invoice.<br><br>
-                                <b>Step-4: Get paid faster with digital transactions</b><br>
-                                By allowing your customer to pay in multiple payment options, you can ensure a faster payment collection. By opting for our online invoice maker, you can enable your customers to pay through UPI, NEFT, and net banking so that you need not collect payments in cash alone. Further, digital transactions are often convenient, allowing your customer to pay within minutes of receiving the payment.<br><br>                            </span>
-                            <span class="read-more-less-link">Read more</span>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="faq-block row">
-            <h2 class="bottom-header margin-50">FAQs</h2>
-            <div class="width-resp">
-                <ul class="collapsible" data-collapsible="accordion">
-                    <li>
-                        <div class="collapsible-header">Can I use these invoices for filing taxes?</div>
-                        <div class="collapsible-body"><span>Invoices created in this free GST invoice generator do have the details required for GST tax filing, but we recommend that you download and use our FREE invoice generator for creating invoices. You can generate GSTR-1, GSTR-2, GSTR-3B, GSTR-9 directly on our GST invoice generator software and file them on the GSTN portal online.</span></div>
-                    </li>
-                    <li>
-                        <div class="collapsible-header">How to accept payments from customers online?</div>
-                        <div class="collapsible-body"><span>This free invoice generator doesn’t let you accept payments, but our invoicing App lets you add a Pay Now button so your customers can pay you using UPI payments.</span></div>
-                    </li>
-                    <li>
-                        <div class="collapsible-header">How to add more details to my invoices?</div>
-                        <div class="collapsible-body"><span>Here you can add basic details to your invoice. To add more details like the shipping and billing details, discounts, taxes, etc, download and use our GST invoice generator software where you can customize invoices to your needs.</span></div>
-                    </li>
-                    <li>
-                        <div class="collapsible-header">How to save my invoice and customer details?</div>
-                        <div class="collapsible-body"><span>Your Invoice details are not saved. In case you want to avoid retyping customer and item details every time you want to create invoices, use our FREE GST invoice generator.</span></div>
-                    </li>
-                    <li>
-                        <div class="collapsible-header">Is this free Invoice creator really for free?</div>
-                        <div class="collapsible-body"><span>Yes, it is absolutely FREE. No need to create an account or a credit card to start sending invoices. You can generate unlimited invoices and share them the unlimited number of times.</span></div>
-                    </li>
-                    <li>
-                        <div class="collapsible-header">What is a tax invoice?</div>
-                        <div class="collapsible-body"><span>A tax invoice is the sale bill created by a GST registered business owner when he sells taxable goods and services. It is mandatory for claiming ITC.</span></div>
-                    </li>
-                    <li>
-                        <div class="collapsible-header">How to Send an invoice to the client? </div>
-                        <div class="collapsible-body"><span>You can send your invoice to a customer seamlessly using an online invoice generator. Vyapar allows you to fill in all the required information for creating an invoice and send it to your client. For this, you can download the invoice in PDF format and print a physical copy or share it with your client’s e-mail. Upon receiving, your client will get the option to make payment through multiple payment options.</span></div>
-                    </li>
-                    <li>
-                        <div class="collapsible-header">What is the price of Invoice generator?</div>
-                        <div class="collapsible-body"><span>Every business needs to create an invoice for their customers. So, it is good to use the best online invoice maker. In comparison, many websites have different pricing models for creating a simple invoice. Vyapar allows users to create unlimited online invoices for free. Also, with a simple user interface, our online invoice maker does stand out among competitors.</span></div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="powered-by row">
-            <div class="width-resp">
-                <div class="row">
-                    <div class="divider2"></div>
-                    <div class="vyapar-powered">
-                        <div>Powered by</div>
-                        <div><img class="vyapar-logo-img" alt="Vyapar a free Invoice Generator." width="170" height="38" src="https://vyaparwebsiteimages.vypcdn.in/logo1.svg"/></div>
-                    </div>
-                    <p class="text-vyapar">Simply Vyapar Apps Pvt LtdTM</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="email-invoice-modal" class="modal">
-        <div class="modal-header">
-            <h4 class="heading">Send Invoice</h4>
-            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
-        </div>
-        <div class="modal-content">
-            <form>
-                
-                <p class="input-block">
-                    <label for="size_1">To<sup>*</sup></label>
-                    <input type="email" name="to_email_addr" id="to_email_addr" placeholder="Receiver's email address" required/>
-                </p>
-                <p class="input-block">
-                    <label for="size_1">From<sup>*</sup></label>
-                    <input type="email" name="from_email_addr" id="from_email_addr" placeholder="Sender's email address" required/>
-                </p>
-                <p class="input-block">
-                    <label for="size_1">Subject</label>
-                    <input type="text" name="mail_subject" id="mail_subject" placeholder="" style="border:none !important;" readonly required/>
-                </p>
-                <p class="input-block">
-                    <label for="size_1">Message</label>
-                    <textarea rows="4" cols="4" name="msg_email" id="msg_email" required></textarea>
-                </p>
-            </form>
-        </div>
-        <div class="modal-footer">
-            <button id="email-invoice-call">Send</button>
-        </div>
-    </div>
-    <div id="download-invoice-modal" class="modal">
-        <div class="modal-header">
-            <h4 class="heading">Download Invoice</h4>
-            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
-        </div>
-        <div class="modal-content">
-            <form>
-                <p class="sub-text">Enter your details to Download</p>
-                <p class="input-block">
-                    <label for="size_1">Name<sup>*</sup></label>
-                    <input type="text" name="company_name" id="company_name" placeholder="Enter Full Name" />
-                </p>
-                <div class="input-block">
-                    <label for="size_2">Phone Number<sup>*</sup></label>
-                    <div class="block-input">
-                        <span class="india-call">+91</span>
-                        <input type="number" style="border: 1px solid silver;" onkeypress="isNumberKey(event);" name="download_input_phone" id="download_input_phone" placeholder="Enter Phone Number" />
-                    </div>
-                </div>
-            </form>
-        </div>
-        <div class="modal-footer">
-            <button id="download-invoice-call">Download</button>
-        </div>
-    </div>
-    <div id="print-invoice-modal" class="modal">
-        <div class="modal-header">
-            <h4 class="heading">Print Invoice</h4>
-            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
-        </div>
-        <div class="modal-content">
-            <form>
-                <p class="sub-text">Enter your details to Proceed</p>
-                <p class="input-block">
-                    <label for="size_1">Name<sup>*</sup></label>
-                    <input type="text" name="company_name_print" id="company_name_print" placeholder="Enter Full Name" />
-                </p>
-                <div class="input-block">
-                    <label for="size_2">Phone Number<sup>*</sup></label>
-                    <div class="block-input">
-                        <span class="india-call">+91</span>
-                        <input type="text" style="border: 1px solid silver;" onkeypress="isNumberKey(event);" name="print_input_phone" id="print_input_phone" placeholder="Enter Phone Number" />
-                    </div>
-                </div>
-            </form>
-        </div>
-        <div class="modal-footer">
-            <button id="print-invoice-call">Print</button>
-        </div>
-    </div>
-    <div id="successModal" class="modal"><!------------successmodal-->
-        <div class="modal-content">
-            <h5 class="message-res" style="color:#1def71"></h5>
-            <p></p>
-        </div>
-        <div class="modal-footer">
-            <a href="#!" class=" modal-action modal-close waves-effect  btn-flat">OK</a>
-        </div>
-    </div>
-
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-
-            </div></div>
-                    <footer>
-                <div class="container">
-                    <div class="row footer-links">
-                        <div class="col s6 l2">
-                            <ul>
-                                <li class="footer-header">Connect With Us</li>
-                                <li><a rel="nofollow" href="https://www.facebook.com/vyaparsoftware">Facebook</a></li>
-                                <li><a rel="nofollow" href="https://twitter.com/vyaparapp">Twitter</a></li>
-                                <li><a rel="nofollow" href="https://www.instagram.com/vyaparapp/">Instagram</a></li>
-                                <li><a rel="nofollow" href="https://www.linkedin.com/company/vyapar-tech-solutions/mycompany/">LinkedIn</a></li>
-                            </ul>
-                        </div>
-                        <div class="col s6 l2">
-                            <ul>
-                                <li class="footer-header">Let us help you</li>
-                                <li><a rel="" href="login.html">Your Account</a></li>
-                                <li><a rel="nofollow" href="https://www.youtube.com/channel/UCPyg1bziA6iTfjjX-IwGlhQ">Video Tutorials</a></li>
-                                <li><a rel="" href="distributor/create.html">Partnership / Distributorship</a></li>
-
-                                
-                            </ul>
-                        </div>
-                        <div class="col s6 l2">
-                            <ul>
-                                <li class="footer-header">Features</li>
-                                <li><a rel="" href="free/inventory-management-software.html">Free Inventory Management Software</a></li>
-                                <li><a rel="" href="free/billing-software-for-retail-shop.html">Billing Software for Retail Shops</a></li>
-                                <li><a rel="" href="free/pos-billing-software.html">POS Billing Software</a></li>
-                                <li><a rel="" href="free/small-business-accounting-software.html">Small Business Accounting Software</a></li>
-                            </ul>
-                        </div>
-
-
-
-
-
-
-                        <div class="col s6 l2">
-                            <ul>
-                                <li class="footer-header">Quick Links</li>
-                                <li><a href="invoice-formats.html">Free Invoice Formats</a></li>
-                                <li><a rel="" href="invoice-formats/gst.html">GST Invoice Format</a></li>
-                                <li><a rel="" href="balance-sheet-formats.html">Balance Sheet Format</a></li>
-                                <li><a rel="" href="comparison-with-other-apps.html">Vyapar Comparison with other Apps</a></li>
-                                <li><a rel="" href="sitemap.html">Sitemap</a></li>
-                            </ul>
-                        </div>
-                        <div class="col s6 l2">
-                            <ul class="quick-links">
-                                <li class="footer-header">Tools</li>
-                                <li><a rel="" href="tools/ns/free-online-logo-maker.html">Free Online Logo Maker</a></li>
-                                <li><a rel="" href="tools/ns/online-gst-calculator-india.html">Online GST Calculator</a></li>
-                                <li><a rel="" href="invoice-generator.html">Free Invoice Generator</a></li>
-                                <li><a rel="" href="tools/free-online-quotation-maker.html">Online Quotation Maker</a></li>
-
-                                
-
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="copyright center">
-                        <span><a href="terms.html">Terms and Conditions</a></span>
-                        <span>Simply Vyapar Apps Pvt Ltd<sup>TM</sup></span>
-                    </div>
-                </div>
-            </footer>
-                <div class="spinner" id="spinner" hidden>
-            <div class="sk-fading-circle">
-                <div class="sk-circle1 sk-circle"></div>
-                <div class="sk-circle2 sk-circle"></div>
-                <div class="sk-circle3 sk-circle"></div>
-                <div class="sk-circle4 sk-circle"></div>
-                <div class="sk-circle5 sk-circle"></div>
-                <div class="sk-circle6 sk-circle"></div>
-                <div class="sk-circle7 sk-circle"></div>
-                <div class="sk-circle8 sk-circle"></div>
-                <div class="sk-circle9 sk-circle"></div>
-                <div class="sk-circle10 sk-circle"></div>
-                <div class="sk-circle11 sk-circle"></div>
-                <div class="sk-circle12 sk-circle"></div>
-            </div>
-        </div>
-
-</div> {% endcomment %}
 <div id="desktop_dwnld" class="modal">
-    <div class="modal-content">
-        <p style="font-size: 24px;color: #097788;" class="center">Welcome to Vyapar Desktop Version</p>
-        <p style="font-size: 20px;color: #097788;" class="center">Please fill the details below</p>
-        <form id="dwnld-form">
+<div class="modal-content">
+    <p style="font-size: 24px;color: #097788;" class="center">Welcome to Vyapar Desktop Version</p>
+    <p style="font-size: 20px;color: #097788;" class="center">Please fill the details below</p>
+    <form id="dwnld-form">
 
-            <input type="hidden" name="_token" value="m1IraA51xIYNxu4cXQx4o23pFpAajbS2wUNaXz5n">
-            <input type="hidden" value="" name="country" id="country">
-            <input type="hidden" value="" name="city" id="city">
-            <input type="hidden" value="" name="region" id="region">
-            <div class="row" id="user_input" style="margin-top: 10px;margin-bottom: 10px;">
-                
-                
-                
-                
-            </div>
-            <div class="row">
-                <div class="col s10 offset-s1">
-                    <p class="center" style="color: #989898;margin-bottom: 10px;margin-top: 10px;"><i class="material-icons"  style="color: #097788; text-shadow: 0 2px 4px rgba(0,0,0,0.3);margin-right: 4px;vertical-align: middle;font-size: 22px">security</i><span>Your data is safe with us. It is only to make your experience with Vyapar better.</span></p>
+        <input type="hidden" name="_token" value="m1IraA51xIYNxu4cXQx4o23pFpAajbS2wUNaXz5n">
+        <input type="hidden" value="IN" name="country" id="country">
+        <input type="hidden" value="Chennai" name="city" id="city">
+        <input type="hidden" value="Tamil Nadu" name="region" id="region">
+        <div class="row" id="user_input" style="margin-top: 10px;margin-bottom: 10px;"><div class="input-field col s8 offset-s2">
+                    <input id="user_contact" type="tel" name="user_contact" value="" class="validate" required="">
+                    <label for="user_contact">Phone Number<span class="red-text text-lighten-2">*</span></label>
                 </div>
+                <div class="input-field col s8 offset-s2">
+                    <input id="pin_code" onkeydown="pin(event)" value="" name="pin_code" type="text" class="validate" onchange="try{setCustomValidity('')}catch(e){}" oninvalid="setCustomValidity('Please Enter Valid Pin code.')">
+                    <label for="pin_code">Pin Code (Postal Code)<span class="red-text text-lighten-2">*</span></label>
+                </div></div>
+        <div class="row">
+            <div class="col s10 offset-s1">
+                <p class="center" style="color: #989898;margin-bottom: 10px;margin-top: 10px;"><i class="material-icons" style="color: #097788; text-shadow: 0 2px 4px rgba(0,0,0,0.3);margin-right: 4px;vertical-align: middle;font-size: 22px">security</i><span>Your data is safe with us. It is only to make your experience with Vyapar better.</span></p>
             </div>
-            <p class="input-field center">
-                <button id="dwnld-form_subBtn" type="submit" style="margin:auto;" class="waves-effect waves-light btn"><i class="material-icons right">arrow_downward</i>Continue Download</button>
-            </p>
-        </form>
-    </div>
+        </div>
+        <p class="input-field center">
+            <button id="dwnld-form_subBtn" type="submit" style="margin:auto;" class="waves-effect waves-light btn"><i class="material-icons right">arrow_downward</i>Continue Download</button>
+        </p>
+    </form>
 </div>
-<div id="mobile_dwnld" class="modal"  style="width: 40%;">
-    <div class="modal-content">
-        <p style="font-size: 24px;color: #097788;" class="center">Welcome to Vyapar Mobile Version</p>
-        <p style="font-size: 20px;color: #097788;" class="center">Please fill the details below to receive download link via SMS</p>
-        <form id="dwnld-form-mobile">
+</div>
+<div id="mobile_dwnld" class="modal" style="width: 40%;">
+<div class="modal-content">
+    <p style="font-size: 24px;color: #097788;" class="center">Welcome to Vyapar Mobile Version</p>
+    <p style="font-size: 20px;color: #097788;" class="center">Please fill the details below to receive download link via SMS</p>
+    <form id="dwnld-form-mobile">
 
-            <input type="hidden" name="_token" value="m1IraA51xIYNxu4cXQx4o23pFpAajbS2wUNaXz5n">
+        <input type="hidden" name="_token" value="m1IraA51xIYNxu4cXQx4o23pFpAajbS2wUNaXz5n">
 
-            <div class="row" id="mobile_link" style="margin-top: 20px;margin-bottom: 10px;">
-                <div class="input-field col s6 offset-s3">
-                <input placeholder="Enter your number" id="mobile_number" name="phone" type="text" class="validate">
-                <label for="mobile_number">Phone Number (For India Users)</label>
-                </div>
+        <div class="row" id="mobile_link" style="margin-top: 20px;margin-bottom: 10px;">
+            <div class="input-field col s6 offset-s3">
+            <input placeholder="Enter your number" id="mobile_number" name="phone" type="text" class="validate">
+            <label for="mobile_number">Phone Number (For India Users)</label>
             </div>
-            <div class="row">
-                <div class="col s10 offset-s1">
-                    <p class="center" style="color: #989898;margin-bottom: 10px;margin-top: 10px;"><i class="material-icons"  style="color: #097788; text-shadow: 0 2px 4px rgba(0,0,0,0.3);margin-right: 4px;vertical-align: middle;font-size: 22px">security</i><span>Your data is safe with us. It is only to make your experience with Vyapar better.</span></p>
-                </div>
+        </div>
+        <div class="row">
+            <div class="col s10 offset-s1">
+                <p class="center" style="color: #989898;margin-bottom: 10px;margin-top: 10px;"><i class="material-icons" style="color: #097788; text-shadow: 0 2px 4px rgba(0,0,0,0.3);margin-right: 4px;vertical-align: middle;font-size: 22px">security</i><span>Your data is safe with us. It is only to make your experience with Vyapar better.</span></p>
             </div>
-            <p class="input-field center">
-                <button id="dwnld-form_subBtn-mobile" type="submit"  style="margin:auto;" class="waves-effect waves-light btn"><i class="material-icons right">arrow_downward</i>SMS Link</button>
-            </p>
-        </form>
-    </div>
+        </div>
+        <p class="input-field center">
+            <button id="dwnld-form_subBtn-mobile" type="submit" style="margin:auto;" class="waves-effect waves-light btn"><i class="material-icons right">arrow_downward</i>SMS Link</button>
+        </p>
+    </form>
+</div>
 </div>
 <div class="row" style="display: flex; justify-content: center;">
-    <div id="desktop-dwnld-confirm" class="modal col s10 m6 l4">
-        <div class="modal-content">
-            <h4>Desktop Download</h4>
-            <p>Do you want to download vyapar desktop application ? </p>
-        </div>
-        <div class="modal-footer">
-            <a class="modal-close waves-effect waves-green btn-flat">No</a>
-            <a class="dwnld-desktop-application modal-close waves-effect waves-green btn-flat" href="javascript:;" onclick="dwnldDesktopApplication()">Yes</a>
-        </div>
+<div id="desktop-dwnld-confirm" class="modal col s10 m6 l4">
+    <div class="modal-content">
+        <h4>Desktop Download</h4>
+        <p>Do you want to download vyapar desktop application ? </p>
     </div>
+    <div class="modal-footer">
+        <a class="modal-close waves-effect waves-green btn-flat">No</a>
+        <a class="dwnld-desktop-application modal-close waves-effect waves-green btn-flat" href="javascript:;" onclick="dwnldDesktopApplication()">Yes</a>
+    </div>
+</div>
 </div>
 
 <!-- Scripts -->
 
 <!-- Compiled and minified JavaScript -->
 
-<script src="{% static 'assets/js/jquery-3.1.1.min.js' %}"></script>
-    <script>
-    //        var x = document.getElementById("demo");
-    var lat;
-    var long;
-    var map;var param = {"considerIp": "true"};
-    var locationDetails = {};
+<script src="/static/assets/js/jquery-3.1.1.min.js"></script>
+<script>
+//        var x = document.getElementById("demo");
+var lat;
+var long;
+var map;var param = {"considerIp": "true"};
+var locationDetails = {};
 
-    $.ajax({
-        url:"https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyCmWhKJp5z6mIy7H4oxNO2OnG9manCl578",
-        type:"POST",
-        data : JSON.stringify(param),
-        contentType: "application/json; charset=utf-8",
-        success: function(success){
-            lat =  success.location.lat;
-            long=  success.location.lng;
-            lab_fun(lat,long);
-        },
-        error: function(XMLHttpRequest, textStatus, errorThrown) {
-            console.log("Status: " + textStatus); console.log("Error: " + errorThrown);
-        }
-    });
-    function lab_fun(lat,long) {
-        $.getJSON('https://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+long+'&key=AIzaSyCmWhKJp5z6mIy7H4oxNO2OnG9manCl578', function(data) {
+$.ajax({
+    url:"https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyCmWhKJp5z6mIy7H4oxNO2OnG9manCl578",
+    type:"POST",
+    data : JSON.stringify(param),
+    contentType: "application/json; charset=utf-8",
+    success: function(success){
+        lat =  success.location.lat;
+        long=  success.location.lng;
+        lab_fun(lat,long);
+    },
+    error: function(XMLHttpRequest, textStatus, errorThrown) {
+        console.log("Status: " + textStatus); console.log("Error: " + errorThrown);
+    }
+});
+function lab_fun(lat,long) {
+    $.getJSON('https://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+long+'&key=AIzaSyCmWhKJp5z6mIy7H4oxNO2OnG9manCl578', function(data) {
+        try {
+            var results = data.results[0].address_components;
+            results.forEach(function (result) {
+                locationDetails[result.types[0]] = result.short_name;
+            });
+        } catch (error) {
+            locationDetails['country'] = 'IN';
             try {
-                var results = data.results[0].address_components;
-                results.forEach(function (result) {
-                    locationDetails[result.types[0]] = result.short_name;
-                });
-            } catch (error) {
-                locationDetails['country'] = 'IN';
-                try {
-                    if(data['status'] != "ZERO_RESULTS"){
-                        locationDetails['error'] = "Error in location getting. In getcountry.blade page";
-                        locationDetails['errorObject'] = error;
-                        locationDetails['data'] = data;
-                    }
-                }
-                catch (e) {
-                    locationDetails['error'] = e;
+                if(data['status'] != "ZERO_RESULTS"){
+                    locationDetails['error'] = "Error in location getting. In getcountry.blade page";
+                    locationDetails['errorObject'] = error;
+                    locationDetails['data'] = data;
                 }
             }
+            catch (e) {
+                locationDetails['error'] = e;
+            }
+        }
 //            console.log(locationDetails);
-            $.ajax({
-                url:"https://vyaparapp.in/set/session/countryLocation",
-                type:"GET",
-                data : locationDetails,
-                success: function(success){
-                    console.log(success);
-                    $('#loader').hide();
-                },
-                error: function() {
-                    $('#loader').hide();
-                },
-                beforeSend: function() {
-                    $('#loader').show();
-                }
-            });
+        $.ajax({
+            url:"https://vyaparapp.in/set/session/countryLocation",
+            type:"GET",
+            data : locationDetails,
+            success: function(success){
+                console.log(success);
+                $('#loader').hide();
+            },
+            error: function() {
+                $('#loader').hide();
+            },
+            beforeSend: function() {
+                $('#loader').show();
+            }
         });
-    }
+    });
+}
 
 </script>
 
 
-<script type="text/javascript" src="{% static 'assets/js/intlTelInput.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'assets/js/materialize.min.js' %}"></script>
+<script type="text/javascript" src="/static/assets/js/intlTelInput.min.js"></script>
+<script type="text/javascript" src="/static/assets/js/materialize.min.js"></script>
 <script type="text/javascript">
 
 
 
-    var currentDeviceType = "desktop";
-    var checkDevice = () => {
-        if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|ipad|iris|kindle|Android|Silk|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(navigator.userAgent)
-            || /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(navigator.userAgent.substr(0,4))) {
-            currentDeviceType = "mobile";
-        } else {
-            currentDeviceType = "desktop";
-        }
-    };
-    // Check wether browser support service worker or not
-    // if('serviceWorker' in navigator) {
-    //     window.addEventListener('load', () => {
-    //         // Registers the service-worker.js file
-    //         navigator.serviceWorker.register('service-worker.js')
-    //         // navigator.serviceWorker.register(...) returns a promise that resolves with a registration object once the service worker is successfully registered. If the registration fails, the promise will reject.
-    //             .then(registration => {
-    //                 console.log('Service Worker is registered', registration.scope);
-    //             })
-    //             .catch(err => {
-    //                 console.error('Registration failed:', err);
-    //             });
-    //     });
-    // }
+var currentDeviceType = "desktop";
+var checkDevice = () => {
+    if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|ipad|iris|kindle|Android|Silk|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(navigator.userAgent)
+        || /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(navigator.userAgent.substr(0,4))) {
+        currentDeviceType = "mobile";
+    } else {
+        currentDeviceType = "desktop";
+    }
+};
+// Check wether browser support service worker or not
+// if('serviceWorker' in navigator) {
+//     window.addEventListener('load', () => {
+//         // Registers the service-worker.js file
+//         navigator.serviceWorker.register('service-worker.js')
+//         // navigator.serviceWorker.register(...) returns a promise that resolves with a registration object once the service worker is successfully registered. If the registration fails, the promise will reject.
+//             .then(registration => {
+//                 console.log('Service Worker is registered', registration.scope);
+//             })
+//             .catch(err => {
+//                 console.error('Registration failed:', err);
+//             });
+//     });
+// }
 
 
 
-    var nav_current_url = 'invoice-generator.html';
-    //-------------------------------------------------------DESKTOP DOWNLOAD SCRIPT START--------------------------------------------------------------
-    $(document).ready(function () {
-        checkDevice();
-        $('#user_input').html('<div class="input-field col s8 offset-s2">\n' +
-            '                        <input id="user_contact" type="tel" name="user_contact" value="" class="validate" required>\n' +
-            '                        <label for="user_contact">Phone Number<span class="red-text text-lighten-2">*</span></label>\n' +
-            '                    </div>\n' +
-            '                    <div class="input-field col s8 offset-s2">\n' +
-            '                        <input id="pin_code" onkeydown="pin(event)" value="" name="pin_code" type="text"  class="validate" onchange="try{setCustomValidity(\'\')}catch(e){}" oninvalid="setCustomValidity(\'Please Enter Valid Pin code.\')">\n' +
-            '                        <label for="pin_code">Pin Code (Postal Code)<span class="red-text text-lighten-2">*</span></label>\n' +
-            '                    </div>');
-        //
-        try{
-            $.getJSON('https://ipinfo.io/json', function(data) {
-                // debugger;
-                if(data.country != "IN"){
-                    $('#user_input').html('<div class="input-field col s8 offset-s2">\n' +
-                        '                        <input id="user_contact" type="email" name="user_contact" value="" class="validate" required>\n' +
-                        '                        <label for="user_contact">Email <span class="red-text text-lighten-2">*</span></label>\n' +
-                        '                    </div>');
-                }
-                $('#country').val(data.country);
-                $('#region').val(data.region);
-                $('#city').val(data.city);
-            });
-        }
-        catch (e) {
-            console.log(e);
-        }
-
-    });
-    $('#mobile_dwnld').submit(function (e) {
-        e.preventDefault();
-        $("#dwnld-form_subBtn-mobile").addClass('disabled');
-        var url = 'mobile/download.html';
-        if($("#mobile_number").val().length != 0) {
-            $.ajax({
-                type: "POST",
-                url: url,
-                data: $("#dwnld-form-mobile").serialize(),
-                success: function(response) {
-                    $('#mobile_dwnld').modal('close');
-                    $("#dwnld-form_subBtn-mobile").removeClass('disabled');
-
-                },
-                error: function () {
-                    $("#dwnld-form_subBtn-mobile").removeClass('disabled');
-                }
-            });
-        }
-
-
-    });
-
-
-
-    function isNumberKey(event){
-        if ((event.keyCode == 46 || event.keyCode == 8) )
-        {
-            //do nothing
-        }
-        else
-        {
-            if ( (event.keyCode < 48 || event.keyCode > 57) || (event.target.value).length > 15 )
-            {
-                event.preventDefault();
+var nav_current_url = 'invoice-generator.html';
+//-------------------------------------------------------DESKTOP DOWNLOAD SCRIPT START--------------------------------------------------------------
+$(document).ready(function () {
+    checkDevice();
+    $('#user_input').html('<div class="input-field col s8 offset-s2">\n' +
+        '                        <input id="user_contact" type="tel" name="user_contact" value="" class="validate" required>\n' +
+        '                        <label for="user_contact">Phone Number<span class="red-text text-lighten-2">*</span></label>\n' +
+        '                    </div>\n' +
+        '                    <div class="input-field col s8 offset-s2">\n' +
+        '                        <input id="pin_code" onkeydown="pin(event)" value="" name="pin_code" type="text"  class="validate" onchange="try{setCustomValidity(\'\')}catch(e){}" oninvalid="setCustomValidity(\'Please Enter Valid Pin code.\')">\n' +
+        '                        <label for="pin_code">Pin Code (Postal Code)<span class="red-text text-lighten-2">*</span></label>\n' +
+        '                    </div>');
+    //
+    try{
+        $.getJSON('https://ipinfo.io/json', function(data) {
+            // debugger;
+            if(data.country != "IN"){
+                $('#user_input').html('<div class="input-field col s8 offset-s2">\n' +
+                    '                        <input id="user_contact" type="email" name="user_contact" value="" class="validate" required>\n' +
+                    '                        <label for="user_contact">Email <span class="red-text text-lighten-2">*</span></label>\n' +
+                    '                    </div>');
             }
-        }
+            $('#country').val(data.country);
+            $('#region').val(data.region);
+            $('#city').val(data.city);
+        });
+    }
+    catch (e) {
+        console.log(e);
+    }
+
+});
+$('#mobile_dwnld').submit(function (e) {
+    e.preventDefault();
+    $("#dwnld-form_subBtn-mobile").addClass('disabled');
+    var url = 'mobile/download.html';
+    if($("#mobile_number").val().length != 0) {
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: $("#dwnld-form-mobile").serialize(),
+            success: function(response) {
+                $('#mobile_dwnld').modal('close');
+                $("#dwnld-form_subBtn-mobile").removeClass('disabled');
+
+            },
+            error: function () {
+                $("#dwnld-form_subBtn-mobile").removeClass('disabled');
+            }
+        });
     }
 
 
-    //------------------------------------ Desktop Download script END---------------------------------------------------------
+});
 
 
-    $(".spinner").hide();
-    $(".modal").modal();
-    $(".button-collapse").sideNav();
-    (function($) {
-        $(function() {
 
-            $('.dropdown-button').dropdown({
-                    inDuration: 300,
-                    outDuration: 225,
-                    hover: true, // Activate on hover
-                    belowOrigin: true, // Displays dropdown below the button
-                    alignment: 'right', // Displays dropdown with edge aligned to the left of button
-                    gutter: -20
-                }
-            );
-            $('.fixed-nav ul li a[href="'+nav_current_url+'"]').closest('li').addClass('active');
-        }); // End Document Ready
-    })(jQuery); // End of jQuery name space
+function isNumberKey(event){
+    if ((event.keyCode == 46 || event.keyCode == 8) )
+    {
+        //do nothing
+    }
+    else
+    {
+        if ( (event.keyCode < 48 || event.keyCode > 57) || (event.target.value).length > 15 )
+        {
+            event.preventDefault();
+        }
+    }
+}
 
-    $('#gst_form').submit(function(event){
-        event.preventDefault();
-        $("#spinner").show();
-        $.ajax({
-            url: $('#gst_form').attr('action'),
-            type: "POST",
-            data : $('#gst_form').serialize(),
-            success: function(data){
-                $("#spinner").hide();
-                console.log("Your query has been submitted. We will reply you shortly.");
-//                    console.log(data);
-                $(".modal").modal('close');
-                $('#gst_form')[0].reset();
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                $("#spinner").hide();
-                console.log(xhr.responseText);
+
+//------------------------------------ Desktop Download script END---------------------------------------------------------
+
+
+$(".spinner").hide();
+$(".modal").modal();
+$(".button-collapse").sideNav();
+(function($) {
+    $(function() {
+
+        $('.dropdown-button').dropdown({
+                inDuration: 300,
+                outDuration: 225,
+                hover: true, // Activate on hover
+                belowOrigin: true, // Displays dropdown below the button
+                alignment: 'right', // Displays dropdown with edge aligned to the left of button
+                gutter: -20
             }
-        });
-        return false;
+        );
+        $('.fixed-nav ul li a[href="'+nav_current_url+'"]').closest('li').addClass('active');
+    }); // End Document Ready
+})(jQuery); // End of jQuery name space
+
+$('#gst_form').submit(function(event){
+    event.preventDefault();
+    $("#spinner").show();
+    $.ajax({
+        url: $('#gst_form').attr('action'),
+        type: "POST",
+        data : $('#gst_form').serialize(),
+        success: function(data){
+            $("#spinner").hide();
+            console.log("Your query has been submitted. We will reply you shortly.");
+//                    console.log(data);
+            $(".modal").modal('close');
+            $('#gst_form')[0].reset();
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            $("#spinner").hide();
+            console.log(xhr.responseText);
+        }
     });
+    return false;
+});
 
 
 </script>
 <script>
-    $(function() {
-        var t = {
-            Android: function() {
-                return navigator.userAgent.match(/Android/i);
-            },
-            BlackBerry: function() {
-                return navigator.userAgent.match(/BlackBerry/i);
-            },
-            iOS: function() {
-                return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-            },
-            Opera: function() {
-                return navigator.userAgent.match(/Opera Mini/i);
-            },
-            Windows: function() {
-                return (navigator.userAgent.match(/IEMobile/i) || navigator.userAgent.match(/WPDesktop/i));
-            },
-            any: function() {
-                return (t.Android() || t.BlackBerry() || t.iOS() || t.Opera() || t.Windows());
-            },
-        };
-                    t.any() ? $('.download-nav').each(function() {
-                $('.download-nav').html('<span>Get our free Android app <a target="_blank" href="https://play.google.com/store/apps/details?id=in.android.vyapar" style="background:#097AA8; border-radius: 5px; color:#ffffff ; padding: 11px 10px 8px 10px; text-decoration: none;" ><b>DOWNLOAD ANDROID</b></a></span>', );
-            }) : $('.download-nav').each(function() {
-                $('.download-nav').html('<span>Get 30 days Free trial on Desktop Version<a class="dwnld-desktop-application" href="javascript:;" onclick="dwnldDesktopApplication()" style="border-radius: 5px; color:white ; padding: 11px 24px 8px 24px; text-decoration: none;margin: 6px 0px 6px 10px;"><b>Download for Desktop</b></a></span>', );
-            });
+$(function() {
+    var t = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return (navigator.userAgent.match(/IEMobile/i) || navigator.userAgent.match(/WPDesktop/i));
+        },
+        any: function() {
+            return (t.Android() || t.BlackBerry() || t.iOS() || t.Opera() || t.Windows());
+        },
+    };
+                t.any() ? $('.download-nav').each(function() {
+            $('.download-nav').html('<span>Get our free Android app <a target="_blank" href="https://play.google.com/store/apps/details?id=in.android.vyapar" style="background:#097AA8; border-radius: 5px; color:#ffffff ; padding: 11px 10px 8px 10px; text-decoration: none;" ><b>DOWNLOAD ANDROID</b></a></span>', );
+        }) : $('.download-nav').each(function() {
+            $('.download-nav').html('<span>Get 30 days Free trial on Desktop Version<a class="dwnld-desktop-application" href="javascript:;" onclick="dwnldDesktopApplication()" style="border-radius: 5px; color:white ; padding: 11px 24px 8px 24px; text-decoration: none;margin: 6px 0px 6px 10px;"><b>Download for Desktop</b></a></span>', );
         });
-                
+    });
+            
 </script>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            var clearError = () => $(".custom-has-error").each(function() {
-                $(this).removeClass('custom-has-error');
-            });
-            function validateDecimal(e,n) {
-                let validNumber = new RegExp('^[0-9]{1,'+n+'}(\\.\\d{0,2})?$') ; // /^[0-9]{1,n}(\.\d{0,3})?/
-                var t = e.target.value;
-                let oldValue = $(e.target).attr('data-val');
-                if(!(validNumber.test(t)) && t != '' && !isNaN(t)){
-                    e.target.value = oldValue;
-                } else {
-                    $(e.target).attr('data-val', e.target.value);
-                }
-            }
-            function addRow(){
-                let serial_no = $('.product-table tbody').find('tr').length + 1;
-                let currency = 'inr';    //  $('#currency-value').val();
-                let currency_class = (currency == 'inr') ? 'type-inr' : 'type-usd';
-                let symbol_cur = (currency == 'inr') ? '&#8377;' : '&#36;';
-                let content = '<tr class="items-list">'+
-                    '<td class="serial_no">'+serial_no+'</td>'+
-                    '<td><input type="text" maxlength="200" name="pr['+(serial_no -1)+'][name]" id="pr-name" placeholder="Add Item" autofocus /></td>'+
-                    '<td><input type="number" name="pr['+(serial_no -1)+'][qty]" id="pr-qty" placeholder="0" class="text-right" /></td>'+
-                    '<td class="rate"><span class="currency-change '+currency_class+'">'+symbol_cur+'</span><input type="number" id="pr-rate" name="pr['+(serial_no -1)+'][rate]" placeholder="0.00" class="text-right" /></td>'+
-                    '<td class="amount"><span class="currency-change '+currency_class+'">'+symbol_cur+'</span><input type="number" id="pr-amount" name="pr['+(serial_no -1)+'][amount]" placeholder="0.00" class="text-right" /></td>'+
-                    '<td class="remove-item" style="font-size: 20px; font-weight: bold; cursor: pointer;"><i class="far fa-times-circle"></i></td>'+
-                    '</tr>';
-                $('.product-table tbody').append(content);
-            }
-            function onChangeCurrency(){
-                let currency = $('#currency-value').val();
-                let currency_class = (currency == 'inr') ? 'type-inr' : 'type-usd';
-                let symbol_cur = (currency == 'inr') ? '&#8377;' : '&#36;';
-                $('.currency-change').removeClass('type-inr').removeClass('type-usd').addClass(currency_class).html(symbol_cur);
-                $('.product-table tbody tr td').find('input').val('');
-                $('.product-table tbody tr td').find('input').val('');
-                $('#total-amount').val('');
-                $('.currency-total').html(symbol_cur);
-            }
-            function Popup(data)
-            {
-                var mywindow = window.open('', 'Vyapar', 'height=400,width=600');
-                mywindow.document.write(data);
-                mywindow.print();
-                mywindow.close();
-                return true;
-            }
-            $('#addrowitem').on('click', (e) => {
-                e.preventDefault();
-                addRow();
-            });
-            $('#currency-value').on('change', (e) => {
-                e.preventDefault();
-                onChangeCurrency();
-            });
-            $('.options-block.download-invoice').on('click',(e) => {
-                e.preventDefault();
-                $('#download-invoice-modal').modal('open');
-                // $('#invoice-form').submit();
-            });
-            $('#download-invoice-call').on('click',(e) => {
-                e.stopImmediatePropagation();
-                let sender_name = $('#company_name').val();
-                let sender_phone = $('#download_input_phone').val();
-                var mob_pattern = /^[6-9][0-9]{9}$/;
-                let theme = parseInt($('#slider-nav').find('.current').attr('data-slide'))+1;
-                $('#invoice-form').attr('action','/invoice-generator/pdf-invoice/'+theme);
-                // $('#download-invoice-modal').modal('close');
-                if(sender_phone == '' || sender_name == '' || sender_phone == null || sender_name == null){
-                    alert('please fill all mandatory field !');
-                } else if(sender_phone && sender_name && mob_pattern.test(sender_phone)){
-                    $('#download_input_phone').css('border-color','silver');
-                    $('#invoice-form').append($("<input>").attr("type", "hidden").attr("name", "sender_name").val(sender_name));
-                    $('#invoice-form').append($("<input>").attr("type", "hidden").attr("name", "sender_phone").val(sender_phone));
-                    let validInput = validateInputs();
-                    if(!validInput){
-                        return;
-                    }
-                    $('#invoice-form').submit();
-                    $('#download-invoice-modal').modal('close');
-                } else if(!mob_pattern.test(sender_phone)){
-                    $('#download_input_phone').css('border-color','red');
-                    alert('Invalid mobile number !');
-                }else{
-                    alert('please fill all mandatory field !');
-                }
-            });
-            $(document).on('click','.remove-item',function(e){
-                let total_row = $('.items-list');
-                if(total_row.length > 1){
-                    $(this).parent().remove();
-                    let prod_elem = $('.items-list #pr-name');
-                    let qty_elem = $('.items-list #pr-qty');
-                    let rate_elem = $('.items-list #pr-rate');
-                    let amt_elem = $('.items-list #pr-amount');
-                    $('.items-list').each(function(i){
-                        $(this).find('.serial_no').html(i+1);
-                        $(this).find('#pr-name').attr('name','pr['+i+'][name]');
-                        $(this).find('#pr-qty').attr('name','pr['+i+'][qty]');
-                        $(this).find('#pr-rate').attr('name','pr['+i+'][rate]');
-                        $(this).find('#pr-amount').attr('name','pr['+i+'][amount]');
-                    });
-                    getTotalAmount();
-                }else{
-                    alert("Last row can't be deleted !");
-                }
-            });
-            $('.send-invoice').on('click',(e)=>{
-                e.preventDefault();
-                $('#mail_subject').val('Invoice from '+ $('#user-company').val()+' : #' + $('.invoice-number').val());
-                $('#email-invoice-modal').modal('open');
-            });
-            $('#email-invoice-call').on('click',(e)=>{
-                e.preventDefault();
-                let to_mail = $('#to_email_addr').val();
-                let from_mail = $('#from_email_addr').val();
-                let message_mail = $('#msg_email').val();
-                let theme = parseInt($('#slider-nav').find('.current').attr('data-slide'))+1;
-                if(to_mail && from_mail){
-                    $('#invoice-form').append($("<input>").attr("type", "hidden").attr("name", "to_mail").val(to_mail));
-                    $('#invoice-form').append($("<input>").attr("type", "hidden").attr("name", "from_mail").val(from_mail));
-                    $('#invoice-form').append($("<input>").attr("type", "hidden").attr("name", "message").val(message_mail));
-                    var form_data = $('#invoice-form').serializeArray();
-                    form_data.push({name: 'file', value: ($('#logo-image').attr('src'))});
-                    let validInput = validateInputs();
-                    if(!validInput){
-                        return;
-                    }
-                    $('#spinner').show();
-                    $.ajax({
-                        type: "POST",
-                        url: '/invoice-generator/send-invoice/'+theme,
-                        data: form_data,
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        success: function (res) {
-                            $('#email-invoice-modal').modal('close');
-                            $('#spinner').hide();
-                            if(res.status == 'success'){
-                                $('.message-res').html(res.message);
-                                $('#successModal').modal('open');
-                                // alert(res.message);
-                            }else{
-                                alert(res.message);
-                            }
-                        },
-                        beforeSend: () => {
-                            clearError();
-                        },
-                        error:function (xhr, ajaxOptions, thrownError){
-                            $("#spinner").hide()
-                            if(xhr.status == 409 || xhr.status == 422 || xhr.status == 404){
-                                let keys = { "to_mail" : "to_email_addr", "from_mail" : "from_email_addr"};
-                                $.each(xhr.responseJSON, ( key, value ) => {
-                                    Materialize.toast(value[0], 3000, 'rounded red lighten-2');
-                                    $("input[name='"+keys[key]+"']").parent().addClass('custom-has-error');
-                                });
-                            }
-                            else{
-                                // showModal("Some error occured");
-                                console.log(xhr.responseText);
-                            }
-                        }
-                    }).always(function(){
-                        $('#spinner').hide();
-                    });
-                    // $('#invoice-form').submit();
-                }else{
-                    alert('please fill all mandatory field !');
-                }
-            });
-            $(document).on('input','#pr-amount',function(e){
-                validateDecimal(e,20);
-            });
-            $(document).on('input','#gst',function(e){
-                getTotalAmount()
-            });
-            $(document).on('blur','#gst',function(e){
-                getTotalAmount()
-            });
-            $('input[type="radio"]').click(function() {
-                if($(this).attr('id') == 'no') {
-                    $('#gst').val('');
-                    $('#gst-div').fadeOut(300);
-                    getTotalAmount();
-                }
-                else {
-                    $('#gst-div').fadeIn(500);
-                }
-            });
-            $(document).on('blur','#pr-amount',function(e){
-                let rate = $(event.target).parent().parent().find('.rate #pr-rate').val();
-                let qty = $(event.target).parent().parent().find('td #pr-qty').val();
-                let value = parseFloat(e.target.value).toFixed(2);
-                let updated_rate = parseFloat(value/qty).toFixed(2) ;
-                if((isNaN(qty) || qty == 0 || qty == undefined) && value > 0 ){
-                    $(event.target).parent().parent().find('td #pr-qty').val(1);
-                    $(event.target).parent().parent().find('.rate #pr-rate').val(value);
-                    $(event.target).val(value);
-                }else{
-                    $(event.target).parent().parent().find('.rate #pr-rate').val(updated_rate);
-                    $(event.target).val(value);
-                }
-                getTotalAmount();
-            });
-            $(document).on('input','#pr-qty',function(e){
-                validateDecimal(e,5);
-            });
-            $(document).on('input','#total-amount',function(e){
-                validateDecimal(e,20);
-            });
-            $(document).on('keyup','#pr-rate',function(e){
-                e.preventDefault();
-                validateDecimal(e,15);
-                let this_value = parseFloat(e.target.value);
-                let qty_value = parseFloat($(this).parent().parent().find('td #pr-qty').val());
-                if(isNaN(this_value) || isNaN(qty_value)){
-                    $(this).parent().parent().find('td #pr-amount').val('');
-                }else{
-                    $(this).parent().parent().find('td #pr-amount').val(((this_value)*(qty_value)).toFixed(2));
-                }
-                getTotalAmount();
-            });
-            $(document).on('blur','#pr-rate',function(e){
-                let value = parseFloat(e.target.value).toFixed(2);
-                $(event.target).val(value);
-            });
-            $(document).on('blur','#pr-name',function(e){
-                getTotalAmount();
-            });
-            $(document).on('keyup','#pr-qty',function(e){
-                e.preventDefault();
-                let qty_value = parseFloat(e.target.value);
-                let item_value = parseFloat($(this).parent().parent().find('td #pr-rate').val());
-                if(isNaN(qty_value) || isNaN(item_value)){
-                    $(this).parent().parent().find('td #pr-amount').val('');
-                }else{
-                    $(this).parent().parent().find('td #pr-amount').val(((item_value)*(qty_value)).toFixed(2));
-                }
-                getTotalAmount();
-            });
-            $('.printe-invoice').on('click',function (e) {
-                e.stopImmediatePropagation();
-                $('#print-invoice-modal').modal('open');
-            });
-            $('#print-invoice-call').on('click',function (e) {
-                e.stopImmediatePropagation();
-                let sender_name = $('#company_name_print').val();
-                let sender_phone = $('#print_input_phone').val();
-                var mob_pattern = /^[6-9][0-9]{9}$/;
-                let theme = parseInt($('#slider-nav').find('.current').attr('data-slide'))+1;
-                if(sender_phone == '' || sender_name == '' || sender_phone == null || sender_name == null){
-                    alert('please fill all mandatory field !');
-                }else if(sender_name && sender_phone && mob_pattern.test(sender_phone)){
-                    var form_data = $('#invoice-form').serializeArray();
-                    form_data.push({name: 'sender_name', value: sender_name});
-                    form_data.push({name: 'sender_phone', value: sender_phone});
-                    form_data.push({name: 'amt_words', value: RsPaise($('#total-amount').val())},{name: 'file', value: ($('#logo-image').attr('src'))});
-                    // form_data = form_data.serialize();
-                    $('.spinner').show();
-                    $('#print_input_phone').css('border-color','silver');
-                    let validInput = validateInputs();
-                    if(validInput === false){
-                        return;
-                    }
-                    $.ajax({
-                        type: "POST",
-                        url: '/invoice-generator/pdf-response/'+theme,
-                        data: form_data,
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        success: function (res) {
-                            $('#print-invoice-modal').modal('close');
-                            $('.spinner').hide();
-                            Popup(res);
-                        },
-                        error: function(e){
-                            alert('Error while printing invoice, please check input fields')
-                        }
-                    }).always(function(){
-                        $('.spinner').hide();
-                    });
-                }else if(!mob_pattern.test(sender_phone)){
-                    $('#print_input_phone').css('border-color','red');
-                    alert('Invalid mobile number !');
-                }else{
-                    alert('please fill all mandatory field !');
-                }
-            });
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        var clearError = () => $(".custom-has-error").each(function() {
+            $(this).removeClass('custom-has-error');
         });
-        function Slider( element ) {
-            this.el = document.querySelector( element );
-            this.init();
-        }
-        Slider.prototype = {
-            init: function() {
-                this.links = this.el.querySelectorAll( "#slider-nav a" );
-                this.wrapper = this.el.querySelector( "#slider-wrapper" );
-                this.navigate();
-            },
-            navigate: function() {
-                for( var i = 0; i < this.links.length; ++i ) {
-                    var link = this.links[i];
-                    this.slide( link );
-                }
-            },
-            slide: function( element ) {
-                var self = this;
-                element.addEventListener( "click", function( e ) {
-                    e.preventDefault();
-                    var a = this;
-                    self.setCurrentLink( a );
-                    var index = parseInt( a.getAttribute( "data-slide" ), 10 ) + 1;
-                    var currentSlide = self.el.querySelector( ".slide:nth-child(" + index + ")" );
-                    self.wrapper.style.left = "-" + currentSlide.offsetLeft + "px";
-                }, false);
-            },
-            setCurrentLink: function( link ) {
-                var parent = link.parentNode;
-                var a = parent.querySelectorAll( "a" );
-                link.className = "current";
-                for( var j = 0; j < a.length; ++j ) {
-                    var cur = a[j];
-                    if( cur !== link ) {
-                        cur.className = "";
-                    }
-                }
+        function validateDecimal(e,n) {
+            let validNumber = new RegExp('^[0-9]{1,'+n+'}(\\.\\d{0,2})?$') ; // /^[0-9]{1,n}(\.\d{0,3})?/
+            var t = e.target.value;
+            let oldValue = $(e.target).attr('data-val');
+            if(!(validNumber.test(t)) && t != '' && !isNaN(t)){
+                e.target.value = oldValue;
+            } else {
+                $(e.target).attr('data-val', e.target.value);
             }
-        };
-        function invoiceStage(){
-            this.init();
         }
-        invoiceStage.prototype = {
-            init : function () {
-                $('.step-1').show();
-                $('.li-step1').removeClass('progtrckr-todo').addClass('progtrckr-done');
-                $('#prev-option').attr('disabled','disabled');
-            },
-            nextClick : function(){
-                let step_count = $('#step-count').val();
+        function addRow(){
+            let serial_no = $('.product-table tbody').find('tr').length + 1;
+            let currency = 'inr';    //  $('#currency-value').val();
+            let currency_class = (currency == 'inr') ? 'type-inr' : 'type-usd';
+            let symbol_cur = (currency == 'inr') ? '&#8377;' : '&#36;';
+            let content = '<tr class="items-list">'+
+                '<td class="serial_no">'+serial_no+'</td>'+
+                '<td><input type="text" maxlength="200" name="pr['+(serial_no -1)+'][name]" id="pr-name" placeholder="Add Item" autofocus /></td>'+
+                '<td><input type="number" name="pr['+(serial_no -1)+'][qty]" id="pr-qty" placeholder="0" class="text-right" /></td>'+
+                '<td class="rate"><span class="currency-change '+currency_class+'">'+symbol_cur+'</span><input type="number" id="pr-rate" name="pr['+(serial_no -1)+'][rate]" placeholder="0.00" class="text-right" /></td>'+
+                '<td class="amount"><span class="currency-change '+currency_class+'">'+symbol_cur+'</span><input type="number" id="pr-amount" name="pr['+(serial_no -1)+'][amount]" placeholder="0.00" class="text-right" /></td>'+
+                '<td class="remove-item" style="font-size: 20px; font-weight: bold; cursor: pointer;"><i class="far fa-times-circle"></i></td>'+
+                '</tr>';
+            $('.product-table tbody').append(content);
+        }
+        function onChangeCurrency(){
+            let currency = $('#currency-value').val();
+            let currency_class = (currency == 'inr') ? 'type-inr' : 'type-usd';
+            let symbol_cur = (currency == 'inr') ? '&#8377;' : '&#36;';
+            $('.currency-change').removeClass('type-inr').removeClass('type-usd').addClass(currency_class).html(symbol_cur);
+            $('.product-table tbody tr td').find('input').val('');
+            $('.product-table tbody tr td').find('input').val('');
+            $('#total-amount').val('');
+            $('.currency-total').html(symbol_cur);
+        }
+        function Popup(data)
+        {
+            var mywindow = window.open('', 'Vyapar', 'height=400,width=600');
+            mywindow.document.write(data);
+            mywindow.print();
+            mywindow.close();
+            return true;
+        }
+        $('#addrowitem').on('click', (e) => {
+            e.preventDefault();
+            addRow();
+        });
+        $('#currency-value').on('change', (e) => {
+            e.preventDefault();
+            onChangeCurrency();
+        });
+        $('.options-block.download-invoice').on('click',(e) => {
+            e.preventDefault();
+            $('#download-invoice-modal').modal('open');
+            // $('#invoice-form').submit();
+        });
+        $('#download-invoice-call').on('click',(e) => {
+            e.stopImmediatePropagation();
+            let sender_name = $('#company_name').val();
+            let sender_phone = $('#download_input_phone').val();
+            var mob_pattern = /^[6-9][0-9]{9}$/;
+            let theme = parseInt($('#slider-nav').find('.current').attr('data-slide'))+1;
+            $('#invoice-form').attr('action','/invoice-generator/pdf-invoice/'+theme);
+            // $('#download-invoice-modal').modal('close');
+            if(sender_phone == '' || sender_name == '' || sender_phone == null || sender_name == null){
+                alert('please fill all mandatory field !');
+            } else if(sender_phone && sender_name && mob_pattern.test(sender_phone)){
+                $('#download_input_phone').css('border-color','silver');
+                $('#invoice-form').append($("<input>").attr("type", "hidden").attr("name", "sender_name").val(sender_name));
+                $('#invoice-form').append($("<input>").attr("type", "hidden").attr("name", "sender_phone").val(sender_phone));
                 let validInput = validateInputs();
                 if(!validInput){
                     return;
-                } 
-                step_count++;
-                if(step_count >= 3 ){
-                    $('#step-count').val(3);
-                    $('#next-option').attr('disabled','disabled');
-                    $('.progtrckr li').removeClass('progtrckr-todo').removeClass('progtrckr-done');
-                    $('.li-step1,.li-step2,.li-step3').addClass('progtrckr-done');
-                    $('#prev-option').removeAttr('disabled');
-                }else if(step_count <= 1){
-                    $('#step-count').val(1);
-                    $('.progtrckr li').removeClass('progtrckr-todo').removeClass('progtrckr-done');
-                    $('.li-step2,.li-step3').addClass('progtrckr-todo');
-                    $('.li-step1').addClass('progtrckr-done');
-                    $('#next-option').removeAttr('disabled');
-                    $('#prev-option').attr('disabled','disabled');
-                }else{
-                    $('#step-count').val(step_count);
-                    $('.progtrckr li').removeClass('progtrckr-todo').removeClass('progtrckr-done');
-                    $('.li-step3').addClass('progtrckr-todo');
-                    $('.li-step1,.li-step2').addClass('progtrckr-done');
-                    $('#next-option').removeAttr('disabled');
-                    $('#prev-option').removeAttr('disabled');
                 }
-                if(step_count == 2){
-                    var form_data = $('#invoice-form').serializeArray();
-                    $('#invoice-form').append($("<input>").attr("type", "hidden").attr("name", "amt_words").val(RsPaise($('#total-amount').val())));
-                    form_data.push({name: 'amt_words', value: RsPaise($('#total-amount').val())},{name: 'file', value: ($('#logo-image').attr('src'))});
-                    let theme = parseInt($('#slider-nav').find('.current').attr('data-slide'))+1;
-                    if(!validInput){
-                        return;
-                    }
-                    $('.spinner').show();
-                    $.ajax({
-                        type: "POST",
-                        url: '/invoice-generator/pdf-response/'+theme,
-                        data: form_data,
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        success: function (res) {
-                            setTimeout( function() {
-                                $('#content').html(res);
-                            }, 1 );
-                        },
-                        error: function(e){
-                            let error = Object.values(e.responseJSON);
-                            alert('Please validate input values, '+error);
-                            step_count=1;
-                            $('#step-count').val(1);
-                            $('.progtrckr li').removeClass('progtrckr-todo').removeClass('progtrckr-done');
-                            $('.li-step2,.li-step3').addClass('progtrckr-todo');
-                            $('.li-step1').addClass('progtrckr-done');
-                            $('#next-option').removeAttr('disabled');
-                            $('#prev-option').attr('disabled','disabled');
-                        }
-                    }).always(function () {
-                        $('.process').hide();
-                        $('.step-'+step_count).show();
-                        $('.spinner').hide();
-                    });
-                }
-                $('.process').hide();
-                $('.step-'+step_count).show();
-            },
-            prevClick : function () {
-                let step_count = $('#step-count').val();
-                step_count--;
-                $('.progtrckr li').removeClass('progtrckr-todo').removeClass('progtrckr-done');
-                if(step_count >= 3 ){
-                    $('#step-count').val(3);
-                    $('#next-option').attr('disabled','disabled');
-                    $('.progtrckr li').removeClass('progtrckr-todo').removeClass('progtrckr-done');
-                    $('.li-step1,.li-step2,.li-step3').addClass('progtrckr-done');
-                    $('#prev-option').removeAttr('disabled');
-                }else if(step_count <= 1){
-                    $('#step-count').val(1);
-                    $('.progtrckr li').removeClass('progtrckr-todo').removeClass('progtrckr-done');
-                    $('.li-step2,.li-step3').addClass('progtrckr-todo');
-                    $('.li-step1').addClass('progtrckr-done');
-                    $('#next-option').removeAttr('disabled');
-                    $('#prev-option').attr('disabled','disabled');
-                }else{
-                    $('#step-count').val(step_count);
-                    $('.progtrckr li').removeClass('progtrckr-todo').removeClass('progtrckr-done');
-                    $('.li-step3').addClass('progtrckr-todo');
-                    $('.li-step1,.li-step2').addClass('progtrckr-done');
-                    $('#next-option').removeAttr('disabled');
-                    $('#prev-option').removeAttr('disabled');
-                }
-                $('.process').hide();
-                $('.step-'+step_count).show();
-            }
-        };
-        document.addEventListener( "DOMContentLoaded", function() {
-            var aSlider = new Slider( "#slider" );
-            var invoiceStep = new invoiceStage();
-            $('#next-option').on('click',(e)=>{
-                invoiceStep.nextClick();
-                $("body, html").scrollTop(0)
-            });
-            $('#prev-option').on('click',(e)=>{
-                invoiceStep.prevClick();
-                $("body, html").scrollTop(0)
-            });
-        });
-        function getTotalAmount(){
-            let all_amount_elm = $('.product-table tbody tr');
-            let total_amt = 0.00;
-            let gst = $('#gst').val()/100;
-            let amt_without_gst = 0.00;
-            all_amount_elm.each(function (index,data) {
-                let item_name = $(this).find('td #pr-name').val();
-                let item_qty = $(this).find('td #pr-qty').val();
-                let item_rate = $(this).find('td #pr-rate').val();
-                let item_amount = $(this).find('td #pr-amount').val();
-                if( !isNaN(item_amount) && item_amount != '' && item_amount != undefined){
-                    let amt = (isNaN(item_amount) || item_amount == undefined) ? 0 : parseFloat(item_amount);
-                    total_amt += amt;
-                }
-            });
-            amt_without_gst = total_amt;
-            total_amt += gst*amt_without_gst;
-            if(total_amt >= 0){
-                $('#total-amount').val(total_amt.toFixed(2));
-                $('#amount-without-gst').val(amt_without_gst.toFixed(2));
+                $('#invoice-form').submit();
+                $('#download-invoice-modal').modal('close');
+            } else if(!mob_pattern.test(sender_phone)){
+                $('#download_input_phone').css('border-color','red');
+                alert('Invalid mobile number !');
             }else{
-                $('#total-amount').val((0.00).toFixed(2));
+                alert('please fill all mandatory field !');
+            }
+        });
+        $(document).on('click','.remove-item',function(e){
+            let total_row = $('.items-list');
+            if(total_row.length > 1){
+                $(this).parent().remove();
+                let prod_elem = $('.items-list #pr-name');
+                let qty_elem = $('.items-list #pr-qty');
+                let rate_elem = $('.items-list #pr-rate');
+                let amt_elem = $('.items-list #pr-amount');
+                $('.items-list').each(function(i){
+                    $(this).find('.serial_no').html(i+1);
+                    $(this).find('#pr-name').attr('name','pr['+i+'][name]');
+                    $(this).find('#pr-qty').attr('name','pr['+i+'][qty]');
+                    $(this).find('#pr-rate').attr('name','pr['+i+'][rate]');
+                    $(this).find('#pr-amount').attr('name','pr['+i+'][amount]');
+                });
+                getTotalAmount();
+            }else{
+                alert("Last row can't be deleted !");
+            }
+        });
+        $('.send-invoice').on('click',(e)=>{
+            e.preventDefault();
+            $('#mail_subject').val('Invoice from '+ $('#user-company').val()+' : #' + $('.invoice-number').val());
+            $('#email-invoice-modal').modal('open');
+        });
+        $('#email-invoice-call').on('click',(e)=>{
+            e.preventDefault();
+            let to_mail = $('#to_email_addr').val();
+            let from_mail = $('#from_email_addr').val();
+            let message_mail = $('#msg_email').val();
+            let theme = parseInt($('#slider-nav').find('.current').attr('data-slide'))+1;
+            if(to_mail && from_mail){
+                $('#invoice-form').append($("<input>").attr("type", "hidden").attr("name", "to_mail").val(to_mail));
+                $('#invoice-form').append($("<input>").attr("type", "hidden").attr("name", "from_mail").val(from_mail));
+                $('#invoice-form').append($("<input>").attr("type", "hidden").attr("name", "message").val(message_mail));
+                var form_data = $('#invoice-form').serializeArray();
+                form_data.push({name: 'file', value: ($('#logo-image').attr('src'))});
+                let validInput = validateInputs();
+                if(!validInput){
+                    return;
+                }
+                $('#spinner').show();
+                $.ajax({
+                    type: "POST",
+                    url: '/invoice-generator/send-invoice/'+theme,
+                    data: form_data,
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function (res) {
+                        $('#email-invoice-modal').modal('close');
+                        $('#spinner').hide();
+                        if(res.status == 'success'){
+                            $('.message-res').html(res.message);
+                            $('#successModal').modal('open');
+                            // alert(res.message);
+                        }else{
+                            alert(res.message);
+                        }
+                    },
+                    beforeSend: () => {
+                        clearError();
+                    },
+                    error:function (xhr, ajaxOptions, thrownError){
+                        $("#spinner").hide()
+                        if(xhr.status == 409 || xhr.status == 422 || xhr.status == 404){
+                            let keys = { "to_mail" : "to_email_addr", "from_mail" : "from_email_addr"};
+                            $.each(xhr.responseJSON, ( key, value ) => {
+                                Materialize.toast(value[0], 3000, 'rounded red lighten-2');
+                                $("input[name='"+keys[key]+"']").parent().addClass('custom-has-error');
+                            });
+                        }
+                        else{
+                            // showModal("Some error occured");
+                            console.log(xhr.responseText);
+                        }
+                    }
+                }).always(function(){
+                    $('#spinner').hide();
+                });
+                // $('#invoice-form').submit();
+            }else{
+                alert('please fill all mandatory field !');
+            }
+        });
+        $(document).on('input','#pr-amount',function(e){
+            validateDecimal(e,20);
+        });
+        $(document).on('input','#gst',function(e){
+            getTotalAmount()
+        });
+        $(document).on('blur','#gst',function(e){
+            getTotalAmount()
+        });
+        $('input[type="radio"]').click(function() {
+            if($(this).attr('id') == 'no') {
+                $('#gst').val('');
+                $('#gst-div').fadeOut(300);
+                getTotalAmount();
+            }
+            else {
+                $('#gst-div').fadeIn(500);
+            }
+        });
+        $(document).on('blur','#pr-amount',function(e){
+            let rate = $(event.target).parent().parent().find('.rate #pr-rate').val();
+            let qty = $(event.target).parent().parent().find('td #pr-qty').val();
+            let value = parseFloat(e.target.value).toFixed(2);
+            let updated_rate = parseFloat(value/qty).toFixed(2) ;
+            if((isNaN(qty) || qty == 0 || qty == undefined) && value > 0 ){
+                $(event.target).parent().parent().find('td #pr-qty').val(1);
+                $(event.target).parent().parent().find('.rate #pr-rate').val(value);
+                $(event.target).val(value);
+            }else{
+                $(event.target).parent().parent().find('.rate #pr-rate').val(updated_rate);
+                $(event.target).val(value);
+            }
+            getTotalAmount();
+        });
+        $(document).on('input','#pr-qty',function(e){
+            validateDecimal(e,5);
+        });
+        $(document).on('input','#total-amount',function(e){
+            validateDecimal(e,20);
+        });
+        $(document).on('keyup','#pr-rate',function(e){
+            e.preventDefault();
+            validateDecimal(e,15);
+            let this_value = parseFloat(e.target.value);
+            let qty_value = parseFloat($(this).parent().parent().find('td #pr-qty').val());
+            if(isNaN(this_value) || isNaN(qty_value)){
+                $(this).parent().parent().find('td #pr-amount').val('');
+            }else{
+                $(this).parent().parent().find('td #pr-amount').val(((this_value)*(qty_value)).toFixed(2));
+            }
+            getTotalAmount();
+        });
+        $(document).on('blur','#pr-rate',function(e){
+            let value = parseFloat(e.target.value).toFixed(2);
+            $(event.target).val(value);
+        });
+        $(document).on('blur','#pr-name',function(e){
+            getTotalAmount();
+        });
+        $(document).on('keyup','#pr-qty',function(e){
+            e.preventDefault();
+            let qty_value = parseFloat(e.target.value);
+            let item_value = parseFloat($(this).parent().parent().find('td #pr-rate').val());
+            if(isNaN(qty_value) || isNaN(item_value)){
+                $(this).parent().parent().find('td #pr-amount').val('');
+            }else{
+                $(this).parent().parent().find('td #pr-amount').val(((item_value)*(qty_value)).toFixed(2));
+            }
+            getTotalAmount();
+        });
+        $('.printe-invoice').on('click',function (e) {
+            e.stopImmediatePropagation();
+            $('#print-invoice-modal').modal('open');
+        });
+        $('#print-invoice-call').on('click',function (e) {
+            e.stopImmediatePropagation();
+            let sender_name = $('#company_name_print').val();
+            let sender_phone = $('#print_input_phone').val();
+            var mob_pattern = /^[6-9][0-9]{9}$/;
+            let theme = parseInt($('#slider-nav').find('.current').attr('data-slide'))+1;
+            if(sender_phone == '' || sender_name == '' || sender_phone == null || sender_name == null){
+                alert('please fill all mandatory field !');
+            }else if(sender_name && sender_phone && mob_pattern.test(sender_phone)){
+                var form_data = $('#invoice-form').serializeArray();
+                form_data.push({name: 'sender_name', value: sender_name});
+                form_data.push({name: 'sender_phone', value: sender_phone});
+                form_data.push({name: 'amt_words', value: RsPaise($('#total-amount').val())},{name: 'file', value: ($('#logo-image').attr('src'))});
+                // form_data = form_data.serialize();
+                $('.spinner').show();
+                $('#print_input_phone').css('border-color','silver');
+                let validInput = validateInputs();
+                if(validInput === false){
+                    return;
+                }
+                $.ajax({
+                    type: "POST",
+                    url: '/invoice-generator/pdf-response/'+theme,
+                    data: form_data,
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function (res) {
+                        $('#print-invoice-modal').modal('close');
+                        $('.spinner').hide();
+                        Popup(res);
+                    },
+                    error: function(e){
+                        alert('Error while printing invoice, please check input fields')
+                    }
+                }).always(function(){
+                    $('.spinner').hide();
+                });
+            }else if(!mob_pattern.test(sender_phone)){
+                $('#print_input_phone').css('border-color','red');
+                alert('Invalid mobile number !');
+            }else{
+                alert('please fill all mandatory field !');
+            }
+        });
+    });
+    function Slider( element ) {
+        this.el = document.querySelector( element );
+        this.init();
+    }
+    Slider.prototype = {
+        init: function() {
+            this.links = this.el.querySelectorAll( "#slider-nav a" );
+            this.wrapper = this.el.querySelector( "#slider-wrapper" );
+            this.navigate();
+        },
+        navigate: function() {
+            for( var i = 0; i < this.links.length; ++i ) {
+                var link = this.links[i];
+                this.slide( link );
+            }
+        },
+        slide: function( element ) {
+            var self = this;
+            element.addEventListener( "click", function( e ) {
+                e.preventDefault();
+                var a = this;
+                self.setCurrentLink( a );
+                var index = parseInt( a.getAttribute( "data-slide" ), 10 ) + 1;
+                var currentSlide = self.el.querySelector( ".slide:nth-child(" + index + ")" );
+                self.wrapper.style.left = "-" + currentSlide.offsetLeft + "px";
+            }, false);
+        },
+        setCurrentLink: function( link ) {
+            var parent = link.parentNode;
+            var a = parent.querySelectorAll( "a" );
+            link.className = "current";
+            for( var j = 0; j < a.length; ++j ) {
+                var cur = a[j];
+                if( cur !== link ) {
+                    cur.className = "";
+                }
             }
         }
-        function checkItemsName(){
-            let all_amount_elm = $('.product-table tbody tr');
-            let total = $('#total-amount').val();   //&& Math.round(total) != 0
-            if(total != '' && total != undefined){
-                return true;
+    };
+    function invoiceStage(){
+        this.init();
+    }
+    invoiceStage.prototype = {
+        init : function () {
+            $('.step-1').show();
+            $('.li-step1').removeClass('progtrckr-todo').addClass('progtrckr-done');
+            $('#prev-option').attr('disabled','disabled');
+        },
+        nextClick : function(){
+            let step_count = $('#step-count').val();
+            let validInput = validateInputs();
+            if(!validInput){
+                return;
+            } 
+            step_count++;
+            if(step_count >= 3 ){
+                $('#step-count').val(3);
+                $('#next-option').attr('disabled','disabled');
+                $('.progtrckr li').removeClass('progtrckr-todo').removeClass('progtrckr-done');
+                $('.li-step1,.li-step2,.li-step3').addClass('progtrckr-done');
+                $('#prev-option').removeAttr('disabled');
+            }else if(step_count <= 1){
+                $('#step-count').val(1);
+                $('.progtrckr li').removeClass('progtrckr-todo').removeClass('progtrckr-done');
+                $('.li-step2,.li-step3').addClass('progtrckr-todo');
+                $('.li-step1').addClass('progtrckr-done');
+                $('#next-option').removeAttr('disabled');
+                $('#prev-option').attr('disabled','disabled');
             }else{
-                all_amount_elm.each(function (index,data) {
-                    let item_name = $(this).find('td #pr-name').val();
-                    if(item_name == '' || item_name == undefined){
-                        alert('Please Enter item name !');
-                        return false;
+                $('#step-count').val(step_count);
+                $('.progtrckr li').removeClass('progtrckr-todo').removeClass('progtrckr-done');
+                $('.li-step3').addClass('progtrckr-todo');
+                $('.li-step1,.li-step2').addClass('progtrckr-done');
+                $('#next-option').removeAttr('disabled');
+                $('#prev-option').removeAttr('disabled');
+            }
+            if(step_count == 2){
+                var form_data = $('#invoice-form').serializeArray();
+                $('#invoice-form').append($("<input>").attr("type", "hidden").attr("name", "amt_words").val(RsPaise($('#total-amount').val())));
+                form_data.push({name: 'amt_words', value: RsPaise($('#total-amount').val())},{name: 'file', value: ($('#logo-image').attr('src'))});
+                let theme = parseInt($('#slider-nav').find('.current').attr('data-slide'))+1;
+                if(!validInput){
+                    return;
+                }
+                $('.spinner').show();
+                $.ajax({
+                    type: "POST",
+                    url: '/invoice-generator/pdf-response/'+theme,
+                    data: form_data,
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function (res) {
+                        setTimeout( function() {
+                            $('#content').html(res);
+                        }, 1 );
+                    },
+                    error: function(e){
+                        let error = Object.values(e.responseJSON);
+                        alert('Please validate input values, '+error);
+                        step_count=1;
+                        $('#step-count').val(1);
+                        $('.progtrckr li').removeClass('progtrckr-todo').removeClass('progtrckr-done');
+                        $('.li-step2,.li-step3').addClass('progtrckr-todo');
+                        $('.li-step1').addClass('progtrckr-done');
+                        $('#next-option').removeAttr('disabled');
+                        $('#prev-option').attr('disabled','disabled');
                     }
+                }).always(function () {
+                    $('.process').hide();
+                    $('.step-'+step_count).show();
+                    $('.spinner').hide();
                 });
             }
-        }
-        function Rs(amount){
-            var words = new Array();
-            words[0] = 'Zero';words[1] = 'One';words[2] = 'Two';words[3] = 'Three';words[4] = 'Four';words[5] = 'Five';words[6] = 'Six';words[7] = 'Seven';words[8] = 'Eight';words[9] = 'Nine';words[10] = 'Ten';words[11] = 'Eleven';words[12] = 'Twelve';words[13] = 'Thirteen';words[14] = 'Fourteen';words[15] = 'Fifteen';words[16] = 'Sixteen';words[17] = 'Seventeen';words[18] = 'Eighteen';words[19] = 'Nineteen';words[20] = 'Twenty';words[30] = 'Thirty';words[40] = 'Forty';words[50] = 'Fifty';words[60] = 'Sixty';words[70] = 'Seventy';words[80] = 'Eighty';words[90] = 'Ninety';var op;
-            amount = amount.toString();
-            var atemp = amount.split(".");
-            var number = atemp[0].split(",").join("");
-            var n_length = number.length;
-            var words_string = "";
-            if(n_length <= 9){
-                var n_array = new Array(0, 0, 0, 0, 0, 0, 0, 0, 0);
-                var received_n_array = new Array();
-                for (var i = 0; i < n_length; i++){
-                    received_n_array[i] = number.substr(i, 1);}
-                for (var i = 9 - n_length, j = 0; i < 9; i++, j++){
-                    n_array[i] = received_n_array[j];}
-                for (var i = 0, j = 1; i < 9; i++, j++){
-                    if(i == 0 || i == 2 || i == 4 || i == 7){
-                        if(n_array[i] == 1){
-                            n_array[j] = 10 + parseInt(n_array[j]);
-                            n_array[i] = 0;}}}
-                value = "";
-                for (var i = 0; i < 9; i++){
-                    if(i == 0 || i == 2 || i == 4 || i == 7){
-                        value = n_array[i] * 10;} else {
-                        value = n_array[i];}
-                    if(value != 0){
-                        words_string += words[value] + " ";}
-                    if((i == 1 && value != 0) || (i == 0 && value != 0 && n_array[i + 1] == 0)){
-                        words_string += "Crores ";}
-                    if((i == 3 && value != 0) || (i == 2 && value != 0 && n_array[i + 1] == 0)){
-                        words_string += "Lakhs ";}
-                    if((i == 5 && value != 0) || (i == 4 && value != 0 && n_array[i + 1] == 0)){
-                        words_string += "Thousand ";}
-                    if(i == 6 && value != 0 && (n_array[i + 1] != 0 && n_array[i + 2] != 0)){
-                        words_string += "Hundred and ";} else if(i == 6 && value != 0){
-                        words_string += "Hundred ";}}
-                words_string = words_string.split(" ").join(" ");}
-            return words_string;
-        }
-        function RsPaise(n){
-            let nums = n.toString().split('.')
-            var whole = Rs(nums[0])
-            if(nums[1]==null)nums[1]=0;
-            if(nums[1].length == 1 )nums[1]=nums[1]+'0';
-            if(nums[1].length> 2){nums[1]=nums[1].substring(2,length - 1)}
-            if(nums.length == 2){
-                if(nums[0]<=9){nums[0]=nums[0]*10} else {nums[0]=nums[0]};
-                var fraction = Rs(nums[1])
-                if(whole=='' && fraction==''){op= 'Zero only';}
-                if(whole=='' && fraction!=''){op= 'paise ' + fraction + ' only';}
-                if(whole!='' && fraction==''){op='Rupees ' + whole + ' only';}
-                if(whole!='' && fraction!=''){op='Rupees ' + whole + 'and paise ' + fraction + ' only';}
-                amt = n;
-                if(amt > 999999999.99){return op='Oops!!! The amount is too big to convert';}
-                if(isNaN(amt) == true ){return op='Error : Amount in number appears to be incorrect. Please Check.';}
-                return op;
+            $('.process').hide();
+            $('.step-'+step_count).show();
+        },
+        prevClick : function () {
+            let step_count = $('#step-count').val();
+            step_count--;
+            $('.progtrckr li').removeClass('progtrckr-todo').removeClass('progtrckr-done');
+            if(step_count >= 3 ){
+                $('#step-count').val(3);
+                $('#next-option').attr('disabled','disabled');
+                $('.progtrckr li').removeClass('progtrckr-todo').removeClass('progtrckr-done');
+                $('.li-step1,.li-step2,.li-step3').addClass('progtrckr-done');
+                $('#prev-option').removeAttr('disabled');
+            }else if(step_count <= 1){
+                $('#step-count').val(1);
+                $('.progtrckr li').removeClass('progtrckr-todo').removeClass('progtrckr-done');
+                $('.li-step2,.li-step3').addClass('progtrckr-todo');
+                $('.li-step1').addClass('progtrckr-done');
+                $('#next-option').removeAttr('disabled');
+                $('#prev-option').attr('disabled','disabled');
+            }else{
+                $('#step-count').val(step_count);
+                $('.progtrckr li').removeClass('progtrckr-todo').removeClass('progtrckr-done');
+                $('.li-step3').addClass('progtrckr-todo');
+                $('.li-step1,.li-step2').addClass('progtrckr-done');
+                $('#next-option').removeAttr('disabled');
+                $('#prev-option').removeAttr('disabled');
             }
+            $('.process').hide();
+            $('.step-'+step_count).show();
         }
-        var loadFile = function(event) {
-            var image = document.getElementById('logo-image');
-            var file = document.getElementById('file');
-            image.src = URL.createObjectURL(event.target.files[0]);
-            toDataURL(image.src, function(dataUrl) {
-                document.getElementById('logo-image').src = dataUrl;
-                document.getElementById('logo-image').style.display = 'block'
-                document.getElementById('file-div').style.display = 'none'
-            })
-        };
-        function toDataURL(url, callback) {
-            var xhr = new XMLHttpRequest();
-            xhr.onload = function() {
-                var reader = new FileReader();
-                reader.onloadend = function() {
-                    callback(reader.result);
-                }
-                reader.readAsDataURL(xhr.response);
-            };
-            xhr.open('GET.html', url);
-            xhr.responseType = 'blob';
-            xhr.send();
-        }
-        // RsPaise(Math.round(document.getElementById('amt').value*100)/100);
-        // console.log(RsPaise(10004.60));
-        $(document).ready(function() {
-            var today = new Date().toISOString().split('T')[0];
-            $("#due-date").attr('min', today);
-            $(".read-more-less-link").click(function() {
-                $(this).prev().toggle();
-                if($(this).text() === "Read more") {
-                    $(this).text('Read less');
-                } else {
-                    $(this).text('Read more');
-                }
-            })
-        })
-        $(window).bind("pageshow", function() {
-            var form = $('form');
-            document.getElementById('logo-image').style.display = 'none';
-            document.getElementById('file-div').style.display = 'block';
-            form[0].reset();
+    };
+    document.addEventListener( "DOMContentLoaded", function() {
+        var aSlider = new Slider( "#slider" );
+        var invoiceStep = new invoiceStage();
+        $('#next-option').on('click',(e)=>{
+            invoiceStep.nextClick();
+            $("body, html").scrollTop(0)
         });
-        function validateInputs(){
-            let htmlTags = /^([a-zA-Z0-9 ,._@?!#/&-:])*$/;
-            let url = new RegExp("https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)");
-            let flag = true;
-            $('input[type="text"]').each(function(){
-                let input = $(this).val();
-
-                if(!htmlTags.test(input) || url.test(input)){
-                    flag = false;
+        $('#prev-option').on('click',(e)=>{
+            invoiceStep.prevClick();
+            $("body, html").scrollTop(0)
+        });
+    });
+    function getTotalAmount(){
+        let all_amount_elm = $('.product-table tbody tr');
+        let total_amt = 0.00;
+        let gst = $('#gst').val()/100;
+        let amt_without_gst = 0.00;
+        all_amount_elm.each(function (index,data) {
+            let item_name = $(this).find('td #pr-name').val();
+            let item_qty = $(this).find('td #pr-qty').val();
+            let item_rate = $(this).find('td #pr-rate').val();
+            let item_amount = $(this).find('td #pr-amount').val();
+            if( !isNaN(item_amount) && item_amount != '' && item_amount != undefined){
+                let amt = (isNaN(item_amount) || item_amount == undefined) ? 0 : parseFloat(item_amount);
+                total_amt += amt;
+            }
+        });
+        amt_without_gst = total_amt;
+        total_amt += gst*amt_without_gst;
+        if(total_amt >= 0){
+            $('#total-amount').val(total_amt.toFixed(2));
+            $('#amount-without-gst').val(amt_without_gst.toFixed(2));
+        }else{
+            $('#total-amount').val((0.00).toFixed(2));
+        }
+    }
+    function checkItemsName(){
+        let all_amount_elm = $('.product-table tbody tr');
+        let total = $('#total-amount').val();   //&& Math.round(total) != 0
+        if(total != '' && total != undefined){
+            return true;
+        }else{
+            all_amount_elm.each(function (index,data) {
+                let item_name = $(this).find('td #pr-name').val();
+                if(item_name == '' || item_name == undefined){
+                    alert('Please Enter item name !');
+                    return false;
                 }
             });
-
-            if(!flag){
-                alert('Please enter valid values in input fields');
-            }
-            return flag;
         }
-    </script>
+    }
+    function Rs(amount){
+        var words = new Array();
+        words[0] = 'Zero';words[1] = 'One';words[2] = 'Two';words[3] = 'Three';words[4] = 'Four';words[5] = 'Five';words[6] = 'Six';words[7] = 'Seven';words[8] = 'Eight';words[9] = 'Nine';words[10] = 'Ten';words[11] = 'Eleven';words[12] = 'Twelve';words[13] = 'Thirteen';words[14] = 'Fourteen';words[15] = 'Fifteen';words[16] = 'Sixteen';words[17] = 'Seventeen';words[18] = 'Eighteen';words[19] = 'Nineteen';words[20] = 'Twenty';words[30] = 'Thirty';words[40] = 'Forty';words[50] = 'Fifty';words[60] = 'Sixty';words[70] = 'Seventy';words[80] = 'Eighty';words[90] = 'Ninety';var op;
+        amount = amount.toString();
+        var atemp = amount.split(".");
+        var number = atemp[0].split(",").join("");
+        var n_length = number.length;
+        var words_string = "";
+        if(n_length <= 9){
+            var n_array = new Array(0, 0, 0, 0, 0, 0, 0, 0, 0);
+            var received_n_array = new Array();
+            for (var i = 0; i < n_length; i++){
+                received_n_array[i] = number.substr(i, 1);}
+            for (var i = 9 - n_length, j = 0; i < 9; i++, j++){
+                n_array[i] = received_n_array[j];}
+            for (var i = 0, j = 1; i < 9; i++, j++){
+                if(i == 0 || i == 2 || i == 4 || i == 7){
+                    if(n_array[i] == 1){
+                        n_array[j] = 10 + parseInt(n_array[j]);
+                        n_array[i] = 0;}}}
+            value = "";
+            for (var i = 0; i < 9; i++){
+                if(i == 0 || i == 2 || i == 4 || i == 7){
+                    value = n_array[i] * 10;} else {
+                    value = n_array[i];}
+                if(value != 0){
+                    words_string += words[value] + " ";}
+                if((i == 1 && value != 0) || (i == 0 && value != 0 && n_array[i + 1] == 0)){
+                    words_string += "Crores ";}
+                if((i == 3 && value != 0) || (i == 2 && value != 0 && n_array[i + 1] == 0)){
+                    words_string += "Lakhs ";}
+                if((i == 5 && value != 0) || (i == 4 && value != 0 && n_array[i + 1] == 0)){
+                    words_string += "Thousand ";}
+                if(i == 6 && value != 0 && (n_array[i + 1] != 0 && n_array[i + 2] != 0)){
+                    words_string += "Hundred and ";} else if(i == 6 && value != 0){
+                    words_string += "Hundred ";}}
+            words_string = words_string.split(" ").join(" ");}
+        return words_string;
+    }
+    function RsPaise(n){
+        let nums = n.toString().split('.')
+        var whole = Rs(nums[0])
+        if(nums[1]==null)nums[1]=0;
+        if(nums[1].length == 1 )nums[1]=nums[1]+'0';
+        if(nums[1].length> 2){nums[1]=nums[1].substring(2,length - 1)}
+        if(nums.length == 2){
+            if(nums[0]<=9){nums[0]=nums[0]*10} else {nums[0]=nums[0]};
+            var fraction = Rs(nums[1])
+            if(whole=='' && fraction==''){op= 'Zero only';}
+            if(whole=='' && fraction!=''){op= 'paise ' + fraction + ' only';}
+            if(whole!='' && fraction==''){op='Rupees ' + whole + ' only';}
+            if(whole!='' && fraction!=''){op='Rupees ' + whole + 'and paise ' + fraction + ' only';}
+            amt = n;
+            if(amt > 999999999.99){return op='Oops!!! The amount is too big to convert';}
+            if(isNaN(amt) == true ){return op='Error : Amount in number appears to be incorrect. Please Check.';}
+            return op;
+        }
+    }
+    var loadFile = function(event) {
+        var image = document.getElementById('logo-image');
+        var file = document.getElementById('file');
+        image.src = URL.createObjectURL(event.target.files[0]);
+        toDataURL(image.src, function(dataUrl) {
+            document.getElementById('logo-image').src = dataUrl;
+            document.getElementById('logo-image').style.display = 'block'
+            document.getElementById('file-div').style.display = 'none'
+        })
+    };
+    function toDataURL(url, callback) {
+        var xhr = new XMLHttpRequest();
+        xhr.onload = function() {
+            var reader = new FileReader();
+            reader.onloadend = function() {
+                callback(reader.result);
+            }
+            reader.readAsDataURL(xhr.response);
+        };
+        xhr.open('GET.html', url);
+        xhr.responseType = 'blob';
+        xhr.send();
+    }
+    // RsPaise(Math.round(document.getElementById('amt').value*100)/100);
+    // console.log(RsPaise(10004.60));
+    $(document).ready(function() {
+        var today = new Date().toISOString().split('T')[0];
+        $("#due-date").attr('min', today);
+        $(".read-more-less-link").click(function() {
+            $(this).prev().toggle();
+            if($(this).text() === "Read more") {
+                $(this).text('Read less');
+            } else {
+                $(this).text('Read more');
+            }
+        })
+    })
+    $(window).bind("pageshow", function() {
+        var form = $('form');
+        document.getElementById('logo-image').style.display = 'none';
+        document.getElementById('file-div').style.display = 'block';
+        form[0].reset();
+    });
+    function validateInputs(){
+        let htmlTags = /^([a-zA-Z0-9 ,._@?!#/&-:])*$/;
+        let url = new RegExp("https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)");
+        let flag = true;
+        $('input[type="text"]').each(function(){
+            let input = $(this).val();
+
+            if(!htmlTags.test(input) || url.test(input)){
+                flag = false;
+            }
+        });
+
+        if(!flag){
+            alert('Please enter valid values in input fields');
+        }
+        return flag;
+    }
+</script>
 
 
 
@@ -2068,9 +1260,10 @@
 <script type="text/javascript">
 
 
-    //get jwt token form logged in user
-    </script>
-</body>
+//get jwt token form logged in user
+</script>
+
 
 <!-- Mirrored from vyaparapp.in/invoice-generator by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Dec 2021 04:43:53 GMT -->
-</html>
+
+</div>

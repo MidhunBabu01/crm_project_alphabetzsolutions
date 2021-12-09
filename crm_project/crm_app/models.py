@@ -83,12 +83,29 @@ class Quotation_Invoice(models.Model):
     date = models.DateField()
     due_date = models.DateField()
     item_name = models.CharField(max_length=250)
-    qty = models.IntegerField()
+    item_code = models.CharField(max_length=250)
+    quantity = models.IntegerField()
     rate = models.IntegerField()
-    amount = models.IntegerField()
-    gst = models.BooleanField(default=False)
+    UOM = models.CharField(max_length=250)
+    warranty = models.CharField(max_length=250)
+    hsn_code = models.CharField(max_length=250)
+    gst_choices = (
+        ('5%','5%'),
+        ('12%','12%'),
+        ('18%','18%'),
+        ('28%','28%')
+    )
+    gst = models.CharField(max_length=250,choices=gst_choices)
     notes = models.CharField(max_length=250)
     terms_and_conditions = models.CharField(max_length=250)
 
 
 
+
+# class Products(models.Model):
+#     product_name = models.CharField(max_length=250)
+#     amount = models.IntegerField()
+#     product_code = models.CharField(max_length=250)
+#     gst = models.CharField(max_length=250)
+#     photo = models.ImageField(upload_to ='products')
+#     desc = models.TextField()
