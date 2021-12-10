@@ -2,6 +2,7 @@ from django.core.exceptions import RequestAborted
 from django.shortcuts import redirect, render
 from .models import Customer, Leads, Products
 from .forms import CustomerAddForm,LeadAddForm,Quotation_invoice_form
+from django.db.models import Q
 
 
 # Create your views here.
@@ -98,3 +99,13 @@ def products(request):
     products = Products.objects.all()
     return render(request,'products.html',{'products':products})
 
+
+
+
+def search(request):
+    product = None
+    Query = None
+    if 'q' in request.GET:
+        Query = request.GET.get('q')
+        product = Products.objects.all().filter(Q(product_name__icontains=Query)|Q(hsn__icontains=Query))
+    return render(request,'search_result.html',{"product":product,"query":Query})

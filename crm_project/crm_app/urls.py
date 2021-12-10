@@ -20,5 +20,6 @@ urlpatterns = [
     path('customer-profile/<int:customer_id>', views.customer_profile, name='customer_profile'),
     path('quotation-invoice/', views.Quotation_invoice, name='quotation_invoice'),
     path('products/', views.products, name='products'),
+    path('search-result/', views.search, name='search'),
 
 ]

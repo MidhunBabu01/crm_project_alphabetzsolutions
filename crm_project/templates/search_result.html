@@ -306,18 +306,8 @@ body{
 </head>
 
 <body>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-		  
-		  <form method="get" action="{% url 'crm_app:search' %}" class="form-inline my-2 my-lg-0 justify-content-end">
-			<input class="form-control mr-sm-2" type="search" placeholder="Search" name='q' aria-label="Search">
-			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-		  </form>
-		</div>
-	  </nav>
-
 <div class="container">
-{% for i in products%}
+{% for i in product %}
 <div class="col-xs-12 col-md-6">
 	<!-- First product box start here-->
 	<div class="prod-info-main prod-wrap clearfix">
