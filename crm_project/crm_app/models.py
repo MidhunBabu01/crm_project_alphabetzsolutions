@@ -2,6 +2,7 @@ from django.db import models
 from django.db.models.fields import CharField
 from django.forms.fields import DateTimeField
 import datetime
+from django.template.defaultfilters import slugify
 
 # Create your models here.
 class Customer(models.Model):
@@ -102,10 +103,22 @@ class Quotation_Invoice(models.Model):
 
 
 
-# class Products(models.Model):
-#     product_name = models.CharField(max_length=250)
-#     amount = models.IntegerField()
-#     product_code = models.CharField(max_length=250)
-#     gst = models.CharField(max_length=250)
-#     photo = models.ImageField(upload_to ='products')
-#     desc = models.TextField()
+class Products(models.Model):
+    def __str__(self):
+        return self.product_name
+
+    # slug = models.SlugField(max_length=250) 
+    product_name = models.CharField(max_length=250)
+    brand = models.CharField(max_length=25,blank=True)
+    photo = models.ImageField(upload_to ='products')
+    desc = models.TextField()
+    hsn = models.CharField(max_length=25)
+    price = models.IntegerField()
+    gst_choice = (
+        ('5%','5%'),
+        ('12%','12%'),
+        ('18%','18%'),
+        ('28%','28%')
+    )
+    gst = models.CharField(max_length=250,choices=gst_choice)
+    

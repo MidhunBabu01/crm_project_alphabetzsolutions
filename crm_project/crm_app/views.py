@@ -1,6 +1,6 @@
 from django.core.exceptions import RequestAborted
 from django.shortcuts import redirect, render
-from .models import Customer, Leads
+from .models import Customer, Leads, Products
 from .forms import CustomerAddForm,LeadAddForm,Quotation_invoice_form
 
 
@@ -91,3 +91,10 @@ def Quotation_invoice(request):
         }
     forms = Quotation_invoice_form(initial=details)
     return render(request,"quotation_invoice.html",{'forms':forms})
+
+
+
+def products(request):
+    products = Products.objects.all()
+    return render(request,'products.html',{'products':products})
+

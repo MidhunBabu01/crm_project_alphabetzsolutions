@@ -149,7 +149,7 @@
                 <div class="main-invoice-wrap">
                     <div class="invoice-theme-1 process step-1" style="display: block;">
                         <div class="invoice-block-1" style="display: flex;justify-content: space-between;align-items: center;">
-                            <div class="invoice-txt" style="font-size: 2.5rem;font-weight: bold;color: #676767;"><span>INVOICE</span></div>
+                            <div class="invoice-txt" style="font-size: 2.5rem;font-weight: bold;color: #676767;"><span>Quotation</span></div>
                             
                             
                             
@@ -255,6 +255,7 @@
                                 </tbody>
                             </table>
                             <button id="addrowitem">+ Add Item</button>
+                            
                             {% comment %} <h3 class="head-txt width-40">Does your invoice include GST?</h3>
                             <div class="row">
                                 <div class="col-6">
@@ -327,6 +328,7 @@
         
     
 </div></form>
+
 
 <div id="desktop_dwnld" class="modal">
 <div class="modal-content">
@@ -465,6 +467,17 @@ function lab_fun(lat,long) {
 
 <script type="text/javascript" src="/static/assets/js/intlTelInput.min.js"></script>
 <script type="text/javascript" src="/static/assets/js/materialize.min.js"></script>
+{% comment %} <script>
+    function multiplyBy()
+    {
+      num1 = document.getElementById(
+        "id_rate").value;
+      num2 = document.getElementById(
+        "id_quantity").value;
+      document.getElementById(
+        "result").innerHTML = num1 * num2;
+    }
+</script> {% endcomment %}
 <script type="text/javascript">
 
 
