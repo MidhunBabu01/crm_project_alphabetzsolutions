@@ -342,7 +342,7 @@ body{
 				<div class="product-info smart-form">
 					<div class="row">
 						<div class="col-md-12"> 
-							<a href="javascript:void(0);" class="btn btn-danger">Add to cart</a>
+							<a href="{% url "crm_app:cartDetails" i.id %}" class="btn btn-danger">Add to cart</a>
                             <a href="javascript:void(0);" class="btn btn-info">Buy Now</a>
 						</div>
 					</div>	
