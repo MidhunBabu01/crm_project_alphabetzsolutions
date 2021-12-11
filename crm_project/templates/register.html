@@ -5,7 +5,6 @@
     
 <!-- Mirrored from preview.pichforest.com/samply/layouts/auth-register.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 01 Dec 2021 12:27:17 GMT -->
 <head>
-        
         <meta charset="utf-8" />
         <title>Register | Samply - Admin & Dashboard Template</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -50,25 +49,30 @@
                                         </div>
                                     
                                         <div class="mt-4 pt-3">
-                                            <form action="https://preview.pichforest.com/samply/layouts/index.html">
+                                            <form method='post'>
+                                                {% csrf_token %}
+                                                <div class="mb-3">
+                                                    <label class="fw-semibold" for="username">Username</label>
+                                                    <input type="text" name="username" class="form-control" id="username" placeholder="Enter username">
+                                                </div>
             
                                                 <div class="mb-3">
                                                     <label class="fw-semibold" for="useremail">Email</label>
-                                                    <input type="email" class="form-control" id="useremail" placeholder="Enter email">        
-                                                </div>
-                        
-                                                <div class="mb-3">
-                                                    <label class="fw-semibold" for="username">Username</label>
-                                                    <input type="text" class="form-control" id="username" placeholder="Enter username">
+                                                    <input type="email" name="email" class="form-control" id="useremail" placeholder="Enter email">        
                                                 </div>
                         
                                                 <div class="mb-3">
                                                     <label class="fw-semibold" for="userpassword">Password</label>
-                                                    <input type="password" class="form-control" id="userpassword" placeholder="Enter password">        
+                                                    <input type="password" name="password" class="form-control" id="userpassword" placeholder="Enter password">        
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <label class="fw-semibold" for="userpassword">Confirm Password</label>
+                                                    <input type="password" name="password2" class="form-control" id="userpassword" placeholder="Enter password">        
                                                 </div>
                         
                                                 <div class="mt-4 text-end">
-                                                    <button class="btn btn-primary w-md waves-effect waves-light" type="submit">Register</button>
+                                                    <input type='submit' class="btn btn-primary w-md waves-effect waves-light" value="register">
                                                 </div>
 
                                                 <div class="mt-4 text-center">
@@ -90,7 +94,7 @@
                         </div>
                         <!-- end card -->
                         <div class="mt-5 text-center">
-                            <p>Already have an account ? <a href="auth-login.html" class="fw-semibold text-decoration-underline"> Login </a> </p>
+                            <p>Already have an account ? <a href="{% url 'crm_app:login' %}" class="fw-semibold text-decoration-underline"> Login </a> </p>
                             <p>© <script>document.write(new Date().getFullYear())</script> <b>Samply</b>. Crafted with <i class="mdi mdi-heart text-danger"></i> by Pichforest</p>
                         </div>
                     </div>

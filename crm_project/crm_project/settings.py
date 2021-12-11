@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'crm_app',
     'crispy_forms',
     'flatpickr',
+    
 
     
 ]

@@ -5,7 +5,8 @@ from .models import Customer, Leads, Products,CartList,Items
 from .forms import CustomerAddForm,LeadAddForm,Quotation_invoice_form
 from django.db.models import Q
 from django.core.exceptions import ObjectDoesNotExist
-
+from django.contrib.auth.models import User,auth
+from django.contrib import messages
 
 # Create your views here.
 def index(request):
@@ -16,15 +17,7 @@ def chat(request):
     return render(request,'chat.html')
 
 
-def login(request):
-    if request.method=='POST':
-        username = request.POST.get('username')
-        password = request.POST.get('userpassword')
-        if username == 'Midhun' and password=='123':
-            return redirect('crm_app:leads')
-        else:
-            return redirect('crm_app:login')
-    return render(request,'login.html')
+
 
 def register(request):
     return render(request,"register.html")
@@ -194,3 +187,54 @@ def search(request):
         Query = request.GET.get('q')
         product = Products.objects.all().filter(Q(product_name__icontains=Query)|Q(hsn__icontains=Query))
     return render(request,'search_result.html',{"product":product,"query":Query})
+
+
+
+
+# ACCOUNT_SECTION
+def register(request):
+    if request.method == "POST":
+        username = request.POST["username"]
+        email = request.POST["email"]
+        password = request.POST["password"]
+        password2 = request.POST.get("password2")
+        if password == password2:
+            if User.objects.filter(username=username).exists():
+                print("username alredy exists")
+                messages.info(request,"username already exist")
+                return redirect("crm_app:register")
+            elif User.objects.filter(email=email).exists():
+                print("email alredy exists")
+                messages.info(request,"email  already registered")
+                return redirect("crm_app:register")
+            else:
+                user = User.objects.create_user(username=username, email=email,
+                                        password=password)
+                user.save();
+                print("user created")
+        else:
+            print("password not matched")
+            return redirect('crm_app:register')
+        return redirect("crm_app:login")
+    else:
+         return render(request,"register.html")
+
+
+
+
+
+def login(request):
+    if request.method == "POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user=auth.authenticate(username=username,password=password)
+        if user is not None:
+            auth.login(request,user)
+            return redirect("crm_app:index")
+        else:
+            print('invalid details')
+            messages.info(request,"invalid details")
+            return redirect("crm_app:login")
+    else:
+        return render(request,"login.html")    
+
