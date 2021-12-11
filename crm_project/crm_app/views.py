@@ -104,12 +104,12 @@ def products(request):
 def cart(request,total=0,count=0,cart_items=None):
     try:
         ct = CartList.objects.get(cart_id=c_id(request))
-        ct_items = Items.objects.filter(cart=ct,active=True)
+        ct_items = Items.objects.filter(cart=ct,active=True) 
         for i in ct_items:
             total +=(i.prodt.price*i.quantity)
             count += i.quantity      
     except ObjectDoesNotExist:
-        return redirect("crm_app:cart2Details")
+        return redirect("crm_app:cart2")
     return render(request,"cart.html",{"ct_items":ct_items, "total":total, "count":count})
 
 

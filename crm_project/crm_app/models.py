@@ -117,13 +117,17 @@ class Products(models.Model):
     warranty = models.CharField(max_length=250)
     item_code = models.CharField(max_length=25)
     uom = models.CharField(max_length=25)
+    gst1 = 5
+    gst2 = 12
+    gst3 = 18
+    gst4 = 28
     gst_choice = (
-        ('5%','5%'),
-        ('12%','12%'),
-        ('18%','18%'),
-        ('28%','28%')
+        (gst1,'5'),
+        (gst2,'12'),
+        (gst3,'18'),
+        (gst4,'28')
     )
-    gst = models.CharField(max_length=250,choices=gst_choice)
+    gst = models.IntegerField(choices=gst_choice)
     stock = models.IntegerField()
     
 
@@ -146,4 +150,6 @@ class Items(models.Model):
         return self.prodt
 
     def total(self):
-        return self.prodt.price*self.quantity
+        gst = (self.prodt.price*self.quantity*self.prodt.gst)/100
+
+        return self.prodt.price*self.quantity+gst
