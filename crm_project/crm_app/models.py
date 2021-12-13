@@ -148,7 +148,7 @@ class Items(models.Model):
     active = models.BooleanField(default=True)
     def __str__(self):
         return self.prodt
-
+    @property
     def total(self):
         gst = (self.prodt.price*self.quantity*self.prodt.gst)/100
 

@@ -7,6 +7,7 @@
 <head>
         <meta charset="utf-8" />
         <title>Register | Samply - Admin & Dashboard Template</title>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="Pichforest" name="author" />
@@ -49,36 +50,28 @@
                                         </div>
                                     
                                         <div class="mt-4 pt-3">
-                                            <form method='post'>
+                                            <form  method="post">
                                                 {% csrf_token %}
-                                                <div class="mb-3">
-                                                    <label class="fw-semibold" for="username">Username</label>
-                                                    <input type="text" name="username" class="form-control" id="username" placeholder="Enter username">
-                                                </div>
-            
-                                                <div class="mb-3">
-                                                    <label class="fw-semibold" for="useremail">Email</label>
-                                                    <input type="email" name="email" class="form-control" id="useremail" placeholder="Enter email">        
-                                                </div>
-                        
-                                                <div class="mb-3">
-                                                    <label class="fw-semibold" for="userpassword">Password</label>
-                                                    <input type="password" name="password" class="form-control" id="userpassword" placeholder="Enter password">        
-                                                </div>
-
-                                                <div class="mb-3">
-                                                    <label class="fw-semibold" for="userpassword">Confirm Password</label>
-                                                    <input type="password" name="password2" class="form-control" id="userpassword" placeholder="Enter password">        
-                                                </div>
-                        
-                                                <div class="mt-4 text-end">
-                                                    <input type='submit' class="btn btn-primary w-md waves-effect waves-light" value="register">
-                                                </div>
-
-                                                <div class="mt-4 text-center">
-                                                    <p class="mb-0 text-muted">By registering you agree to the Samply <a href="#" class="text-primary fw-semibold text-decoration-underline">Terms of Use</a></p>
-                                                </div>
-                                            </form>
+                                                    <div class="form-group">
+                                                        <label for="recipient-name1" class="col-form-label">Username</label>
+                                                        <input type="text" class="form-control" placeholder=" " name="username" id="username" required="">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="recipient-email" class="col-form-label">Email</label>
+                                                        <input type="email" class="form-control" placeholder=" " name="email" id="email" required="">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="password1" class="col-form-label">Password</label>
+                                                        <input type="password" class="form-control" placeholder=" " name="password1" id="password1" required="">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="password2" class="col-form-label">Confirm Password</label>
+                                                        <input type="password" class="form-control" placeholder=" " name="password2" id="password2" required="">
+                                                    </div>
+                                                    <div class="right-w3l">
+                                                        <input type="submit" id="btn1" class="btn btn-info" value='Register'>
+                                                    </div>
+                                                </form>
                                         </div>
                     
                                     </div>
@@ -107,6 +100,49 @@
         <!-- end account page -->
 
         <!-- JAVASCRIPT -->
+        {% comment %} <script>
+            $('#btn1').click(function(e){
+                e.preventDefault();
+                var username = $('#username').val()
+                var email = $('#email').val()
+                var password1 = $('#password1').val()
+                var password2 = $('#password2').val()
+                var data ={
+                    'csrfmiddlewaretoken':'{{csrf_token}}',
+                    'username':username,
+                    'email':email,
+                    'password1':password1,
+                    'password2':password2,
+    
+                    
+                }
+                if(username == ''){
+                    alert('Enter Valid Username')
+                }else if(email ==''){
+                    alert('Enter Valid Email')
+                }else if(password1 ==''){
+                    alert('Enter Valid Password')
+                }else if(password2 ==''){
+                    alert('Enter Valid Password')
+                }else
+                {
+                $.ajax({
+                    url:'register/',
+                    method:"POST",
+                    data :data,
+                    dataType:'json',
+                    success:function(data){
+                        if(data.success){
+                            alert('Succesfully Registered')
+                            window.location.replace('login')
+                        }else{
+                            alert('User is not authenticated')
+                        }
+                    }
+                })
+            }
+            })
+        </script> {% endcomment %}
         <script src="{% static 'assets/libs/jquery/jquery.min.js' %}"></script>
         <script src="{% static 'assets/libs/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
         <script src="{% static 'assets/libs/metismenu/metisMenu.min.js' %}"></script>

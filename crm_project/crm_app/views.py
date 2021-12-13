@@ -99,7 +99,8 @@ def cart(request,total=0,count=0,cart_items=None):
         ct = CartList.objects.get(cart_id=c_id(request))
         ct_items = Items.objects.filter(cart=ct,active=True) 
         for i in ct_items:
-            total +=(i.prodt.price*i.quantity)
+            # total +=(i.prodt.price*i.quantity)
+            total += i.total
             count += i.quantity      
     except ObjectDoesNotExist:
         return redirect("crm_app:cart2")
@@ -117,6 +118,25 @@ def c_id(request):
 
 
 def add_cart(request,product_id):
+    product = Products.objects.get(id=product_id)
+    try:
+        ct = CartList.objects.get(cart_id=c_id(request))
+    except CartList.DoesNotExist:
+        ct = CartList.objects.create(cart_id=c_id(request))
+        ct.save()
+    try:
+        c_items = Items.objects.get(prodt=product,cart=ct)
+        if c_items.quantity < c_items.prodt.stock:
+            c_items.quantity+=1
+        c_items.save()
+    except Items.DoesNotExist:
+        c_items =Items.objects.create(prodt=product,quantity=1,cart=ct)
+        c_items.save()
+    return redirect("crm_app:products")
+
+
+
+def buy_now(request,product_id):
     product = Products.objects.get(id=product_id)
     try:
         ct = CartList.objects.get(cart_id=c_id(request))
@@ -193,12 +213,14 @@ def search(request):
 
 # ACCOUNT_SECTION
 def register(request):
+    if "username" in request.session:
+        return redirect('crm_app:index')
     if request.method == "POST":
-        username = request.POST["username"]
-        email = request.POST["email"]
-        password = request.POST["password"]
+        username = request.POST.get("username")
+        email = request.POST.get("email")
+        password1 = request.POST.get("password1")
         password2 = request.POST.get("password2")
-        if password == password2:
+        if password1 == password2:
             if User.objects.filter(username=username).exists():
                 print("username alredy exists")
                 messages.info(request,"username already exist")
@@ -209,7 +231,7 @@ def register(request):
                 return redirect("crm_app:register")
             else:
                 user = User.objects.create_user(username=username, email=email,
-                                        password=password)
+                                        password=password1)
                 user.save();
                 print("user created")
         else:
@@ -224,11 +246,14 @@ def register(request):
 
 
 def login(request):
+    if 'username' in request.session:
+        return redirect('crm_app:index')
     if request.method == "POST":
         username = request.POST.get('username')
         password = request.POST.get('password')
         user=auth.authenticate(username=username,password=password)
         if user is not None:
+            request.session['username'] = username
             auth.login(request,user)
             return redirect("crm_app:index")
         else:
@@ -237,4 +262,12 @@ def login(request):
             return redirect("crm_app:login")
     else:
         return render(request,"login.html")    
+
+
+
+
+def logout(request):
+    if 'username' in request.session:
+        request.session.flush()
+    return redirect("crm_app:index")
 

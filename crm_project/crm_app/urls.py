@@ -23,8 +23,11 @@ urlpatterns = [
     path('search-result/', views.search, name='search'),
     path('cart/', views.cart, name='addcart'),
     path('cart-empty/', views.cart2, name='cart2'),
-    path('cartDetails/<int:product_id>/',views.add_cart,name="cartDetails"),
+    path('add-cart/<int:product_id>/',views.add_cart,name="add_cart"),
+    path('cartDetails/<int:product_id>/',views.buy_now,name="cartDetails"),
     path('min_product/<int:product_id>/',views.minus_button,name="minus"),
     path('del-product/<int:product_id>/',views.delete_button,name="del_product"),
+    path('logout/',views.logout,name="logout"),
+    
 
 ]

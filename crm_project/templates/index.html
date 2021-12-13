@@ -139,12 +139,18 @@
                         <div class="dropdown d-inline-block">
                             <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-notifications-dropdown"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="mdi mdi-bell"></i>
-                                <span class="badge bg-danger rounded-pill">3</span>
+                                {% comment %} <span class="badge bg-danger rounded-pill">3</span> {% endcomment %}
                             </button>
+                            {% if user.is_authenticated %}
+                             Hai {{user.username}}
+                             <a href="{% url 'crm_app:logout' %}">Logout</a>|
+                            {% else %}
+                            <a href="{% url 'crm_app:register' %}">Register</a>|
+                            <a href="{% url 'crm_app:login' %}">Login</a>
+                            {% endif %}
                             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
-                                aria-labelledby="page-header-notifications-dropdown">
-                                <div class="p-3">
+                               >
+                                {% comment %} <div class="p-3">
                                     <div class="row align-items-center">
                                         <div class="col">
                                             <h6 class="m-0"> Notifications </h6>
@@ -153,8 +159,8 @@
                                             <a href="#" class="small" key="t-view-all"> View All</a>
                                         </div>
                                     </div>
-                                </div>
-                                <div data-simplebar style="max-height: 230px;">
+                                </div> {% endcomment %}
+                                {% comment %} <div data-simplebar style="max-height: 230px;">
                                     <a href="#" class="text-reset notification-item d-block active">
                                         <div class="d-flex">
                                             <div class="flex-shrink-0 me-3">
@@ -223,16 +229,16 @@
                                             </div>
                                         </div>
                                     </a>
-                                </div>
-                                <div class="p-2 border-top d-grid">
+                                </div> {% endcomment %}
+                                {% comment %} <div class="p-2 border-top d-grid">
                                     <a class="btn btn-sm btn-link font-size-14 text-center" href="javascript:void(0)">
                                         <i class="mdi mdi-arrow-right-circle me-1"></i> <span>View More..</span> 
                                     </a>
-                                </div>
+                                </div> {% endcomment %}
                             </div>
                         </div>
 
-                        <div class="dropdown d-inline-block">
+                        {% comment %} <div class="dropdown d-inline-block">
                             <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <img class="rounded-circle header-profile-user" src="{% static 'assets/images/users/avatar-1.jpg' %}"
@@ -253,7 +259,7 @@
                                 <a class="dropdown-item" href="#"><i class="mdi mdi-lock text-muted font-size-16 align-middle me-1"></i> <span class="align-middle" key="t-lock-screen">Lock screen</span></a>
                                 <a class="dropdown-item" href="#"><i class="mdi mdi-logout text-muted font-size-16 align-middle me-1"></i> <span class="align-middle" key="t-logout">Logout</span></a>
                             </div>
-                        </div>
+                        </div> {% endcomment %}
 
                         <div class="dropdown d-inline-block">
                             <button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">
