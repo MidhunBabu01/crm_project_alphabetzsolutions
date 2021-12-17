@@ -1,7 +1,7 @@
 from django.core.exceptions import ObjectDoesNotExist, RequestAborted
 from django.http.response import HttpResponse
 from django.shortcuts import redirect, render,get_object_or_404
-from .models import Customer, Leads, Products,CartList,Items
+from crm_app.models import Customer, Leads, Products,CartList,Items
 from .forms import CustomerAddForm, LeadAddForm
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.models import User,auth
@@ -232,7 +232,7 @@ def register(request):
                 extenduser = ExtendedUserModel(phn_number=phn,age=age,user=user)
                 extenduser.save();
                 print('user created')
-                auth.login(request.user)
+                auth.login(request,user)
                 return redirect('crm_app:login')
         else:
             print('password not matching')
