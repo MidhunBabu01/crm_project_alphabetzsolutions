@@ -2,11 +2,13 @@ from django.core.exceptions import ObjectDoesNotExist, RequestAborted
 from django.http.response import HttpResponse
 from django.shortcuts import redirect, render,get_object_or_404
 from .models import Customer, Leads, Products,CartList,Items
-from .forms import CustomerAddForm,LeadAddForm,Quotation_invoice_form
-from django.db.models import Q
+from .forms import CustomerAddForm, LeadAddForm
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.models import User,auth
+from django.contrib.auth import authenticate
 from django.contrib import messages
+from django.db.models import Q
+from acc_section.models import ExtendedUserModel
 
 # Create your views here.
 def index(request):
@@ -82,11 +84,12 @@ def customer_profile(request,customer_id):
 
 
 def Quotation_invoice(request):
-    details = {
-        'company_address':'TC 13/1113 Thopil LineMedical College PO, Kumarapuram -695011Trivandrum, Kerala'
-        }
-    forms = Quotation_invoice_form(initial=details)
-    return render(request,"quotation_invoice.html",{'forms':forms})
+    details = Items.objects.all()
+    # details = {
+    #     'company_address':'TC 13/1113 Thopil LineMedical College PO, Kumarapuram -695011Trivandrum, Kerala'
+    #     }
+    # forms = Quotation_invoice_form(initial=details)
+    return render(request,"quotation_invoice.html",{'details':details})
 
 
 
@@ -212,7 +215,131 @@ def search(request):
 
 
 # ACCOUNT_SECTION
+# CUSTOMER ACCOUNT SECTION
 def register(request):
+    if "username" in request.session:
+        return redirect('crm_app:index')
+    if request.method == 'POST':
+        if request.POST['password'] == request.POST['confirm_password']:
+            try:
+                user = User.objects.get(username=request.POST['username'])
+                print('username already taken')
+                return render(request,'register.html',{'error':"username alredy taken"})
+            except User.DoesNotExist:
+                user = User.objects.create_user(username = request.POST['username'], password = request.POST['password'])
+                phn = request.POST['phn']
+                age = request.POST['age']
+                extenduser = ExtendedUserModel(phn_number=phn,age=age,user=user)
+                extenduser.save();
+                print('user created')
+                auth.login(request.user)
+                return redirect('crm_app:login')
+        else:
+            print('password not matching')
+            return render(request,'register.html',{'error':'password doesnot match'})
+    else:
+        return render(request,'register.html')
+
+
+
+def login(request):
+    if 'username' in request.session:
+        return redirect('crm_app:index')
+    if request.method=='POST':
+        user = auth.authenticate(username=request.POST['username'],password=request.POST['password'])
+        if user is not None:
+            request.session['username'] = request.POST['username']
+            auth.login(request,user)
+            print("logged in")
+            return redirect('crm_app:index') 
+        else:
+            return render(request,'login.html',{'error':'Invlaid login credentials'})
+            
+    else:
+        return render(request,'login.html')
+
+
+
+
+# def register(request):
+#     if "username" in request.session:
+#         return redirect('crm_app:index')
+#     if request.method == "POST":
+#         firstname = request.POST.get("first_name")
+#         lastname = request.POST.get("last_name")
+#         username = request.POST.get('username')
+#         email = request.POST.get('email')
+#         password1 = request.POST.get("password1")
+#         password2 = request.POST.get("password2")  
+#         if password1 == password2:
+#             if User.objects.filter(username=username).exists():
+#                 print("username alredy exists")
+#                 messages.info(request,"username already exist")
+#                 return redirect("crm_app:register")
+#             elif User.objects.filter(email=email).exists():
+#                 print("email alredy exists")
+#                 messages.info(request,"email  already registered")
+#                 return redirect("crm_app:register")
+#             else:
+#                 user = User.objects.create_user(username=username,email=email,first_name=firstname,last_name=lastname,password=password1)
+#                 user.save();
+#                 print('user created')
+#                 return redirect('crm_app:login')
+#         else:
+#             print('Password Not Matched')
+#             return redirect('crm_app:register')    
+#     return render(request,"register.html")
+
+
+
+# def customer_address(request):
+#     form = 
+#     if request.method == 'POST':
+#         form = (request.POST)
+#         if form.is_valid():
+#             form.save();
+#             print('address created')
+#             return redirect('crm_app:login')
+#     else:
+#         form = ()
+#         print('address not created')
+
+#     return render(request,'customer_address.html',{'form':form})
+
+
+
+
+
+# def login(request):
+#     if 'username' in request.session:
+#         return redirect('crm_app:index')
+#     if request.method == "POST":
+#         username = request.POST.get('username')
+#         password = request.POST.get('password')
+#         user=auth.authenticate(username=username,password=password)
+#         if user is not None:
+#             request.session['username'] = username
+#             auth.login(request,user)
+#             return redirect("crm_app:index")
+#         else:
+#             print('invalid details')
+#             messages.info(request,"invalid details")
+#             return redirect("crm_app:login")
+#     else:
+#         return render(request,"login.html")    
+
+
+
+def logout(request):
+    if 'username' in request.session:
+        request.session.flush()
+    return redirect("crm_app:index")
+
+
+
+# STAFF ACCOUNT SECTION
+
+def staff_register(request):
     if "username" in request.session:
         return redirect('crm_app:index')
     if request.method == "POST":
@@ -224,11 +351,11 @@ def register(request):
             if User.objects.filter(username=username).exists():
                 print("username alredy exists")
                 messages.info(request,"username already exist")
-                return redirect("crm_app:register")
+                return redirect("crm_app:staff_register")
             elif User.objects.filter(email=email).exists():
                 print("email alredy exists")
                 messages.info(request,"email  already registered")
-                return redirect("crm_app:register")
+                return redirect("crm_app:staff_register")
             else:
                 user = User.objects.create_user(username=username, email=email,
                                         password=password1)
@@ -236,16 +363,14 @@ def register(request):
                 print("user created")
         else:
             print("password not matched")
-            return redirect('crm_app:register')
-        return redirect("crm_app:login")
+            return redirect('crm_app:staff_register')
+        return redirect("crm_app:staff_login")
     else:
-         return render(request,"register.html")
+        return render(request,'staff_register.html')
 
 
 
-
-
-def login(request):
+def staff_login(request):
     if 'username' in request.session:
         return redirect('crm_app:index')
     if request.method == "POST":
@@ -259,15 +384,10 @@ def login(request):
         else:
             print('invalid details')
             messages.info(request,"invalid details")
-            return redirect("crm_app:login")
+            return redirect("crm_app:staff_login")
     else:
-        return render(request,"login.html")    
+        return render(request,'staff_login.html')
 
 
 
-
-def logout(request):
-    if 'username' in request.session:
-        request.session.flush()
-    return redirect("crm_app:index")
 

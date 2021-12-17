@@ -1,13 +1,20 @@
 from django.urls import path,include
 from crm_app import views
 
+
 app_name = 'crm_app'
 
 
 
 urlpatterns = [
+    # customer account section
     path('', views.index, name='index'),
-    path('login', views.login, name='login'),
+    path('login/', views.login, name='login'),
+    path('logout/',views.logout,name="logout"),
+    path('register/', views.register, name='register'),
+    # staff account section
+    path('**staff-register*/',views.staff_register,name="staff_register"),
+    path('**staff-login*/',views.staff_login,name="staff_login"),
     path('register/', views.register, name='register'),
     path('starter/', views.starter, name='starter'),
     path('customers/', views.customer, name='customers'),
@@ -27,7 +34,9 @@ urlpatterns = [
     path('cartDetails/<int:product_id>/',views.buy_now,name="cartDetails"),
     path('min_product/<int:product_id>/',views.minus_button,name="minus"),
     path('del-product/<int:product_id>/',views.delete_button,name="del_product"),
-    path('logout/',views.logout,name="logout"),
+    # path('customer-address/',views.customer_address,name="customer_address"),
+    
+    
     
 
 ]

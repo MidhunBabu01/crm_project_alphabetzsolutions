@@ -163,18 +163,13 @@
                                 <div class="company-name">
                                     <label for="id_company_name">Company Name</label>
                                     <select name="company_name" class="form-control" id="id_company_name">
-<option value="Alphabet Solutionz">Alphabet Solutionz</option>
-
-<option value="Alphabet Technologies">Alphabet Technologies</option>
-
-</select>
-                                    
+                                        <option value="Alphabet Solutionz">Alphabet Solutionz</option>
+                                        <option option value="Alphabet Technologies">Alphabet Technologies</option>
+                                    </select>
                                 </div>
                                 <div class="company-addr">
-                                    <label for="id_company_address">Company A</label>
-                                    <textarea name="company_address" cols="40" rows="10" placeholder="company address" maxlength="250" required="" id="id_company_address">TC 13/1113 Thopil LineMedical College PO, Kumarapuram -695011Trivandrum, Kerala</textarea>
-                                
-        
+                                    <label for="id_company_address">Company Address</label>
+                                    <textarea name="company_address" cols="40" rows="10" placeholder="company address" maxlength="250" required="" id="id_company_address" disabled>TC 13/1113 Thopil LineMedical College PO, Kumarapuram -695011Trivandrum, Kerala</textarea>
                                 </div>
                             </div>
                             <div class="row" style="margin-top: 0em; width:40%">
@@ -187,11 +182,15 @@
                             <div class="customer-details" style="width: 40%;position: relative;">
                                 <div class="cust-details">
                                     <div class="cust-name">
-                                        <input type="text" name="customer_name" placeholder="customer name" maxlength="250" required="" id="id_customer_name">
-                                        
+                                        {% if user.is_authenticated %}
+                                        <textarea type="text" name="customer_name" placeholder="customer name" maxlength="250" required="" id="id_customer_name">{{user.username}}</textarea>
+                                        {% else %}
+                                        <textarea type="text" name="customer_name" placeholder="customer name" maxlength="250" required="" id="id_customer_name"></textarea>
+                                        {% endif %}
                                     </div>
                                     <div class="cust-addr">
-                                        <input type="text" name="customer_address" placeholder="customer address" maxlength="250" required="" id="id_customer_address">
+                                        <textarea type="text" name="customer_address" placeholder="customer address" maxlength="250" required="" id="id_customer_address"></textarea>
+                                        {% comment %} <input type="text" name="customer_address" placeholder="customer address" maxlength="250" required="" id="id_customer_address"> {% endcomment %}
                                     
                                     </div>
                                 </div>
@@ -219,34 +218,35 @@
                                 <tbody>
                                 <tr class="items-list">
                                     <td class="serial_no">1</td>
-                                    <td>
-                                        
-                                        {% comment %} <input type="text" name="item_name" placeholder="add item" maxlength="250" required="" id="id_item_name"> {% endcomment %}
-                                        {{forms.item_name}}
+                                    <td> 
+                                        <input type="text" name="item_name" placeholder="add item" maxlength="250" required="" id="id_item_name">
+                                        {% comment %} {{forms.item_name}} {% endcomment %}
                                     </td>
                                     <td>
-                                            {% comment %} <input type="number" name="quantity" class="quantity" required="" id="id_quantity"> {% endcomment %}
-                                            {{forms.item_code}}
+                                         <input type="number" name="quantity" class="quantity" required="" id="id_quantity">
+                                            {% comment %} {{forms.item_code}} {% endcomment %}
                                     </td>
                                     <td class="rate">
                                         <span class="currency-change type-inr">₹ </span>
-                                        {% comment %} <input type="number" name="rate" placeholder="rate" required="" id="id_rate" class="rate"> {% endcomment %}
-                                        {{forms.rate}}
+                                        <input type="number" name="rate" placeholder="rate" required="" id="id_rate" class="rate">
+                                        {% comment %} {{forms.rate}} {% endcomment %}
                                     </td>
                                     <td class="amount">
-
-                                        {{forms.quantity}}
-                                        {% comment %} <input type="number" name="amount" required="" id="id_amount"> {% endcomment %}
+                                        {% comment %} {{forms.quantity}} {% endcomment %}
+                                        <input type="number" name="amount" required="" id="id_amount">
                                         
                                     </td>
                                     <td class="amount">
-                                        {{forms.UOM}}
+                                        <input type="number" name="uom" required="" id="id_uom">
+                                        {% comment %} {{forms.UOM}} {% endcomment %}
                                     </td>
                                     <td class="amount">
-                                        {{forms.warranty}}
+                                        <input type="text" name="warranty" required="" id="id_warranty">
+                                        {% comment %} {{forms.warranty}} {% endcomment %}
                                     </td>
                                     <td class="amount">
-                                        {{forms.hsn_code}}
+                                        <input type="number" name="hsncode" required="" id="id_hsncode">
+                                        {% comment %} {{forms.hsn_code}} {% endcomment %}
                                     </td>
                                     <td class="remove-item" style="font-size: 20px; font-weight: bold; cursor: pointer;"><i class="far fa-times-circle"></i></td>
                                     
@@ -254,7 +254,7 @@
                                 
                                 </tbody>
                             </table>
-                            <button id="addrowitem">+ Add Item</button>
+                            {% comment %} <button id="addrowitem">+ Add Item</button> {% endcomment %}
                             
                             {% comment %} <h3 class="head-txt width-40">Does your invoice include GST?</h3>
                             <div class="row">
@@ -279,8 +279,9 @@
                             </div>
                             <div class="tnc-wrap">
                                 <h3 class="head-txt width-40">Terms &amp; Conditions:</h3>
-                                <input type="text" name="terms_and_conditions" maxlength="250" required="" id="id_terms_and_conditions">
                                 
+                                <textarea name="company_address" cols="40" rows="10" placeholder="company address" maxlength="250" required="" id="id_company_address" disabled>Sample Terms and conditions</textarea>
+                               
                             </div>
                         </div>
                     </div>

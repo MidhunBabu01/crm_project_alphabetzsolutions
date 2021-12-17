@@ -27,6 +27,8 @@ SECRET_KEY = 'django-insecure-pvcp#kel&96n5qz#_x^800g09e1_(6rl^t7j*@_fxplay_)z2y
 DEBUG = True
 
 ALLOWED_HOSTS = []
+# AUTH_USER_MODEL = 'acc_app.CustomUser'
+
 
 
 # Application definition
@@ -41,6 +43,7 @@ INSTALLED_APPS = [
     'crm_app',
     'crispy_forms',
     'flatpickr',
+    'acc_section'
     
 
     
@@ -139,3 +142,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+

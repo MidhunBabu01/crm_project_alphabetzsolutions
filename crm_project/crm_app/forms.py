@@ -50,23 +50,29 @@ class LeadAddForm(forms.ModelForm):
 
 
 
-class Quotation_invoice_form(forms.ModelForm):
-    class Meta:
-        model = Quotation_Invoice
-        fields = '__all__'
-        widgets = {
-            'company_name' : forms.Select(attrs={'class':'form-control'}),
-            'company_address' : forms.Textarea(attrs={'placeholder':'company address'}),
-            'customer_name' : forms.TextInput(attrs={'placeholder':'customer name'}),
-            'customer_address' : forms.TextInput(attrs={'placeholder':'customer address'}),
-            'item_name' : forms.TextInput(attrs={"class":"item"}),
-            'quantity': forms.NumberInput(attrs={'class':'quantity'}),
-            'rate': forms.NumberInput(attrs={'class':'rate'}),
-            'item_code': forms.TextInput(attrs={'class':'item_code'}),
-            'gst': forms.Select(attrs={'class':'form-control '}),
-            'UOM': forms.TextInput(attrs={'class':'uom'}),
-            'warranty': forms.TextInput(attrs={'class':'warranty'}),
-            'hsn_code': forms.TextInput(attrs={'class':'hsn'}),
-            'notes': forms.TextInput(),
-            'terms_and_conditions': forms.TextInput()
-        }
+# class Quotation_invoice_form(forms.ModelForm):
+#     class Meta:
+#         model = Quotation_Invoice
+#         fields = '__all__'
+#         widgets = {
+#             'company_name' : forms.Select(attrs={'class':'form-control'}),
+#             'company_address' : forms.Textarea(attrs={'placeholder':'company address'}),
+#             'customer_name' : forms.TextInput(attrs={'placeholder':'customer name'}),
+#             'customer_address' : forms.TextInput(attrs={'placeholder':'customer address'}),
+#             'item_name' : forms.TextInput(attrs={"class":"item"}),
+#             'quantity': forms.NumberInput(attrs={'class':'quantity'}),
+#             'rate': forms.NumberInput(attrs={'class':'rate'}),
+#             'item_code': forms.TextInput(attrs={'class':'item_code'}),
+#             'gst': forms.Select(attrs={'class':'form-control '}),
+#             'UOM': forms.TextInput(attrs={'class':'uom'}),
+#             'warranty': forms.TextInput(attrs={'class':'warranty'}),
+#             'hsn_code': forms.TextInput(attrs={'class':'hsn'}),
+#             'notes': forms.TextInput(),
+#             'terms_and_conditions': forms.TextInput()
+#         }
+
+
+
+
+
+

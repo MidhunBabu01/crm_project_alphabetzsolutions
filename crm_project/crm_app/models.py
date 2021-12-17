@@ -28,10 +28,6 @@ class Customer(models.Model):
 
 
 
-
-
-    
-
 class Leads(models.Model):
     def __str__(self):
         return self.company_name
@@ -153,3 +149,17 @@ class Items(models.Model):
         gst = (self.prodt.price*self.quantity*self.prodt.gst)/100
 
         return self.prodt.price*self.quantity+gst
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -45,88 +45,43 @@
                                     <div class="p-lg-5 p-4">
 
                                         <div>
-                                            <h5>Register account</h5>
+                                            <h5>Customer Details</h5>
                                             <p class="text-muted">Get your free Samply account now.</p>
                                         </div>
                                     
                                         <div class="mt-4 pt-3">
                                             <form  method="post">
                                                 {% csrf_token %}
-                                                <div class="mb-3">
-                                                    <label for="username" class="fw-semibold">Username</label>
-                                                    <input type="text" name="username" class="form-control" id="username" placeholder="Enter username">
-                                                </div>
-                        
-                                                <div class="mb-3 mb-4">
-                                                    <label for="userpassword" class="fw-semibold">Password</label>
-                                                    <input type="password" name="password"  class="form-control" id="userpassword" placeholder="Enter password">
-                                                </div>
-                                                <div class="mb-3 mb-4">
-                                                    <label for="userpassword" class="fw-semibold">Confirm Password</label>
-                                                    <input type="password" name="confirm_password"  class="form-control" id="userpassword" placeholder="Enter password">
-                                                </div>
-                                                <div class="mb-3 mb-4">
-                                                    <label for="userpassword" class="fw-semibold">Phone</label>
-                                                    <input type="number" name="phn"  class="form-control" id="userpassword" placeholder="Enter password">
-                                                </div>
-                                                <div class="mb-3 mb-4">
-                                                    <label for="userpassword" class="fw-semibold">Age</label>
-                                                    <input type="number" name="age"  class="form-control" id="userpassword" placeholder="Enter password">
-                                                </div>
-    
-                                                    {% comment %} <div class="form-group">
-                                                        <label for="recipient-name1" class="col-form-label">First Name</label>
-                                                        <input type="text" class="form-control" placeholder=" " name="first_name" id="first_name" required="">
-                                                    </div>
                                                     <div class="form-group">
-                                                        <label for="recipient-name1" class="col-form-label">Last Name</label>
-                                                        <input type="text" class="form-control" placeholder=" " name="last_name" id="last_name" required="">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="recipient-name1" class="col-form-label">Username</label>
-                                                        <input type="text" class="form-control" placeholder=" " name="username" id="username" required="">
-                                                    </div> {% endcomment %}
-                                                    {% comment %} <div class="form-group">
                                                         <label for="recipient-name1" class="col-form-label">Phone</label>
                                                         {{form.phone}}
                                                         {% comment %} <input type="number" class="form-control" placeholder=" " name="phone"   id="phone" required=""> {% endcomment %}
-                                                    {% comment %} </div>  {% endcomment %}
-                                                    {% comment %} <div class="form-group">
-                                                        <label for="recipient-email" class="col-form-label">Email</label>
-                                                        <input type="email" class="form-control" placeholder=" " name="email" id="email" required="">
-                                                    </div> {% endcomment %}
-                                                    {% comment %} <div class="form-group">
+                                                    </div>
+                                                    <div class="form-group">
                                                         <label for="recipient-email" class="col-form-label">Date Of Birth</label>
                                                         {{form.dob}}
                                                         {% comment %} <input type="date" class="form-control" placeholder=" " name="dob" id="dob" required=""> {% endcomment %}
-                                                     
-                                                    {% comment %} <div class="form-group">
+                                                    </div>
+                                                    <div class="form-group">
                                                         <label for="recipient-name1" class="col-form-label">Company Name</label>
                                                         {{form.company_name}}
                                                         {% comment %} <input type="text" class="form-control" placeholder=" " name="company_name" id="company_name" required=""> {% endcomment %}
-                                                    
-                                                    {% comment %} <div class="form-group">
+                                                    </div>
+                                                    <div class="form-group">
                                                         <label for="recipient-name1" class="col-form-label">Title</label>
                                                         {{form.title}}
                                                         {% comment %} <input type="text" class="form-control" placeholder="company position" name="companyposition" id="company_name" required=""> {% endcomment %}
-                                                    {% comment %} </div>
-                                                    < class="form-group">
+                                                    </div>
+                                                    <div class="form-group">
                                                         <label for="recipient-name1" class="col-form-label">Company Address</label>
                                                         {{form.company_address}}
                                                         {% comment %} <input type="text" class="form-control" placeholder="" name="company_address" id="company_address" required=""> {% endcomment %}
-                                
-                                                    {% comment %} <div class="form-group">
-                                                        <label for="password1" class="col-form-label">Password</label>
-                                                        <input type="password" class="form-control" placeholder=" " name="password1" id="password1" required="">
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="password2" class="col-form-label">Confirm Password</label>
-                                                        <input type="password" class="form-control" placeholder=" " name="password2" id="password2" required="">
-                                                    </div> {% endcomment %}
-                                                    {% comment %} <div class="form-group">
                                                         <label for="password2" class="col-form-label">Gst</label>
                                                         {{form.gst}}
                                                         {% comment %} <input type="text" class="form-control" placeholder=" " name="gst" id="gst" required=""> {% endcomment %}
+                                                    </div>
                                                     <div class="right-w3l">
                                                         <input type="submit" id="btn1" class="btn btn-info" value='Register'>
                                                     </div>
