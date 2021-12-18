@@ -225,11 +225,17 @@ def register(request):
                 user = User.objects.get(username=request.POST['username'])
                 print('username already taken')
                 return render(request,'register.html',{'error':"username alredy taken"})
+                
             except User.DoesNotExist:
-                user = User.objects.create_user(username = request.POST['username'], password = request.POST['password'])
+                user = User.objects.create_user(username = request.POST['username'], password = request.POST['password'],first_name=request.POST['first_name'],last_name=request.POST['last_name'],email=request.POST['email'])
                 phn = request.POST['phn']
                 age = request.POST['age']
-                extenduser = ExtendedUserModel(phn_number=phn,age=age,user=user)
+                company_name = request.POST['company_name']
+                company_address = request.POST['company_address']
+                title = request.POST['title']
+                dob = request.POST['dob']
+                gst = request.POST['gst']
+                extenduser = ExtendedUserModel(phn_number=phn,age=age,user=user,comapny_name=company_name,company_address=company_address,title=title,gst=gst,dob=dob)
                 extenduser.save();
                 print('user created')
                 auth.login(request,user)
@@ -254,7 +260,6 @@ def login(request):
             return redirect('crm_app:index') 
         else:
             return render(request,'login.html',{'error':'Invlaid login credentials'})
-            
     else:
         return render(request,'login.html')
 
