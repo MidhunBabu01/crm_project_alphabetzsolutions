@@ -85,12 +85,13 @@ def customer_profile(request,customer_id):
 
 @login_required
 def Quotation_invoice(request,cart_items=None,total=0,count=0):
+    # Usertable.filter(extendedtable__address)
     try:
         ct = CartList.objects.get(cart_id=c_id(request))
         ct_items = Items.objects.filter(cart=ct,active=True) 
         for i in ct_items:
             total += i.total
-            count += i.quantity      
+            count += i.quantity
     except ObjectDoesNotExist:
         return redirect("crm_app:cart2")
     return render(request,"quotation_invoice.html",{"ct_items":ct_items, "total":total, "count":count})

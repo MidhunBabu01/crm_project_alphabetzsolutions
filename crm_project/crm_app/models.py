@@ -3,6 +3,8 @@ from django.db.models.fields import CharField
 from django.forms.fields import DateTimeField
 import datetime
 from django.template.defaultfilters import slugify
+from django.contrib.auth.models import User
+
 
 # Create your models here.
 class Customer(models.Model):
@@ -143,7 +145,7 @@ class Items(models.Model):
     quantity = models.IntegerField()
     active = models.BooleanField(default=True)
     def __str__(self):
-        return self.prodt
+        return self.prodt.product_name
     @property
     def total(self):
         gst = (self.prodt.price*self.quantity*self.prodt.gst)/100

@@ -169,7 +169,7 @@
                                 </div>
                                 <div class="company-addr">
                                     <label for="id_company_address">Company Address</label>
-                                    <textarea name="company_address" cols="40" rows="10" placeholder="company address" maxlength="250" required="" id="id_company_address" disabled>TC 13/1113 Thopil LineMedical College PO, Kumarapuram -695011Trivandrum, Kerala</textarea>
+                                    <textarea name="company_address" class="form-control invoice-address" cols="40" rows="3" placeholder="company address" maxlength="250" required="" id="id_company_address" disabled>TC 13/1113 Thopil LineMedical College PO, Kumarapuram -695011Trivandrum, Kerala</textarea>
                                 </div>
                             </div>
                             <div class="row" style="margin-top: 0em; width:40%">
@@ -283,18 +283,19 @@
                                     <input type="hidden" id="amount-without-gst" name="amount-without-gst">
                                 </div>
                             </div> {% endcomment %}
-                            <div class="total-amount-wrap border-box"><span>Total : &nbsp;&nbsp;</span><span class="currency-total">₹                                {{total}}</span><input type="number" name="total_amt" id="total-amount" placeholder="" min="0" readonly=""> </div>
+                            <div class="total-amount-wrap border-box"><span>Total : &nbsp;&nbsp;</span><span class="currency-total">₹ {{total}}</span> </div>
                         </div>
                         <div class="other-notes">
                             <div class="notes-wrap">
                                 <h3 class="head-txt width-40">Notes:</h3>
-                                <input type="text" name="notes" maxlength="250" required="" id="id_notes">
+                                <input type="text" class="form-control "  name="notes" maxlength="250" required="" id="id_notes">
                                 
                             </div>
                             <div class="tnc-wrap">
                                 <h3 class="head-txt width-40">Terms &amp; Conditions:</h3>
+                                <input type="text" class="form-control "  name="notes" maxlength="250" required="" id="id_notes">
                                 
-                                <textarea name="company_address" cols="40" rows="10" placeholder="company address" maxlength="250" required="" id="id_company_address" disabled>Sample Terms and conditions</textarea>
+                                {% comment %} <textarea name="company_address"  placeholder="company address" maxlength="250" required="" id="id_company_address" disabled>Sample Terms and conditions</textarea> {% endcomment %}
                                
                             </div>
                         </div>
