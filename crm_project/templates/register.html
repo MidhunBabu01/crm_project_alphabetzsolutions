@@ -13,6 +13,8 @@
         <meta content="Pichforest" name="author" />
         <!-- App favicon -->
         <link rel="shortcut icon" href="{% static 'assets/images/favicon.ico' %}">
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
         <!-- Bootstrap Css -->
         <link href="{% static 'assets/css/bootstrap.min.css' %}" id="bootstrap-style" rel="stylesheet" type="text/css" />
@@ -58,15 +60,15 @@
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="username" class="fw-semibold"><span class='text-danger mr-1'>*</span>First Name</label>
-                                                    <input type="text" name="first_name" class="form-control" id="username" placeholder="Enter Firstname">
+                                                    <input type="text" name="first_name" class="form-control" id="first_name" placeholder="Enter Firstname">
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="username" class="fw-semibold"><span class='text-danger mr-1'>*</span>Last Name</label>
+                                                    <label for="username" class="fw-semibold">Last Name</label>
                                                     <input type="text" name="last_name" class="form-control" id="username" placeholder="Enter Lastname">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="username" class="fw-semibold"><span class='text-danger mr-1'>*</span>Email</label>
-                                                    <input type="text" name="email" class="form-control" id="username" placeholder="Enter Email">
+                                                    <input type="text" name="email" class="form-control" id="email" placeholder="Enter Email">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="username" class="fw-semibold">Company Name</label>
@@ -86,7 +88,7 @@
                                                 </div>
                                                 <div class="mb-3 mb-4">
                                                     <label for="userpassword" class="fw-semibold"><span class='text-danger mr-1'>*</span>Phone</label>
-                                                    <input type="number" name="phn"  class="form-control" id="userpassword" placeholder="Enter Phone">
+                                                    <input type="number" name="phn"  class="form-control" id="phone" placeholder="Enter Phone">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="username" class="fw-semibold">Gst</label>
@@ -94,15 +96,15 @@
                                                 </div>
                                                 <div class="mb-3 mb-4">
                                                     <label for="userpassword" class="fw-semibold">Age</label>
-                                                    <input type="number" name="age"  class="form-control" id="userpassword" placeholder="Enter Age">
+                                                    <input type="number" name="age"  class="form-control" id="age" placeholder="Enter Age">
                                                 </div>
                                                 <div class="mb-3 mb-4">
                                                     <label for="userpassword" class="fw-semibold">Password</label>
-                                                    <input type="password" name="password"  class="form-control" id="userpassword" placeholder="Password">
+                                                    <input type="password" name="password"  class="form-control" id="password1" placeholder="Password">
                                                 </div>
                                                 <div class="mb-3 mb-4">
                                                     <label for="userpassword" class="fw-semibold">Confirm Password</label>
-                                                    <input type="password" name="confirm_password"  class="form-control" id="userpassword" placeholder="Confirm Password">
+                                                    <input type="password" name="confirm_password"  class="form-control" id="password2" placeholder="Confirm Password">
                                                 </div>
     
                                                     {% comment %} <div class="form-group">
@@ -159,7 +161,7 @@
                                                         {{form.gst}}
                                                         {% comment %} <input type="text" class="form-control" placeholder=" " name="gst" id="gst" required=""> {% endcomment %}
                                                     <div class="right-w3l">
-                                                        <input type="submit" id="btn1" class="btn btn-info" value='Register'>
+                                                        <button class="btn btn-primary w-md waves-effect waves-light"  id="btn1">Register</button>
                                                     </div>
                                                 </form>
                                         </div>
@@ -190,6 +192,57 @@
         <!-- end account page -->
 
         <!-- JAVASCRIPT -->
+        {% comment %} <script>
+            $('#btn1').click(function(e){
+                e.preventDefault();
+                var username = $('#username').val()
+                var email = $('#email').val()
+                var first_name = $('#first_name').val()
+                var phone = $('#phone').val()
+                var password1 = $('#password1').val()
+                var password2 = $('#password2').val()
+                var data ={
+                    'csrfmiddlewaretoken':'{{csrf_token}}',
+                    'username':username,
+                    'email':email,
+                    'first_name':first_name,
+                    'phone':phone,
+                    'password1':password1,
+                    'password2':password2,
+    
+                    
+                }
+                if(username == ''){
+                    alert('Enter Valid Username')
+                }else if(first_name==''){
+                    alert('Enter Valid first Name')
+                }else if(email ==''){
+                    alert('Enter Valid Email')
+                }else if(phone==''){
+                    alert('Enter Valid Phone Number')
+                }else if(password1 ==''){
+                    alert('Enter Valid Password')
+                }else if(password2 ==''){
+                    alert('Enter Valid Password')
+                }else
+                {
+                $.ajax({
+                    url:'/register/',
+                    method:"POST",
+                    data :data,
+                    dataType:'json',
+                    success:function(data){
+                        if(data.success){
+                            alert('Succesfully Registered')
+                            window.location.replace('/login/')
+                        }else{
+                            alert('User is not authenticated')
+                        }
+                    }
+                })
+            }
+            })
+        </script> {% endcomment %}
         {% comment %} <script>
             $('#btn1').click(function(e){
                 e.preventDefault();

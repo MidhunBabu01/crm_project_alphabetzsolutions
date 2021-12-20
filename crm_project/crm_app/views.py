@@ -9,7 +9,8 @@ from django.contrib.auth import authenticate
 from django.contrib import messages
 from django.db.models import Q
 from acc_section.models import ExtendedUserModel
-
+from django.contrib.auth.decorators import login_required
+from django.http.response import JsonResponse
 # Create your views here.
 def index(request):
     return render(request,'index.html')
@@ -82,15 +83,19 @@ def customer_profile(request,customer_id):
     customer_profile= Customer.objects.filter(id=customer_id)
     return render(request,'user_profile.html',{'customer_profile':customer_profile})
 
+@login_required
+def Quotation_invoice(request,cart_items=None,total=0,count=0):
+    try:
+        ct = CartList.objects.get(cart_id=c_id(request))
+        ct_items = Items.objects.filter(cart=ct,active=True) 
+        for i in ct_items:
+            total += i.total
+            count += i.quantity      
+    except ObjectDoesNotExist:
+        return redirect("crm_app:cart2")
+    return render(request,"quotation_invoice.html",{"ct_items":ct_items, "total":total, "count":count})
 
-def Quotation_invoice(request):
-    details = Items.objects.all()
-    # details = {
-    #     'company_address':'TC 13/1113 Thopil LineMedical College PO, Kumarapuram -695011Trivandrum, Kerala'
-    #     }
-    # forms = Quotation_invoice_form(initial=details)
-    return render(request,"quotation_invoice.html",{'details':details})
-
+    # return render(request,"quotation_invoice.html",{'ct_items':ct_items,'extendedusermodel':extendedusermodel,"total":total})
 
 
 def products(request):
@@ -102,7 +107,6 @@ def cart(request,total=0,count=0,cart_items=None):
         ct = CartList.objects.get(cart_id=c_id(request))
         ct_items = Items.objects.filter(cart=ct,active=True) 
         for i in ct_items:
-            # total +=(i.prodt.price*i.quantity)
             total += i.total
             count += i.quantity      
     except ObjectDoesNotExist:
@@ -257,9 +261,18 @@ def login(request):
             request.session['username'] = request.POST['username']
             auth.login(request,user)
             print("logged in")
-            return redirect('crm_app:index') 
+            return JsonResponse(
+                {'success':True},
+                safe=False
+            )
+            # return redirect('crm_app:index') 
         else:
-            return render(request,'login.html',{'error':'Invlaid login credentials'})
+            auth.login
+            return JsonResponse(
+                {'success':False},
+                safe=False
+            )
+            # return render(request,'login.html',{'error':'Invlaid login credentials'})
     else:
         return render(request,'login.html')
 

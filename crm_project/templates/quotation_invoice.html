@@ -43,7 +43,7 @@
     
 
     
-
+    <link type='text/css' href="{% static 'assets/css/inv.css' %}"
     <link type="text/css" href="{% static 'assets/css/oldApp.css' %}" rel="stylesheet" >
     <link type="text/css" href="{% static 'assets/css/paymentrevampdad7.css?version=0.24' %}" rel="stylesheet" >
     <link type="text/css" href="{% static 'assets/css/login_panelfbde.css?version=0.7' %}" rel="stylesheet" >
@@ -184,15 +184,19 @@
                                     <div class="cust-name">
                                         {% if user.is_authenticated %}
                                         <textarea type="text" name="customer_name" placeholder="customer name" maxlength="250" required="" id="id_customer_name">{{user.username}}</textarea>
+                                        <textarea type="text" name="customer_address" placeholder="customer address" maxlength="250" required="" id="id_customer_address">{{user.email}}</textarea>
                                         {% else %}
                                         <textarea type="text" name="customer_name" placeholder="customer name" maxlength="250" required="" id="id_customer_name"></textarea>
+                                        <div class="cust-addr">
+                                            <textarea type="text" name="customer_address" placeholder="customer address" maxlength="250" required="" id="id_customer_address"></textarea>
+                                        </div>    
                                         {% endif %}
                                     </div>
-                                    <div class="cust-addr">
-                                        <textarea type="text" name="customer_address" placeholder="customer address" maxlength="250" required="" id="id_customer_address"></textarea>
+                                    {% comment %} <div class="cust-addr">
+                                        <textarea type="text" name="customer_address" placeholder="customer address" maxlength="250" required="" id="id_customer_address"></textarea> {% endcomment %}
                                         {% comment %} <input type="text" name="customer_address" placeholder="customer address" maxlength="250" required="" id="id_customer_address"> {% endcomment %}
                                     
-                                    </div>
+                                    {% comment %} </div> {% endcomment %}
                                 </div>
                             </div>
                             <div class="cust-invoice-date">
@@ -207,50 +211,60 @@
                         <div class="product-details">
                             <table class="product-table">
                                 <thead>
-                                <tr><th width="5%">S.N.</th>
-                                <th width="40%">Item Name</th>
+                                <tr>
+                                <th width="25%">Item Name</th>
                                 <th width="12%">Item Code</th>
                                 <th width="20%">Rate</th>
-                                <th width="25%">Quantity</th>
-                                <th width='20%'>UOM</th>
-                                <th width="25%">Warranty</th>
+                                <th width="10%">Quantity</th>
+                                <th width='20%'>Gst</th>
+                                <th width="15%">Warranty</th>
                                 <th width="20%">HSN code</th>
                                 <tbody>
+                                {% for i in ct_items %}
                                 <tr class="items-list">
-                                    <td class="serial_no">1</td>
+                                    {% comment %} <td class="serial_no">1</td> {% endcomment %}
+                                    
                                     <td> 
-                                        <input type="text" name="item_name" placeholder="add item" maxlength="250" required="" id="id_item_name">
-                                        {% comment %} {{forms.item_name}} {% endcomment %}
+                                        
+                                        {% comment %} <input type="text" name="item_name" placeholder="add item" maxlength="250" required="" id="id_item_name"> {% endcomment %}
+                                        {{i.prodt.product_name}}
                                     </td>
                                     <td>
-                                         <input type="number" name="quantity" class="quantity" required="" id="id_quantity">
+                                         {% comment %} <input type="number" name="quantity" class="quantity" required="" id="id_quantity"> {% endcomment %}
                                             {% comment %} {{forms.item_code}} {% endcomment %}
+                                        {{i.prodt.item_code}}
                                     </td>
                                     <td class="rate">
                                         <span class="currency-change type-inr">₹ </span>
-                                        <input type="number" name="rate" placeholder="rate" required="" id="id_rate" class="rate">
+                                        {{i.prodt.price}}
+                                        {% comment %} <input type="number" name="rate" placeholder="rate" required="" id="id_rate" class="rate"> {% endcomment %}
                                         {% comment %} {{forms.rate}} {% endcomment %}
                                     </td>
                                     <td class="amount">
+                                        {{i.quantity}}
                                         {% comment %} {{forms.quantity}} {% endcomment %}
-                                        <input type="number" name="amount" required="" id="id_amount">
+                                        {% comment %} <input type="number" name="amount" required="" id="id_amount"> {% endcomment %}
                                         
                                     </td>
                                     <td class="amount">
-                                        <input type="number" name="uom" required="" id="id_uom">
+                                        {{i.prodt.gst}}%
+                                        {% comment %} <input type="number" name="uom" required="" id="id_uom"> {% endcomment %}
                                         {% comment %} {{forms.UOM}} {% endcomment %}
                                     </td>
                                     <td class="amount">
-                                        <input type="text" name="warranty" required="" id="id_warranty">
+                                        {{i.prodt.warranty}}
+                                        {% comment %} <input type="text" name="warranty" required="" id="id_warranty"> {% endcomment %}
                                         {% comment %} {{forms.warranty}} {% endcomment %}
                                     </td>
                                     <td class="amount">
-                                        <input type="number" name="hsncode" required="" id="id_hsncode">
+                                        {{i.prodt.hsn}}
+                                        {% comment %} <input type="number" name="hsncode" required="" id="id_hsncode"> {% endcomment %}
                                         {% comment %} {{forms.hsn_code}} {% endcomment %}
                                     </td>
-                                    <td class="remove-item" style="font-size: 20px; font-weight: bold; cursor: pointer;"><i class="far fa-times-circle"></i></td>
+                                    <td class="remove-item" style="font-size: 20px; font-weight: bold; cursor: pointer;"></td>
                                     
                                 </tr>
+                                {% endfor %}
                                 
                                 </tbody>
                             </table>
@@ -269,7 +283,7 @@
                                     <input type="hidden" id="amount-without-gst" name="amount-without-gst">
                                 </div>
                             </div> {% endcomment %}
-                            <div class="total-amount-wrap border-box"><span>Total : &nbsp;&nbsp;</span><span class="currency-total">₹</span> <input type="number" name="total_amt" id="total-amount" placeholder="00.00" min="0" readonly=""> </div>
+                            <div class="total-amount-wrap border-box"><span>Total : &nbsp;&nbsp;</span><span class="currency-total">₹                                {{total}}</span><input type="number" name="total_amt" id="total-amount" placeholder="" min="0" readonly=""> </div>
                         </div>
                         <div class="other-notes">
                             <div class="notes-wrap">

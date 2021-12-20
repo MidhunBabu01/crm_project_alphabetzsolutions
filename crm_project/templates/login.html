@@ -13,6 +13,7 @@
         <meta content="Pichforest" name="author" />
         <!-- App favicon -->
         <link rel="shortcut icon" href="{% static 'assets/images/favicon.ico' %}">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
         <!-- Bootstrap Css -->
         <link href="{% static 'assets/css/bootstrap.min.css' %}" id="bootstrap-style" rel="stylesheet" type="text/css" />
@@ -59,7 +60,7 @@
                         
                                                 <div class="mb-3 mb-4">
                                                     <label for="userpassword" class="fw-semibold">Password</label>
-                                                    <input type="password" name="password"  class="form-control" id="userpassword" placeholder="Enter password">
+                                                    <input type="password" name="password"  class="form-control" id="password" placeholder="Enter password">
                                                 </div>
                                                 <div class="row align-items-center">
                                                     <div class="col-6">
@@ -70,7 +71,7 @@
                                                     </div>  
                                                     <div class="col-6">
                                                         <div class="text-end">
-                                                            <button class="btn btn-primary w-md waves-effect waves-light" type="submit">Log In</button>
+                                                            <button class="btn btn-primary w-md waves-effect waves-light"  id="btn1">Log In</button>
                                                         </div>
                                                         <p>Dont have an account ? <a href="{% url 'crm_app:register' %}" class="fw-semibold text-decoration-underline"> Register </a> </p>
                                                     </div>
@@ -109,6 +110,41 @@
         
 
         <!-- JAVASCRIPT -->
+        <script>
+            $("#btn1").click(function(e){
+                e.preventDefault();
+                var username = $('#username').val()
+                var password = $('#password').val()
+                var data ={
+                    'csrfmiddlewaretoken':'{{csrf_token}}',
+                    'username':username,
+                    'password':password
+                    
+                }
+                if(username == ''){
+                    alert('Enter valid username')
+                }else if(password == ''){
+                    alert('Enter valid Password')
+                }else
+                {
+                $.ajax({
+                    url:'/login/',
+                    method:"POST",
+                    data :data,
+                    dataType:'json',
+                    success:function(data){
+                        if(data.success){
+                            alert('User Logged in')
+                            window.location.replace('/')
+                        }else{
+                            alert('User is not authenticated')
+                        }
+                    }
+                })
+            }
+    
+            })
+        </script>
         <script src="{% static 'assets/libs/jquery/jquery.min.js' %}"></script>
         <script src="{% static 'assets/libs/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
         <script src="{% static 'assets/libs/metismenu/metisMenu.min.js' %}"></script>
