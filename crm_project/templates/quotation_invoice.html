@@ -184,7 +184,7 @@
                                     <div class="cust-name">
                                         {% if user.is_authenticated %}
                                         <textarea type="text" name="customer_name" placeholder="customer name" maxlength="250" required="" id="id_customer_name">{{user.username}}</textarea>
-                                        <textarea type="text" name="customer_address" placeholder="customer address" maxlength="250" required="" id="id_customer_address">{{user.email}}</textarea>
+                                        <textarea type="text" name="customer_address" placeholder="customer address" maxlength="250" required="" id="id_customer_address">{{user.extendedusermodel.company_address}}</textarea>
                                         {% else %}
                                         <textarea type="text" name="customer_name" placeholder="customer name" maxlength="250" required="" id="id_customer_name"></textarea>
                                         <div class="cust-addr">
@@ -306,16 +306,11 @@
                         <div id="slider">
                             <div id="slider-nav">
                                 <a href="#" data-slide="0" data-theme="1" class="current">Preview</a>
-                                
-                                
                             </div>
                             <div id="slider-wrapper">
                                 <div class="slide">
                                     <div id="content" style="width: 90%;"></div>
                                 </div>
-                                
-                                
-                                
                             </div>
                         </div>
                     </div>
@@ -338,8 +333,8 @@
                     </div>
                 </div>
                 <div class="next-button">
-                    <button type="button" id="prev-option" disabled="disabled">Previous</button>
-                    <button type="button" id="next-option">Next</button>
+                    {% comment %} <button type="button" id="prev-option" disabled="disabled">Previous</button> {% endcomment %}
+                    <button type="button" id="next-option">Generate Pdf</button>
                 </div>
             </div>
             
