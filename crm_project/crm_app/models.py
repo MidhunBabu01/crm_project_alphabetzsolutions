@@ -1,9 +1,10 @@
 from django.db import models
 from django.db.models.fields import CharField
 from django.forms.fields import DateTimeField
-import datetime
+# import datetime
 from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
+from datetime import datetime, timedelta
 
 
 # Create your models here.
@@ -34,7 +35,7 @@ class Leads(models.Model):
     def __str__(self):
         return self.company_name
     no = models.IntegerField()
-    date = models.DateField(default=datetime.date.today)
+    date = models.DateField(default=datetime.now())
     company_name = models.CharField(max_length=250)
     address = models.CharField(max_length=250)
     phone1 = models.CharField(max_length=10)
@@ -144,6 +145,8 @@ class Items(models.Model):
     cart = models.ForeignKey(CartList,on_delete=models.CASCADE)
     quantity = models.IntegerField()
     active = models.BooleanField(default=True)
+    order_Date = models.DateTimeField(default=datetime.now())
+    due_date = models.DateTimeField(default=datetime.now() + timedelta(days=30))
     def __str__(self):
         return self.prodt.product_name
     @property

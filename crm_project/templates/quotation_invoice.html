@@ -199,14 +199,16 @@
                                     {% comment %} </div> {% endcomment %}
                                 </div>
                             </div>
+                            {% for i in ct_items %}
                             <div class="cust-invoice-date">
                                 <div class="date">
-                                    Date : <input type="date" name="inv-date" id="inv-date" value="2021-12-07">
+                                    Order Date : {{i.order_Date}}
                                 </div>
                                 <div class="due-date">
-                                    Due Date: <input type="date" name="due-date" id="due-date" min="2021-12-08">
+                                    Due Date: {{i.due_date}}
                                 </div>
                             </div>
+                            {% endfor %}
                         </div>
                         <div class="product-details">
                             <table class="product-table">
@@ -286,18 +288,18 @@
                             <div class="total-amount-wrap border-box"><span>Total : &nbsp;&nbsp;</span><span class="currency-total">₹ {{total}}</span> </div>
                         </div>
                         <div class="other-notes">
-                            <div class="notes-wrap">
+                            {% comment %} <div class="notes-wrap">
                                 <h3 class="head-txt width-40">Notes:</h3>
                                 <input type="text" class="form-control "  name="notes" maxlength="250" required="" id="id_notes">
                                 
-                            </div>
-                            <div class="tnc-wrap">
-                                <h3 class="head-txt width-40">Terms &amp; Conditions:</h3>
-                                <input type="text" class="form-control "  name="notes" maxlength="250" required="" id="id_notes">
+                            </div> {% endcomment %}
+                            {% comment %} <div class="tnc-wrap"> {% endcomment %}
+                                {% comment %} <h3 class="head-txt width-40">Terms &amp; Conditions:</h3>
+                                <input type="text" class="form-control "  name="notes" maxlength="250" required="" id="id_notes"> {% endcomment %}
                                 
                                 {% comment %} <textarea name="company_address"  placeholder="company address" maxlength="250" required="" id="id_company_address" disabled>Sample Terms and conditions</textarea> {% endcomment %}
                                
-                            </div>
+                            {% comment %} </div> {% endcomment %}
                         </div>
                     </div>
                     <div class="choose-template process step-2">

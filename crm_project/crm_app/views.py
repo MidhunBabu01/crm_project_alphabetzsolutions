@@ -350,8 +350,7 @@ def login(request):
 
 
 def logout(request):
-    if 'username' in request.session:
-        request.session.flush()
+    auth.logout(request)
     return redirect("crm_app:index")
 
 
