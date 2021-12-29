@@ -6,6 +6,14 @@
 <!-- Mirrored from vyaparapp.in/invoice-generator by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Dec 2021 04:43:30 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
+    <style>
+        .product-details {
+            position:relative;
+            padding:20px 0 50px;
+            overflow:auto
+        }
+        
+    </style>
     <!-- Google Tag Manager -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -19,7 +27,7 @@
 
 
     
-    <title>Invoice Generator Software | Bill Maker App Free Download</title>
+    <title>Invoice</title>
 
     <meta name="description" content="Invoice Generator Software- Make bills for sale and purchase orders in just 20 seconds. Print, download &amp; share them with your customers easily.">
     <meta property="og:title" content="Invoice Generator Software | Bill Maker App Free Download"/>
@@ -93,15 +101,9 @@
                     #main-navigation{
                 margin-top: 35px;
             }
-            </style> {% endcomment %}
+            </> {% endcomment %}
 
 
-            <style>
-                .invoice-txt
-                {
-                    color:red !important;
-                }
-            </style>
     
 
 <!-- Scripts -->
@@ -158,14 +160,7 @@
                 <div class="main-invoice-wrap" id="invoice">
                     <div class="invoice-theme-1 process step-1" style="display: block;">
                         <div class="invoice-block-1" style="display: flex;justify-content: space-between;align-items: center;">
-                            <div class="invoice-txt" style="font-size: 2.5rem;font-weight: bold;color: #676767;"><span>Invoice</span></div>
-                            
-                            
-                            
-                            
-                            
-                            
-                            
+                            <div class="invoice-txt" style="font-size: 2.5rem;font-weight: bold;color:blue;"><span>Invoice</span></div>
                         </div>
                         <div class="invoice-block-2" style="display: flex;justify-content: space-between;align-items: center;">
                             <div class="company-details" style="width: 40%;position: relative;">
@@ -181,13 +176,8 @@
                                     <textarea name="company_address" class="form-control invoice-address" cols="40" rows="3" placeholder="company address" maxlength="250" required="" id="id_company_address" disabled>TC 13/1113 Thopil LineMedical College PO, Kumarapuram -695011Trivandrum, Kerala</textarea>
                                 </div>
                             </div>
-                            <div class="row" style="margin-top: 0em; width:40%">
-                                <img src="{% static 'assets/images/AS_logo-6.png' %}">
-                                {% comment %} <div style="border: 1px dashed; padding-top: 1em; padding-bottom: 1em; text-align: center; background-color: rgb(247, 247, 247); border-radius: 5px; color: rgb(103, 103, 103); display: block;" id="file-div">
-                                    <label for="file" style=" font-size: 15px;" id="file-placeholder"><b><i class="fa fa-picture-o" aria-hidden="true" style="font-size: 30px"></i><br></b></label>
-                                    <input type="file" accept="image/jpeg, image/png" name="file" id="file" style="display: none; padding-bottom:10px" onchange="loadFile(event)">
-                                </div> {% endcomment %}
-                                
+                            <div class="row" style="margin-left: 500px; width:40%">
+                                <img width="350px"  src="http://localhost:8000{% static 'assets/images/AS_logo-6.png' %}">
                             </div>
                         </div>
                         <p class="bill-txt">Bill To:</p>
@@ -205,11 +195,6 @@
                                         </div>    
                                         {% endif %}
                                     </div>
-                                    {% comment %} <div class="cust-addr">
-                                        <textarea type="text" name="customer_address" placeholder="customer address" maxlength="250" required="" id="id_customer_address"></textarea> {% endcomment %}
-                                        {% comment %} <input type="text" name="customer_address" placeholder="customer address" maxlength="250" required="" id="id_customer_address"> {% endcomment %}
-                                    
-                                    {% comment %} </div> {% endcomment %}
                                 </div>
                             </div>
                             {% for i in ct_items %}
@@ -315,113 +300,6 @@
                             {% comment %} </div> {% endcomment %}
                         </div>
                     </div>
-                    <div class="choose-template process step-2">
-                        <div id="slider">
-                            <div id="slider-nav">
-                                <a href="#" data-slide="0" data-theme="1" class="current">Preview</a>
-                            </div>
-                            <div id="slider-wrapper">
-                                <div class="slide">
-                                    <div id="content" style="width: 90%;"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="share-n-download process step-3">
-                        <p class="msg-txt">Yay! Your Invoice is ready. Choose one of the following options:</p>
-                        <div class="share-dwnld-options">
-                            <div class="options-block send-invoice">
-                                <i class="fas fa-paper-plane"></i>
-                                <p>Send</p>
-                            </div>
-                            <div class="options-block download-invoice">
-                                <i class="fas fa-file-pdf"></i>
-                                <p>Download</p>
-                            </div>
-                            <div class="options-block printe-invoice">
-                                <i class="fas fa-print"></i>
-                                <p>Print</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="next-button">
-                    {% comment %} <button type="button" id="prev-option" disabled="disabled">Previous</button> {% endcomment %}
-                    <a href="{% url 'crm_app:invoice_pdf' %}" id="download" class="btn btn-success">Generate Pdf</a>
-                </div>
-            </div>
-            
-        
-    
-</div></form>
-
-
-<div id="desktop_dwnld" class="modal">
-<div class="modal-content">
-    <p style="font-size: 24px;color: #097788;" class="center">Welcome to Vyapar Desktop Version</p>
-    <p style="font-size: 20px;color: #097788;" class="center">Please fill the details below</p>
-    <form id="dwnld-form">
-
-        <input type="hidden" name="_token" value="m1IraA51xIYNxu4cXQx4o23pFpAajbS2wUNaXz5n">
-        <input type="hidden" value="IN" name="country" id="country">
-        <input type="hidden" value="Chennai" name="city" id="city">
-        <input type="hidden" value="Tamil Nadu" name="region" id="region">
-        <div class="row" id="user_input" style="margin-top: 10px;margin-bottom: 10px;"><div class="input-field col s8 offset-s2">
-                    <input id="user_contact" type="tel" name="user_contact" value="" class="validate" required="">
-                    <label for="user_contact">Phone Number<span class="red-text text-lighten-2">*</span></label>
-                </div>
-                <div class="input-field col s8 offset-s2">
-                    <input id="pin_code" onkeydown="pin(event)" value="" name="pin_code" type="text" class="validate" onchange="try{setCustomValidity('')}catch(e){}" oninvalid="setCustomValidity('Please Enter Valid Pin code.')">
-                    <label for="pin_code">Pin Code (Postal Code)<span class="red-text text-lighten-2">*</span></label>
-                </div></div>
-        <div class="row">
-            <div class="col s10 offset-s1">
-                <p class="center" style="color: #989898;margin-bottom: 10px;margin-top: 10px;"><i class="material-icons" style="color: #097788; text-shadow: 0 2px 4px rgba(0,0,0,0.3);margin-right: 4px;vertical-align: middle;font-size: 22px">security</i><span>Your data is safe with us. It is only to make your experience with Vyapar better.</span></p>
-            </div>
-        </div>
-        <p class="input-field center">
-            <button id="dwnld-form_subBtn" type="submit" style="margin:auto;" class="waves-effect waves-light btn"><i class="material-icons right">arrow_downward</i>Continue Download</button>
-        </p>
-    </form>
-</div>
-</div>
-<div id="mobile_dwnld" class="modal" style="width: 40%;">
-<div class="modal-content">
-    <p style="font-size: 24px;color: #097788;" class="center">Welcome to Vyapar Mobile Version</p>
-    <p style="font-size: 20px;color: #097788;" class="center">Please fill the details below to receive download link via SMS</p>
-    <form id="dwnld-form-mobile">
-
-        <input type="hidden" name="_token" value="m1IraA51xIYNxu4cXQx4o23pFpAajbS2wUNaXz5n">
-
-        <div class="row" id="mobile_link" style="margin-top: 20px;margin-bottom: 10px;">
-            <div class="input-field col s6 offset-s3">
-            <input placeholder="Enter your number" id="mobile_number" name="phone" type="text" class="validate">
-            <label for="mobile_number">Phone Number (For India Users)</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s10 offset-s1">
-                <p class="center" style="color: #989898;margin-bottom: 10px;margin-top: 10px;"><i class="material-icons" style="color: #097788; text-shadow: 0 2px 4px rgba(0,0,0,0.3);margin-right: 4px;vertical-align: middle;font-size: 22px">security</i><span>Your data is safe with us. It is only to make your experience with Vyapar better.</span></p>
-            </div>
-        </div>
-        <p class="input-field center">
-            <button id="dwnld-form_subBtn-mobile" type="submit" style="margin:auto;" class="waves-effect waves-light btn"><i class="material-icons right">arrow_downward</i>SMS Link</button>
-        </p>
-    </form>
-</div>
-</div>
-<div class="row" style="display: flex; justify-content: center;">
-<div id="desktop-dwnld-confirm" class="modal col s10 m6 l4">
-    <div class="modal-content">
-        <h4>Desktop Download</h4>
-        <p>Do you want to download vyapar desktop application ? </p>
-    </div>
-    <div class="modal-footer">
-        <a class="modal-close waves-effect waves-green btn-flat">No</a>
-        <a class="dwnld-desktop-application modal-close waves-effect waves-green btn-flat" href="javascript:;" onclick="dwnldDesktopApplication()">Yes</a>
-    </div>
-</div>
-</div>
 
 <!-- Scripts -->
 

@@ -34,6 +34,7 @@ urlpatterns = [
     path('cartDetails/<int:product_id>/',views.buy_now,name="cartDetails"),
     path('min_product/<int:product_id>/',views.minus_button,name="minus"),
     path('del-product/<int:product_id>/',views.delete_button,name="del_product"),
+    path('invoice-pdf',views.invoice_pdf,name="invoice_pdf"),
     # path('customer-address/',views.customer_address,name="customer_address"),
     
     

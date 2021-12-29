@@ -1,5 +1,5 @@
 from django.core.exceptions import ObjectDoesNotExist, RequestAborted
-from django.http.response import HttpResponse
+from django.http.response import HttpResponse, ResponseHeaders
 from django.shortcuts import redirect, render,get_object_or_404
 from crm_app.models import Customer, Leads, Products,CartList,Items
 from .forms import CustomerAddForm, LeadAddForm
@@ -11,6 +11,9 @@ from django.db.models import Q
 from acc_section.models import ExtendedUserModel
 from django.contrib.auth.decorators import login_required
 from django.http.response import JsonResponse
+from django.http import HttpResponse
+from django.template.loader import get_template
+from xhtml2pdf import pisa
 # Create your views here.
 def index(request):
     return render(request,'index.html')
@@ -408,4 +411,21 @@ def staff_login(request):
 
 
 
+def invoice_pdf(request,cart_items=None,total=0,count=0):
+    ct = CartList.objects.get(cart_id=c_id(request))
+    ct_items = Items.objects.filter(cart=ct,active=True) 
+    for i in ct_items:
+        total += i.total
+        count += i.quantity
+    template_path = 'invoice_pdf.html'
+    context = {"ct_items":ct_items, "total":total, "count":count}
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'filename="products_report.pdf"'
+    template = get_template(template_path)
+    html = template.render(context)
+    pisa_status = pisa.CreatePDF(
+        html,dest=response)
+    if pisa_status.err:
+       return HttpResponse('We had some errors <pre>' + html + '</pre>')
+    return response
 
