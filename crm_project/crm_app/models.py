@@ -75,7 +75,6 @@ class Quotation_Invoice(models.Model):
         ('Alphabet Technologies','Alphabet Technologies')
     )
     company_name = models.CharField(max_length=250,choices=choice,default='1')
-
     company_address = models.TextField(max_length=250)
     # billing
     customer_name = models.CharField(max_length=250)
@@ -141,18 +140,21 @@ class CartList(models.Model):
         return self.cart_id
 
 class Items(models.Model):
+    def __str__(self):
+        return self.prodt.product_name
     prodt = models.ForeignKey(Products,on_delete=models.CASCADE)
     cart = models.ForeignKey(CartList,on_delete=models.CASCADE)
     quantity = models.IntegerField()
     active = models.BooleanField(default=True)
     order_Date = models.DateTimeField(default=datetime.now())
     due_date = models.DateTimeField(default=datetime.now() + timedelta(days=30))
-    def __str__(self):
-        return self.prodt.product_name
+    @property
+    def invoice_number(self):
+        return self.prodt.id + 5000
+    
     @property
     def total(self):
         gst = (self.prodt.price*self.quantity*self.prodt.gst)/100
-
         return self.prodt.price*self.quantity+gst
 
 

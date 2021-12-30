@@ -12,6 +12,14 @@
             padding:20px 0 50px;
             overflow:auto
         }
+        .product-table{
+            padding:8px 5px!important
+        }
+        .product-details{
+            position:relative;
+            padding:20px 0 50px;
+            overflow:auto
+        }
         
     </style>
     <!-- Google Tag Manager -->
@@ -185,9 +193,13 @@
                             <div class="customer-details" style="width: 40%;position: relative;">
                                 <div class="cust-details">
                                     <div class="cust-name">
-                                        {% if user.is_authenticated %}
-                                        <textarea type="text" name="customer_name" class='user-name' placeholder="customer name" maxlength="250" required="" id="id_customer_name" disabled>{{user.username}}</textarea>
+                                        {% if  user.is_authenticated %}
+                                        <label>Name:
+                                        <textarea type="text" name="customer_name" class='user-name' placeholder="customer name" maxlength="250" required="" id="id_customer_name" disabled>{{user.username}}</textarea><br>
+                                        </label>
+                                        <label>Address:
                                         <textarea type="text" name="customer_address" placeholder="customer address" maxlength="250" required="" id="id_customer_address" disabled>{{user.extendedusermodel.company_address}}</textarea>
+                                        </label>
                                         {% else %}
                                         <textarea type="text" name="customer_name" placeholder="customer name" maxlength="250" required="" id="id_customer_name"></textarea>
                                         <div class="cust-addr">
@@ -198,6 +210,7 @@
                                 </div>
                             </div>
                             {% for i in ct_items %}
+                            {% if forloop.first %}
                             <div class="cust-invoice-date">
                                 <div class="date">
                                     Order Date : {{i.order_Date}}
@@ -206,12 +219,13 @@
                                     Due Date: {{i.due_date}}
                                 </div>
                             </div>
+                            {% endif %}
                             {% endfor %}
                         </div>
                         <div class="product-details">
                             <table class="product-table">
                                 <thead>
-                                <tr>
+                                <tr >
                                 <th width="25%">Item Name</th>
                                 <th width="12%">Item Code</th>
                                 <th width="20%">Rate</th>
@@ -221,7 +235,7 @@
                                 <th width="20%">HSN code</th>
                                 <tbody>
                                 {% for i in ct_items %}
-                                <tr class="items-list">
+                                <tr class="items-list" style="padding-left:3px; font-size:10px; text-align:center" >
                                     {% comment %} <td class="serial_no">1</td> {% endcomment %}
                                     
                                     <td> 
@@ -283,7 +297,7 @@
                                     <input type="hidden" id="amount-without-gst" name="amount-without-gst">
                                 </div>
                             </div> {% endcomment %}
-                            <div class="total-amount-wrap border-box"><span>Total : &nbsp;&nbsp;</span><span class="currency-total">₹ {{total}}</span> </div>
+                            <div class="total-amount-wrap border-box" style="padding-left:600px"><span>Total : &nbsp;&nbsp;</span><span class="currency-total">₹ {{total}}</span> </div>
                         </div>
                         <div class="other-notes">
                             {% comment %} <div class="notes-wrap">

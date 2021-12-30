@@ -418,7 +418,7 @@ def invoice_pdf(request,cart_items=None,total=0,count=0):
         total += i.total
         count += i.quantity
     template_path = 'invoice_pdf.html'
-    context = {"ct_items":ct_items, "total":total, "count":count}
+    context = {"ct_items":ct_items, "total":total, "count":count,"user":request.user}
     response = HttpResponse(content_type='application/pdf')
     response['Content-Disposition'] = 'filename="products_report.pdf"'
     template = get_template(template_path)
