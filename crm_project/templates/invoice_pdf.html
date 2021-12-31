@@ -163,36 +163,38 @@
     <form method="post" id="invoice-form" action="https://vyaparapp.in/invoice-generator/pdf-invoice/1" enctype="multipart/form-data">
         <input type="hidden" name="_token" value="m1IraA51xIYNxu4cXQx4o23pFpAajbS2wUNaXz5n">
         
-        <div class="invoice-options">
+        <div class="invoice-options" style="width: 40px">
             <div class="invoice-theme-wrapper">
                 <div class="main-invoice-wrap" id="invoice">
+                    <div class="row" style="margin-left: 386px;">
+                        <img width="350px"  src="http://localhost:8000{% static 'assets/images/AS_logo-6.png' %}">
+                    </div>
                     <div class="invoice-theme-1 process step-1" style="display: block;">
                         <div class="invoice-block-1" style="display: flex;justify-content: space-between;align-items: center;">
-                            <div class="invoice-txt" style="font-size: 2.5rem;font-weight: bold;color:blue;"><span>Invoice</span></div>
+                            <div class="invoice-txt" style="font-size: 2.5rem;font-weight: bold;color:blue;"><span style="margin-top:100px;">INVOICE</span></div>
                         </div>
                         <div class="invoice-block-2" style="display: flex;justify-content: space-between;align-items: center;">
-                            <div class="company-details" style="width: 40%;position: relative;">
-                                <div class="company-name">
-                                    <label for="id_company_name">Company Name</label>
-                                    <select name="company_name" class="form-control" id="id_company_name">
+                            <div class="company-details" style="position: relative;">
+                                <div class="company-name" >
+                                    <label for="id_company_name"style="font-size:14px;">Bill From:</label>
+                                    <select name="company_name" class="form-control" style="font-size:14px;" id="id_company_name">
                                         <option value="Alphabet Solutionz">Alphabet Solutionz</option>
                                         <option option value="Alphabet Technologies">Alphabet Technologies</option>
                                     </select>
-                                </div>
-                                <div class="company-addr">
-                                    <label for="id_company_address">Company Address</label>
+                                </div><br>
+                                <div class="company-addr" style="font-size:14px;">
+                                    <label for="id_company_address">Address:</label>
                                     <textarea name="company_address" class="form-control invoice-address" cols="40" rows="3" placeholder="company address" maxlength="250" required="" id="id_company_address" disabled>TC 13/1113 Thopil LineMedical College PO, Kumarapuram -695011Trivandrum, Kerala</textarea>
                                 </div>
                             </div>
-                            <div class="row" style="margin-left: 500px; width:40%">
-                                <img width="350px"  src="http://localhost:8000{% static 'assets/images/AS_logo-6.png' %}">
-                            </div>
+                            
                         </div>
-                        <p class="bill-txt">Bill To:</p>
+                        
                         <div class="invoice-block-3">
-                            <div class="customer-details" style="width: 40%;position: relative;">
+                            <div class="customer-details" style="font-size:14px;">
                                 <div class="cust-details">
-                                    <div class="cust-name">
+                                    <p class="bill-txt">Bill To:</p>
+                                    <div class="cust-name" style="margin-left:35px; padding-top:-18px;">
                                         {% if  user.is_authenticated %}
                                         <label>Name:
                                         <textarea type="text" name="customer_name" class='user-name' placeholder="customer name" maxlength="250" required="" id="id_customer_name" disabled>{{user.username}}</textarea><br>
@@ -211,18 +213,18 @@
                             </div>
                             {% for i in ct_items %}
                             {% if forloop.first %}
-                            <div class="cust-invoice-date">
+                            <div class="cust-invoice-date" style="margin-left:455px; font-size:13px;">
                                 <div class="date">
                                     Order Date : {{i.order_Date}}
                                 </div>
-                                <div class="due-date">
+                                <div class="due-date" style="font-size:14px;">
                                     Due Date: {{i.due_date}}
                                 </div>
                             </div>
                             {% endif %}
                             {% endfor %}
                         </div>
-                        <div class="product-details">
+                        <div class="product-details" style="margin-left:-20px;font-size:14px;">
                             <table class="product-table">
                                 <thead>
                                 <tr >
@@ -235,7 +237,7 @@
                                 <th width="20%">HSN code</th>
                                 <tbody>
                                 {% for i in ct_items %}
-                                <tr class="items-list" style="padding-left:3px; font-size:10px; text-align:center" >
+                                <tr class="items-list" style="padding-left:3px; font-size:11px; text-align:center" >
                                     {% comment %} <td class="serial_no">1</td> {% endcomment %}
                                     
                                     <td> 
@@ -249,7 +251,7 @@
                                         {{i.prodt.item_code}}
                                     </td>
                                     <td class="rate">
-                                        <span class="currency-change type-inr">₹ </span>
+                                        <span class="currency-change type-inr">Rs </span>
                                         {{i.prodt.price}}
                                         {% comment %} <input type="number" name="rate" placeholder="rate" required="" id="id_rate" class="rate"> {% endcomment %}
                                         {% comment %} {{forms.rate}} {% endcomment %}
@@ -297,7 +299,7 @@
                                     <input type="hidden" id="amount-without-gst" name="amount-without-gst">
                                 </div>
                             </div> {% endcomment %}
-                            <div class="total-amount-wrap border-box" style="padding-left:600px"><span>Total : &nbsp;&nbsp;</span><span class="currency-total">₹ {{total}}</span> </div>
+                            <div class="total-amount-wrap border-box" style="padding-left:575px"><span>Total : &nbsp;&nbsp;</span><span class="currency-total">Rs {{total}}</span> </div>
                         </div>
                         <div class="other-notes">
                             {% comment %} <div class="notes-wrap">
