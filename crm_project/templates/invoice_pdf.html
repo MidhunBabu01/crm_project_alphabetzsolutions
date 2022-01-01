@@ -189,6 +189,15 @@
                             </div>
                             
                         </div>
+                        {% for i in ct_items %}
+                        {% if forloop.first %}
+                        <div>
+                            <div class="invoice-serial col-4" style="margin-left:550px; margin-top:50px; font-size:12px;">
+                                <div class="serial-no-invoice">INVOICE NO: AS00{{i.cart_id}}</div>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
                         
                         <div class="invoice-block-3">
                             <div class="customer-details" style="font-size:14px;">

@@ -190,13 +190,22 @@
                                 
                             </div>
                         </div>
+                        {% for i in ct_items %}
+                        {% if forloop.first %}
+                        <div>
+                            <div class="invoice-serial col-4" style="margin-left:590px; margin-top:50px;">
+                                <div class="serial-no-invoice">INVOICE NO: AS00{{i.cart_id}}</div>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
                         <p class="bill-txt">Bill To:</p>
                         <div class="invoice-block-3">
                             <div class="customer-details" style="width: 40%;position: relative;">
                                 <div class="cust-details">
                                     <div class="cust-name">
                                         {% if user.is_authenticated %}
-                                        <textarea type="text" name="customer_name" class='user-name' placeholder="customer name" maxlength="250" required="" id="id_customer_name" disabled>{{user.username}}</textarea>
+                                        <textarea type="text" name="customer_name" class='user-name' placeholder="customer name" style="height:52px;" maxlength="250" required="" id="id_customer_name" disabled>{{user.username}}</textarea>
                                         <textarea type="text" name="customer_address" placeholder="customer address" maxlength="250" required="" id="id_customer_address" disabled>{{user.extendedusermodel.company_address}}</textarea>
                                         {% else %}
                                         <textarea type="text" name="customer_name" placeholder="customer name" maxlength="250" required="" id="id_customer_name"></textarea>
@@ -211,9 +220,11 @@
                                     
                                     {% comment %} </div> {% endcomment %}
                                 </div>
+                               
                             </div>
                             {% for i in ct_items %}
                             {% if forloop.first %}
+                            
                             <div class="cust-invoice-date">
                                 <div class="date">
                                     Order Date : {{i.order_Date}}
@@ -224,6 +235,7 @@
                             </div>
                             {% endif %}
                             {% endfor %}
+                            
                         </div>
                         <div class="product-details">
                             <table class="product-table">
@@ -349,7 +361,7 @@
                 </div>
                 <div class="next-button">
                     {% comment %} <button type="button" id="prev-option" disabled="disabled">Previous</button> {% endcomment %}
-                    <a href="{% url 'crm_app:invoice_pdf' %}" id="download" class="btn btn-success">Generate Pdf</a>
+                    <a href="{% url 'crm_app:invoice_pdf' %}" id="download" class="btn btn-success">Confirm Order</a>
                 </div>
             </div>
             

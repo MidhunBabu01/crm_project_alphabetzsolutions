@@ -99,7 +99,6 @@ def Quotation_invoice(request,cart_items=None,total=0,count=0):
         return redirect("crm_app:cart2")
     return render(request,"quotation_invoice.html",{"ct_items":ct_items, "total":total, "count":count})
 
-    # return render(request,"quotation_invoice.html",{'ct_items':ct_items,'extendedusermodel':extendedusermodel,"total":total})
 
 
 def products(request):
