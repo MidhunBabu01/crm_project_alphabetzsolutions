@@ -419,7 +419,7 @@ def invoice_pdf(request,cart_items=None,total=0,count=0):
     template_path = 'invoice_pdf.html'
     context = {"ct_items":ct_items, "total":total, "count":count,"user":request.user}
     response = HttpResponse(content_type='application/pdf')
-    response['Content-Disposition'] = 'filename="products_report.pdf"'
+    response['Content-Disposition'] = 'filename="order_details.pdf"'
     template = get_template(template_path)
     html = template.render(context)
     pisa_status = pisa.CreatePDF(
@@ -427,4 +427,11 @@ def invoice_pdf(request,cart_items=None,total=0,count=0):
     if pisa_status.err:
        return HttpResponse('We had some errors <pre>' + html + '</pre>')
     return response
+
+
+
+from django.core.mail import EmailMessage
+from django.conf import settings
+from django.template.loader import render_to_string
+
 

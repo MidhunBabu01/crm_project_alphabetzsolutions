@@ -239,18 +239,17 @@
                                 <tr >
                                 <th width="25%">Item Name</th>
                                 <th width="12%">Item Code</th>
-                                <th width="20%">Rate</th>
-                                <th width="10%">Quantity</th>
+                                <th width="20%">HSN Code</th>
+                                <th width="10%">Warranty</th>
+                                <th width='20%'>Quantity</th>
                                 <th width='20%'>Gst</th>
-                                <th width="15%">Warranty</th>
-                                <th width="20%">HSN code</th>
+                                <th width="15%">Rate</th>
+                                <th width="20%">Sub Total</th>
                                 <tbody>
                                 {% for i in ct_items %}
                                 <tr class="items-list" style="padding-left:3px; font-size:11px; text-align:center" >
                                     {% comment %} <td class="serial_no">1</td> {% endcomment %}
-                                    
-                                    <td> 
-                                        
+                                    <td>   
                                         {% comment %} <input type="text" name="item_name" placeholder="add item" maxlength="250" required="" id="id_item_name"> {% endcomment %}
                                         {{i.prodt.product_name}}
                                     </td>
@@ -260,29 +259,40 @@
                                         {{i.prodt.item_code}}
                                     </td>
                                     <td class="rate">
-                                        <span class="currency-change type-inr">Rs </span>
-                                        {{i.prodt.price}}
+                                        {{i.prodt.hsn}}
                                         {% comment %} <input type="number" name="rate" placeholder="rate" required="" id="id_rate" class="rate"> {% endcomment %}
                                         {% comment %} {{forms.rate}} {% endcomment %}
                                     </td>
                                     <td class="amount">
-                                        {{i.quantity}}
+                                        {{i.prodt.warranty}}
                                         {% comment %} {{forms.quantity}} {% endcomment %}
                                         {% comment %} <input type="number" name="amount" required="" id="id_amount"> {% endcomment %}
                                         
                                     </td>
                                     <td class="amount">
-                                        {{i.prodt.gst}}%
+                                        {{i.quantity}}
                                         {% comment %} <input type="number" name="uom" required="" id="id_uom"> {% endcomment %}
                                         {% comment %} {{forms.UOM}} {% endcomment %}
                                     </td>
                                     <td class="amount">
-                                        {{i.prodt.warranty}}
+                                        {{i.prodt.gst}}%
+                                        
                                         {% comment %} <input type="text" name="warranty" required="" id="id_warranty"> {% endcomment %}
                                         {% comment %} {{forms.warranty}} {% endcomment %}
                                     </td>
                                     <td class="amount">
-                                        {{i.prodt.hsn}}
+                                        <span class="currency-change type-inr">Rs </span>
+                                        {{i.prodt.price}}
+                                        {% comment %} <input type="number" name="hsncode" required="" id="id_hsncode"> {% endcomment %}
+                                        {% comment %} {{forms.hsn_code}} {% endcomment %}
+                                    </td>
+                                    <td class="amount">
+                                        
+                                        {% comment %} <input type="number" name="hsncode" required="" id="id_hsncode"> {% endcomment %}
+                                        {% comment %} {{forms.hsn_code}} {% endcomment %}
+                                    </td>
+                                    <td class="amount" style="margin-right:100px;">
+                                        {{i.total}}
                                         {% comment %} <input type="number" name="hsncode" required="" id="id_hsncode"> {% endcomment %}
                                         {% comment %} {{forms.hsn_code}} {% endcomment %}
                                     </td>
@@ -308,7 +318,7 @@
                                     <input type="hidden" id="amount-without-gst" name="amount-without-gst">
                                 </div>
                             </div> {% endcomment %}
-                            <div class="total-amount-wrap border-box" style="padding-left:575px"><span>Total : &nbsp;&nbsp;</span><span class="currency-total">Rs {{total}}</span> </div>
+                            <div class="total-amount-wrap border-box" style="padding-left:540px"><span> Grand Total : &nbsp;&nbsp;</span><span class="currency-total">Rs {{total}}</span> </div>
                         </div>
                         <div class="other-notes">
                             {% comment %} <div class="notes-wrap">

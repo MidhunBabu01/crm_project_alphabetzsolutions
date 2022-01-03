@@ -145,3 +145,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = 'crm_app:quotation_invoice'
 LOGIN_URL = 'crm_app:login'
+
+
