@@ -419,7 +419,7 @@ def invoice_pdf(request,cart_items=None,total=0,count=0):
     template_path = 'invoice_pdf.html'
     context = {"ct_items":ct_items, "total":total, "count":count,"user":request.user}
     response = HttpResponse(content_type='application/pdf')
-    response['Content-Disposition'] = 'filename="order_details.pdf"'
+    response['Content-Disposition'] = 'filename="inoice_details.pdf"'
     template = get_template(template_path)
     html = template.render(context)
     pisa_status = pisa.CreatePDF(

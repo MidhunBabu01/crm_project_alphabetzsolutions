@@ -1,67 +1,136 @@
 {% load static %}
 <html>
-    <head>
-        <link rel="stylesheet" href="{% static 'css/cart.css' %}">
-        <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
+<head>
+    <title>Cart</title>
+    <link rel="stylesheet" href="{% static 'assets/css/cart2.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'assets/css/font-awesome.min.css' %}" type="text/css">
+    <script src="{% static 'assets/js/jquery-3.3.1.slim.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
 
-      <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-    </head>
+
+</head>
 <body>
-    <div class="container">
-        <table id="cart" class="table table-hover  table-condensed">
-            <thead>
-                <tr>
-                    <th style="width:50%">Product</th>
-                    <th style="width:10%">Price</th>
-                    <th style="width:8%">Quantity</th>
-                    <th style="width:8%">Gst</th>
-                    <th style="width:22%" class="text-center">Subtotal</th>
-                    <th style="width:10%"></th>
-                </tr>
-            </thead>
-            {% for i in ct_items %}
-            <tbody>
-                <tr>
-                    <td data-th="Product">
-                        <div class="row">
-                            <div class="col-sm-2 hidden-xs"><img src="{{i.prodt.photo.url}}" alt="..." class="img-responsive"/></div>
-                                <div class="col-sm-10">
-                                    <h4 class="nomargin">{{i.prodt.product_name}}</h4>
-                                        <p>{{i.prodt.desc}}</p>
-                               </div>
-                           </div>
-                    </td>
-                    <td data-th="Price">{{i.prodt.price}}</td>
-                        <td data-th="Quantity">
-                            <h5><a href="{% url 'crm_app:cartDetails' i.prodt.id %}"><i class="fa fa-plus" style="font-size:13px;color:blue" ></i></a>{{i.quantity}}<a href="{% url 'crm_app:minus' i.prodt.id %}"><i class="fa fa-minus" style="font-size:13px;color:red"></i></h5></a>
-                            {% comment %} <input type="number" class="form-control text-center" value="1"> {% endcomment %}
-                                </td>
-                                <td data-th="Price">{{i.prodt.gst}}%</td>
-                                <td data-th="Subtotal" class="text-center">{{i.total}}</td>
-                                <td class="actions" data-th="">
-                                    <a href="{% url 'crm_app:del_product' i.prodt.id %}"><button  class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>								
-                                </td>
-                            </tr>
-           
-                        </tbody>
-                        {% endfor %} 
-                        <tfoot>
-                            <tr class="visible-xs">
-                                <td class="text-center"><strong>{{total}}</strong></td>
-                            </tr>
-                            <tr>
-                                <td><a href="{% url 'crm_app:products' %}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
-                                <td colspan="2" class="hidden-xs"></td>
-                                <td class="hidden-xs text-center"><strong>Total: {{total}}</strong></td>
-                                <td><a href="{% url 'crm_app:quotation_invoice' %}" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
-                            </tr>
-                        </tfoot>
-                    </table>
+<div class="px-4 px-lg-0">
+  <!-- For demo purpose -->
+  <div class="container text-white py-5 text-center">
+    {% comment %} <h1 class="display-4">Bootstrap 4 shopping cart</h1>
+    <p class="lead mb-0">Build a fully structred shopping cart page using Bootstrap 4. </p>
+    <p class="lead">Snippet by <a href="https://bootstrapious.com/snippets" class="text-white font-italic">
+            <u>Bootstrapious</u></a>
+    </p> {% endcomment %}
+  </div>
+  <!-- End -->
 
-                   
+  <div class="pb-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
+          <!-- Shopping cart table -->
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col" class="border-0 bg-light">
+                    <div class="p-2 px-3 text-uppercase">Product</div>
+                  </th>
+                  <th scope="col" class="border-0 bg-light">
+                    <div class="py-2 text-uppercase">Price</div>
+                  </th>
+                  <th scope="col" class="border-0 bg-light">
+                    <div class="py-2 text-uppercase">Quantity</div>
+                  </th>
+                  <th scope="col" class="border-0 bg-light">
+                    <div class="py-2 text-uppercase">Remove</div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for i in ct_items %}
+                <tr>
+                  <th scope="row" class="border-0">
+                    <div class="p-2">
+                      <img src="{{i.prodt.photo.url}}" alt="" width="70" class="img-fluid rounded shadow-sm">
+                      <div class="ml-3 d-inline-block align-middle">
+                        <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle">{{i.prodt.product_name}}</a></h5><span class="text-muted font-weight-normal font-italic d-block">desc: </span>
+                      </div>
+                    </div>
+                  </th>
+                  <td class="border-0 align-middle"><strong>{{i.prodt.price}}</strong></td>
+                  <td class="border-0 align-middle"><strong><h5><a href="{% url 'crm_app:cartDetails' i.prodt.id %}"><i class="fa fa-plus" style="font-size:13px;color:blue" ></i></a>{{i.quantity}}<a href="{% url 'crm_app:minus' i.prodt.id %}"><i class="fa fa-minus" style="font-size:13px;color:red"></i></h5></a></strong></td>
+                  <td class="border-0 align-middle"><a href="#" class="text-dark"><i class="fa fa-trash"></i></a></td>
+                </tr>
+                {% endfor %}
+                {% comment %} <tr>
+                  <th scope="row">
+                    <div class="p-2">
+                      <img src="https://bootstrapious.com/i/snippets/sn-cart/product-2.jpg" alt="" width="70" class="img-fluid rounded shadow-sm">
+                      <div class="ml-3 d-inline-block align-middle">
+                        <h5 class="mb-0"><a href="#" class="text-dark d-inline-block">Lumix camera lense</a></h5><span class="text-muted font-weight-normal font-italic">Category: Electronics</span>
+                      </div>
+                    </div>
+                  </th>
+                  <td class="align-middle"><strong>$79.00</strong></td>
+                  <td class="align-middle"><strong>3</strong></td>
+                  <td class="align-middle"><a href="#" class="text-dark"><i class="fa fa-trash"></i></a>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    <div class="p-2">
+                      <img src="https://bootstrapious.com/i/snippets/sn-cart/product-3.jpg" alt="" width="70" class="img-fluid rounded shadow-sm">
+                      <div class="ml-3 d-inline-block align-middle">
+                        <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block">Gray Nike running shoe</a></h5><span class="text-muted font-weight-normal font-italic">Category: Fashion</span>
+                      </div>
+                    </div>
+                    <td class="align-middle"><strong>$79.00</strong></td>
+                    <td class="align-middle"><strong>3</strong></td>
+                    <td class="align-middle"><a href="#" class="text-dark"><i class="fa fa-trash"></i></a>
+                    </td>
+                </tr> {% endcomment %}
+              </tbody>
+            </table>
+          </div>
+          <!-- End -->
+        </div>
+      </div>
+
+      <div class="row py-5 p-4 bg-white rounded shadow-sm">
+        {% comment %} <div class="col-lg-6">
+          <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Coupon code</div>
+          <div class="p-4">
+            <p class="font-italic mb-4">If you have a coupon code, please enter it in the box below</p>
+            <div class="input-group mb-4 border rounded-pill p-2">
+              <input type="text" placeholder="Apply coupon" aria-describedby="button-addon3" class="form-control border-0">
+              <div class="input-group-append border-0">
+                <button id="button-addon3" type="button" class="btn btn-dark px-4 rounded-pill"><i class="fa fa-gift mr-2"></i>Apply coupon</button>
+              </div>
+            </div>
+          </div>
+          <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Instructions for seller</div>
+          <div class="p-4">
+            <p class="font-italic mb-4">If you have some information for the seller you can leave them in the box below</p>
+            <textarea name="" cols="30" rows="2" class="form-control"></textarea>
+          </div>
+        </div> {% endcomment %}
+        <div class="col-lg-6">
+          <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Order summary </div>
+          <div class="p-4">
+            <p class="font-italic mb-4">Shipping and additional costs are calculated based on values you have entered.</p>
+            <ul class="list-unstyled mb-4">
+              <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Order Subtotal </strong><strong>$390.00</strong></li>
+              <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Shipping and handling</strong><strong>$10.00</strong></li>
+              <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Tax</strong><strong>$0.00</strong></li>
+              <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Total</strong>
+                <h5 class="font-weight-bold">$400.00</h5>
+              </li>
+            </ul><a href="#" class="btn btn-dark rounded-pill py-2 btn-block">Procceed to checkout</a>
+          </div>
+        </div>
+      </div>
+
     </div>
+  </div>
+</div>
 </body>
 </html>
