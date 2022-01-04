@@ -98,10 +98,10 @@
                         </div>
 
                         <div class="dropdown d-inline-block">
-                            <button type="button" class="btn header-item waves-effect"
+                            {% comment %} <button type="button" class="btn header-item waves-effect"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <img id="header-lang-img" src="{% static 'assets/images/flags/us.jpg' %}" alt="Header Language" height="16" class="d-block">
-                            </button>
+                            </button> {% endcomment %}
                             <div class="dropdown-menu dropdown-menu-end">
 
                                 <!-- item-->
@@ -137,7 +137,7 @@
                         </div>
 
                         <div class="dropdown d-inline-block">
-                            <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-notifications-dropdown"
+                            {% comment %} <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-notifications-dropdown"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="mdi mdi-bell"></i>
                                 <span class="badge bg-danger rounded-pill">3</span>
@@ -229,10 +229,10 @@
                                         <i class="mdi mdi-arrow-right-circle me-1"></i> <span>View More..</span> 
                                     </a>
                                 </div>
-                            </div>
+                            </div> {% endcomment %}
                         </div>
 
-                        <div class="dropdown d-inline-block">
+                        {% comment %} <div class="dropdown d-inline-block">
                             <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <img class="rounded-circle header-profile-user" src="{% static 'assets/images/users/avatar-1.jpg' %}"
@@ -253,7 +253,7 @@
                                 <a class="dropdown-item" href="#"><i class="mdi mdi-lock text-muted font-size-16 align-middle me-1"></i> <span class="align-middle" key="t-lock-screen">Lock screen</span></a>
                                 <a class="dropdown-item" href="#"><i class="mdi mdi-logout text-muted font-size-16 align-middle me-1"></i> <span class="align-middle" key="t-logout">Logout</span></a>
                             </div>
-                        </div>
+                        </div> {% endcomment %}
 
                         <div class="dropdown d-inline-block">
                             <button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">
@@ -275,16 +275,13 @@
                         <!-- Left Menu Start -->
                         <ul class="metismenu list-unstyled" id="side-menu">
                             <li class="menu-title" key="t-menu">Menu</li>
-                
                             <li>
                                 <a href="{% url 'crm_app:index' %}" class="waves-effect">
                                     <i class='bx bxs-dashboard'></i>
                                     <span key="t-dashboard">Home</span>
                                 </a>
                             </li>
-
                             <li class="menu-title mt-3" key="t-more">More</li>
-
                             <li>
                                 <a href="{% url 'crm_app:index' %}">
                                     <i class='bx bxs-grid'></i>
@@ -983,6 +980,7 @@
                                                         <th>Requirements</th>
                                                         <th>Stage 1</th>
                                                         <th>Stage 2</th>
+                                                        <th>Action</th>
                                                     </tr>
                                                 </thead>
                                                 {% for i in leads %} 
@@ -1025,6 +1023,14 @@
                                                         <td>
                                                             {{i.stage2}}
                                                         </td>
+                                                        <td>
+                                                        <a href="{% url 'crm_app:leads_edit' i.id %}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
+                                                        <a href="{% url 'crm_app:leads_delete' i.id %}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                                                        {% comment %} <form action="{% url 'crm_app:leads_delete' i.id %}" method="post" class="d-inline">
+                                                            {% csrf_token %}
+                                                            <input type="submit" class="btn btn-danger" value="Delete"><i class="fas fa-trash"></i>
+                                                        </form> {% endcomment %}
+                                                        </td>   
                                                         {% comment %} <td>
                                                             <div class="dropdown">
                                                                 <a class="text-muted dropdown-toggle font-size-16" role="button"

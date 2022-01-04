@@ -8,19 +8,22 @@ app_name = 'crm_app'
 
 urlpatterns = [
     # customer account section
-    path('', views.index, name='index'),
-    path('login/', views.login, name='login'),
+    # path('login/', views.login, name='login'),
+    path('',views.staff_login,name="staff_login"),
+    path('index/', views.index, name='index'),
     path('logout/',views.logout,name="logout"),
     path('register/', views.register, name='register'),
     # staff account section
     path('**staff-register*/',views.staff_register,name="staff_register"),
-    path('**staff-login*/',views.staff_login,name="staff_login"),
+    path('staff-login/',views.staff_login,name="staff_login"),
     path('register/', views.register, name='register'),
     path('starter/', views.starter, name='starter'),
     path('customers/', views.customer, name='customers'),
     path('add-customer/', views.add_customer, name='add_customer'),
     path('leads/', views.leads, name='leads'),
     path('add-leads/', views.add_leads, name='add_leads'),
+    path('leads-update/<int:item_id>', views.lead_update, name='leads_edit'),
+    path('leads-delete/<int:item_id>', views.lead_delete, name='leads_delete'),
     path('junk-leads/', views.junk_leads, name='junk_leads'), 
     path('open-leads/', views.open_leads, name='open_leads'),
     path('closed-leads/', views.closed_leads, name='closed_leads'),

@@ -33,7 +33,7 @@
                 <div class="row justify-content-center">
                     <div class="col-md-10">
                         <div class="text-center mb-5">
-                            <a href="{% url 'crm_app:login' %}" class="auth-logo">
+                            <a href="{% url 'crm_app:staff_login' %}" class="auth-logo">
                                 <img src="{% static 'assets/images/logo-dark.png' %}" alt="Logo Dark" height="28" class="auth-logo-dark">
                                 <img src="{% static 'assets/images/logo-light.png' %}" alt="Logo Light" height="28" class="auth-logo-light">
                             </a>
@@ -45,7 +45,7 @@
                                     <div class="p-lg-5 p-4">
 
                                         <div>
-                                            <h5>Admin Login</h5>
+                                            <h5>Staff Login</h5>
                                             {% comment %} <p class="text-muted">Sign in to continue to Samply.</p> {% endcomment %}
                                         </div>
                                     
@@ -73,7 +73,7 @@
                                                         <div class="text-end">
                                                             <button class="btn btn-primary w-md waves-effect waves-light" type="submit">Log In</button>
                                                         </div>
-                                                        <p>Dont have an account ? <a href="{% url 'crm_app:staff_register' %}" class="fw-semibold text-decoration-underline"> Register </a> </p>
+                                                        {% comment %} <p>Dont have an account ? <a href="{% url 'crm_app:staff_register' %}" class="fw-semibold text-decoration-underline"> Register </a> </p> {% endcomment %}
                                                     </div>
                                                 </div>
                         

@@ -99,7 +99,7 @@
             <style>
                 .invoice-txt
                 {
-                    color:red !important;
+                    color:blue !important;
                 }
             </style>
     
@@ -158,7 +158,7 @@
                 <div class="main-invoice-wrap" id="invoice">
                     <div class="invoice-theme-1 process step-1" style="display: block;">
                         <div class="invoice-block-1" style="display: flex;justify-content: space-between;align-items: center;">
-                            <div class="invoice-txt" style="font-size: 2.5rem;font-weight: bold;color: #676767;"><span>Invoice</span></div>
+                            <div class="invoice-txt" style="font-size: 2.5rem;font-weight: bold;color: black;"><span>INVOICE</span></div>
                             
                             
                             
@@ -172,17 +172,17 @@
                                 <div class="company-name">
                                     <label for="id_company_name">Company Name</label>
                                     <select name="company_name" class="form-control" id="id_company_name">
-                                        <option value="Alphabet Solutionz">Alphabet Solutionz</option>
-                                        <option option value="Alphabet Technologies">Alphabet Technologies</option>
+                                        <option value="Alphabet Solutionz">Atlas Kitchen</option>
+                                        {% comment %} <option option value="Alphabet Technologies">Alphabet Technologies</option> {% endcomment %}
                                     </select>
                                 </div>
                                 <div class="company-addr">
                                     <label for="id_company_address">Company Address</label>
-                                    <textarea name="company_address" class="form-control invoice-address" cols="40" rows="3" placeholder="company address" maxlength="250" required="" id="id_company_address" disabled>TC 13/1113 Thopil LineMedical College PO, Kumarapuram -695011Trivandrum, Kerala</textarea>
+                                    <textarea name="company_address" class="form-control invoice-address" cols="40" rows="3" placeholder="company address" maxlength="250" required="" id="id_company_address" disabled>JassBuilding,Marappalam Road,Pattom,Trivandrum,Kerala</textarea>
                                 </div>
                             </div>
                             <div class="row" style="margin-top: 0em; width:40%">
-                                <img src="{% static 'assets/images/AS_logo-6.png' %}">
+                                <img src="{% static 'assets/images/atlas-logo.png' %}">
                                 {% comment %} <div style="border: 1px dashed; padding-top: 1em; padding-bottom: 1em; text-align: center; background-color: rgb(247, 247, 247); border-radius: 5px; color: rgb(103, 103, 103); display: block;" id="file-div">
                                     <label for="file" style=" font-size: 15px;" id="file-placeholder"><b><i class="fa fa-picture-o" aria-hidden="true" style="font-size: 30px"></i><br></b></label>
                                     <input type="file" accept="image/jpeg, image/png" name="file" id="file" style="display: none; padding-bottom:10px" onchange="loadFile(event)">

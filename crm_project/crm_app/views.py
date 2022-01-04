@@ -33,10 +33,10 @@ def starter(request):
     return render(request,'pages-starter.html')
 
 
-
 def customer(request):
     customer = Customer.objects.all() 
     return render(request,"customer.html",{'customer':customer})
+
 
 def add_customer(request):
     form = CustomerAddForm()
@@ -67,6 +67,26 @@ def add_leads(request):
 
 
 
+def lead_update(request,item_id):
+    if request.method == 'POST':
+        update  = Leads.objects.get(id=item_id)
+        fm = LeadAddForm(request.POST,instance=update)
+        if fm.is_valid():
+            fm.save()
+            return redirect("crm_app:leads")
+    else:
+        update  = Leads.objects.get(id=item_id)
+        fm = LeadAddForm(instance=update)
+    return render(request,"lead_edit.html",{'form':fm})
+
+
+def lead_delete(request,item_id):
+    obj = Leads.objects.filter(id=item_id)
+    obj.delete()
+    return redirect('crm_app:leads')
+
+
+
 
 def junk_leads(request):
     junk_leads = Leads.objects.filter(lead_status='junk_leads')
@@ -86,7 +106,7 @@ def customer_profile(request,customer_id):
     customer_profile= Customer.objects.filter(id=customer_id)
     return render(request,'user_profile.html',{'customer_profile':customer_profile})
 
-@login_required
+# @login_required
 def Quotation_invoice(request,cart_items=None,total=0,count=0):
     # Usertable.filter(extendedtable__address)
     try:
@@ -100,7 +120,7 @@ def Quotation_invoice(request,cart_items=None,total=0,count=0):
     return render(request,"quotation_invoice.html",{"ct_items":ct_items, "total":total, "count":count})
 
 
-
+@login_required
 def products(request):
     products = Products.objects.all()
     return render(request,'products.html',{'products':products})
@@ -353,7 +373,7 @@ def login(request):
 
 def logout(request):
     auth.logout(request)
-    return redirect("crm_app:index")
+    return redirect("crm_app:staff_login")
 
 
 
