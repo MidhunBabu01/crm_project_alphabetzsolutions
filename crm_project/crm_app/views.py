@@ -420,11 +420,17 @@ def staff_login(request):
         if user is not None:
             request.session['username'] = username
             auth.login(request,user)
-            return redirect("crm_app:index")
+            print('logged in')
+            return JsonResponse(
+                {'success':True},
+                safe=False
+            )
         else:
-            print('invalid details')
-            messages.info(request,"invalid details")
-            return redirect("crm_app:staff_login")
+            auth.login
+            return JsonResponse(
+                {'success':False},
+                safe=False
+            )
     else:
         return render(request,'staff_login.html')
 
