@@ -34,6 +34,7 @@ class Customer(models.Model):
 class Leads(models.Model):
     def __str__(self):
         return self.company_name
+    # staff_name = models.ForeignKey(User,on_delete=models.CASCADE)
     no = models.IntegerField()
     date = models.DateField(default=datetime.now())
     company_name = models.CharField(max_length=250)
@@ -56,6 +57,14 @@ class Leads(models.Model):
         ('close_leads','close_leads')
     )
     lead_status = models.CharField(max_length=25,choices=lead_choices)
+    source_choices = (
+        ('Facebook','Facebook'),
+        ('Youtube','Youtube'),
+        ('Website','Website'),
+        ('Newspaper','Newspaper'),
+    )
+    lead_source = models.CharField(max_length=25,choices=source_choices)
+
 
 
 
@@ -160,13 +169,8 @@ class Items(models.Model):
 
 
 
-
-
-
-
-
-
-
-
-
+class Quotation_Details(models.Model):
+    def __str__(self):
+        return self.quotation_details.name
+    quotation_details = models.ForeignKey(Customer,on_delete=models.CASCADE)
 

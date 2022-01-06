@@ -1,5 +1,5 @@
 from django.forms import widgets
-from.models import Customer, Leads, Quotation_Invoice
+from.models import Customer, Leads, Quotation_Details
 from django import forms
 from flatpickr import DatePickerInput
 
@@ -30,6 +30,7 @@ class LeadAddForm(forms.ModelForm):
     class Meta:
         model = Leads
         fields = '__all__'
+        exclude = ['staff_name']
         widgets ={
             'no' : forms.TextInput(attrs={'class':'form-control'}),
             'date' : DatePickerInput(attrs={'class':'form-control'}),
@@ -44,7 +45,23 @@ class LeadAddForm(forms.ModelForm):
             'stage1' : forms.TextInput(attrs={'class':'form-control'}),
             'stage2' : forms.TextInput(attrs={'class':'form-control'}),
             'lead_status' : forms.Select(attrs={'class':'form-control'}),
+            'lead_source' : forms.Select(attrs={'class':'form-control'})
+        }   
+
+
+
+class Quotation_DetailsForm(forms.ModelForm):
+    class Meta:
+        model = Quotation_Details
+        fields = '__all__'
+        labels = {
+            'quotation_details':'Customer Name'
         }
+        widgets ={
+            'quotation_details': forms.Select(attrs={'class':'form-control'})
+
+        }
+
 
 
 

@@ -1,8 +1,8 @@
 from django.core.exceptions import ObjectDoesNotExist, RequestAborted
 from django.http.response import HttpResponse, ResponseHeaders
 from django.shortcuts import redirect, render,get_object_or_404
-from crm_app.models import Customer, Leads, Products,CartList,Items
-from .forms import CustomerAddForm, LeadAddForm
+from crm_app.models import Customer, Leads, Products,CartList,Items,Quotation_Details
+from .forms import CustomerAddForm, LeadAddForm,Quotation_DetailsForm
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.models import User,auth
 from django.contrib.auth import authenticate
@@ -108,6 +108,13 @@ def customer_profile(request,customer_id):
 
 # @login_required
 def Quotation_invoice(request,cart_items=None,total=0,count=0):
+    # details = Quotation_Details.objects.all()
+    # form = Quotation_DetailsForm()
+    # if request.method == 'POST':
+    #     form = Quotation_DetailsForm(request.POST)
+    #     form.save()
+    # else:
+    #     form = Quotation_DetailsForm()
     # Usertable.filter(extendedtable__address)
     try:
         ct = CartList.objects.get(cart_id=c_id(request))
@@ -455,9 +462,5 @@ def invoice_pdf(request,cart_items=None,total=0,count=0):
     return response
 
 
-
-from django.core.mail import EmailMessage
-from django.conf import settings
-from django.template.loader import render_to_string
 
 

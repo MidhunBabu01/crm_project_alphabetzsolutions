@@ -980,6 +980,7 @@
                                                         <th>Requirements</th>
                                                         <th>Stage 1</th>
                                                         <th>Stage 2</th>
+                                                        <th>Lead Source</th>
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
@@ -1022,6 +1023,9 @@
 
                                                         <td>
                                                             {{i.stage2}}
+                                                        </td>
+                                                        <td>
+                                                            {{i.lead_source}}
                                                         </td>
                                                         <td>
                                                         <a href="{% url 'crm_app:leads_edit' i.id %}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>

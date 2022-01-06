@@ -204,16 +204,19 @@
                             <div class="customer-details" style="width: 40%;position: relative;">
                                 <div class="cust-details">
                                     <div class="cust-name">
-                                        {% if user.is_authenticated %}
-                                        <textarea type="text" name="customer_name" class='user-name' placeholder="customer name" style="height:52px;" maxlength="250" required="" id="id_customer_name" disabled>{{user.username}}</textarea>
-                                        <textarea type="text" name="customer_address" placeholder="customer address" maxlength="250" required="" id="id_customer_address" disabled>{{user.extendedusermodel.company_address}}</textarea>
-                                        {% else %}
-                                        <textarea type="text" name="customer_name" placeholder="customer name" maxlength="250" required="" id="id_customer_name"></textarea>
+                                        {% comment %} {% if user.is_authenticated %} {% endcomment %}
+                                        {% comment %} <textarea type="text" name="customer_name" class='user-name' placeholder="customer name" style="height:52px;" maxlength="250" required="" id="id_customer_name" disabled>{{user.username}}</textarea> {% endcomment %}
+                                        <textarea type="text" name="customer_name" class='user-name' placeholder="customer name" style="height:52px;" maxlength="250" required="" id="id_customer_name" disabled>{{i.quotation_details.name}}</textarea>
+                                        {% comment %} <textarea type="text" name="customer_address" placeholder="customer address" maxlength="250" required="" id="id_customer_address" disabled>{{user.extendedusermodel.company_address}}</textarea> {% endcomment %}
+                                        <textarea type="text" name="customer_address" placeholder="customer address" maxlength="250" required="" id="id_customer_address">{{user.extendedusermodel.company_address}}</textarea>
+                                        
+                                        {% comment %} <textarea type="text" name="customer_name" placeholder="customer name" maxlength="250" required="" id="id_customer_name"></textarea>
                                         <div class="cust-addr">
                                             <textarea type="text" name="customer_address" placeholder="customer address" maxlength="250" required="" id="id_customer_address"></textarea>
-                                        </div>    
-                                        {% endif %}
+                                        </div>     {% endcomment %}
+                                        
                                     </div>
+                                    
                                     {% comment %} <div class="cust-addr">
                                         <textarea type="text" name="customer_address" placeholder="customer address" maxlength="250" required="" id="id_customer_address"></textarea> {% endcomment %}
                                         {% comment %} <input type="text" name="customer_address" placeholder="customer address" maxlength="250" required="" id="id_customer_address"> {% endcomment %}

@@ -100,7 +100,7 @@
                         <div class="dropdown d-inline-block">
                             <button type="button" class="btn header-item waves-effect"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img id="header-lang-img" src="{% static 'assets/images/flags/us.jpg' %}" alt="Header Language" height="16" class="d-block">
+                                {% comment %} <img id="header-lang-img" src="{% static 'assets/images/flags/us.jpg' %}" alt="Header Language" height="16" class="d-block"> {% endcomment %}
                             </button>
                             <div class="dropdown-menu dropdown-menu-end">
 
@@ -938,10 +938,10 @@
                                                             <span class="text-muted">Status:</span> <span class="fw-semibold">Active<i class="mdi mdi-chevron-down ms-1"></i></span>
                                                         </a>
         
-                                                        <div class="dropdown-menu dropdown-menu-end">
+                                                        {% comment %} <div class="dropdown-menu dropdown-menu-end">
                                                             <a class="dropdown-item" href="#">Active</a>
                                                             <a class="dropdown-item" href="#">Blocked</a>
-                                                        </div>
+                                                        </div> {% endcomment %}
                                                     </div>
                                                 </li>
                                                 <li class="list-inline-item">
@@ -1019,7 +1019,7 @@
                                                             {{i.whatsapp_number}}
                                                         </td>
                                                         <td>
-                                                            
+                                                            <a href="{% url 'crm_app:products' %}" class="btn btn-success">Buy</a>
                                                         </td>
                                                         {% comment %} <td>
                                                             <div class="dropdown">
