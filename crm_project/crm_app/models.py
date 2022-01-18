@@ -34,7 +34,7 @@ class Customer(models.Model):
 class Leads(models.Model):
     def __str__(self):
         return self.company_name
-    # staff_name = models.ForeignKey(User,on_delete=models.CASCADE)
+    staff_name = models.ForeignKey(User,on_delete=models.CASCADE)
     no = models.IntegerField()
     date = models.DateField(default=datetime.now())
     company_name = models.CharField(max_length=250)

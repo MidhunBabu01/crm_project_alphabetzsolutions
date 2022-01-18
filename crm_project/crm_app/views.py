@@ -51,7 +51,7 @@ def add_customer(request):
 
 
 def leads(request):
-    leads = Leads.objects.all()
+    leads = Leads.objects.filter(staff_name__username=request.user.username)
     return render(request,"leads.html",{'leads':leads})
 
 def add_leads(request):
@@ -59,7 +59,10 @@ def add_leads(request):
     if request.method == 'POST':
         fm = LeadAddForm(request.POST,request.FILES)
         if fm.is_valid():
-            fm.save()
+            data = fm.save(commit=False)
+            staff_name = User.objects.get(username=request.user.username)
+            data.staff_name = staff_name
+            data.save()
             return redirect('crm_app:leads')
     else:
         fm = LeadAddForm()
@@ -89,16 +92,16 @@ def lead_delete(request,item_id):
 
 
 def junk_leads(request):
-    junk_leads = Leads.objects.filter(lead_status='junk_leads')
+    junk_leads = Leads.objects.filter(lead_status='junk_leads',staff_name__username=request.user.username)
     return render(request,'junk_leads.html',{'junk_leads':junk_leads})
 
 
 def open_leads(request):
-    open_leads = Leads.objects.filter(lead_status="open_leads")
+    open_leads = Leads.objects.filter(lead_status="open_leads",staff_name__username=request.user.username)
     return render(request,'open_leads.html',{'open_leads':open_leads})
 
 def closed_leads(request):
-    closed_leads = Leads.objects.filter(lead_status="close_leads")
+    closed_leads = Leads.objects.filter(lead_status="close_leads",staff_name__username=request.user.username)
     return render(request,'closed_leads.html',{'close_leads':closed_leads})
 
 
