@@ -24,9 +24,11 @@ urlpatterns = [
     path('add-leads/', views.add_leads, name='add_leads'),
     path('leads-update/<int:item_id>', views.lead_update, name='leads_edit'),
     path('leads-delete/<int:item_id>', views.lead_delete, name='leads_delete'),
-    path('junk-leads/', views.junk_leads, name='junk_leads'), 
+    path('junk-leads/', views.pending_leads, name='junk_leads'),
+    path('junk-leads-search-result/', views.pending_lead_search, name='junk_lead_search'),
     path('open-leads/', views.open_leads, name='open_leads'),
     path('closed-leads/', views.closed_leads, name='closed_leads'),
+    path('lead-search/', views.lead_search, name='lead_search'),
     path('customer-profile/<int:customer_id>', views.customer_profile, name='customer_profile'),
     path('quotation-invoice/', views.Quotation_invoice, name='quotation_invoice'),
     path('products/', views.products, name='products'),
@@ -38,6 +40,10 @@ urlpatterns = [
     path('min_product/<int:product_id>/',views.minus_button,name="minus"),
     path('del-product/<int:product_id>/',views.delete_button,name="del_product"),
     path('invoice-pdf',views.invoice_pdf,name="invoice_pdf"),
+    path('open-lead-search-result',views.open_lead_search,name="open_lead_search"),
+    path('closed-lead-search-result',views.closed_lead_search,name="closed_lead_search"),
+    
+    
  
     
     

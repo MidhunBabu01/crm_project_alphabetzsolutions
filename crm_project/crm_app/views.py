@@ -14,9 +14,21 @@ from django.http.response import JsonResponse
 from django.http import HttpResponse
 from django.template.loader import get_template
 from xhtml2pdf import pisa
+import datetime
 # Create your views here.
 def index(request):
-    return render(request,'index.html')
+    # STAFF SIDE
+    my_open_leads  = Leads.objects.filter(lead_status="open leads",staff_name__username=request.user.username)
+    total_leads =  Leads.objects.filter(staff_name__username=request.user.username).count()
+    today_date = datetime.date.today()
+    day_count = today_date-datetime.timedelta(days=1*1)
+    today_leads = Leads.objects.filter(date__gte=day_count,date__lte=today_date,staff_name__username=request.user.username).count()
+    context = {
+        'my_open_leads':my_open_leads,
+        'total_leads':total_leads,
+        'today_leads':today_leads
+    }
+    return render(request,'index.html',context)
 
 
 def chat(request):
@@ -91,23 +103,63 @@ def lead_delete(request,item_id):
 
 
 
-def junk_leads(request):
-    junk_leads = Leads.objects.filter(lead_status='junk_leads',staff_name__username=request.user.username)
-    return render(request,'junk_leads.html',{'junk_leads':junk_leads})
+def pending_leads(request):
+    junk_leads = Leads.objects.filter(lead_status='pending leads',staff_name__username=request.user.username)
+    return render(request,'pending_leads.html',{'junk_leads':junk_leads})
 
 
 def open_leads(request):
-    open_leads = Leads.objects.filter(lead_status="open_leads",staff_name__username=request.user.username)
+    open_leads = Leads.objects.filter(lead_status="open leads",staff_name__username=request.user.username)
     return render(request,'open_leads.html',{'open_leads':open_leads})
 
 def closed_leads(request):
-    closed_leads = Leads.objects.filter(lead_status="close_leads",staff_name__username=request.user.username)
+    closed_leads = Leads.objects.filter(lead_status="close leads",staff_name__username=request.user.username)
     return render(request,'closed_leads.html',{'close_leads':closed_leads})
 
 
 def customer_profile(request,customer_id):
     customer_profile= Customer.objects.filter(id=customer_id)
     return render(request,'user_profile.html',{'customer_profile':customer_profile})
+
+
+def lead_search(request):
+    lead = None
+    Query = None
+    if 'q' in request.GET:
+        Query = request.GET.get('q')
+        lead = Leads.objects.all().filter(Q(company_name__icontains=Query),staff_name__username=request.user.username)
+    return render(request,'lead-search-result.html',{"lead":lead,"query":Query})
+
+
+def pending_lead_search(request):
+    junk_lead = None
+    Query = None
+    if 'q' in request.GET:
+        Query = request.GET.get('q')
+        junk_lead = Leads.objects.all().filter(Q(company_name__icontains=Query),staff_name__username=request.user.username,lead_status='pending leads')
+    return render(request,'pending-lead-serch.html',{"junk_lead":junk_lead,"query":Query})
+
+
+def open_lead_search(request):
+    open_lead = None
+    Query = None
+    if 'q' in request.GET:
+        Query = request.GET.get('q')
+        open_lead = Leads.objects.all().filter(Q(company_name__icontains=Query),staff_name__username=request.user.username,lead_status='open leads')
+    return render(request,'open-lead-serch.html',{"open_lead":open_lead,"query":Query})
+
+
+def closed_lead_search(request):
+    closed_lead = None
+    Query = None
+    if 'q' in request.GET:
+        Query = request.GET.get('q')
+        closed_lead = Leads.objects.all().filter(Q(company_name__icontains=Query),staff_name__username=request.user.username,lead_status='close leads')
+    return render(request,'closed-lead-serch.html',{"closed_lead":closed_lead,"query":Query})
+
+
+
+
 
 # @login_required
 def Quotation_invoice(request,cart_items=None,total=0,count=0):

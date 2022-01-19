@@ -12,7 +12,7 @@
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="Pichforest" name="author" />
         <!-- App favicon -->
-        <link rel="shortcut icon" href="{% static 'assets/images/favicon.ico' %}">
+        <link rel="shortcut icon" href="{% static 'assets/images/atlas-logo-small.png' %}">
 
         <!-- Bootstrap Css -->
         <link href="{% static 'assets/css/bootstrap.min.css' %}" id="bootstrap-style" rel="stylesheet" type="text/css" />
@@ -49,10 +49,10 @@
 
                             <a href="index.html" class="logo logo-light">
                                 <span class="logo-sm">
-                                    <img src="{% static 'assets/images/logo-sm-light.png' %}" alt="logo-sm-light" height="22">
+                                    <img src="{% static 'assets/images/atlas-logo-small.png' %}" alt="logo-sm-light" height="22">
                                 </span>
                                 <span class="logo-lg">
-                                    <img src="{% static 'assets/images/logo-light.png' %}" alt="logo-light" height="23">
+                                    <img src="{% static 'assets/images/atlas-logo.png' %}" alt="logo-light" height="23">
                                 </span>
                             </a>
                         </div>
@@ -271,7 +271,7 @@
                             <li class="menu-title mt-3" key="t-more">More</li>
 
                             <li>
-                                <a href="{% url 'crm_app:index' %}">
+                                <a href="{% url 'crm_app:leads' %}">
                                     <i class='bx bxs-grid'></i>
                                     <span key="t-apps">Leads</span>
                                 </a>
@@ -289,7 +289,7 @@
                             </li>
                 
                             <li>
-                                <a href="{% url 'crm_app:index' %}" class="waves-effect">
+                                <a href="{% url 'crm_app:customers' %}" class="waves-effect">
                                     <i class='bx bx-user-circle' ></i>
                                     <span key="t-authentication">Customer</span>
                                 </a>
@@ -305,7 +305,7 @@
                             </li>
 
                             <li>
-                                <a href="{% url 'crm_app:index' %}">
+                                <a href="{% url 'crm_app:products' %}">
                                     <i class='bx bx-file'></i>
                                     <span key="t-pages">Product</span>
                                 </a>
@@ -323,7 +323,7 @@
                                 </ul> {% endcomment %}
                             </li>
                             <li>
-                                <a href="{% url 'crm_app:index' %}" class="waves-effect">
+                                <a href="{% url 'crm_app:quotation_invoice' %}" class="waves-effect">
                                     <i class='bx bx-briefcase'></i>
                                     <span key="t-ui-elements">Quotation</span>
                                 </a>

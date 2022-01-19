@@ -52,9 +52,9 @@ class Leads(models.Model):
     stage1 = models.CharField(max_length=250)
     stage2 = models.CharField(max_length=250)
     lead_choices = (
-        ('junk_leads','junk_leads'),
-        ('open_leads','open_leads'),
-        ('close_leads','close_leads')
+        ('pending leads','pending leads'),
+        ('open leads','open leads'),
+        ('close leads','close leads')
     )
     lead_status = models.CharField(max_length=25,choices=lead_choices)
     source_choices = (

@@ -7,7 +7,7 @@
 <head>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         <meta charset="utf-8" />
-        <title>Dashboard | Samply - Admin & Dashboard Template</title>
+        <title>Dashboard</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="Pichforest" name="author" />
@@ -49,10 +49,10 @@
 
                             <a href="index.html" class="logo logo-light">
                                 <span class="logo-sm">
-                                    <img src="{% static 'assets/images/atlas-logo-small.png' %}" alt="logo-sm-light" height="22">
+                                    <img src="{% static 'assets/images/logo-sm-light.png' %}" alt="logo-sm-light" height="22">
                                 </span>
                                 <span class="logo-lg">
-                                    <img src="{% static 'assets/images/atlas-logo.png' %}" alt="logo-light" height="23">
+                                    <img src="{% static 'assets/images/logo-light.png' %}" alt="logo-light" height="23">
                                 </span>
                             </a>
                         </div>
@@ -66,16 +66,16 @@
                         </button>
 
                         <!-- App Search-->
-                        <form class="app-search d-none d-lg-block" action="{% url 'crm_app:open_lead_search' %}">
+                        {% comment %} <form class="app-search d-none d-lg-block">
                             <div class="input-group">
                                 <div class="form-outline">
                                   <input id="search-input" name="q" placeholder="search"type="search" id="form1" class="form-control" />
                                 </div>
-                                <button id="search-button" type="submit" class="btn btn-primary">
+                                <button id="search-button" type="button" class="btn btn-primary">
                                   <i class="fas fa-search"></i>
                                 </button>
                               </div>
-                        </form>
+                        </form> {% endcomment %}
                     </div>
 
                     <div class="d-flex">
@@ -102,8 +102,36 @@
                         </div>
 
                         <div class="dropdown d-inline-block">
-                            
-                            
+                            {% comment %} <button type="button" class="btn header-item waves-effect"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img id="header-lang-img" src="{% static 'assets/images/flags/us.jpg' %}" alt="Header Language" height="16" class="d-block">
+                            </button> {% endcomment %}
+                            <div class="dropdown-menu dropdown-menu-end">
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="en">
+                                    <img src="{% static 'assets/images/flags/us.jpg' %}" alt="user-image" class="me-1" height="12"> <span class="align-middle">English</span>
+                                </a>
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="sp">
+                                    <img src="{% static 'assets/images/flags/spain.jpg' %}" alt="user-image" class="me-1" height="12"> <span class="align-middle">Spanish</span>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="gr">
+                                    <img src="{% static 'assets/images/flags/germany.jpg' %}" alt="user-image" class="me-1" height="12"> <span class="align-middle">German</span>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="it">
+                                    <img src="{% static 'assets/images/flags/italy.jpg' %}" alt="user-image" class="me-1" height="12"> <span class="align-middle">Italian</span>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="ru">
+                                    <img src="{% static 'assets/images/flags/russia.jpg' %}" alt="user-image" class="me-1" height="12"> <span class="align-middle">Russian</span>
+                                </a>
+                            </div>
                         </div>
 
                         <div class="dropdown d-none d-lg-inline-block ms-1">
@@ -112,101 +140,6 @@
                             </button>
                         </div>
 
-                        <div class="dropdown d-inline-block">
-                            <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-notifications-dropdown"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {% comment %} <i class="mdi mdi-bell"></i> {% endcomment %}
-                                {% comment %} <span class="badge bg-danger rounded-pill">3</span> {% endcomment %}
-                            </button>
-                            {% comment %} <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
-                                aria-labelledby="page-header-notifications-dropdown">
-                                <div class="p-3">
-                                    <div class="row align-items-center">
-                                        <div class="col">
-                                            <h6 class="m-0"> Notifications </h6>
-                                        </div>
-                                        <div class="col-auto">
-                                            <a href="#" class="small" key="t-view-all"> View All</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div data-simplebar style="max-height: 230px;">
-                                    <a href="#" class="text-reset notification-item d-block active">
-                                        <div class="d-flex">
-                                            <div class="flex-shrink-0 me-3">
-                                                <div class="avatar-xs">
-                                                    <span class="avatar-title bg-primary rounded-circle font-size-16">
-                                                        <i class="bx bx-cart"></i>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <h6 class="mt-0 mb-1" key="t-your-order">Your order is placed</h6>
-                                                <div class="font-size-13 text-muted">
-                                                    <p class="mb-1" key="t-grammer">If several languages coalesce the grammar</p>
-                                                    <p class="mb-0 font-size-12"><i class="mdi mdi-clock-outline"></i> <span key="t-min-ago">3 min ago</span></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="text-reset notification-item d-block ">
-                                        <div class="d-flex">
-                                            <div class="flex-shrink-0 me-3">
-                                                <img src="{% static 'assets/images/users/avatar-3.jpg' %}" class="rounded-circle avatar-xs" alt="user-pic">
-                                            </div>
-                                
-                                            <div class="flex-grow-1">
-                                                <h6 class="mt-0 mb-1">James Lemire</h6>
-                                                <div class="font-size-13 text-muted">
-                                                    <p class="mb-1" key="t-simplified">It will seem like simplified English.</p>
-                                                    <p class="mb-0 font-size-12"><i class="mdi mdi-clock-outline"></i> <span key="t-hours-ago">1 hour ago</span></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="text-reset notification-item d-block ">
-                                        <div class="d-flex">
-                                            <div class="flex-shrink-0 me-3">
-                                                <div class="avatar-xs">
-                                                    <span class="avatar-title bg-success rounded-circle font-size-16">
-                                                        <i class="bx bx-badge-check"></i>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                
-                                            <div class="flex-grow-1">
-                                                <h6 class="mt-0 mb-1" key="t-shipped">Your item is shipped</h6>
-                                                <div class="font-size-13 text-muted">
-                                                    <p class="mb-1" key="t-grammer">If several languages coalesce the grammar</p>
-                                                    <p class="mb-0 font-size-12"><i class="mdi mdi-clock-outline"></i> <span key="t-min-ago">3 hours ago</span></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-
-                                    <a href="#" class="text-reset notification-item d-block ">
-                                        <div class="d-flex">
-                                            <div class="flex-shrink-0 me-3">
-                                                <img src="{% static 'assets/images/users/avatar-4.jpg' %}" class="rounded-circle avatar-xs" alt="user-pic">
-                                            </div>
-                                
-                                            <div class="flex-grow-1">
-                                                <h6 class="mt-0 mb-1">Salena Layfield</h6>
-                                                <div class="font-size-13 text-muted">
-                                                    <p class="mb-1" key="t-occidental">As a skeptical Cambridge friend of mine occidental.</p>
-                                                    <p class="mb-0 font-size-12"><i class="mdi mdi-clock-outline"></i> <span key="t-hours-ago">10 hours ago</span></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="p-2 border-top d-grid">
-                                    <a class="btn btn-sm btn-link font-size-14 text-center" href="javascript:void(0)">
-                                        <i class="mdi mdi-arrow-right-circle me-1"></i> <span>View More..</span> 
-                                    </a>
-                                </div>
-                            </div> {% endcomment %}
-                        </div>
                         <div class="dropdown d-inline-block">
                             <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -219,29 +152,7 @@
                                 <a class="dropdown-item" href="{% url 'crm_app:logout' %}"><i class="mdi mdi-logout text-muted font-size-16 align-middle me-1"></i> <span class="align-middle" key="t-logout">Logout</span></a>
                             </div>
                         </div>
-                        {% comment %} <div class="dropdown d-inline-block">
-                            <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img class="rounded-circle header-profile-user" src="{% static 'assets/images/users/avatar-1.jpg' %}"
-                                    alt="Header Avatar">
-                                <span class="d-none d-xl-inline-block ms-1">Peter</span>
-                                <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-end">
-                                <!-- item-->
-                                <h6 class="dropdown-header">Welcome Peter!</h6>
-                                <a class="dropdown-item" href="#"><i class="mdi mdi-account-circle text-muted font-size-16 align-middle me-1"></i> <span class="align-middle" key="t-profile">Profile</span></a>
-                                <a class="dropdown-item" href="#"><i class="mdi mdi-message-text-outline text-muted font-size-16 align-middle me-1"></i> <span class="align-middle" key="t-messages">Messages</span></a>
-                                <a class="dropdown-item" href="#"><i class="mdi mdi-calendar-check-outline text-muted font-size-16 align-middle me-1"></i> <span class="align-middle" key="t-taskboard">Taskboard</span></a>
-                                <a class="dropdown-item" href="#"><i class="mdi mdi-lifebuoy text-muted font-size-16 align-middle me-1"></i> <span class="align-middle" key="t-help">Help</span></a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#"><i class="mdi mdi-wallet text-muted font-size-16 align-middle me-1"></i> <span class="align-middle" key="t-balance">Balance : <b>$1901.67</b></span></a>
-                                <a class="dropdown-item" href="#"><span class="badge bg-success bg-soft text-success mt-1 float-end">New</span><i class="mdi mdi-cog-outline text-muted font-size-16 align-middle me-1"></i> <span class="align-middle" key="t-settings">Settings</span></a>
-                                <a class="dropdown-item" href="#"><i class="mdi mdi-lock text-muted font-size-16 align-middle me-1"></i> <span class="align-middle" key="t-lock-screen">Lock screen</span></a>
-                                <a class="dropdown-item" href="#"><i class="mdi mdi-logout text-muted font-size-16 align-middle me-1"></i> <span class="align-middle" key="t-logout">Logout</span></a>
-                            </div>
-                        </div> {% endcomment %}
-
+                        
                         <div class="dropdown d-inline-block">
                             <button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">
                                 <i class="bx bx-cog bx-spin"></i>
@@ -262,16 +173,13 @@
                         <!-- Left Menu Start -->
                         <ul class="metismenu list-unstyled" id="side-menu">
                             <li class="menu-title" key="t-menu">Menu</li>
-                
                             <li>
                                 <a href="{% url 'crm_app:index' %}" class="waves-effect">
                                     <i class='bx bxs-dashboard'></i>
                                     <span key="t-dashboard">Home</span>
                                 </a>
                             </li>
-
                             <li class="menu-title mt-3" key="t-more">More</li>
-
                             <li>
                                 <a href="{% url 'crm_app:leads' %}">
                                     <i class='bx bxs-grid'></i>
@@ -309,7 +217,7 @@
                             <li>
                                 <a href="{% url 'crm_app:products' %}">
                                     <i class='bx bx-file'></i>
-                                    <span key="t-pages">Products</span>
+                                    <span key="t-pages">Product</span>
                                 </a>
                                 {% comment %} <ul class="sub-menu" aria-expanded="false">
                                     <li><a href="{% url 'crm_app:starter' %}" key="t-starter-page">Starter Page</a></li>
@@ -439,9 +347,14 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                                    <h4 class="mb-sm-0 font-size-18">Leads</h4>
+                                    <h4 class="mb-sm-0 font-size-18">All Leads</h4>
 
-                                    
+                                    {% comment %} <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);"></a></li>
+                                            <li class="breadcrumb-item active">Dashboard</li>
+                                        </ol>
+                                    </div> {% endcomment %}
 
                                 </div>
                             </div>
@@ -917,15 +830,13 @@
                                                         <a class="dropdown-toggle text-reset" href="#"
                                                             data-bs-toggle="dropdown" aria-haspopup="true"
                                                             aria-expanded="false">
-                                                            <span class="text-muted">Status:</span> <span class="fw-semibold">Open Leads<i class="mdi mdi-chevron-down ms-1"></i></span>
+                                                            <span class="text-muted">Status:</span> <span class="fw-semibold">All Leads<i class="mdi mdi-chevron-down ms-1"></i></span>
                                                         </a>
         
                                                         <div class="dropdown-menu dropdown-menu-end">
                                                             <a class="dropdown-item" href="{% url 'crm_app:junk_leads' %}">Junk Leads</a>
-                                                            <a class="dropdown-item" href="{% url 'crm_app:closed_leads' %}">Closed Leads</a>
-                                                            <a class="dropdown-item" href="{% url 'crm_app:leads' %}">All Leads</a>
-                                                            
-                                                            
+                                                            <a class="dropdown-item" href="{% url 'crm_app:open_leads' %}">Open Leads</a>
+                                                            <a class="dropdown-item" href="{% url 'crm_app:closed_leads' %}">Closed Leads</a>   
                                                         </div>
                                                     </div>
                                                 </li>
@@ -950,7 +861,7 @@
                                             </ul>
                                         </div>
 
-                                        <h4 class="card-title mb-4">Open Leads</h4>
+                                        <h4 class="card-title mb-4">1</h4>
                                         <a href="{% url 'crm_app:add_leads' %}" class="btn btn-success">Add New Leads</a>
                                         <div class="table-responsive">
                                             <table class="table table-hover table-borderless align-middle table-centered table-nowrap mb-0">
@@ -967,9 +878,11 @@
                                                         <th>Requirements</th>
                                                         <th>Stage 1</th>
                                                         <th>Stage 2</th>
+                                                        <th>Lead Source</th>
+                                                        <th>Action</th>
                                                     </tr>
                                                 </thead>
-                                                {% for i in open_leads %} 
+                                                {% for i in lead %} 
                                                 <tbody>
                                                     <tr>
                                                         <td>
@@ -1009,6 +922,17 @@
                                                         <td>
                                                             {{i.stage2}}
                                                         </td>
+                                                        <td>
+                                                            {{i.lead_source}}
+                                                        </td>
+                                                        <td>
+                                                        <a href="{% url 'crm_app:leads_edit' i.id %}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
+                                                        <a href="{% url 'crm_app:leads_delete' i.id %}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                                                        {% comment %} <form action="{% url 'crm_app:leads_delete' i.id %}" method="post" class="d-inline">
+                                                            {% csrf_token %}
+                                                            <input type="submit" class="btn btn-danger" value="Delete"><i class="fas fa-trash"></i>
+                                                        </form> {% endcomment %}
+                                                        </td>   
                                                         {% comment %} <td>
                                                             <div class="dropdown">
                                                                 <a class="text-muted dropdown-toggle font-size-16" role="button"
@@ -1240,7 +1164,7 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-sm-6">
-                                <script>document.write(new Date().getFullYear())</script> © Samply.
+                                {% comment %} <script>document.write(new Date().getFullYear())</script> © Samply. {% endcomment %}
                             </div>
                             <div class="col-sm-6">
                                 <div class="text-sm-end d-none d-sm-block">
