@@ -1,8 +1,9 @@
 {% load static %}
+{% comment %} {% if user.is_authenticated and user.is_superuser %}
+<h1>Hello</h1>
+{% else %} {% endcomment %}
 <!doctype html>
 <html lang="en">
-
-    
 <!-- Mirrored from preview.pichforest.com/samply/layouts/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 01 Dec 2021 12:27:11 GMT -->
 <head> 
         <meta charset="utf-8" />
@@ -356,7 +357,128 @@
                             </div>
                         </div>
                         <!-- end page title -->
+                        {% if user.is_authenticated and user.is_superuser %}
+                        <div class="row">
+                            <div class="col-md-2 col-xl-2">
+                                <div class="card size">
+                                    <div class="card-body">
+                                        <div class="float-end">
+                                            <div class="avatar-sm mx-auto mb-4">
+                                                <span class="avatar-title rounded-circle bg-light font-size-24">
+                                                    <i class="mdi mdi-cash-multiple text-primary"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <p class="text-muted text-uppercase fw-semibold">Total Leads</p>
+                                            <h4 class="mb-1 mt-1"><span class="counter-value" data-target="{{total_leadss}}">0</span></h4>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div> <!-- end col-->
 
+                            <div class="col-md-2 col-xl-2">
+                                <div class="card size">
+                                    <div class="card-body">
+                                        <div class="float-end">
+                                            <div class="avatar-sm mx-auto mb-4">
+                                                <span class="avatar-title rounded-circle bg-light font-size-24">
+                                                    <i class="mdi mdi-refresh-circle text-success"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <p class="text-muted text-uppercase fw-semibold">Today Leads</p>
+                                            <h4 class="mb-1 mt-1"><span class="counter-value" data-target="{{today_leadss}}">0</span></h4>
+                                        </div>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div> <!-- end col-->
+
+                            <div class="col-md-2 col-xl-2">
+                                <div class="card size">
+                                    <div class="card-body">
+                                        <div class="float-end">
+                                            <div class="avatar-sm mx-auto mb-4">
+                                                <span class="avatar-title rounded-circle bg-light font-size-24">
+                                                    <i class="mdi mdi-account-group text-primary"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <p class="text-muted text-uppercase fw-semibold"> Total Closed Leads</p>
+                                            <h4 class="mb-1 mt-1"><span class="counter-value" data-target="{{total_closed_leadss}}">0</span></h4>
+                                        </div>
+                                        {% comment %} <p class="text-muted mt-3 mb-0"><span class="badge badge-soft-success me-1"><i class="mdi mdi-arrow-up-bold me-1"></i>14.33%</span> since last week {% endcomment %}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div> <!-- end col-->
+
+                            <div class="col-md-2 col-xl-2">
+                                <div class="card size">
+                                    <div class="card-body">
+                                        <div class="float-end">
+                                            <div class="avatar-sm mx-auto mb-4">
+                                                <span class="avatar-title rounded-circle bg-light font-size-24">
+                                                    <i class="mdi mdi-account-group text-primary"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <p class="text-muted text-uppercase fw-semibold"> Today Closed Leads</p>
+                                            <h4 class="mb-1 mt-1"><span class="counter-value" data-target="{{today_closed_leadss}}">0</span></h4>
+                                        </div>
+                                        {% comment %} <p class="text-muted mt-3 mb-0"><span class="badge badge-soft-success me-1"><i class="mdi mdi-arrow-up-bold me-1"></i>14.33%</span> since last week {% endcomment %}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div> 
+
+                            <div class="col-md-2 col-xl-2">
+                                <div class="card size">
+                                    <div class="card-body">
+                                        <div class="float-end">
+                                            <div class="avatar-sm mx-auto mb-4">
+                                                <span class="avatar-title rounded-circle bg-light font-size-24">
+                                                    <i class="mdi mdi-cart-check text-success"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <p class="text-muted text-uppercase fw-semibold"> Total Pending Leads</p>
+                                            <h4 class="mb-1 mt-1"><span class="counter-value" data-target="{{total_pending_leadss}}">0</span></h4>
+                                        </div>
+                                        {% comment %} <p class="text-muted mt-3 mb-0"><span class="badge badge-soft-warning me-1"><i class="mdi mdi-arrow-up-bold me-1"></i>0.55%</span> since last week {% endcomment %}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div> <!-- end col-->
+
+                            <div class="col-md-2 col-xl-2">
+                                <div class="card size">
+                                    <div class="card-body">
+                                        <div class="float-end">
+                                            <div class="avatar-sm mx-auto mb-4">
+                                                <span class="avatar-title rounded-circle bg-light font-size-24">
+                                                    <i class="mdi mdi-account-group text-primary"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <p class="text-muted text-uppercase fw-semibold"> Today Pending Leads</p>
+                                            <h4 class="mb-1 mt-1"><span class="counter-value" data-target="{{today_pending_leadss}}">0</span></h4>
+                                        </div>
+                                        {% comment %} <p class="text-muted mt-3 mb-0"><span class="badge badge-soft-success me-1"><i class="mdi mdi-arrow-up-bold me-1"></i>14.33%</span> since last week {% endcomment %}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div> 
+
+                        </div> 
+                        {% else %}
                         <div class="row">
                             <div class="col-md-6 col-xl-3">
                                 <div class="card">
@@ -409,9 +531,9 @@
                                         </div>
                                         <div>
                                             <p class="text-muted text-uppercase fw-semibold">Closed Leads</p>
-                                            <h4 class="mb-1 mt-1"><span class="counter-value" data-target="258410">0</span></h4>
+                                            <h4 class="mb-1 mt-1"><span class="counter-value" data-target="{{closed_leads}}">0</span></h4>
                                         </div>
-                                        <p class="text-muted mt-3 mb-0"><span class="badge badge-soft-success me-1"><i class="mdi mdi-arrow-up-bold me-1"></i>14.33%</span> since last week
+                                        {% comment %} <p class="text-muted mt-3 mb-0"><span class="badge badge-soft-success me-1"><i class="mdi mdi-arrow-up-bold me-1"></i>14.33%</span> since last week {% endcomment %}
                                         </p>
                                     </div>
                                 </div>
@@ -429,14 +551,15 @@
                                         </div>
                                         <div>
                                             <p class="text-muted text-uppercase fw-semibold">Pending Leads</p>
-                                            <h4 class="mb-1 mt-1"><span class="counter-value" data-target="9582">0</span></h4>
+                                            <h4 class="mb-1 mt-1"><span class="counter-value" data-target="{{pending_leads}}">0</span></h4>
                                         </div>
-                                        <p class="text-muted mt-3 mb-0"><span class="badge badge-soft-warning me-1"><i class="mdi mdi-arrow-up-bold me-1"></i>0.55%</span> since last week
+                                        {% comment %} <p class="text-muted mt-3 mb-0"><span class="badge badge-soft-warning me-1"><i class="mdi mdi-arrow-up-bold me-1"></i>0.55%</span> since last week {% endcomment %}
                                         </p>
                                     </div>
                                 </div>
                             </div> <!-- end col-->
                         </div> <!-- end row-->
+                        {% endif %}
 
                         <div class="row">
                             {% comment %} <div class="col-xl-8">
@@ -855,14 +978,13 @@
                                                 </li> {% endcomment %}
                                             </ul>
                                         </div>
-
-                                        <h4 class="card-title mb-4">My Open Leads</h4>
-                                        {% comment %} <a href="{% url 'crm_app:add_leads' %}" class="btn btn-success">Add New Leads</a> {% endcomment %}
+                                        {% if user.is_authenticated and user.is_superuser %}
+                                        <h4 class="card-title mb-4">Recent Open Leads</h4>
                                         <div class="table-responsive">
                                             <table class="table table-hover table-borderless align-middle table-centered table-nowrap mb-0">
                                                 <thead class="table-light">
                                                     <tr>
-                                                        <th>Sl.No</th>
+                                                        <th>Staff Name</th>
                                                         <th>Date</th>
                                                         <th>Company Name</th>
                                                         <th>Address</th>
@@ -877,11 +999,11 @@
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
-                                                {% for i in my_open_leads %} 
+                                                {% for i in recent_open_leads %} 
                                                 <tbody>
                                                     <tr>
                                                         <td>
-                                                           {{i.no}}  
+                                                           {{i.staff_name}}  
                                                         </td>
                                                         <td>
                                                             {% comment %} <img src="{{i.photo.url}}" alt="user" class="rounded-circle h-auto avatar-xs me-2"> {% endcomment %}
@@ -923,24 +1045,7 @@
                                                         <td>
                                                         <a href="{% url 'crm_app:leads_edit' i.id %}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
                                                         <a href="{% url 'crm_app:leads_delete' i.id %}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
-                                                        {% comment %} <form action="{% url 'crm_app:leads_delete' i.id %}" method="post" class="d-inline">
-                                                            {% csrf_token %}
-                                                            <input type="submit" class="btn btn-danger" value="Delete"><i class="fas fa-trash"></i>
-                                                        </form> {% endcomment %}
                                                         </td>   
-                                                        {% comment %} <td>
-                                                            <div class="dropdown">
-                                                                <a class="text-muted dropdown-toggle font-size-16" role="button"
-                                                                    data-bs-toggle="dropdown" aria-haspopup="true">
-                                                                    <i class="mdi mdi-dots-vertical"></i>
-                                                                </a>
-                                                                <div class="dropdown-menu dropdown-menu-end">
-                                                                    <a class="dropdown-item" href="#">Action</a>
-                                                                    <a class="dropdown-item" href="#">Another action</a>
-                                                                    <a class="dropdown-item" href="#">Something else here</a>
-                                                                </div>
-                                                            </div>
-                                                        </td> {% endcomment %}
                                                     </tr>
                                                     <!-- end /tr -->
 
@@ -1105,6 +1210,241 @@
                                             <!-- end table -->
 
                                         </div>
+                                        {% else %}
+
+                                        <h4 class="card-title mb-4">Recent Open Leads</h4>
+                                        {% comment %} <a href="{% url 'crm_app:add_leads' %}" class="btn btn-success">Add New Leads</a> {% endcomment %}
+                                        <div class="table-responsive">
+                                            <table class="table table-hover table-borderless align-middle table-centered table-nowrap mb-0">
+                                                <thead class="table-light">
+                                                    <tr>
+                                                        <th>Sl.No</th>
+                                                        <th>Date</th>
+                                                        <th>Company Name</th>
+                                                        <th>Address</th>
+                                                        <th>Phone Number 1</th>
+                                                        <th>Phone Number 2</th>
+                                                        <th>Owner/Contact Person</th>
+                                                        <th>IT/NON IT</th>
+                                                        <th>Requirements</th>
+                                                        <th>Stage 1</th>
+                                                        <th>Stage 2</th>
+                                                        <th>Lead Source</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                {% for i in my_open_leads %} 
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                           {{i.no}}  
+                                                        </td>
+                                                        <td>
+                                                            {% comment %} <img src="{{i.photo.url}}" alt="user" class="rounded-circle h-auto avatar-xs me-2"> {% endcomment %}
+                                                            <span>{{i.date}}</span>
+                                                        </td>
+                                                        <td>
+                                                            {{i.company_name}}
+                                                        </td>
+                                                        <td>
+                                                            {{i.address}}
+                                                        </td>
+                                                        <td>
+                                                            {{i.phone1}}
+                                                            {% comment %} <img src="{{i.photo.url}}" alt="user" class="rounded-circle h-auto avatar-xs me-2"> {% endcomment %}
+                                                        </td>
+                                                        <td>
+                                                            {{i.phone2}}
+                                                        </td>
+                                                        <td>
+                                                            <span class="badge bg-success bg-soft text-success">{{i.owner}}</span>
+                                                        </td>
+                                                        <td>
+                                                            {{i.department}}
+                                                        </td>
+                                                        <td>
+                                                            {{i.requirements}}
+                                                        </td>
+
+                                                        <td>
+                                                            {{i.stage1}}
+                                                        </td>
+
+                                                        <td>
+                                                            {{i.stage2}}
+                                                        </td>
+                                                        <td>
+                                                            {{i.lead_source}}
+                                                        </td>
+                                                        <td>
+                                                        <a href="{% url 'crm_app:leads_edit' i.id %}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
+                                                        <a href="{% url 'crm_app:leads_delete' i.id %}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                                                        </td>   
+                                                    </tr>
+                                                    <!-- end /tr -->
+
+                                                    {% comment %} <tr>
+                                                        <td>
+                                                            #SD002
+                                                        </td>
+                                                        <td>
+                                                            <img src="{% static 'assets/images/users/avatar-2.jpg' %}" alt="user" class="rounded-circle h-auto avatar-xs me-2">
+                                                            <span>Paul J. Friend</span>
+                                                        </td>
+                                                        <td>
+                                                            Developer
+                                                        </td>
+                                                        <td>
+                                                            pauljfrnd@jourrapide.com
+                                                        </td>
+                                                        <td>
+                                                            937-330-1634
+                                                        </td>
+                                                        <td>
+                                                            <span class="badge bg-success bg-soft text-success">Active</span>
+                                                        </td>
+                                                        <td>
+                                                            New York
+                                                        </td>
+                                                        <td>
+                                                            <div class="dropdown">
+                                                                <a class="text-muted dropdown-toggle font-size-16" role="button"
+                                                                    data-bs-toggle="dropdown" aria-haspopup="true">
+                                                                    <i class="mdi mdi-dots-vertical"></i>
+                                                                </a>
+                                                                <div class="dropdown-menu dropdown-menu-end">
+                                                                    <a class="dropdown-item" href="#">Action</a>
+                                                                    <a class="dropdown-item" href="#">Another action</a>
+                                                                    <a class="dropdown-item" href="#">Something else here</a>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr> {% endcomment %}
+                                                    <!-- end /tr -->
+
+                                                    {% comment %} <tr>
+                                                        <td>
+                                                            #SD003
+                                                        </td>
+                                                        <td>
+                                                            <img src="{% static 'assets/images/users/avatar-3.jpg' %}" alt="user" class="rounded-circle h-auto avatar-xs me-2">
+                                                            <span>Kathryn S. Collier</span>
+                                                        </td>
+                                                        <td>
+                                                            Owner
+                                                        </td>
+                                                        <td>
+                                                            annac@hotmai.us
+                                                        </td>
+                                                        <td>
+                                                            (216) 76 298 896
+                                                        </td>
+                                                        <td>
+                                                            <span class="badge bg-success bg-soft text-success">Active</span>
+                                                        </td>
+                                                        <td>
+                                                            Philippines
+                                                        </td>
+                                                        <td>
+                                                            <div class="dropdown">
+                                                                <a class="text-muted dropdown-toggle font-size-16" role="button"
+                                                                    data-bs-toggle="dropdown" aria-haspopup="true">
+                                                                    <i class="mdi mdi-dots-vertical"></i>
+                                                                </a>
+                                                                <div class="dropdown-menu dropdown-menu-end">
+                                                                    <a class="dropdown-item" href="#">Action</a>
+                                                                    <a class="dropdown-item" href="#">Another action</a>
+                                                                    <a class="dropdown-item" href="#">Something else here</a>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <!-- end /tr -->
+
+                                                    <tr> {% endcomment %}
+                                                        {% comment %} <td>
+                                                            #SD004
+                                                        </td>
+                                                        <td>
+                                                            <img src="{% static 'assets/images/users/avatar-4.jpg' %}" alt="user" class="rounded-circle h-auto avatar-xs me-2">
+                                                            <span>Labeeb Ghali</span>
+                                                        </td>
+                                                        <td>
+                                                            Designer
+                                                        </td>
+                                                        <td>
+                                                            labebswad@teleworm.us
+                                                        </td>
+                                                        <td>
+                                                            050 414 8778
+                                                        </td>
+                                                        <td>
+                                                            <span class="badge bg-danger bg-soft text-danger">Blocked</span>
+                                                        </td>
+                                                        <td>
+                                                            United Kingdom
+                                                        </td>
+                                                        <td>
+                                                            <div class="dropdown">
+                                                                <a class="text-muted dropdown-toggle font-size-16" role="button"
+                                                                    data-bs-toggle="dropdown" aria-haspopup="true">
+                                                                    <i class="mdi mdi-dots-vertical"></i>
+                                                                </a>
+                                                                <div class="dropdown-menu dropdown-menu-end">
+                                                                    <a class="dropdown-item" href="#">Action</a>
+                                                                    <a class="dropdown-item" href="#">Another action</a>
+                                                                    <a class="dropdown-item" href="#">Something else here</a>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr> {% endcomment %}
+                                                    <!-- end /tr -->
+
+                                                    {% comment %} <tr>
+                                                        <td>
+                                                            #SD005
+                                                        </td>
+                                                        <td>
+                                                            <img src="{% static 'assets/images/users/avatar-5.jpg' %}" alt="user" class="rounded-circle h-auto avatar-xs me-2">
+                                                            <span>Timothy Kauper</span>
+                                                        </td>
+                                                        <td>
+                                                            Founder
+                                                        </td>
+                                                        <td>
+                                                            thykauper@rhyta.com
+                                                        </td>
+                                                        <td>
+                                                            (216) 75 612 706
+                                                        </td>
+                                                        <td>
+                                                            <span class="badge bg-success bg-soft text-success">Active</span>
+                                                        </td>
+                                                        <td>
+                                                            Denmark
+                                                        </td>
+                                                        <td>
+                                                            <div class="dropdown">
+                                                                <a class="text-muted dropdown-toggle font-size-16" role="button"
+                                                                    data-bs-toggle="dropdown" aria-haspopup="true">
+                                                                    <i class="mdi mdi-dots-vertical"></i>
+                                                                </a>
+                                                                <div class="dropdown-menu dropdown-menu-end">
+                                                                    <a class="dropdown-item" href="#">Action</a>
+                                                                    <a class="dropdown-item" href="#">Another action</a>
+                                                                    <a class="dropdown-item" href="#">Something else here</a>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr> {% endcomment %}
+                                                    <!-- end /tr -->
+                                                </tbody>
+                                                {% endfor %}
+                                            </table>
+                                            <!-- end table -->
+
+                                        </div>
+                                        {% endif %}
                                         <!--end table-responsive-->
                                     </div>
                                 </div>
@@ -1334,3 +1674,4 @@
 
 <!-- Mirrored from preview.pichforest.com/samply/layouts/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 01 Dec 2021 12:27:11 GMT -->
 </html>
+{% comment %} {% endif %} {% endcomment %}

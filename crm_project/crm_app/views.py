@@ -23,10 +23,30 @@ def index(request):
     today_date = datetime.date.today()
     day_count = today_date-datetime.timedelta(days=1*1)
     today_leads = Leads.objects.filter(date__gte=day_count,date__lte=today_date,staff_name__username=request.user.username).count()
+    closed_leads = Leads.objects.filter(lead_status="close leads",staff_name__username=request.user.username).count()
+    pending_leads = Leads.objects.filter(lead_status = "pending leads",staff_name__username=request.user.username).count()
+    # ADMIN SIDE
+    total_leadss = Leads.objects.all().count()
+    today_leadss = Leads.objects.filter(date__gte=day_count,date__lte=today_date).count()
+    total_closed_leadss = Leads.objects.filter(lead_status="close leads").count()
+    today_closed_leadss = Leads.objects.filter(date__gte=day_count,date__lte=today_date,lead_status="close leads").count()
+    total_pending_leadss = Leads.objects.filter(lead_status = "pending leads").count()
+    today_pending_leadss = Leads.objects.filter(lead_status = "pending leads",date__gte=day_count,date__lte=today_date,).count()
+    recent_open_leads = Leads.objects.filter(lead_status = "open leads").order_by('-id')[:5]
+
     context = {
         'my_open_leads':my_open_leads,
         'total_leads':total_leads,
-        'today_leads':today_leads
+        'today_leads':today_leads,
+        'total_leadss':total_leadss,
+        'today_leadss': today_leadss,
+        'total_closed_leadss': total_closed_leadss,
+        'total_pending_leadss':total_pending_leadss,
+        'closed_leads':closed_leads,
+        'pending_leads':pending_leads,
+        'today_closed_leadss':today_closed_leadss,
+        'today_pending_leadss':today_pending_leadss,
+        'recent_open_leads':recent_open_leads
     }
     return render(request,'index.html',context)
 
@@ -63,8 +83,11 @@ def add_customer(request):
 
 
 def leads(request):
-    leads = Leads.objects.filter(staff_name__username=request.user.username)
-    return render(request,"leads.html",{'leads':leads})
+    # STAFF SIDE
+    leads = Leads.objects.filter(staff_name__username=request.user.username).order_by('-id')
+    # ADMIN SIDE
+    all_leads = Leads.objects.all().order_by('-id')
+    return render(request,"leads.html",{'leads':leads,'all_leads':all_leads})
 
 def add_leads(request):
     fm = LeadAddForm()
@@ -104,17 +127,26 @@ def lead_delete(request,item_id):
 
 
 def pending_leads(request):
-    junk_leads = Leads.objects.filter(lead_status='pending leads',staff_name__username=request.user.username)
-    return render(request,'pending_leads.html',{'junk_leads':junk_leads})
+    # STAFF SIDE
+    pending_leads = Leads.objects.filter(lead_status='pending leads',staff_name__username=request.user.username)
+    # ADMIN SIDE
+    pending_leadss = Leads.objects.filter(lead_status='pending leads')
+    return render(request,'pending_leads.html',{'pending_leads':pending_leads,'pending_leadss':pending_leadss})
 
 
 def open_leads(request):
+    # STAFF SIDE
     open_leads = Leads.objects.filter(lead_status="open leads",staff_name__username=request.user.username)
-    return render(request,'open_leads.html',{'open_leads':open_leads})
+    # ADMIN SIDE
+    open_leadss = Leads.objects.filter(lead_status='open leads')
+    return render(request,'open_leads.html',{'open_leads':open_leads,'open_leadss':open_leadss})
 
 def closed_leads(request):
+    # STAFF SIDE
     closed_leads = Leads.objects.filter(lead_status="close leads",staff_name__username=request.user.username)
-    return render(request,'closed_leads.html',{'close_leads':closed_leads})
+    # ADMIN SIDE
+    closed_leadss = Leads.objects.filter(lead_status="close leads")
+    return render(request,'closed_leads.html',{'close_leads':closed_leads,'closed_leadss':closed_leadss})
 
 
 def customer_profile(request,customer_id):
