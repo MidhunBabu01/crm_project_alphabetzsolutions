@@ -27,11 +27,11 @@ def index(request):
     pending_leads = Leads.objects.filter(lead_status = "pending leads",staff_name__username=request.user.username).count()
     # ADMIN SIDE
     total_leadss = Leads.objects.all().count()
-    today_leadss = Leads.objects.filter(date__gte=day_count,date__lte=today_date).count()
+    today_leadss = Leads.objects.filter(date=today_date).count()
     total_closed_leadss = Leads.objects.filter(lead_status="close leads").count()
-    today_closed_leadss = Leads.objects.filter(date__gte=day_count,date__lte=today_date,lead_status="close leads").count()
+    today_closed_leadss = Leads.objects.filter(date=today_date,lead_status="close leads").count()
     total_pending_leadss = Leads.objects.filter(lead_status = "pending leads").count()
-    today_pending_leadss = Leads.objects.filter(lead_status = "pending leads",date__gte=day_count,date__lte=today_date,).count()
+    today_pending_leadss = Leads.objects.filter(lead_status = "pending leads",date=today_date).count()
     recent_open_leads = Leads.objects.filter(lead_status = "open leads").order_by('-id')[:5]
 
     context = {
