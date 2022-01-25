@@ -11,6 +11,7 @@ from datetime import datetime, timedelta
 class Customer(models.Model):
     def __str__(self):
         return self.name
+    
     name = models.CharField(max_length=250)
     address = models.CharField(max_length=250)
     phone = models.CharField(max_length=10)

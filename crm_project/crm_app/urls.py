@@ -13,9 +13,10 @@ urlpatterns = [
     path('index/', views.index, name='index'),
     path('logout/',views.logout,name="logout"),
     path('register/', views.register, name='register'),
+    path('**admin-register**/', views.admin_register, name='admin_register'),
     # staff account section
-    path('**staff-register*/',views.staff_register,name="staff_register"),
-    path('staff-login/',views.staff_login,name="staff_login"),
+    path('**staff-register**/',views.staff_register,name="staff_register"),
+    # path('staff-login/',views.staff_login,name="staff_login"),
     path('register/', views.register, name='register'),
     path('starter/', views.starter, name='starter'),
     path('customers/', views.customer, name='customers'),

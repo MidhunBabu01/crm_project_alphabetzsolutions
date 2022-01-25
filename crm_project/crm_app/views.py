@@ -17,38 +17,41 @@ from xhtml2pdf import pisa
 import datetime
 # Create your views here.
 def index(request):
-    # STAFF SIDE
-    my_open_leads  = Leads.objects.filter(lead_status="open leads",staff_name__username=request.user.username)
-    total_leads =  Leads.objects.filter(staff_name__username=request.user.username).count()
-    today_date = datetime.date.today()
-    day_count = today_date-datetime.timedelta(days=1*1)
-    today_leads = Leads.objects.filter(date__gte=day_count,date__lte=today_date,staff_name__username=request.user.username).count()
-    closed_leads = Leads.objects.filter(lead_status="close leads",staff_name__username=request.user.username).count()
-    pending_leads = Leads.objects.filter(lead_status = "pending leads",staff_name__username=request.user.username).count()
-    # ADMIN SIDE
-    total_leadss = Leads.objects.all().count()
-    today_leadss = Leads.objects.filter(date=today_date).count()
-    total_closed_leadss = Leads.objects.filter(lead_status="close leads").count()
-    today_closed_leadss = Leads.objects.filter(date=today_date,lead_status="close leads").count()
-    total_pending_leadss = Leads.objects.filter(lead_status = "pending leads").count()
-    today_pending_leadss = Leads.objects.filter(lead_status = "pending leads",date=today_date).count()
-    recent_open_leads = Leads.objects.filter(lead_status = "open leads").order_by('-id')[:5]
+    if 'username' in request.session:
+        # STAFF SIDE
+        my_open_leads  = Leads.objects.filter(lead_status="open leads",staff_name__username=request.user.username)
+        total_leads =  Leads.objects.filter(staff_name__username=request.user.username).count()
+        today_date = datetime.date.today()
+        # day_count = today_date-datetime.timedelta(days=1*1)
+        today_leads = Leads.objects.filter(date=today_date,staff_name__username=request.user.username).count()
+        closed_leads = Leads.objects.filter(lead_status="close leads",staff_name__username=request.user.username).count()
+        pending_leads = Leads.objects.filter(lead_status = "pending leads",staff_name__username=request.user.username).count()
+        # ADMIN SIDE
+        total_leadss = Leads.objects.all().count()
+        today_leadss = Leads.objects.filter(date=today_date).count()
+        total_closed_leadss = Leads.objects.filter(lead_status="close leads").count()
+        today_closed_leadss = Leads.objects.filter(date=today_date,lead_status="close leads").count()
+        total_pending_leadss = Leads.objects.filter(lead_status = "pending leads").count()
+        today_pending_leadss = Leads.objects.filter(lead_status = "pending leads",date=today_date).count()
+        recent_open_leads = Leads.objects.filter(lead_status = "open leads").order_by('-id')[:5]
 
-    context = {
-        'my_open_leads':my_open_leads,
-        'total_leads':total_leads,
-        'today_leads':today_leads,
-        'total_leadss':total_leadss,
-        'today_leadss': today_leadss,
-        'total_closed_leadss': total_closed_leadss,
-        'total_pending_leadss':total_pending_leadss,
-        'closed_leads':closed_leads,
-        'pending_leads':pending_leads,
-        'today_closed_leadss':today_closed_leadss,
-        'today_pending_leadss':today_pending_leadss,
-        'recent_open_leads':recent_open_leads
-    }
-    return render(request,'index.html',context)
+        context = {
+            'my_open_leads':my_open_leads,
+            'total_leads':total_leads,
+            'today_leads':today_leads,
+            'total_leadss':total_leadss,
+            'today_leadss': today_leadss,
+            'total_closed_leadss': total_closed_leadss,
+            'total_pending_leadss':total_pending_leadss,
+            'closed_leads':closed_leads,
+            'pending_leads':pending_leads,
+            'today_closed_leadss':today_closed_leadss,
+            'today_pending_leadss':today_pending_leadss,
+            'recent_open_leads':recent_open_leads
+        }
+        return render(request,'index.html',context)
+    else:
+        return redirect('crm_app:staff_login')
 
 
 def chat(request):
@@ -345,7 +348,7 @@ def register(request):
             try:
                 user = User.objects.get(username=request.POST['username'])
                 print('username already taken')
-                return render(request,'register.html',{'error':"username alredy taken"})
+                return render(request,'register.html',{'error':"Username alredy taken"})
                 
             except User.DoesNotExist:
                 user = User.objects.create_user(username = request.POST['username'], password = request.POST['password'],first_name=request.POST['first_name'],last_name=request.POST['last_name'],email=request.POST['email'])
@@ -394,36 +397,30 @@ def login(request):
         return render(request,'login.html')
 
 
-
-
-# def register(request):
-#     if "username" in request.session:
-#         return redirect('crm_app:index')
-#     if request.method == "POST":
-#         firstname = request.POST.get("first_name")
-#         lastname = request.POST.get("last_name")
-#         username = request.POST.get('username')
-#         email = request.POST.get('email')
-#         password1 = request.POST.get("password1")
-#         password2 = request.POST.get("password2")  
-#         if password1 == password2:
-#             if User.objects.filter(username=username).exists():
-#                 print("username alredy exists")
-#                 messages.info(request,"username already exist")
-#                 return redirect("crm_app:register")
-#             elif User.objects.filter(email=email).exists():
-#                 print("email alredy exists")
-#                 messages.info(request,"email  already registered")
-#                 return redirect("crm_app:register")
-#             else:
-#                 user = User.objects.create_user(username=username,email=email,first_name=firstname,last_name=lastname,password=password1)
-#                 user.save();
-#                 print('user created')
-#                 return redirect('crm_app:login')
-#         else:
-#             print('Password Not Matched')
-#             return redirect('crm_app:register')    
-#     return render(request,"register.html")
+def admin_register(request):
+    if request.method == "POST":
+        username = request.POST.get('username')
+        email = request.POST.get('email')
+        password1 = request.POST.get("password1")
+        password2 = request.POST.get("password2")  
+        if password1 == password2:
+            if User.objects.filter(username=username).exists():
+                print("username alredy exists")
+                messages.info(request,"username already exist")
+                return redirect("crm_app:admin_register")
+            elif User.objects.filter(email=email).exists():
+                print("email alredy exists")
+                messages.info(request,"email  already registered")
+                return redirect("crm_app:admin_register")
+            else:
+                user = User.objects.create_user(username=username,email=email,password=password1,is_superuser=True,is_active=True,is_staff=True)
+                user.save();
+                print('user created')
+                return redirect('crm_app:staff_login')
+        else:
+            print('Password Not Matched')
+            return redirect('crm_app:admin_register')    
+    return render(request,"admin-register.html")
 
 
 
@@ -466,7 +463,8 @@ def login(request):
 
 
 def logout(request):
-    auth.logout(request)
+    if 'username' in request.session:
+        request.session.flush();
     return redirect("crm_app:staff_login")
 
 
@@ -484,11 +482,11 @@ def staff_register(request):
         if password1 == password2:
             if User.objects.filter(username=username).exists():
                 print("username alredy exists")
-                messages.info(request,"username already exist")
+                messages.info(request,"Username already exist")
                 return redirect("crm_app:staff_register")
             elif User.objects.filter(email=email).exists():
                 print("email alredy exists")
-                messages.info(request,"email  already registered")
+                messages.info(request,"Email  already registered")
                 return redirect("crm_app:staff_register")
             else:
                 user = User.objects.create_user(username=username, email=email,
