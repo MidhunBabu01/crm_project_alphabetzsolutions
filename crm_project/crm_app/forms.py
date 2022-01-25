@@ -9,17 +9,17 @@ from flatpickr import DatePickerInput
 class CustomerAddForm(forms.ModelForm):
     class Meta:
         model = Customer
-        exclude = ['last_transaction','total_transaction']
+        exclude = ['last_transaction','total_transaction','staff_name']
         widgets ={
             'name' : forms.TextInput(attrs={'class':'form-control'}),
             'address' : forms.TextInput(attrs={'class':'form-control'}),
-            'phone' : forms.TextInput(attrs={'class':'form-control'}),
+            'phone' : forms.NumberInput(attrs={'class':'form-control'}),
             'email' : forms.TextInput(attrs={'class':'form-control'}),
             'photo' : forms.TextInput(attrs={'class':'form-control-file'}),
             'loaction' : forms.TextInput(attrs={'class':'form-control'}),
             'gst' : forms.TextInput(attrs={'class':'form-control'}),
             'category' : forms.Select(attrs={'class':'form-control'}),
-            'whatsapp_number' : forms.TextInput(attrs={'class':'form-control'}),
+            'whatsapp_number' : forms.NumberInput(attrs={'class':'form-control'}),
             
         }
 

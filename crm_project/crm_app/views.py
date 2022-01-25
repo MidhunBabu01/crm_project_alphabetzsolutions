@@ -69,8 +69,11 @@ def starter(request):
 
 
 def customer(request):
-    customer = Customer.objects.all() 
-    return render(request,"customer.html",{'customer':customer})
+    # STAFF VIEW
+    customer = Customer.objects.filter(staff_name__username=request.user.username)
+    # ADMIN VIEW
+    customerr = Customer.objects.all()
+    return render(request,"customer.html",{'customer':customer,'customerr':customerr})
 
 
 def add_customer(request):
@@ -78,7 +81,10 @@ def add_customer(request):
     if request.method == 'POST':
         form = CustomerAddForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            data = form.save(commit=False)
+            staff_name = User.objects.get(username=request.user.username)
+            data.staff_name = staff_name
+            data.save()
             return redirect('crm_app:customers')
     else:
         form = CustomerAddForm()
