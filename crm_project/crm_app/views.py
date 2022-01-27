@@ -204,14 +204,6 @@ def closed_lead_search(request):
 
 # @login_required
 def Quotation_invoice(request,cart_items=None,total=0,count=0):
-    # details = Quotation_Details.objects.all()
-    # form = Quotation_DetailsForm()
-    # if request.method == 'POST':
-    #     form = Quotation_DetailsForm(request.POST)
-    #     form.save()
-    # else:
-    #     form = Quotation_DetailsForm()
-    # Usertable.filter(extendedtable__address)
     try:
         ct = CartList.objects.get(cart_id=c_id(request))
         ct_items = Items.objects.filter(cart=ct,active=True) 
@@ -227,6 +219,19 @@ def Quotation_invoice(request,cart_items=None,total=0,count=0):
 def products(request):
     products = Products.objects.all()
     return render(request,'products.html',{'products':products})
+
+def Quotation_invoice_buy(request,customer_id,cart_items=None,total=0,count=0):
+    customer = Customer.objects.filter(id=customer_id)
+    try:
+        ct = CartList.objects.get(cart_id=c_id(request))
+        ct_items = Items.objects.filter(cart=ct,active=True) 
+        for i in ct_items:
+            total += i.total
+            count += i.quantity
+    except ObjectDoesNotExist:
+        return redirect("crm_app:cart2")
+    return render(request,"quotation_invoice.html",{"ct_items":ct_items, "total":total, "count":count,'customer':customer})
+
 
 def cart(request,total=0,count=0,cart_items=None):
     try:
@@ -534,14 +539,15 @@ def staff_login(request):
 
 
 
-def invoice_pdf(request,cart_items=None,total=0,count=0):
+def invoice_pdf(request,customer_id,cart_items=None,total=0,count=0):
+    customer = Customer.objects.filter(id=customer_id)
     ct = CartList.objects.get(cart_id=c_id(request))
     ct_items = Items.objects.filter(cart=ct,active=True) 
     for i in ct_items:
         total += i.total
         count += i.quantity
     template_path = 'invoice_pdf.html'
-    context = {"ct_items":ct_items, "total":total, "count":count,"user":request.user}
+    context = {"ct_items":ct_items, "total":total, "count":count,"user":request.user,'customer':customer}
     response = HttpResponse(content_type='application/pdf')
     response['Content-Disposition'] = 'filename="inoice_details.pdf"'
     template = get_template(template_path)

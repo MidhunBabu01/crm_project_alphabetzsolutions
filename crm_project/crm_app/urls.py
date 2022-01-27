@@ -40,9 +40,11 @@ urlpatterns = [
     path('cartDetails/<int:product_id>/',views.buy_now,name="cartDetails"),
     path('min_product/<int:product_id>/',views.minus_button,name="minus"),
     path('del-product/<int:product_id>/',views.delete_button,name="del_product"),
-    path('invoice-pdf',views.invoice_pdf,name="invoice_pdf"),
+    path('invoice-pdf/<int:customer_id>',views.invoice_pdf,name="invoice_pdf"),
     path('open-lead-search-result',views.open_lead_search,name="open_lead_search"),
     path('closed-lead-search-result',views.closed_lead_search,name="closed_lead_search"),
+    path('quotation-invoice-buy/<int:customer_id>/',views.Quotation_invoice_buy,name="Quotation_invoice_buy"),
+    
     
     
  

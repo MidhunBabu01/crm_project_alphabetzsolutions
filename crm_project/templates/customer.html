@@ -1034,6 +1034,8 @@
                                                         <th>category</th>
                                                         <th>Location</th>
                                                         <th>Whatsapp Number</th>
+                                                        <th>Buy</th>
+                                
                                                     </tr>
                                                 </thead>
                                                 {% for i in customer %}
@@ -1069,6 +1071,10 @@
                                                         </td>
                                                         <td>
                                                             {{i.whatsapp_number}}
+                                                        </td>
+                                                        <td>
+                                                            <a href="{% url 'crm_app:Quotation_invoice_buy' i.id %}" class="btn btn-success btn-sm">View Details </i></a>
+                                                            {% comment %} <a href="{% url 'crm_app:invoice_pdf' i.id %}" class="btn btn-info btn-sm">Download Pdf</i></a> {% endcomment %}
                                                         </td>
                                                     </tr>
                                                 </tbody>

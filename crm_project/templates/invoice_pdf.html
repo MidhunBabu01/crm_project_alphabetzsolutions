@@ -204,19 +204,14 @@
                                 <div class="cust-details">
                                     <p class="bill-txt">Bill To:</p>
                                     <div class="cust-name" style="margin-left:35px; padding-top:-18px;">
-                                        {% if  user.is_authenticated %}
+                                        {% for i in customer %}
                                         <label>Name:
-                                        <textarea type="text" name="customer_name" class='user-name' placeholder="customer name" maxlength="250" required="" id="id_customer_name" disabled>{{user.username}}</textarea><br>
+                                        <textarea type="text" name="customer_name" class='user-name' placeholder="customer name" maxlength="250" required="" id="id_customer_name" disabled>{{i.name}}</textarea><br>
                                         </label>
                                         <label>Address:
-                                        <textarea type="text" name="customer_address" placeholder="customer address" maxlength="250" required="" id="id_customer_address" disabled>{{user.extendedusermodel.company_address}}</textarea>
+                                        <textarea type="text" name="customer_address" placeholder="customer address" maxlength="250" required="" id="id_customer_address" disabled>{{i.address}}</textarea>
                                         </label>
-                                        {% else %}
-                                        <textarea type="text" name="customer_name" placeholder="customer name" maxlength="250" required="" id="id_customer_name"></textarea>
-                                        <div class="cust-addr">
-                                            <textarea type="text" name="customer_address" placeholder="customer address" maxlength="250" required="" id="id_customer_address"></textarea>
-                                        </div>    
-                                        {% endif %}
+                                        {% endfor %}
                                     </div>
                                 </div>
                             </div>
