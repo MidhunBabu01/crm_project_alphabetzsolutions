@@ -44,6 +44,9 @@ urlpatterns = [
     path('open-lead-search-result',views.open_lead_search,name="open_lead_search"),
     path('closed-lead-search-result',views.closed_lead_search,name="closed_lead_search"),
     path('quotation-invoice-buy/<int:customer_id>/',views.Quotation_invoice_buy,name="Quotation_invoice_buy"),
+    path('project-management',views.project_management,name="project_management"),
+    path('project-management-update/<int:item_id>/',views.ProjectManagementUpdate,name="project_management_update"),
+    
     
     
     

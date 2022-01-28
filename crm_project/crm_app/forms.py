@@ -30,7 +30,7 @@ class LeadAddForm(forms.ModelForm):
     class Meta:
         model = Leads
         fields = '__all__'
-        exclude = ['staff_name']
+        exclude = ['staff_name','status','start_date','end_date']
         widgets ={
             'no' : forms.TextInput(attrs={'class':'form-control'}),
             'date' : DatePickerInput(attrs={'class':'form-control'}),
@@ -47,6 +47,20 @@ class LeadAddForm(forms.ModelForm):
             'lead_status' : forms.Select(attrs={'class':'form-control'}),
             'lead_source' : forms.Select(attrs={'class':'form-control'})
         }   
+
+
+class ProjectManagementAddForm(forms.ModelForm):
+    class Meta:
+        model = Leads
+        fields = ['status','start_date','end_date']
+        # exclude = ['lead_source','lead_status','stage2','stage1','remarks','requirements','department','owner','phone2','address','phone1','staff_name','no','date','company_name','lead_status','lead_source','stage1','stage2']
+        widgets ={
+            'status' : forms.Select(attrs={'class':'form-control'}),
+            'start_date' : forms.TextInput(attrs={'class':'form-control'}),
+            'end_date' : forms.TextInput(attrs={'class':'form-control'}),
+            
+        }   
+
 
 
 

@@ -1,18 +1,19 @@
 {% load static %}
-{% comment %} {% if user.is_authenticated and user.is_superuser %}
-<h1>Hello</h1>
-{% else %} {% endcomment %}
 <!doctype html>
 <html lang="en">
+
+    
 <!-- Mirrored from preview.pichforest.com/samply/layouts/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 01 Dec 2021 12:27:11 GMT -->
-<head> 
+<head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         <meta charset="utf-8" />
-        <title>Dashboard </title>
+        <title>Dashboard</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="Pichforest" name="author" />
         <!-- App favicon -->
         <link rel="shortcut icon" href="{% static 'assets/images/atlas-logo-small.png' %}">
+
         <!-- Bootstrap Css -->
         <link href="{% static 'assets/css/bootstrap.min.css' %}" id="bootstrap-style" rel="stylesheet" type="text/css" />
         <!-- Icons Css -->
@@ -39,7 +40,7 @@
                         <div class="navbar-brand-box">
                             <a href="index.html" class="logo logo-dark">
                                 <span class="logo-sm">
-                                    <img src="{% static 'assets/images/logo-dark.png' %}" alt="logo-sm" height="22">
+                                    <img src="{% static 'assets/images/logo-sm.png' %}" alt="logo-sm" height="22">
                                 </span>
                                 <span class="logo-lg">
                                     <img src="{% static 'assets/images/logo-dark.png' %}" alt="logo-dark" height="23">
@@ -65,11 +66,16 @@
                         </button>
 
                         <!-- App Search-->
-                        <form class="app-search d-none d-lg-block">
-                            <div class="position-relative">
-                                <input type="text"  class="form-control" placeholder="Search...">
-                                <span class="mdi mdi-magnify"></span>
-                            </div>
+                        
+                        <form class="app-search d-none d-lg-block" action="{% url 'crm_app:lead_search' %}">
+                            <div class="input-group">
+                                <div class="form-outline">
+                                  <input id="search-input" name="q" placeholder="search"type="search" id="form1" class="form-control" />
+                                </div>
+                                <button id="search-button" type="submit" class="btn btn-primary">
+                                  <i class="fas fa-search"></i>
+                                </button>
+                              </div>
                         </form>
                     </div>
 
@@ -97,10 +103,10 @@
                         </div>
 
                         <div class="dropdown d-inline-block">
-                            <button type="button" class="btn header-item waves-effect"
+                            {% comment %} <button type="button" class="btn header-item waves-effect"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {% comment %} <img id="header-lang-img" src="{% static 'assets/images/flags/us.jpg' %}" alt="Header Language" height="16" class="d-block"> {% endcomment %}
-                            </button>
+                                <img id="header-lang-img" src="{% static 'assets/images/flags/us.jpg' %}" alt="Header Language" height="16" class="d-block">
+                            </button> {% endcomment %}
                             <div class="dropdown-menu dropdown-menu-end">
 
                                 <!-- item-->
@@ -147,6 +153,7 @@
                                 <a class="dropdown-item" href="{% url 'crm_app:logout' %}"><i class="mdi mdi-logout text-muted font-size-16 align-middle me-1"></i> <span class="align-middle" key="t-logout">Logout</span></a>
                             </div>
                         </div>
+                        
                         <div class="dropdown d-inline-block">
                             <button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">
                                 <i class="bx bx-cog bx-spin"></i>
@@ -167,16 +174,13 @@
                         <!-- Left Menu Start -->
                         <ul class="metismenu list-unstyled" id="side-menu">
                             <li class="menu-title" key="t-menu">Menu</li>
-                
                             <li>
                                 <a href="{% url 'crm_app:index' %}" class="waves-effect">
                                     <i class='bx bxs-dashboard'></i>
                                     <span key="t-dashboard">Home</span>
                                 </a>
                             </li>
-
                             <li class="menu-title mt-3" key="t-more">More</li>
-
                             <li>
                                 <a href="{% url 'crm_app:leads' %}">
                                     <i class='bx bxs-grid'></i>
@@ -214,7 +218,7 @@
                             <li>
                                 <a href="{% url 'crm_app:products' %}">
                                     <i class='bx bx-file'></i>
-                                    <span key="t-pages">Products</span>
+                                    <span key="t-pages">Product</span>
                                 </a>
                                 {% comment %} <ul class="sub-menu" aria-expanded="false">
                                     <li><a href="{% url 'crm_app:starter' %}" key="t-starter-page">Starter Page</a></li>
@@ -257,7 +261,7 @@
                             </li>
 
                             <li>
-                                <a href="{% url 'crm_app:project_management' %}" class="waves-effect">
+                                <a href="{% url 'crm_app:index' %}" class="waves-effect">
                                     <i class='bx bxs-magic-wand' ></i>
                                     {% comment %} <span class="badge rounded-pill bg-danger float-end">2</span> {% endcomment %}
                                     <span key="t-forms">Project Management</span>
@@ -344,11 +348,11 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                                    <h4 class="mb-sm-0 font-size-18">Dashboard</h4>
+                                    <h4 class="mb-sm-0 font-size-18">Project Management</h4>
 
                                     {% comment %} <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Samply</a></li>
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);"></a></li>
                                             <li class="breadcrumb-item active">Dashboard</li>
                                         </ol>
                                     </div> {% endcomment %}
@@ -357,129 +361,8 @@
                             </div>
                         </div>
                         <!-- end page title -->
-                        {% if user.is_authenticated and user.is_superuser %}
-                        <div class="row">
-                            <div class="col-md-2 col-xl-2">
-                                <div class="card size">
-                                    <div class="card-body">
-                                        <div class="float-end">
-                                            <div class="avatar-sm mx-auto mb-4">
-                                                <span class="avatar-title rounded-circle bg-light font-size-24">
-                                                    <i class="mdi mdi-cash-multiple text-primary"></i>
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <p class="text-muted text-uppercase fw-semibold">Total Leads</p>
-                                            <h4 class="mb-1 mt-1"><span class="counter-value" data-target="{{total_leadss}}">0</span></h4>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div> <!-- end col-->
 
-                            <div class="col-md-2 col-xl-2">
-                                <div class="card size">
-                                    <div class="card-body">
-                                        <div class="float-end">
-                                            <div class="avatar-sm mx-auto mb-4">
-                                                <span class="avatar-title rounded-circle bg-light font-size-24">
-                                                    <i class="mdi mdi-refresh-circle text-success"></i>
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <p class="text-muted text-uppercase fw-semibold">Today Leads</p>
-                                            <h4 class="mb-1 mt-1"><span class="counter-value" data-target="{{today_leadss}}">0</span></h4>
-                                        </div>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div> <!-- end col-->
-
-                            <div class="col-md-2 col-xl-2">
-                                <div class="card size">
-                                    <div class="card-body">
-                                        <div class="float-end">
-                                            <div class="avatar-sm mx-auto mb-4">
-                                                <span class="avatar-title rounded-circle bg-light font-size-24">
-                                                    <i class="mdi mdi-account-group text-primary"></i>
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <p class="text-muted text-uppercase fw-semibold"> Total Closed Leads</p>
-                                            <h4 class="mb-1 mt-1"><span class="counter-value" data-target="{{total_closed_leadss}}">0</span></h4>
-                                        </div>
-                                        {% comment %} <p class="text-muted mt-3 mb-0"><span class="badge badge-soft-success me-1"><i class="mdi mdi-arrow-up-bold me-1"></i>14.33%</span> since last week {% endcomment %}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div> <!-- end col-->
-
-                            <div class="col-md-2 col-xl-2">
-                                <div class="card size">
-                                    <div class="card-body">
-                                        <div class="float-end">
-                                            <div class="avatar-sm mx-auto mb-4">
-                                                <span class="avatar-title rounded-circle bg-light font-size-24">
-                                                    <i class="mdi mdi-account-group text-primary"></i>
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <p class="text-muted text-uppercase fw-semibold"> Today Closed Leads</p>
-                                            <h4 class="mb-1 mt-1"><span class="counter-value" data-target="{{today_closed_leadss}}">0</span></h4>
-                                        </div>
-                                        {% comment %} <p class="text-muted mt-3 mb-0"><span class="badge badge-soft-success me-1"><i class="mdi mdi-arrow-up-bold me-1"></i>14.33%</span> since last week {% endcomment %}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div> 
-
-                            <div class="col-md-2 col-xl-2">
-                                <div class="card size">
-                                    <div class="card-body">
-                                        <div class="float-end">
-                                            <div class="avatar-sm mx-auto mb-4">
-                                                <span class="avatar-title rounded-circle bg-light font-size-24">
-                                                    <i class="mdi mdi-cart-check text-success"></i>
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <p class="text-muted text-uppercase fw-semibold"> Total Pending Leads</p>
-                                            <h4 class="mb-1 mt-1"><span class="counter-value" data-target="{{total_pending_leadss}}">0</span></h4>
-                                        </div>
-                                        {% comment %} <p class="text-muted mt-3 mb-0"><span class="badge badge-soft-warning me-1"><i class="mdi mdi-arrow-up-bold me-1"></i>0.55%</span> since last week {% endcomment %}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div> <!-- end col-->
-
-                            <div class="col-md-2 col-xl-2">
-                                <div class="card size">
-                                    <div class="card-body">
-                                        <div class="float-end">
-                                            <div class="avatar-sm mx-auto mb-4">
-                                                <span class="avatar-title rounded-circle bg-light font-size-24">
-                                                    <i class="mdi mdi-account-group text-primary"></i>
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <p class="text-muted text-uppercase fw-semibold"> Today Pending Leads</p>
-                                            <h4 class="mb-1 mt-1"><span class="counter-value" data-target="{{today_pending_leadss}}">0</span></h4>
-                                        </div>
-                                        {% comment %} <p class="text-muted mt-3 mb-0"><span class="badge badge-soft-success me-1"><i class="mdi mdi-arrow-up-bold me-1"></i>14.33%</span> since last week {% endcomment %}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div> 
-
-                        </div> 
-                        {% else %}
-                        <div class="row">
+                        {% comment %} <div class="row">
                             <div class="col-md-6 col-xl-3">
                                 <div class="card">
                                     <div class="card-body">
@@ -491,10 +374,11 @@
                                             </div>
                                         </div>
                                         <div>
-                                            <p class="text-muted text-uppercase fw-semibold">Total Leads</p>
-                                            <h4 class="mb-1 mt-1"><span class="counter-value" data-target="{{total_leads}}">0</span></h4>
+                                            <p class="text-muted text-uppercase fw-semibold">Total Revenue</p>
+                                            <h4 class="mb-1 mt-1">$<span class="counter-value" data-target="58425">0</span></h4>
                                         </div>
-                                        
+                                        <p class="text-muted mt-3 mb-0"><span class="badge badge-soft-success me-1"><i class="mdi mdi-arrow-up-bold me-1"></i>2.65%</span> since last week
+                                        </p>
                                     </div>
                                 </div>
                             </div> <!-- end col-->
@@ -510,10 +394,10 @@
                                             </div>
                                         </div>
                                         <div>
-                                            <p class="text-muted text-uppercase fw-semibold">Today Leads</p>
-                                            <h4 class="mb-1 mt-1"><span class="counter-value" data-target="{{today_leads}}">0</span></h4>
+                                            <p class="text-muted text-uppercase fw-semibold">Total Refunds</p>
+                                            <h4 class="mb-1 mt-1">$<span class="counter-value" data-target="2568">0</span></h4>
                                         </div>
-                                        {% comment %} <p class="text-muted mt-3 mb-0"><span class="badge badge-soft-danger me-1"><i class="mdi mdi-arrow-down-bold me-1"></i>4.58%</span> since last week {% endcomment %}
+                                        <p class="text-muted mt-3 mb-0"><span class="badge badge-soft-danger me-1"><i class="mdi mdi-arrow-down-bold me-1"></i>4.58%</span> since last week
                                         </p>
                                     </div>
                                 </div>
@@ -530,10 +414,10 @@
                                             </div>
                                         </div>
                                         <div>
-                                            <p class="text-muted text-uppercase fw-semibold">Closed Leads</p>
-                                            <h4 class="mb-1 mt-1"><span class="counter-value" data-target="{{closed_leads}}">0</span></h4>
+                                            <p class="text-muted text-uppercase fw-semibold">Active Users</p>
+                                            <h4 class="mb-1 mt-1"><span class="counter-value" data-target="258410">0</span></h4>
                                         </div>
-                                        {% comment %} <p class="text-muted mt-3 mb-0"><span class="badge badge-soft-success me-1"><i class="mdi mdi-arrow-up-bold me-1"></i>14.33%</span> since last week {% endcomment %}
+                                        <p class="text-muted mt-3 mb-0"><span class="badge badge-soft-success me-1"><i class="mdi mdi-arrow-up-bold me-1"></i>14.33%</span> since last week
                                         </p>
                                     </div>
                                 </div>
@@ -550,19 +434,18 @@
                                             </div>
                                         </div>
                                         <div>
-                                            <p class="text-muted text-uppercase fw-semibold">Pending Leads</p>
-                                            <h4 class="mb-1 mt-1"><span class="counter-value" data-target="{{pending_leads}}">0</span></h4>
+                                            <p class="text-muted text-uppercase fw-semibold">All Time Orders</p>
+                                            <h4 class="mb-1 mt-1"><span class="counter-value" data-target="9582">0</span></h4>
                                         </div>
-                                        {% comment %} <p class="text-muted mt-3 mb-0"><span class="badge badge-soft-warning me-1"><i class="mdi mdi-arrow-up-bold me-1"></i>0.55%</span> since last week {% endcomment %}
+                                        <p class="text-muted mt-3 mb-0"><span class="badge badge-soft-warning me-1"><i class="mdi mdi-arrow-up-bold me-1"></i>0.55%</span> since last week
                                         </p>
                                     </div>
                                 </div>
                             </div> <!-- end col-->
                         </div> <!-- end row-->
-                        {% endif %}
-
-                        <div class="row">
-                            {% comment %} <div class="col-xl-8">
+ {% endcomment %}
+                        {% comment %} <div class="row">
+                            <div class="col-xl-8">
                                 <div class="card card-height-100">
                                     <div class="card-body">
                                         <div class="float-end">
@@ -581,12 +464,12 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <h4 class="card-title mb-4">Lead Analytics</h4>
+                                        <h4 class="card-title mb-4">Sales Analytics</h4>
 
                                         <div class="mt-1">
                                             <ul class="list-inline main-chart mb-0">
                                                 <li class="list-inline-item chart-border-left me-0 border-0">
-                                                    <h3 class="text-primary"><span data-plugin="counterup">2,371</span><span class="text-muted d-inline-block fw-normal font-size-15 ms-3">Income</span></h3>
+                                                    <h3 class="text-primary">$<span data-plugin="counterup">2,371</span><span class="text-muted d-inline-block fw-normal font-size-15 ms-3">Income</span></h3>
                                                 </li>
                                                 <li class="list-inline-item chart-border-left me-0">
                                                     <h3><span data-plugin="counterup">258</span><span class="text-muted d-inline-block fw-normal font-size-15 ms-3">Sales</span>
@@ -606,9 +489,9 @@
                                         </div>
                                     </div> <!-- end card-body-->
                                 </div> <!-- end card-->
-                            </div> <!-- end col--> {% endcomment %}
+                            </div> <!-- end col-->
 
-                            {% comment %} <div class="col-xl-4">
+                            <div class="col-xl-4">
                                 <div class="card bg-pattern">
                                     <div class="card-body">
                                         <div class="row align-items-center">
@@ -644,7 +527,7 @@
 
                                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton2">
                                                     <a class="dropdown-item" href="#">Yearly</a>
-                                                    <a class="dropdown-item" href="#">Monthly</a>{{}}
+                                                    <a class="dropdown-item" href="#">Monthly</a>
                                                     <a class="dropdown-item" href="#">Weekly</a>
                                                     <a class="dropdown-item" href="#">Today</a>
                                                 </div>
@@ -680,8 +563,8 @@
                                     </div>
                                 </div> <!-- end card -->
 
-                            </div> {% endcomment %}
-                        </div>
+                            </div>
+                        </div> {% endcomment %}
                         <!-- end row -->
 
                         {% comment %} <div class="row">
@@ -944,7 +827,7 @@
                                         <div class="float-end">
                                             <ul class="list-inline mb-0">
                                                 <li class="list-inline-item me-2">
-                                                    {% comment %} <div class="dropdown">
+                                                    <div class="dropdown">
                                                         <a class="dropdown-toggle text-reset" href="#"
                                                             data-bs-toggle="dropdown" aria-haspopup="true"
                                                             aria-expanded="false">
@@ -952,11 +835,11 @@
                                                         </a>
         
                                                         <div class="dropdown-menu dropdown-menu-end">
-                                                            <a class="dropdown-item" href="{% url 'crm_app:junk_leads' %}">Junk Leads</a>
+                                                            <a class="dropdown-item" href="{% url 'crm_app:junk_leads' %}">Pending Leads</a>
                                                             <a class="dropdown-item" href="{% url 'crm_app:open_leads' %}">Open Leads</a>
                                                             <a class="dropdown-item" href="{% url 'crm_app:closed_leads' %}">Closed Leads</a>   
                                                         </div>
-                                                    </div> {% endcomment %}
+                                                    </div>
                                                 </li>
                                                 {% comment %} <li class="list-inline-item">
                                                     <div class="dropdown ms-3">
@@ -978,8 +861,10 @@
                                                 </li> {% endcomment %}
                                             </ul>
                                         </div>
+
                                         {% if user.is_authenticated and user.is_superuser %}
-                                        <h4 class="card-title mb-4">Recent Open Leads</h4>
+                                        <h4 class="card-title mb-4">1</h4>
+                                        <a href="{% url 'crm_app:add_leads' %}" class="btn btn-success">Add New Leads</a>
                                         <div class="table-responsive">
                                             <table class="table table-hover table-borderless align-middle table-centered table-nowrap mb-0">
                                                 <thead class="table-light">
@@ -993,217 +878,78 @@
                                                         <th>Owner/Contact Person</th>
                                                         <th>IT/NON IT</th>
                                                         <th>Requirements</th>
-                                                        <th>Stage 1</th>
-                                                        <th>Stage 2</th>
-                                                        <th>Lead Source</th>
+                                                        <th>Status</th>
+                                                        <th>Start Date</th>
+                                                        <th>End Date</th>
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
-                                                {% for i in recent_open_leads %} 
+                                                {% for i in closed_leadss %} 
                                                 <tbody>
                                                     <tr>
                                                         <td>
-                                                           {{i.staff_name}}  
-                                                        </td>
-                                                        <td>
-                                                            {% comment %} <img src="{{i.photo.url}}" alt="user" class="rounded-circle h-auto avatar-xs me-2"> {% endcomment %}
-                                                            <span>{{i.date}}</span>
-                                                        </td>
-                                                        <td>
-                                                            {{i.company_name}}
-                                                        </td>
-                                                        <td>
-                                                            {{i.address}}
-                                                        </td>
-                                                        <td>
-                                                            {{i.phone1}}
-                                                            {% comment %} <img src="{{i.photo.url}}" alt="user" class="rounded-circle h-auto avatar-xs me-2"> {% endcomment %}
-                                                        </td>
-                                                        <td>
-                                                            {{i.phone2}}
-                                                        </td>
-                                                        <td>
-                                                            <span class="badge bg-success bg-soft text-success">{{i.owner}}</span>
-                                                        </td>
-                                                        <td>
-                                                            {{i.department}}
-                                                        </td>
-                                                        <td>
-                                                            {{i.requirements}}
-                                                        </td>
-
-                                                        <td>
-                                                            {{i.stage1}}
-                                                        </td>
-
-                                                        <td>
-                                                            {{i.stage2}}
-                                                        </td>
-                                                        <td>
-                                                            {{i.lead_source}}
-                                                        </td>
-                                                        <td>
-                                                        <a href="{% url 'crm_app:leads_edit' i.id %}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
-                                                        <a href="{% url 'crm_app:leads_delete' i.id %}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                                                            {{i.staff_name}}  
+                                                         </td>
+                                                         <td>
+                                                             {% comment %} <img src="{{i.photo.url}}" alt="user" class="rounded-circle h-auto avatar-xs me-2"> {% endcomment %}
+                                                             <span>{{i.date}}</span>
+                                                         </td>
+                                                         <td>
+                                                             {{i.company_name}}
+                                                         </td>
+                                                         <td>
+                                                             {{i.address}}
+                                                         </td>
+                                                         <td>
+                                                             {{i.phone1}}
+                                                             {% comment %} <img src="{{i.photo.url}}" alt="user" class="rounded-circle h-auto avatar-xs me-2"> {% endcomment %}
+                                                         </td>
+                                                         <td>
+                                                             {{i.phone2}}
+                                                         </td>
+                                                         <td>
+                                                             {{i.owner}}
+                                                         </td>
+                                                         <td>
+                                                             {{i.department}}
+                                                         </td>
+                                                         <td>
+                                                             {{i.requirements}}
+                                                         </td>
+                                                         <td>
+                                                             {% if i.status == 'Started' %}
+                                                             <span class="badge bg-success bg-soft text-success">{{i.status}}<span>
+                                                             {% else %}
+                                                             <span class="badge bg-danger bg-soft text-danger">{{i.status}}<span>
+                                                             {% endif %}
+                                                         </td>
+                                                         <td>
+                                                             {{i.start_date}}
+                                                         </td>
+                                                         <td>
+                                                             {{i.end_date}}
+                                                         </td>
+ 
+                                                         {% comment %} <td>
+                                                             {{i.stage1}}
+                                                         </td>
+ 
+                                                         <td>
+                                                             {{i.stage2}}
+                                                         </td> {% endcomment %}
+                                                         
+                                                         <td>
+                                                         <a href="{% url 'crm_app:project_management_update' i.id %}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i></a>
+                                                         {% comment %} <a href="{% url 'crm_app:leads_delete' i.id %}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a> {% endcomment %}
+                                                         {% comment %} <form action="{% url 'crm_app:leads_delete' i.id %}" method="post" class="d-inline">
+                                                             {% csrf_token %}
+                                                             <input type="submit" class="btn btn-danger" value="Delete"><i class="fas fa-trash"></i>
+                                                         </form> {% endcomment %}
+                                                         </td> 
+                                                        {% comment %} <a href="{% url 'crm_app:leads_delete' i.id %}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a> {% endcomment %}
                                                         </td>   
                                                     </tr>
-                                                    <!-- end /tr -->
-
-                                                    {% comment %} <tr>
-                                                        <td>
-                                                            #SD002
-                                                        </td>
-                                                        <td>
-                                                            <img src="{% static 'assets/images/users/avatar-2.jpg' %}" alt="user" class="rounded-circle h-auto avatar-xs me-2">
-                                                            <span>Paul J. Friend</span>
-                                                        </td>
-                                                        <td>
-                                                            Developer
-                                                        </td>
-                                                        <td>
-                                                            pauljfrnd@jourrapide.com
-                                                        </td>
-                                                        <td>
-                                                            937-330-1634
-                                                        </td>
-                                                        <td>
-                                                            <span class="badge bg-success bg-soft text-success">Active</span>
-                                                        </td>
-                                                        <td>
-                                                            New York
-                                                        </td>
-                                                        <td>
-                                                            <div class="dropdown">
-                                                                <a class="text-muted dropdown-toggle font-size-16" role="button"
-                                                                    data-bs-toggle="dropdown" aria-haspopup="true">
-                                                                    <i class="mdi mdi-dots-vertical"></i>
-                                                                </a>
-                                                                <div class="dropdown-menu dropdown-menu-end">
-                                                                    <a class="dropdown-item" href="#">Action</a>
-                                                                    <a class="dropdown-item" href="#">Another action</a>
-                                                                    <a class="dropdown-item" href="#">Something else here</a>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr> {% endcomment %}
-                                                    <!-- end /tr -->
-
-                                                    {% comment %} <tr>
-                                                        <td>
-                                                            #SD003
-                                                        </td>
-                                                        <td>
-                                                            <img src="{% static 'assets/images/users/avatar-3.jpg' %}" alt="user" class="rounded-circle h-auto avatar-xs me-2">
-                                                            <span>Kathryn S. Collier</span>
-                                                        </td>
-                                                        <td>
-                                                            Owner
-                                                        </td>
-                                                        <td>
-                                                            annac@hotmai.us
-                                                        </td>
-                                                        <td>
-                                                            (216) 76 298 896
-                                                        </td>
-                                                        <td>
-                                                            <span class="badge bg-success bg-soft text-success">Active</span>
-                                                        </td>
-                                                        <td>
-                                                            Philippines
-                                                        </td>
-                                                        <td>
-                                                            <div class="dropdown">
-                                                                <a class="text-muted dropdown-toggle font-size-16" role="button"
-                                                                    data-bs-toggle="dropdown" aria-haspopup="true">
-                                                                    <i class="mdi mdi-dots-vertical"></i>
-                                                                </a>
-                                                                <div class="dropdown-menu dropdown-menu-end">
-                                                                    <a class="dropdown-item" href="#">Action</a>
-                                                                    <a class="dropdown-item" href="#">Another action</a>
-                                                                    <a class="dropdown-item" href="#">Something else here</a>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <!-- end /tr -->
-
-                                                    <tr> {% endcomment %}
-                                                        {% comment %} <td>
-                                                            #SD004
-                                                        </td>
-                                                        <td>
-                                                            <img src="{% static 'assets/images/users/avatar-4.jpg' %}" alt="user" class="rounded-circle h-auto avatar-xs me-2">
-                                                            <span>Labeeb Ghali</span>
-                                                        </td>
-                                                        <td>
-                                                            Designer
-                                                        </td>
-                                                        <td>
-                                                            labebswad@teleworm.us
-                                                        </td>
-                                                        <td>
-                                                            050 414 8778
-                                                        </td>
-                                                        <td>
-                                                            <span class="badge bg-danger bg-soft text-danger">Blocked</span>
-                                                        </td>
-                                                        <td>
-                                                            United Kingdom
-                                                        </td>
-                                                        <td>
-                                                            <div class="dropdown">
-                                                                <a class="text-muted dropdown-toggle font-size-16" role="button"
-                                                                    data-bs-toggle="dropdown" aria-haspopup="true">
-                                                                    <i class="mdi mdi-dots-vertical"></i>
-                                                                </a>
-                                                                <div class="dropdown-menu dropdown-menu-end">
-                                                                    <a class="dropdown-item" href="#">Action</a>
-                                                                    <a class="dropdown-item" href="#">Another action</a>
-                                                                    <a class="dropdown-item" href="#">Something else here</a>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr> {% endcomment %}
-                                                    <!-- end /tr -->
-
-                                                    {% comment %} <tr>
-                                                        <td>
-                                                            #SD005
-                                                        </td>
-                                                        <td>
-                                                            <img src="{% static 'assets/images/users/avatar-5.jpg' %}" alt="user" class="rounded-circle h-auto avatar-xs me-2">
-                                                            <span>Timothy Kauper</span>
-                                                        </td>
-                                                        <td>
-                                                            Founder
-                                                        </td>
-                                                        <td>
-                                                            thykauper@rhyta.com
-                                                        </td>
-                                                        <td>
-                                                            (216) 75 612 706
-                                                        </td>
-                                                        <td>
-                                                            <span class="badge bg-success bg-soft text-success">Active</span>
-                                                        </td>
-                                                        <td>
-                                                            Denmark
-                                                        </td>
-                                                        <td>
-                                                            <div class="dropdown">
-                                                                <a class="text-muted dropdown-toggle font-size-16" role="button"
-                                                                    data-bs-toggle="dropdown" aria-haspopup="true">
-                                                                    <i class="mdi mdi-dots-vertical"></i>
-                                                                </a>
-                                                                <div class="dropdown-menu dropdown-menu-end">
-                                                                    <a class="dropdown-item" href="#">Action</a>
-                                                                    <a class="dropdown-item" href="#">Another action</a>
-                                                                    <a class="dropdown-item" href="#">Something else here</a>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr> {% endcomment %}
-                                                    <!-- end /tr -->
+                                                   
                                                 </tbody>
                                                 {% endfor %}
                                             </table>
@@ -1211,8 +957,7 @@
 
                                         </div>
                                         {% else %}
-
-                                        <h4 class="card-title mb-4">Recent Open Leads</h4>
+                                        <h4 class="card-title mb-4">1</h4>
                                         {% comment %} <a href="{% url 'crm_app:add_leads' %}" class="btn btn-success">Add New Leads</a> {% endcomment %}
                                         <div class="table-responsive">
                                             <table class="table table-hover table-borderless align-middle table-centered table-nowrap mb-0">
@@ -1227,13 +972,13 @@
                                                         <th>Owner/Contact Person</th>
                                                         <th>IT/NON IT</th>
                                                         <th>Requirements</th>
-                                                        <th>Stage 1</th>
-                                                        <th>Stage 2</th>
-                                                        <th>Lead Source</th>
+                                                        <th>Status</th>
+                                                        <th>Start Date</th>
+                                                        <th>End Date</th>
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
-                                                {% for i in my_open_leads %} 
+                                                {% for i in closed_leads %} 
                                                 <tbody>
                                                     <tr>
                                                         <td>
@@ -1257,7 +1002,7 @@
                                                             {{i.phone2}}
                                                         </td>
                                                         <td>
-                                                            <span class="badge bg-success bg-soft text-success">{{i.owner}}</span>
+                                                            {{i.owner}}
                                                         </td>
                                                         <td>
                                                             {{i.department}}
@@ -1265,21 +1010,49 @@
                                                         <td>
                                                             {{i.requirements}}
                                                         </td>
-
                                                         <td>
+                                                            {% if i.status == 'Started' %}
+                                                            <span class="badge bg-success bg-soft text-success">{{i.status}}<span>
+                                                            {% else %}
+                                                            <span class="badge bg-danger bg-soft text-danger">{{i.status}}<span>
+                                                            {% endif %}
+                                                        </td>
+                                                        <td>
+                                                            {{i.start_date}}
+                                                        </td>
+                                                        <td>
+                                                            {{i.end_date}}
+                                                        </td>
+
+                                                        {% comment %} <td>
                                                             {{i.stage1}}
                                                         </td>
 
                                                         <td>
                                                             {{i.stage2}}
-                                                        </td>
+                                                        </td> {% endcomment %}
+                                                        
                                                         <td>
-                                                            {{i.lead_source}}
-                                                        </td>
-                                                        <td>
-                                                        <a href="{% url 'crm_app:leads_edit' i.id %}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
-                                                        <a href="{% url 'crm_app:leads_delete' i.id %}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                                                        <a href="{% url 'crm_app:project_management_update' i.id %}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i></a>
+                                                        {% comment %} <a href="{% url 'crm_app:leads_delete' i.id %}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a> {% endcomment %}
+                                                        {% comment %} <form action="{% url 'crm_app:leads_delete' i.id %}" method="post" class="d-inline">
+                                                            {% csrf_token %}
+                                                            <input type="submit" class="btn btn-danger" value="Delete"><i class="fas fa-trash"></i>
+                                                        </form> {% endcomment %}
                                                         </td>   
+                                                        {% comment %} <td>
+                                                            <div class="dropdown">
+                                                                <a class="text-muted dropdown-toggle font-size-16" role="button"
+                                                                    data-bs-toggle="dropdown" aria-haspopup="true">
+                                                                    <i class="mdi mdi-dots-vertical"></i>
+                                                                </a>
+                                                                <div class="dropdown-menu dropdown-menu-end">
+                                                                    <a class="dropdown-item" href="#">Action</a>
+                                                                    <a class="dropdown-item" href="#">Another action</a>
+                                                                    <a class="dropdown-item" href="#">Something else here</a>
+                                                                </div>
+                                                            </div>
+                                                        </td> {% endcomment %}
                                                     </tr>
                                                     <!-- end /tr -->
 
@@ -1503,7 +1276,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="text-sm-end d-none d-sm-block">
-                                    {% comment %} Design & Develop by Pichforest {% endcomment %}
+                                    Design & Develop by Pichforest
                                 </div>
                             </div>
                         </div>
@@ -1674,4 +1447,3 @@
 
 <!-- Mirrored from preview.pichforest.com/samply/layouts/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 01 Dec 2021 12:27:11 GMT -->
 </html>
-{% comment %} {% endif %} {% endcomment %}

@@ -2,7 +2,7 @@ from django.core.exceptions import ObjectDoesNotExist, RequestAborted
 from django.http.response import HttpResponse, ResponseHeaders
 from django.shortcuts import redirect, render,get_object_or_404
 from crm_app.models import Customer, Leads, Products,CartList,Items,Quotation_Details
-from .forms import CustomerAddForm, LeadAddForm,Quotation_DetailsForm
+from .forms import CustomerAddForm, LeadAddForm, ProjectManagementAddForm,Quotation_DetailsForm
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.models import User,auth
 from django.contrib.auth import authenticate
@@ -558,6 +558,25 @@ def invoice_pdf(request,customer_id,cart_items=None,total=0,count=0):
        return HttpResponse('We had some errors <pre>' + html + '</pre>')
     return response
 
+
+def project_management(request):
+    # staff side
+    closed_leads = Leads.objects.filter(lead_status='close leads',staff_name__username=request.user.username)
+    # admin side
+    closed_leadss = Leads.objects.filter(lead_status='close leads')
+    return render(request,'project-management.html',{'closed_leads':closed_leads,'closed_leadss':closed_leadss})
+
+def ProjectManagementUpdate(request,item_id):
+    if request.method == 'POST':
+        update  = Leads.objects.get(id=item_id)
+        fm = ProjectManagementAddForm(request.POST,instance=update)
+        if fm.is_valid():
+            fm.save()
+            return redirect("crm_app:project_management")
+    else:
+        update  = Leads.objects.get(id=item_id)
+        fm = ProjectManagementAddForm(instance=update)
+    return render(request,"prjct-managemnt-update.html",{'form':fm})
 
 
 

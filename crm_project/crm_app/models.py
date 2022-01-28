@@ -65,6 +65,16 @@ class Leads(models.Model):
         ('Newspaper','Newspaper'),
     )
     lead_source = models.CharField(max_length=25,choices=source_choices)
+    # PROJECT MANAGEMENT SECTION
+    status_choices = (
+        ('Pending','Pending'),
+        ('Started','Started'),
+        ('On Hold','On Hold'),
+        ('End','End')
+    )
+    status = models.CharField(max_length=25,choices=status_choices,blank=True,null=True,default='Pending')
+    start_date = models.CharField(max_length=10,blank=True,null=True)
+    end_date = models.CharField(max_length=10,blank=True,null=True)
 
 
 
