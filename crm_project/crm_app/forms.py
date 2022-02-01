@@ -30,7 +30,7 @@ class LeadAddForm(forms.ModelForm):
     class Meta:
         model = Leads
         fields = '__all__'
-        exclude = ['staff_name','status','start_date','end_date']
+        exclude = ['staff_name','status','start_date','end_date','tools','retur_n']
         widgets ={
             'no' : forms.TextInput(attrs={'class':'form-control'}),
             'date' : DatePickerInput(attrs={'class':'form-control'}),

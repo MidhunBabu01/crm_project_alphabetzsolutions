@@ -14,6 +14,8 @@ urlpatterns = [
     path('logout/',views.logout,name="logout"),
     path('register/', views.register, name='register'),
     path('**admin-register**/', views.admin_register, name='admin_register'),
+    # SITE ADMIN REGISTER
+    path('**sitestaff-register**/', views.sitestaff_register, name='sitestaff_register'),
     # staff account section
     path('**staff-register**/',views.staff_register,name="staff_register"),
     # path('staff-login/',views.staff_login,name="staff_login"),
@@ -45,7 +47,9 @@ urlpatterns = [
     path('closed-lead-search-result',views.closed_lead_search,name="closed_lead_search"),
     path('quotation-invoice-buy/<int:customer_id>/',views.Quotation_invoice_buy,name="Quotation_invoice_buy"),
     path('project-management',views.project_management,name="project_management"),
+    path('tools-management',views.tools_management,name="tools_management"),
     path('project-management-update/<int:item_id>/',views.ProjectManagementUpdate,name="project_management_update"),
+    path('product-new',views.product_new,name="product_new"),
     
     
     

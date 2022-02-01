@@ -1,0 +1,873 @@
+{% load static %}
+{% comment %} {% if user.is_authenticated and user.is_superuser %}
+<h1>Hello</h1>
+{% else %} {% endcomment %}
+<!doctype html>
+<html lang="en">
+<!-- Mirrored from preview.pichforest.com/samply/layouts/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 01 Dec 2021 12:27:11 GMT -->
+<head> 
+        <meta charset="utf-8" />
+        <title>Dashboard </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+        <meta content="Pichforest" name="author" />
+        <!-- App favicon -->
+        <link rel="stylesheet" id="elementor-frontend-css" href="{% static 'wp-content/plugins/elementor/assets/css/frontend.min7d47.css?ver=2.9.6' %}" type="text/css" media="all">
+
+        <link rel="shortcut icon" href="{% static 'assets/images/atlas-logo-small.png' %}">
+        <!-- Bootstrap Css -->
+        <link href="{% static 'assets/css/bootstrap.min.css' %}" id="bootstrap-style" rel="stylesheet" type="text/css" />
+        <!-- Icons Css -->
+        <link href="{% static 'assets/css/icons.min.css' %}" rel="stylesheet" type="text/css" />
+        <!-- App Css-->
+        <link href="{% static 'assets/css/app.min.css' %}" id="app-style" rel="stylesheet" type="text/css" />
+        <!-- Dark Mode Css-->
+        <link href="{% static 'assets/css/dark-layout.min.css' %}" id="app-style" rel="stylesheet" type="text/css" />
+
+        <style>
+            body{
+                margin-top:20px;
+                background:#eee;
+            }
+            
+            .prod-info-main {
+                border: 1px solid #CEEFFF;
+                margin-bottom: 20px;
+                margin-top: 10px;
+                background: #fff;
+                padding: 6px;
+                -webkit-box-shadow: 0 1px 4px 0 rgba(21,180,255,0.5);
+                box-shadow: 0 1px 1px 0 rgba(21,180,255,0.5);
+            }
+            
+            .prod-info-main .product-image {
+                background-color: #EBF8FE;
+                display: block;
+                min-height: 238px;
+                overflow: hidden;
+                position: relative;
+                border: 1px solid #CEEFFF;
+                padding-top: 40px;
+            }
+            
+            .prod-info-main .product-deatil {
+                border-bottom: 1px solid #dfe5e9;
+                padding-bottom: 17px;
+                padding-left: 16px;
+                padding-top: 16px;
+                position: relative;
+                background: #fff
+            }
+            
+            .product-content .product-deatil h5 a {
+                color: #2f383d;
+                font-size: 15px;
+                line-height: 19px;
+                text-decoration: none;
+                padding-left: 0;
+                margin-left: 0
+            }
+            
+            .prod-info-main .product-deatil h5 a span {
+                color: #9aa7af;
+                display: block;
+                font-size: 13px
+            }
+            
+            .prod-info-main .product-deatil span.tag1 {
+                border-radius: 50%;
+                color: #fff;
+                font-size: 15px;
+                height: 50px;
+                padding: 13px 0;
+                position: absolute;
+                right: 10px;
+                text-align: center;
+                top: 10px;
+                width: 50px
+            }
+            
+            .prod-info-main .product-deatil span.sale {
+                background-color: #21c2f8
+            }
+            
+            .prod-info-main .product-deatil span.discount {
+                background-color: #71e134
+            }
+            
+            .prod-info-main .product-deatil span.hot {
+                background-color: #fa9442
+            }
+            
+            .prod-info-main .description {
+                font-size: 12.5px;
+                line-height: 20px;
+                padding: 10px 14px 16px 19px;
+                background: #fff
+            }
+            
+            .prod-info-main .product-info {
+                padding: 11px 19px 10px 20px
+            }
+            
+            .prod-info-main .product-info a.add-to-cart {
+                color: #2f383d;
+                font-size: 13px;
+                padding-left: 16px
+            }
+            
+            .prod-info-main name.a {
+                padding: 5px 10px;
+                margin-left: 16px
+            }
+            
+            .product-info.smart-form .btn {
+                padding: 6px 12px;
+                margin-left: 12px;
+                margin-top: -10px
+            }
+            
+            .load-more-btn {
+                background-color: #21c2f8;
+                border-bottom: 2px solid #037ca5;
+                border-radius: 2px;
+                border-top: 2px solid #0cf;
+                margin-top: 20px;
+                padding: 9px 0;
+                width: 100%
+            }
+            
+            .product-block .product-deatil p.price-container span,
+            .prod-info-main .product-deatil p.price-container span,
+            .shipping table tbody tr td p.price-container span,
+            .shopping-items table tbody tr td p.price-container span {
+                color: #21c2f8;
+                font-family: Lato, sans-serif;
+                font-size: 24px;
+                line-height: 20px
+            }
+            
+            .product-info.smart-form .rating label {
+                margin-top:15px;
+                
+            }
+            
+            .prod-wrap .product-image span.tag2 {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                width: 36px;
+                height: 36px;
+                border-radius: 50%;
+                padding: 10px 0;
+                color: #fff;
+                font-size: 11px;
+                text-align: center
+            }
+            
+            .prod-wrap .product-image span.tag3 {
+                position: absolute;
+                top: 10px;
+                right: 20px;
+                width: 60px;
+                height: 36px;
+                border-radius: 50%;
+                padding: 10px 0;
+                color: #fff;
+                font-size: 11px;
+                text-align: center
+            }
+            
+            .prod-wrap .product-image span.sale {
+                background-color: #57889c;
+            }
+            
+            .prod-wrap .product-image span.hot {
+                background-color: #a90329;
+            }
+            
+            .prod-wrap .product-image span.special {
+                background-color: #3B6764;
+            }
+            .shop-btn {
+                position: relative
+            }
+            
+            .shop-btn>span {
+                background: #a90329;
+                display: inline-block;
+                font-size: 10px;
+                box-shadow: inset 1px 1px 0 rgba(0, 0, 0, .1), inset 0 -1px 0 rgba(0, 0, 0, .07);
+                font-weight: 700;
+                border-radius: 50%;
+                padding: 2px 4px 3px!important;
+                text-align: center;
+                line-height: normal;
+                width: 19px;
+                top: -7px;
+                left: -7px
+            }
+            
+            .product-deatil hr {
+                padding: 0 0 5px!important
+            }
+            
+            .product-deatil .glyphicon {
+                color: #3276b1
+            }
+            
+            .product-deatil .product-image {
+                border-right: 0px solid #fff !important
+            }
+            
+            .product-deatil .name {
+                margin-top: 0;
+                margin-bottom: 0
+            }
+            
+            .product-deatil .name small {
+                display: block
+            }
+            
+            .product-deatil .name a {
+                margin-left: 0
+            }
+            
+            .product-deatil .price-container {
+                font-size: 24px;
+                margin: 0;
+                font-weight: 300;
+                
+            }
+            
+            .product-deatil .price-container small {
+                font-size: 12px;
+                
+            }
+            
+            .product-deatil .fa-2x {
+                font-size: 16px!important
+            }
+            
+            .product-deatil .fa-2x>h5 {
+                font-size: 12px;
+                margin: 0
+            }
+            
+            .product-deatil .fa-2x+a,
+            .product-deatil .fa-2x+a+a {
+                font-size: 13px
+            }
+            
+            .product-deatil .certified {
+                margin-top: 10px
+            }
+            
+            .product-deatil .certified ul {
+                padding-left: 0
+            }
+            
+            .product-deatil .certified ul li:not(first-child) {
+                margin-left: -3px
+            }
+            
+            .product-deatil .certified ul li {
+                display: inline-block;
+                background-color: #f9f9f9;
+                padding: 13px 19px
+            }
+            
+            .product-deatil .certified ul li:first-child {
+                border-right: none
+            }
+            
+            .product-deatil .certified ul li a {
+                text-align: left;
+                font-size: 12px;
+                color: #6d7a83;
+                line-height: 16px;
+                text-decoration: none
+            }
+            
+            .product-deatil .certified ul li a span {
+                display: block;
+                color: #21c2f8;
+                font-size: 13px;
+                font-weight: 700;
+                text-align: center
+            }
+            
+            .product-deatil .message-text {
+                width: calc(100% - 70px)
+            }
+            
+            @media only screen and (min-width:1024px) {
+                .prod-info-main div[class*=col-md-4] {
+                    padding-right: 0
+                }
+                .prod-info-main div[class*=col-md-8] {
+                    padding: 0 13px 0 0
+                }
+                .prod-wrap div[class*=col-md-5] {
+                    padding-right: 0
+                }
+                .prod-wrap div[class*=col-md-7] {
+                    padding: 0 13px 0 0
+                }
+                .prod-info-main .product-image {
+                    border-right: 1px solid #dfe5e9
+                }
+                .prod-info-main .product-info {
+                    position: relative
+                }
+            }
+            .product_block
+            {
+                display:inline-block;
+            }
+            </style>
+
+    </head>
+
+    <body data-sidebar="dark">
+
+    <!-- <body data-layout="horizontal" data-topbar="dark"> -->
+
+        <!-- Begin page -->
+        <div id="layout-wrapper">
+
+            
+            <header id="page-topbar">
+                <div class="navbar-header">
+                    <div class="d-flex">
+                        <!-- LOGO -->
+                        <div class="navbar-brand-box">
+                            <a href="index.html" class="logo logo-dark">
+                                <span class="logo-sm">
+                                    <img src="{% static 'assets/images/logo-dark.png' %}" alt="logo-sm" height="22">
+                                </span>
+                                <span class="logo-lg">
+                                    <img src="{% static 'assets/images/logo-dark.png' %}" alt="logo-dark" height="23">
+                                </span>
+                            </a>
+
+                            <a href="index.html" class="logo logo-light">
+                                <span class="logo-sm">
+                                    <img src="{% static 'assets/images/atlas-logo-small.png' %}" alt="logo-sm-light" height="22">
+                                </span>
+                                <span class="logo-lg">
+                                    <img src="{% static 'assets/images/atlas-logo.png' %}" alt="logo-light" height="23">
+                                </span>
+                            </a>
+                        </div>
+
+                        <button type="button" class="btn btn-sm px-3 font-size-16 vertinav-toggle header-item waves-effect" id="vertical-menu-btn">
+                            <i class="fa fa-fw fa-bars"></i>
+                        </button>
+
+                        <button type="button" class="btn btn-sm px-3 font-size-16 horinav-toggle header-item waves-effect waves-light" data-bs-toggle="collapse" data-bs-target="#topnav-menu-content">
+                            <i class="fa fa-fw fa-bars"></i>
+                        </button>
+
+                        <!-- App Search-->
+                        <form class="app-search d-none d-lg-block">
+                            <div class="position-relative">
+                                <input type="text"  class="form-control" placeholder="Search...">
+                                <span class="mdi mdi-magnify"></span>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="d-flex">
+
+                        <div class="dropdown d-inline-block d-lg-none ms-2">
+                            <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-search-dropdown"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="mdi mdi-magnify"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
+                                aria-labelledby="page-header-search-dropdown">
+        
+                                <form class="p-3">
+                                    <div class="form-group m-0">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="Search ..." aria-label="Recipient's username">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-primary" type="submit"><i class="mdi mdi-magnify"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="dropdown d-inline-block">
+                            <button type="button" class="btn header-item waves-effect"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {% comment %} <img id="header-lang-img" src="{% static 'assets/images/flags/us.jpg' %}" alt="Header Language" height="16" class="d-block"> {% endcomment %}
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end">
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="en">
+                                    <img src="{% static 'assets/images/flags/us.jpg' %}" alt="user-image" class="me-1" height="12"> <span class="align-middle">English</span>
+                                </a>
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="sp">
+                                    <img src="{% static 'assets/images/flags/spain.jpg' %}" alt="user-image" class="me-1" height="12"> <span class="align-middle">Spanish</span>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="gr">
+                                    <img src="{% static 'assets/images/flags/germany.jpg' %}" alt="user-image" class="me-1" height="12"> <span class="align-middle">German</span>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="it">
+                                    <img src="{% static 'assets/images/flags/italy.jpg' %}" alt="user-image" class="me-1" height="12"> <span class="align-middle">Italian</span>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="ru">
+                                    <img src="{% static 'assets/images/flags/russia.jpg' %}" alt="user-image" class="me-1" height="12"> <span class="align-middle">Russian</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="dropdown d-none d-lg-inline-block ms-1">
+                            <button type="button" class="btn header-item noti-icon waves-effect" data-toggle="fullscreen">
+                                <i class="mdi mdi-fullscreen"></i>
+                            </button>
+                        </div>
+
+                        <div class="dropdown d-inline-block">
+                            <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="d-none d-xl-inline-block ms-1">{{user.username}}</span>
+                                <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <!-- item-->
+                                <h6 class="dropdown-header"></h6>
+                                <a class="dropdown-item" href="{% url 'crm_app:logout' %}"><i class="mdi mdi-logout text-muted font-size-16 align-middle me-1"></i> <span class="align-middle" key="t-logout">Logout</span></a>
+                            </div>
+                        </div>
+                        <div class="dropdown d-inline-block">
+                            <button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">
+                                <i class="bx bx-cog bx-spin"></i>
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </header>
+
+            <!-- ========== Left Sidebar Start ========== -->
+            <div class="vertical-menu">
+
+                <div data-simplebar class="h-100">
+
+                    <!--- Sidemenu -->
+                    <div id="sidebar-menu">
+                        <!-- Left Menu Start -->
+                        <ul class="metismenu list-unstyled" id="side-menu">
+                            <li class="menu-title" key="t-menu">Menu</li>
+                
+                            <li>
+                                <a href="{% url 'crm_app:index' %}" class="waves-effect">
+                                    <i class='bx bxs-dashboard'></i>
+                                    <span key="t-dashboard">Home</span>
+                                </a>
+                            </li>
+
+                            <li class="menu-title mt-3" key="t-more">More</li>
+
+                            <li>
+                                <a href="{% url 'crm_app:leads' %}">
+                                    <i class='bx bxs-grid'></i>
+                                    <span key="t-apps">Leads</span>
+                                </a>
+                                
+                            </li>
+                
+                            <li>
+                                <a href="{% url 'crm_app:customers' %}" class="waves-effect">
+                                    <i class='bx bx-user-circle' ></i>
+                                    <span key="t-authentication">Customer</span>
+                                </a>
+                                
+                            </li>
+
+                            <li>
+                                <a href="{% url 'crm_app:products' %}">
+                                    <i class='bx bx-file'></i>
+                                    <span key="t-pages">Products</span>
+                                </a>
+                               
+                            </li>
+                            <li>
+                                <a href="{% url 'crm_app:quotation_invoice' %}" class="waves-effect">
+                                    <i class='bx bx-briefcase'></i>
+                                    <span key="t-ui-elements">Quotation</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{% url 'crm_app:project_management' %}" class="waves-effect">
+                                    <i class='bx bxs-magic-wand' ></i>
+                                    {% comment %} <span class="badge rounded-pill bg-danger float-end">2</span> {% endcomment %}
+                                    <span key="t-forms">Project Management</span>
+                                </a>
+                                {% comment %} <ul class="sub-menu" aria-expanded="false">
+                                    <li><a href="form-elements.html" key="t-form-elements">Form Elements</a></li>
+                                    <li><a href="form-advanced.html" key="t-form-advanced">Form Advanced</a></li>
+                                </ul> {% endcomment %}
+                            </li>
+
+                         
+                            </li>
+
+                        </ul>
+                    </div>
+                    <!-- Sidebar -->
+                </div>
+            </div>
+            <!-- Left Sidebar End -->
+
+            
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                <div class="page-content">
+                    <div class="container-fluid">
+
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                                    <h4 class="mb-sm-0 font-size-18">Dashboard</h4>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end page title -->
+                        
+
+                        <div class="row">
+                           
+                        </div>
+                        {% for i in products %}
+                        <div class="col-xs-12 col-md-6">
+                            <!-- First product box start here-->
+                            <div class="prod-info-main prod-wrap clearfix">
+                                <div class="row">
+                                        <div class="col-md-5 col-sm-12 col-xs-12">
+                                            <div class="product-image"> 
+                                                <img src="{{i.photo.url}}" class="img-responsive"> 
+                                                {% comment %} <span class="tag2 hot">
+                                                    HOT
+                                                </span>  {% endcomment %}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-7 col-sm-12 col-xs-12">
+                                        <div class="product-deatil">
+                                                <h5 class="name">
+                                                    <a href=>
+                                                        {{i.product_name}} ({{i.hsn}})
+                                                    </a>
+                                                    <a>
+                                                        <span>{{i.brand}}</span>
+                                                    </a>                            
+                        
+                                                </h5>
+                                                <p class="price-container">
+                                                    <span>₹{{i.price}}</span>
+                                                </p>
+                                                <span class="tag1"></span> 
+                                        </div>
+                                        <div class="description">
+                                            <p>{{i.desc}}</p>
+                                        </div>
+                                        <div class="product-info smart-form">
+                                            <div class="row">
+                                                <div class="col-md-12"> 
+                                                    <a href="{% url "crm_app:add_cart" i.id %}" class="btn btn-danger">Add to cart</a>
+                                                    <a href="{% url "crm_app:cartDetails" i.id %}" class="btn btn-info">Buy Now</a>
+                                                </div>
+                                            </div>	
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end product -->
+                        </div>
+                        {% endfor %}                        {% comment %} <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="float-end">
+                                            <ul class="list-inline mb-0">
+                                                <li class="list-inline-item me-2">
+                                                    
+                                                </li>
+                                               
+                                            </ul>
+                                        </div>
+                                        <div class="container">
+                                            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                                                
+                                                <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                                                <ul class=" nav nav-item justify-content-end">
+                                                    <li class="nav-link">
+                                                        <a href="{% url 'crm_app:addcart' %}"><i class="fas fa fa-2x fa-shopping-cart">{{itc}}</i></a></li>
+                                                        <li class="nav-link">
+                                                  <form method="get" action="{% url 'crm_app:search' %}" class="form-inline my-2 my-lg-0">
+                                                    <input class="form-control mr-sm-2" type="search" placeholder="Search" name='q'aria-label="Search">
+                                                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                                                  </form></li>
+                                                </ul>
+                                                </div>
+                                            </nav>
+                                        {% for i in products %}
+                                        <div class="col-xs-12 col-md-6">
+                                            <!-- First product box start here-->
+                                            <div class="prod-info-main prod-wrap clearfix">
+                                                <div class="row">
+                                                        <div class="col-md-5 col-sm-12 col-xs-12">
+                                                            <div class="product-image"> 
+                                                                <img src="{{i.photo.url}}" class="img-responsive"> 
+                                                                {% comment %} <span class="tag2 hot">
+                                                                    HOT
+                                                                </span>  {% endcomment %}
+                                                            {% comment %} </div>
+                                                        </div>
+                                                        <div class="col-md-7 col-sm-12 col-xs-12">
+                                                        <div class="product-deatil">
+                                                                <h5 class="name">
+                                                                    <a href=>
+                                                                        {{i.product_name}} ({{i.hsn}})
+                                                                    </a>
+                                                                    <a>
+                                                                        <span>{{i.brand}}</span>
+                                                                    </a>                            
+                                        
+                                                                </h5>
+                                                                <p class="price-container">
+                                                                    <span>₹{{i.price}}</span>
+                                                                </p>
+                                                                <span class="tag1"></span> 
+                                                        </div>
+                                                        <div class="description">
+                                                            <p>{{i.desc}}</p>
+                                                        </div>
+                                                        <div class="product-info smart-form">
+                                                            <div class="row">
+                                                                <div class="col-md-12"> 
+                                                                    <a href="{% url "crm_app:add_cart" i.id %}" class="btn btn-danger">Add to cart</a>
+                                                                    <a href="{% url "crm_app:cartDetails" i.id %}" class="btn btn-info">Buy Now</a>
+                                                                </div>
+                                                            </div>	
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div> {% endcomment %}
+                                            <!-- end product -->
+                                        {% comment %} </div>
+                                        {% endfor %}
+                                        <!--end table-responsive-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div> {% endcomment %} 
+                        <!-- end row -->
+
+
+                    
+                    </div>
+                    <!-- container-fluid -->
+                </div>
+                <!-- End Page-content -->
+
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                {% comment %} <script>document.write(new Date().getFullYear())</script> © Samply. {% endcomment %}
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="text-sm-end d-none d-sm-block">
+                                    {% comment %} Design & Develop by Pichforest {% endcomment %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+                
+            </div>
+            <!-- end main content-->
+
+        </div>
+        <!-- END layout-wrapper -->
+
+        <!-- Right Sidebar -->
+        <div class="right-bar">
+            <div data-simplebar class="h-100">
+                <div class="rightbar-title d-flex align-items-center bg-dark p-3">
+
+                    <h5 class="m-0 me-2 text-white">Theme Customizer</h5>
+
+                    <a href="javascript:void(0);" class="right-bar-toggle ms-auto">
+                        <i class="mdi mdi-close noti-icon"></i>
+                    </a>
+                </div>
+
+                <!-- Settings -->
+                <hr class="m-0" />
+
+                <div class="p-4">
+                    <h6 class="mb-3">Layout</h6>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout"
+                            id="layout-vertical" value="vertical">
+                        <label class="form-check-label" for="layout-vertical">Vertical</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout"
+                            id="layout-horizontal" value="horizontal">
+                        <label class="form-check-label" for="layout-horizontal">Horizontal</label>
+                    </div>
+
+                    <h6 class="mt-4 mb-3">Layout Mode</h6>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout-mode"
+                            id="layout-mode-light" value="light">
+                        <label class="form-check-label" for="layout-mode-light">Light</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout-mode"
+                            id="layout-mode-dark" value="dark">
+                        <label class="form-check-label" for="layout-mode-dark">Dark</label>
+                    </div>
+
+                    <h6 class="mt-4 mb-3">Layout Width</h6>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout-width"
+                            id="layout-width-fuild" value="fuild" onchange="document.body.setAttribute('data-layout-size', 'fluid')">
+                        <label class="form-check-label" for="layout-width-fuild">Fluid</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout-width"
+                            id="layout-width-boxed" value="boxed" onchange="document.body.setAttribute('data-layout-size', 'boxed')">
+                        <label class="form-check-label" for="layout-width-boxed">Boxed</label>
+                    </div>
+
+                    <h6 class="mt-4 mb-3">Layout Position</h6>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout-position"
+                            id="layout-position-fixed" value="fixed" onchange="document.body.setAttribute('data-layout-scrollable', 'false')">
+                        <label class="form-check-label" for="layout-position-fixed">Fixed</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout-position"
+                            id="layout-position-scrollable" value="scrollable" onchange="document.body.setAttribute('data-layout-scrollable', 'true')">
+                        <label class="form-check-label" for="layout-position-scrollable">Scrollable</label>
+                    </div>
+
+                    <h6 class="mt-4 mb-3">Topbar Color</h6>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="topbar-color"
+                            id="topbar-color-light" value="light" onchange="document.body.setAttribute('data-topbar', 'light')">
+                        <label class="form-check-label" for="topbar-color-light">Light</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="topbar-color"
+                            id="topbar-color-dark" value="dark" onchange="document.body.setAttribute('data-topbar', 'dark')">
+                        <label class="form-check-label" for="topbar-color-dark">Dark</label>
+                    </div>
+
+                    <h6 class="mt-4 mb-3 sidebar-setting">Sidebar Size</h6>
+
+                    <div class="form-check sidebar-setting">
+                        <input class="form-check-input" type="radio" name="sidebar-size"
+                            id="sidebar-size-default" value="default" onchange="document.body.setAttribute('data-sidebar-size', 'lg')">
+                        <label class="form-check-label" for="sidebar-size-default">Default</label>
+                    </div>
+                    <div class="form-check sidebar-setting">
+                        <input class="form-check-input" type="radio" name="sidebar-size"
+                            id="sidebar-size-compact" value="compact" onchange="document.body.setAttribute('data-sidebar-size', 'md')">
+                        <label class="form-check-label" for="sidebar-size-compact">Compact</label>
+                    </div>
+                    <div class="form-check sidebar-setting">
+                        <input class="form-check-input" type="radio" name="sidebar-size"
+                            id="sidebar-size-small" value="small" onchange="document.body.setAttribute('data-sidebar-size', 'sm')">
+                        <label class="form-check-label" for="sidebar-size-small">Small (Icon View)</label>
+                    </div>
+
+                    <h6 class="mt-4 mb-3 sidebar-setting">Sidebar Color</h6>
+
+                    <div class="form-check sidebar-setting">
+                        <input class="form-check-input" type="radio" name="sidebar-color"
+                            id="sidebar-color-light" value="light" onchange="document.body.setAttribute('data-sidebar', 'light')">
+                        <label class="form-check-label" for="sidebar-color-light">Light</label>
+                    </div>
+                    <div class="form-check sidebar-setting">
+                        <input class="form-check-input" type="radio" name="sidebar-color"
+                            id="sidebar-color-dark" value="dark" onchange="document.body.setAttribute('data-sidebar', 'dark')">
+                        <label class="form-check-label" for="sidebar-color-dark">Dark</label>
+                    </div>
+                    <div class="form-check sidebar-setting">
+                        <input class="form-check-input" type="radio" name="sidebar-color"
+                            id="sidebar-color-brand" value="brand" onchange="document.body.setAttribute('data-sidebar', 'brand')">
+                        <label class="form-check-label" for="sidebar-color-brand">Brand</label>
+                    </div>
+
+                    <h6 class="mt-4 mb-3">Direction</h6>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout-direction"
+                            id="layout-direction-ltr" value="ltr">
+                        <label class="form-check-label" for="layout-direction-ltr">LTR</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout-direction"
+                            id="layout-direction-rtl" value="rtl">
+                        <label class="form-check-label" for="layout-direction-rtl">RTL</label>
+                    </div>
+
+                </div>
+
+            </div> <!-- end slimscroll-menu-->
+        </div>
+        <!-- /Right-bar -->
+
+        <!-- Right bar overlay-->
+        <div class="rightbar-overlay"></div>
+
+        <!-- JAVASCRIPT -->
+        <script src="{% static 'assets/libs/jquery/jquery.min.js' %}"></script>
+        <script src="{% static 'assets/libs/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'assets/libs/metismenu/metisMenu.min.js' %}"></script>
+        <script src="{% static 'assets/libs/simplebar/simplebar.min.js' %}"></script>
+        <script src="{% static 'assets/libs/node-waves/waves.min.js' %}"></script>
+
+        <!-- apexcharts -->
+        <script src="{% static 'assets/libs/apexcharts/apexcharts.min.js' %}"></script>
+
+        <!-- dashboard init -->
+        <script src="{% static 'assets/js/pages/dashboard.init.js' %}"></script>
+
+        <!-- App js -->
+        <script src="{% static 'assets/js/app.js' %}"></script>
+    </body>
+
+
+<!-- Mirrored from preview.pichforest.com/samply/layouts/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 01 Dec 2021 12:27:11 GMT -->
+</html>
+{% comment %} {% endif %} {% endcomment %}

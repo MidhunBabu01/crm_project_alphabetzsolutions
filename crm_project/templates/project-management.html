@@ -826,7 +826,7 @@
                                     <div class="card-body">
                                         <div class="float-end">
                                             <ul class="list-inline mb-0">
-                                                <li class="list-inline-item me-2">
+                                                {% comment %} <li class="list-inline-item me-2">
                                                     <div class="dropdown">
                                                         <a class="dropdown-toggle text-reset" href="#"
                                                             data-bs-toggle="dropdown" aria-haspopup="true"
@@ -840,7 +840,7 @@
                                                             <a class="dropdown-item" href="{% url 'crm_app:closed_leads' %}">Closed Leads</a>   
                                                         </div>
                                                     </div>
-                                                </li>
+                                                </li> {% endcomment %}
                                                 {% comment %} <li class="list-inline-item">
                                                     <div class="dropdown ms-3">
                                                         <a class="dropdown-toggle text-reset" href="#"
@@ -862,7 +862,7 @@
                                             </ul>
                                         </div>
 
-                                        {% if user.is_authenticated and user.is_superuser %}
+                                        {% if user.is_authenticated and user.is_superuser or user.is_staff %}
                                         <h4 class="card-title mb-4">1</h4>
                                         <a href="{% url 'crm_app:add_leads' %}" class="btn btn-success">Add New Leads</a>
                                         <div class="table-responsive">
@@ -878,6 +878,8 @@
                                                         <th>Owner/Contact Person</th>
                                                         <th>IT/NON IT</th>
                                                         <th>Requirements</th>
+                                                        {% comment %} <th>Tools</th> {% endcomment %}
+                                                        {% comment %} <th>Return</th> {% endcomment %}
                                                         <th>Status</th>
                                                         <th>Start Date</th>
                                                         <th>End Date</th>
@@ -916,6 +918,12 @@
                                                          <td>
                                                              {{i.requirements}}
                                                          </td>
+                                                         {% comment %} <td>
+                                                             {{i.tools}}
+                                                         </td> {% endcomment %}
+                                                         {% comment %} <td>
+                                                            {{i.retur_n}}
+                                                        </td> {% endcomment %}
                                                          <td>
                                                              {% if i.status == 'Started' %}
                                                              <span class="badge bg-success bg-soft text-success">{{i.status}}<span>
@@ -956,268 +964,8 @@
                                             <!-- end table -->
 
                                         </div>
-                                        {% else %}
-                                        <h4 class="card-title mb-4">1</h4>
-                                        {% comment %} <a href="{% url 'crm_app:add_leads' %}" class="btn btn-success">Add New Leads</a> {% endcomment %}
-                                        <div class="table-responsive">
-                                            <table class="table table-hover table-borderless align-middle table-centered table-nowrap mb-0">
-                                                <thead class="table-light">
-                                                    <tr>
-                                                        <th>Sl.No</th>
-                                                        <th>Date</th>
-                                                        <th>Company Name</th>
-                                                        <th>Address</th>
-                                                        <th>Phone Number 1</th>
-                                                        <th>Phone Number 2</th>
-                                                        <th>Owner/Contact Person</th>
-                                                        <th>IT/NON IT</th>
-                                                        <th>Requirements</th>
-                                                        <th>Status</th>
-                                                        <th>Start Date</th>
-                                                        <th>End Date</th>
-                                                        <th>Action</th>
-                                                    </tr>
-                                                </thead>
-                                                {% for i in closed_leads %} 
-                                                <tbody>
-                                                    <tr>
-                                                        <td>
-                                                           {{i.no}}  
-                                                        </td>
-                                                        <td>
-                                                            {% comment %} <img src="{{i.photo.url}}" alt="user" class="rounded-circle h-auto avatar-xs me-2"> {% endcomment %}
-                                                            <span>{{i.date}}</span>
-                                                        </td>
-                                                        <td>
-                                                            {{i.company_name}}
-                                                        </td>
-                                                        <td>
-                                                            {{i.address}}
-                                                        </td>
-                                                        <td>
-                                                            {{i.phone1}}
-                                                            {% comment %} <img src="{{i.photo.url}}" alt="user" class="rounded-circle h-auto avatar-xs me-2"> {% endcomment %}
-                                                        </td>
-                                                        <td>
-                                                            {{i.phone2}}
-                                                        </td>
-                                                        <td>
-                                                            {{i.owner}}
-                                                        </td>
-                                                        <td>
-                                                            {{i.department}}
-                                                        </td>
-                                                        <td>
-                                                            {{i.requirements}}
-                                                        </td>
-                                                        <td>
-                                                            {% if i.status == 'Started' %}
-                                                            <span class="badge bg-success bg-soft text-success">{{i.status}}<span>
-                                                            {% else %}
-                                                            <span class="badge bg-danger bg-soft text-danger">{{i.status}}<span>
-                                                            {% endif %}
-                                                        </td>
-                                                        <td>
-                                                            {{i.start_date}}
-                                                        </td>
-                                                        <td>
-                                                            {{i.end_date}}
-                                                        </td>
-
-                                                        {% comment %} <td>
-                                                            {{i.stage1}}
-                                                        </td>
-
-                                                        <td>
-                                                            {{i.stage2}}
-                                                        </td> {% endcomment %}
-                                                        
-                                                        <td>
-                                                        <a href="{% url 'crm_app:project_management_update' i.id %}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i></a>
-                                                        {% comment %} <a href="{% url 'crm_app:leads_delete' i.id %}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a> {% endcomment %}
-                                                        {% comment %} <form action="{% url 'crm_app:leads_delete' i.id %}" method="post" class="d-inline">
-                                                            {% csrf_token %}
-                                                            <input type="submit" class="btn btn-danger" value="Delete"><i class="fas fa-trash"></i>
-                                                        </form> {% endcomment %}
-                                                        </td>   
-                                                        {% comment %} <td>
-                                                            <div class="dropdown">
-                                                                <a class="text-muted dropdown-toggle font-size-16" role="button"
-                                                                    data-bs-toggle="dropdown" aria-haspopup="true">
-                                                                    <i class="mdi mdi-dots-vertical"></i>
-                                                                </a>
-                                                                <div class="dropdown-menu dropdown-menu-end">
-                                                                    <a class="dropdown-item" href="#">Action</a>
-                                                                    <a class="dropdown-item" href="#">Another action</a>
-                                                                    <a class="dropdown-item" href="#">Something else here</a>
-                                                                </div>
-                                                            </div>
-                                                        </td> {% endcomment %}
-                                                    </tr>
-                                                    <!-- end /tr -->
-
-                                                    {% comment %} <tr>
-                                                        <td>
-                                                            #SD002
-                                                        </td>
-                                                        <td>
-                                                            <img src="{% static 'assets/images/users/avatar-2.jpg' %}" alt="user" class="rounded-circle h-auto avatar-xs me-2">
-                                                            <span>Paul J. Friend</span>
-                                                        </td>
-                                                        <td>
-                                                            Developer
-                                                        </td>
-                                                        <td>
-                                                            pauljfrnd@jourrapide.com
-                                                        </td>
-                                                        <td>
-                                                            937-330-1634
-                                                        </td>
-                                                        <td>
-                                                            <span class="badge bg-success bg-soft text-success">Active</span>
-                                                        </td>
-                                                        <td>
-                                                            New York
-                                                        </td>
-                                                        <td>
-                                                            <div class="dropdown">
-                                                                <a class="text-muted dropdown-toggle font-size-16" role="button"
-                                                                    data-bs-toggle="dropdown" aria-haspopup="true">
-                                                                    <i class="mdi mdi-dots-vertical"></i>
-                                                                </a>
-                                                                <div class="dropdown-menu dropdown-menu-end">
-                                                                    <a class="dropdown-item" href="#">Action</a>
-                                                                    <a class="dropdown-item" href="#">Another action</a>
-                                                                    <a class="dropdown-item" href="#">Something else here</a>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr> {% endcomment %}
-                                                    <!-- end /tr -->
-
-                                                    {% comment %} <tr>
-                                                        <td>
-                                                            #SD003
-                                                        </td>
-                                                        <td>
-                                                            <img src="{% static 'assets/images/users/avatar-3.jpg' %}" alt="user" class="rounded-circle h-auto avatar-xs me-2">
-                                                            <span>Kathryn S. Collier</span>
-                                                        </td>
-                                                        <td>
-                                                            Owner
-                                                        </td>
-                                                        <td>
-                                                            annac@hotmai.us
-                                                        </td>
-                                                        <td>
-                                                            (216) 76 298 896
-                                                        </td>
-                                                        <td>
-                                                            <span class="badge bg-success bg-soft text-success">Active</span>
-                                                        </td>
-                                                        <td>
-                                                            Philippines
-                                                        </td>
-                                                        <td>
-                                                            <div class="dropdown">
-                                                                <a class="text-muted dropdown-toggle font-size-16" role="button"
-                                                                    data-bs-toggle="dropdown" aria-haspopup="true">
-                                                                    <i class="mdi mdi-dots-vertical"></i>
-                                                                </a>
-                                                                <div class="dropdown-menu dropdown-menu-end">
-                                                                    <a class="dropdown-item" href="#">Action</a>
-                                                                    <a class="dropdown-item" href="#">Another action</a>
-                                                                    <a class="dropdown-item" href="#">Something else here</a>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <!-- end /tr -->
-
-                                                    <tr> {% endcomment %}
-                                                        {% comment %} <td>
-                                                            #SD004
-                                                        </td>
-                                                        <td>
-                                                            <img src="{% static 'assets/images/users/avatar-4.jpg' %}" alt="user" class="rounded-circle h-auto avatar-xs me-2">
-                                                            <span>Labeeb Ghali</span>
-                                                        </td>
-                                                        <td>
-                                                            Designer
-                                                        </td>
-                                                        <td>
-                                                            labebswad@teleworm.us
-                                                        </td>
-                                                        <td>
-                                                            050 414 8778
-                                                        </td>
-                                                        <td>
-                                                            <span class="badge bg-danger bg-soft text-danger">Blocked</span>
-                                                        </td>
-                                                        <td>
-                                                            United Kingdom
-                                                        </td>
-                                                        <td>
-                                                            <div class="dropdown">
-                                                                <a class="text-muted dropdown-toggle font-size-16" role="button"
-                                                                    data-bs-toggle="dropdown" aria-haspopup="true">
-                                                                    <i class="mdi mdi-dots-vertical"></i>
-                                                                </a>
-                                                                <div class="dropdown-menu dropdown-menu-end">
-                                                                    <a class="dropdown-item" href="#">Action</a>
-                                                                    <a class="dropdown-item" href="#">Another action</a>
-                                                                    <a class="dropdown-item" href="#">Something else here</a>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr> {% endcomment %}
-                                                    <!-- end /tr -->
-
-                                                    {% comment %} <tr>
-                                                        <td>
-                                                            #SD005
-                                                        </td>
-                                                        <td>
-                                                            <img src="{% static 'assets/images/users/avatar-5.jpg' %}" alt="user" class="rounded-circle h-auto avatar-xs me-2">
-                                                            <span>Timothy Kauper</span>
-                                                        </td>
-                                                        <td>
-                                                            Founder
-                                                        </td>
-                                                        <td>
-                                                            thykauper@rhyta.com
-                                                        </td>
-                                                        <td>
-                                                            (216) 75 612 706
-                                                        </td>
-                                                        <td>
-                                                            <span class="badge bg-success bg-soft text-success">Active</span>
-                                                        </td>
-                                                        <td>
-                                                            Denmark
-                                                        </td>
-                                                        <td>
-                                                            <div class="dropdown">
-                                                                <a class="text-muted dropdown-toggle font-size-16" role="button"
-                                                                    data-bs-toggle="dropdown" aria-haspopup="true">
-                                                                    <i class="mdi mdi-dots-vertical"></i>
-                                                                </a>
-                                                                <div class="dropdown-menu dropdown-menu-end">
-                                                                    <a class="dropdown-item" href="#">Action</a>
-                                                                    <a class="dropdown-item" href="#">Another action</a>
-                                                                    <a class="dropdown-item" href="#">Something else here</a>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr> {% endcomment %}
-                                                    <!-- end /tr -->
-                                                </tbody>
-                                                {% endfor %}
-                                            </table>
-                                            <!-- end table -->
-
-                                        </div>
                                         {% endif %}
+                                        
                                         <!--end table-responsive-->
                                     </div>
                                 </div>

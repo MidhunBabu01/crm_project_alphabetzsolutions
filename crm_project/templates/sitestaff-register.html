@@ -1,0 +1,161 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+    
+<!-- Mirrored from preview.pichforest.com/samply/layouts/auth-register.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 01 Dec 2021 12:27:17 GMT -->
+<head>
+        <meta charset="utf-8" />
+        <title>SiteStaff Regsiter</title>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+        <meta content="Pichforest" name="author" />
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="{% static 'assets/images/atlas-logo-small.png' %}">
+
+        <!-- Bootstrap Css -->
+        <link href="{% static 'assets/css/bootstrap.min.css' %}" id="bootstrap-style" rel="stylesheet" type="text/css" />
+        <!-- Icons Css -->
+        <link href="{% static 'assets/css/icons.min.css' %}" rel="stylesheet" type="text/css" />
+        <!-- App Css-->
+        <link href="{% static 'assets/css/app.min.css' %}" id="app-style" rel="stylesheet" type="text/css" />
+        <!-- Dark Mode Css-->
+        <link href="{% static 'assets/css/dark-layout.min.css' %}" id="app-style" rel="stylesheet" type="text/css" />
+
+    </head>
+
+    <body data-sidebar="dark">
+
+    <!-- <body data-layout="horizontal" data-topbar="dark"> -->
+        <div class="account-pages my-5 pt-sm-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-10">
+                        <div class="text-center mb-5">
+                            <a href="index.html" class="auth-logo">
+                                <img src="{% static 'assets/images/atlas-logo.png' %}" alt="Logo Dark" height="28" class="auth-logo-dark">
+                                <img src="{% static 'assets/images/atlas-logo.png' %}" alt="Logo Light" height="28" class="auth-logo-light">
+                            </a>
+                            <p class="font-size-15 text-muted mt-3"></p>
+                        </div>
+                        <div class="card overflow-hidden">
+                            <div class="row g-0">
+                                <div class="col-lg-6">
+                                    <div class="p-lg-5 p-4">
+
+                                        <div>
+                                            <h5>SiteStaff Register</h5>
+                                            <p class="text-muted"></p>
+                                        </div>
+                                        <div>
+                                            {% for message in messages %}
+                                            <h4 style='color:red; font-size:15px; font-weight:300'>{{message}}</h4>
+                                            {% endfor %}
+                                        </div>
+                                        <div class="mt-4 pt-3">
+                                            <form  method="post">
+                                                {% csrf_token %}
+                                                    <div class="form-group">
+                                                        <label for="recipient-name1" class="col-form-label">Username</label>
+                                                        <input type="text" class="form-control" placeholder=" " name="username" id="username" required="">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="recipient-email" class="col-form-label">Email</label>
+                                                        <input type="email" class="form-control" placeholder=" " name="email" id="email" required="">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="password1" class="col-form-label">Password</label>
+                                                        <input type="password" class="form-control" placeholder=" " name="password1" id="password1" required="">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="password2" class="col-form-label">Confirm Password</label>
+                                                        <input type="password" class="form-control" placeholder=" " name="password2" id="password2" required="">
+                                                    </div>
+                                                    <div class="right-w3l">
+                                                        <input type="submit" id="btn1" class="btn btn-info" value='Register'>
+                                                    </div>
+                                                </form>
+                                        </div>
+                    
+                                    </div>
+                                </div>
+                                {% comment %} <div class="col-lg-6">
+                                    <div class="p-lg-5 p-4 bg-auth h-100 d-none d-lg-block">
+                                        <div class="bg-overlay"></div>
+                                        
+                                    </div>
+                                </div> {% endcomment %}
+                                
+                            </div>
+                        </div>
+                        <!-- end card -->
+                        <div class="mt-5 text-center">
+                            <p>Already have an account ? <a href="{% url 'crm_app:staff_login' %}" class="fw-semibold text-decoration-underline"> Login </a> </p>
+                            {% comment %} <p>© <script>document.write(new Date().getFullYear())</script> <b>Samply</b>. Crafted with <i class="mdi mdi-heart text-danger"></i> by Pichforest</p> {% endcomment %}
+                        </div>
+                    </div>
+                    <!-- end col -->
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- end container -->
+        </div>
+        <!-- end account page -->
+
+        <!-- JAVASCRIPT -->
+        {% comment %} <script>
+            $('#btn1').click(function(e){
+                e.preventDefault();
+                var username = $('#username').val()
+                var email = $('#email').val()
+                var password1 = $('#password1').val()
+                var password2 = $('#password2').val()
+                var data ={
+                    'csrfmiddlewaretoken':'{{csrf_token}}',
+                    'username':username,
+                    'email':email,
+                    'password1':password1,
+                    'password2':password2,
+    
+                    
+                }
+                if(username == ''){
+                    alert('Enter Valid Username')
+                }else if(email ==''){
+                    alert('Enter Valid Email')
+                }else if(password1 ==''){
+                    alert('Enter Valid Password')
+                }else if(password2 ==''){
+                    alert('Enter Valid Password')
+                }else
+                {
+                $.ajax({
+                    url:'register/',
+                    method:"POST",
+                    data :data,
+                    dataType:'json',
+                    success:function(data){
+                        if(data.success){
+                            alert('Succesfully Registered')
+                            window.location.replace('login')
+                        }else{
+                            alert('User is not authenticated')
+                        }
+                    }
+                })
+            }
+            })
+        </script> {% endcomment %}
+        <script src="{% static 'assets/libs/jquery/jquery.min.js' %}"></script>
+        <script src="{% static 'assets/libs/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'assets/libs/metismenu/metisMenu.min.js' %}"></script>
+        <script src="{% static 'assets/libs/simplebar/simplebar.min.js' %}"></script>
+        <script src="{% static 'assets/libs/node-waves/waves.min.js' %}"></script>
+
+        <script src="{% static 'assets/js/app.js' %}"></script>
+
+    </body>
+
+<!-- Mirrored from preview.pichforest.com/samply/layouts/auth-register.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 01 Dec 2021 12:27:17 GMT -->
+</html>

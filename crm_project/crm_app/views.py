@@ -434,6 +434,32 @@ def admin_register(request):
     return render(request,"admin-register.html")
 
 
+def sitestaff_register(request):
+    if request.method == "POST":
+        username = request.POST.get('username')
+        email = request.POST.get('email')
+        password1 = request.POST.get("password1")
+        password2 = request.POST.get("password2")  
+        if password1 == password2:
+            if User.objects.filter(username=username).exists():
+                print("username alredy exists")
+                messages.info(request,"username already exist")
+                return redirect("crm_app:sitestaff_register")
+            elif User.objects.filter(email=email).exists():
+                print("email alredy exists")
+                messages.info(request,"email  already registered")
+                return redirect("crm_app:sitestaff_register")
+            else:
+                user = User.objects.create_user(username=username,email=email,password=password1,is_active=True,is_staff=True)
+                user.save();
+                print('user created')
+                return redirect('crm_app:staff_login')
+        else:
+            print('Password Not Matched')
+            return redirect('crm_app:sitestaff_register')    
+    return render(request,"sitestaff-register.html")
+
+
 
 # def customer_address(request):
 #     form = 
@@ -563,7 +589,7 @@ def project_management(request):
     # staff side
     closed_leads = Leads.objects.filter(lead_status='close leads',staff_name__username=request.user.username)
     # admin side
-    closed_leadss = Leads.objects.filter(lead_status='close leads')
+    closed_leadss = Leads.objects.filter(lead_status='close leads').order_by('-id')
     return render(request,'project-management.html',{'closed_leads':closed_leads,'closed_leadss':closed_leadss})
 
 def ProjectManagementUpdate(request,item_id):
@@ -578,5 +604,17 @@ def ProjectManagementUpdate(request,item_id):
         fm = ProjectManagementAddForm(instance=update)
     return render(request,"prjct-managemnt-update.html",{'form':fm})
 
+def tools_management(request):
+    # staff side
+    closed_leads = Leads.objects.filter(lead_status='close leads',staff_name__username=request.user.username)
+    # admin side
+    closed_leadss = Leads.objects.filter(lead_status='close leads').order_by('-id')
+    return render(request,'tools-management.html',{'closed_leads':closed_leads,'closed_leadss':closed_leadss})
+
+
+
+def product_new(request):
+    products = Products.objects.all()
+    return render(request,'product-new.html',{'products':products})
 
 

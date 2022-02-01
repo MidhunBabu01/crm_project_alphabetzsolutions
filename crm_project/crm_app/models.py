@@ -75,6 +75,8 @@ class Leads(models.Model):
     status = models.CharField(max_length=25,choices=status_choices,blank=True,null=True,default='Pending')
     start_date = models.CharField(max_length=10,blank=True,null=True)
     end_date = models.CharField(max_length=10,blank=True,null=True)
+    tools = models.CharField(max_length=250,blank=True,null=True)
+    retur_n = models.CharField(max_length = 250,blank=True,null=True)
 
 
 
