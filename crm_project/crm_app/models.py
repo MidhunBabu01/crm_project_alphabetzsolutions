@@ -79,15 +79,12 @@ class Leads(models.Model):
     status = models.CharField(max_length=25,choices=status_choices,blank=True,null=True,default='Pending')
     start_date = models.CharField(max_length=10,blank=True,null=True)
     end_date = models.CharField(max_length=10,blank=True,null=True)
-    # TOOLS MANAGEMENT SECTION
-    # tools_choices = (
-    #     ('Cable','Cable'),
-    #     ('Driller','Driller')
-    # )
     tools = models.CharField(max_length=250,blank=True,null=True)
     retur_n = models.CharField(max_length = 250,blank=True,null=True)
-    start_date2 = models.CharField(max_length=10)
-    end_date2 = models.CharField(max_length=10)
+    start_date2 = models.CharField(max_length=10,blank=True,null=True)
+    end_date2 = models.CharField(max_length=10,blank=True,null=True)
+    site_staff_name = models.ForeignKey(User,on_delete=models.CASCADE,related_name="site_staff_name",blank=True,null=True)
+
 
 
 

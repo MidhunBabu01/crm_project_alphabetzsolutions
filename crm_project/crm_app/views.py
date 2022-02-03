@@ -598,7 +598,6 @@ def ProjectManagementUpdate(request,item_id):
         fm = ProjectManagementAddForm(request.POST,instance=update)
         if fm.is_valid():
             fm.save()
-            
             return redirect("crm_app:project_management")
     else:
         update  = Leads.objects.get(id=item_id)
@@ -618,8 +617,11 @@ def tools_management_update(request,item_id):
         update  = Leads.objects.get(id=item_id)
         fm = ToolsManagementUpdate(request.POST,instance=update)
         if fm.is_valid():
-            fm.save()
-            return redirect("crm_app:tools_management")
+            data = fm.save(commit=False)
+            site_staff_name = User.objects.get(username=request.user.username)
+            data.site_staff_name = site_staff_name
+            data.save()
+            return redirect('crm_app:tools_management')
     else:
         update  = Leads.objects.get(id=item_id)
         fm = ToolsManagementUpdate(instance=update)

@@ -31,7 +31,7 @@ class LeadAddForm(forms.ModelForm):
     class Meta:
         model = Leads
         fields = '__all__'
-        exclude = ['staff_name','status','start_date','end_date','tools','retur_n','start_date2','end_date2']
+        exclude = ['staff_name','status','start_date','end_date','tools','retur_n','start_date2','end_date2','site_staff_name']
         widgets ={
             'no' : forms.TextInput(attrs={'class':'form-control'}),
             'date' : DatePickerInput(attrs={'class':'form-control'}),
@@ -76,6 +76,7 @@ class ToolsManagementUpdate(forms.ModelForm):
             'start_date2' : forms.TextInput(attrs={'class':'form-control','placeholder':'DD/MM/YY'}),
             'end_date2' : forms.TextInput(attrs={'class':'form-control','placeholder':'DD/MM/YY'}),
             # 'tools' : forms.MultipleChoiceField(choices=CHOICES,widget=Select2MultipleWidget),
+            # 'site_staff' : forms.TextInput(attrs={'class':'form-control'}),
         }  
     CHOICES = (
         ("Cable","Cable"), 
