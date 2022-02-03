@@ -1,5 +1,6 @@
-from django.forms import widgets
-from.models import Customer, Leads, Quotation_Details
+from django_select2.forms import Select2MultipleWidget
+from django.forms import CheckboxSelectMultiple, widgets
+from.models import Customer, Leads, Quotation_Details, Tools
 from django import forms
 from flatpickr import DatePickerInput
 
@@ -30,7 +31,7 @@ class LeadAddForm(forms.ModelForm):
     class Meta:
         model = Leads
         fields = '__all__'
-        exclude = ['staff_name','status','start_date','end_date','tools','retur_n']
+        exclude = ['staff_name','status','start_date','end_date','tools','retur_n','start_date2','end_date2']
         widgets ={
             'no' : forms.TextInput(attrs={'class':'form-control'}),
             'date' : DatePickerInput(attrs={'class':'form-control'}),
@@ -56,10 +57,32 @@ class ProjectManagementAddForm(forms.ModelForm):
         # exclude = ['lead_source','lead_status','stage2','stage1','remarks','requirements','department','owner','phone2','address','phone1','staff_name','no','date','company_name','lead_status','lead_source','stage1','stage2']
         widgets ={
             'status' : forms.Select(attrs={'class':'form-control'}),
-            'start_date' : forms.TextInput(attrs={'class':'form-control'}),
-            'end_date' : forms.TextInput(attrs={'class':'form-control'}),
+            'start_date' : forms.TextInput(attrs={'class':'form-control','placeholder':'DD/MM/YY'}),
+            'end_date' : forms.TextInput(attrs={'class':'form-control','placeholder':'DD/MM/YY'}),
             
         }   
+
+class ToolsManagementUpdate(forms.ModelForm):
+    class Meta:
+        model = Leads
+        fields = ['start_date2','end_date2','tools','retur_n']
+        labels ={
+            'retur_n':'Return',
+            'start_date2':'Start Date',
+            'end_date2': 'End Date'
+        }
+        widgets ={
+            'retur_n' : forms.TextInput(attrs={'class':'form-control'}),
+            'start_date2' : forms.TextInput(attrs={'class':'form-control','placeholder':'DD/MM/YY'}),
+            'end_date2' : forms.TextInput(attrs={'class':'form-control','placeholder':'DD/MM/YY'}),
+            # 'tools' : forms.MultipleChoiceField(choices=CHOICES,widget=Select2MultipleWidget),
+        }  
+    CHOICES = (
+        ("Cable","Cable"), 
+        ("Driller","Driller"),
+        ('Screw','Screw')
+    )
+    tools=forms.MultipleChoiceField(choices=CHOICES,widget=CheckboxSelectMultiple())
 
 
 

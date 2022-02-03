@@ -43,7 +43,9 @@ INSTALLED_APPS = [
     'crm_app',
     'crispy_forms',
     'flatpickr',
-    'acc_section'
+    'acc_section',
+    'multiselectfield',
+    'django_select2'
     
 
     

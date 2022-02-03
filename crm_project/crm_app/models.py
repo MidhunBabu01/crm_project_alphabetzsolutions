@@ -5,6 +5,7 @@ from django.forms.fields import DateTimeField
 from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
 from datetime import datetime, timedelta
+from multiselectfield import MultiSelectField
 
 
 # Create your models here.
@@ -30,7 +31,10 @@ class Customer(models.Model):
     total_transaction = models.CharField(max_length=250,blank=True)
 
 
-
+class Tools(models.Model):
+    def __str__(self):
+        return self.name
+    name = models.CharField(max_length=25)
 
 class Leads(models.Model):
     def __str__(self):
@@ -75,8 +79,15 @@ class Leads(models.Model):
     status = models.CharField(max_length=25,choices=status_choices,blank=True,null=True,default='Pending')
     start_date = models.CharField(max_length=10,blank=True,null=True)
     end_date = models.CharField(max_length=10,blank=True,null=True)
+    # TOOLS MANAGEMENT SECTION
+    # tools_choices = (
+    #     ('Cable','Cable'),
+    #     ('Driller','Driller')
+    # )
     tools = models.CharField(max_length=250,blank=True,null=True)
     retur_n = models.CharField(max_length = 250,blank=True,null=True)
+    start_date2 = models.CharField(max_length=10)
+    end_date2 = models.CharField(max_length=10)
 
 
 

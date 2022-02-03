@@ -2,7 +2,7 @@ from django.core.exceptions import ObjectDoesNotExist, RequestAborted
 from django.http.response import HttpResponse, ResponseHeaders
 from django.shortcuts import redirect, render,get_object_or_404
 from crm_app.models import Customer, Leads, Products,CartList,Items,Quotation_Details
-from .forms import CustomerAddForm, LeadAddForm, ProjectManagementAddForm,Quotation_DetailsForm
+from .forms import CustomerAddForm, LeadAddForm, ProjectManagementAddForm,ToolsManagementUpdate,Quotation_DetailsForm
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.models import User,auth
 from django.contrib.auth import authenticate
@@ -598,6 +598,7 @@ def ProjectManagementUpdate(request,item_id):
         fm = ProjectManagementAddForm(request.POST,instance=update)
         if fm.is_valid():
             fm.save()
+            
             return redirect("crm_app:project_management")
     else:
         update  = Leads.objects.get(id=item_id)
@@ -610,6 +611,19 @@ def tools_management(request):
     # admin side
     closed_leadss = Leads.objects.filter(lead_status='close leads').order_by('-id')
     return render(request,'tools-management.html',{'closed_leads':closed_leads,'closed_leadss':closed_leadss})
+
+
+def tools_management_update(request,item_id):
+    if request.method == 'POST':
+        update  = Leads.objects.get(id=item_id)
+        fm = ToolsManagementUpdate(request.POST,instance=update)
+        if fm.is_valid():
+            fm.save()
+            return redirect("crm_app:tools_management")
+    else:
+        update  = Leads.objects.get(id=item_id)
+        fm = ToolsManagementUpdate(instance=update)
+    return render(request,'tools-management-update.html',{'form':fm})
 
 
 
