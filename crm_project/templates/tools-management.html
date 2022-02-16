@@ -864,7 +864,7 @@
 
                                         {% if user.is_authenticated and user.is_superuser or user.is_staff %}
                                         <h4 class="card-title mb-4">1</h4>
-                                        <a href="{% url 'crm_app:add_leads' %}" class="btn btn-success">Add New Leads</a>
+                                        {% comment %} <a href="{% url 'crm_app:add_leads' %}" class="btn btn-success">Add New Leads</a> {% endcomment %}
                                         <div class="table-responsive">
                                             <table class="table table-hover table-borderless align-middle table-centered table-nowrap mb-0">
                                                 <thead class="table-light">
@@ -915,7 +915,7 @@
                                                              {{i.tools}}
                                                          </td>
                                                          <td>
-                                                             {{i.retur_n}}
+                                                             {{i.Return}}
                                                          </td>
                                                          <td>
                                                              {{i.start_date2}}

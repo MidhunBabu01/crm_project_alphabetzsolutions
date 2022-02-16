@@ -15,7 +15,10 @@ from django.http import HttpResponse
 from django.template.loader import get_template
 from xhtml2pdf import pisa
 import datetime
+from tools_management_app.models import Tools_item
 # Create your views here.
+
+
 def index(request):
     if 'username' in request.session:
         # STAFF SIDE
@@ -606,13 +609,16 @@ def ProjectManagementUpdate(request,item_id):
 
 def tools_management(request):
     # staff side
-    closed_leads = Leads.objects.filter(lead_status='close leads',staff_name__username=request.user.username)
+    closed_leads = Leads.objects.filter(lead_status='close leads',staff_name__username=request.user.username)    
     # admin side
     closed_leadss = Leads.objects.filter(lead_status='close leads').order_by('-id')
+
+        
     return render(request,'tools-management.html',{'closed_leads':closed_leads,'closed_leadss':closed_leadss})
 
 
 def tools_management_update(request,item_id):
+    tools = Tools_item.objects.all()
     if request.method == 'POST':
         update  = Leads.objects.get(id=item_id)
         fm = ToolsManagementUpdate(request.POST,instance=update)
@@ -625,7 +631,7 @@ def tools_management_update(request,item_id):
     else:
         update  = Leads.objects.get(id=item_id)
         fm = ToolsManagementUpdate(instance=update)
-    return render(request,'tools-management-update.html',{'form':fm})
+    return render(request,'tools-management-update.html',{'form':fm,'tools':tools})
 
 
 

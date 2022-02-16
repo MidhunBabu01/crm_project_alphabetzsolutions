@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'flatpickr',
     'acc_section',
     'multiselectfield',
-    'django_select2'
+    'django_select2',
+    'tools_management_app'
     
 
     
@@ -74,7 +75,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'crm_app.context_processors.count'
+                'crm_app.context_processors.count',
+                'tools_management_app.context_processors.countt'
             ],
         },
     },

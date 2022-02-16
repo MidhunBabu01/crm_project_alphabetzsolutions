@@ -31,10 +31,10 @@ class Customer(models.Model):
     total_transaction = models.CharField(max_length=250,blank=True)
 
 
-class Tools(models.Model):
-    def __str__(self):
-        return self.name
-    name = models.CharField(max_length=25)
+# class Tools(models.Model):
+#     def __str__(self):
+#         return self.name
+#     name = models.CharField(max_length=25)
 
 class Leads(models.Model):
     def __str__(self):
@@ -80,13 +80,10 @@ class Leads(models.Model):
     start_date = models.CharField(max_length=10,blank=True,null=True)
     end_date = models.CharField(max_length=10,blank=True,null=True)
     tools = models.CharField(max_length=250,blank=True,null=True)
-    retur_n = models.CharField(max_length = 250,blank=True,null=True)
+    Return = models.CharField(max_length = 250,blank=True,null=True)
     start_date2 = models.CharField(max_length=10,blank=True,null=True)
     end_date2 = models.CharField(max_length=10,blank=True,null=True)
     site_staff_name = models.ForeignKey(User,on_delete=models.CASCADE,related_name="site_staff_name",blank=True,null=True)
-
-
-
 
 
 
@@ -195,3 +192,11 @@ class Quotation_Details(models.Model):
         return self.quotation_details.name
     quotation_details = models.ForeignKey(Customer,on_delete=models.CASCADE)
 
+
+
+
+
+# class Tools(models.Model):
+#     def __str__(self):
+#         return self.name
+#     name = models.CharField(max_length=250)

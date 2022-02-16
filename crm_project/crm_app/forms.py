@@ -1,6 +1,6 @@
 from django_select2.forms import Select2MultipleWidget
 from django.forms import CheckboxSelectMultiple, widgets
-from.models import Customer, Leads, Quotation_Details, Tools
+from.models import Customer, Leads, Quotation_Details
 from django import forms
 from flatpickr import DatePickerInput
 
@@ -31,7 +31,7 @@ class LeadAddForm(forms.ModelForm):
     class Meta:
         model = Leads
         fields = '__all__'
-        exclude = ['staff_name','status','start_date','end_date','tools','retur_n','start_date2','end_date2','site_staff_name']
+        exclude = ['staff_name','status','start_date','end_date','tools','Return','start_date2','end_date2','site_staff_name']
         widgets ={
             'no' : forms.TextInput(attrs={'class':'form-control'}),
             'date' : DatePickerInput(attrs={'class':'form-control'}),
@@ -65,25 +65,43 @@ class ProjectManagementAddForm(forms.ModelForm):
 class ToolsManagementUpdate(forms.ModelForm):
     class Meta:
         model = Leads
-        fields = ['start_date2','end_date2','tools','retur_n']
+        fields = ['start_date2','end_date2']
         labels ={
             'retur_n':'Return',
             'start_date2':'Start Date',
             'end_date2': 'End Date'
         }
+        CHOICES = (
+            ("Cable","Cable"), 
+            ("Driller","Driller"),
+            ('Screw','Screw'),
+            ('Screwdriver','Screwdriver'),
+            ('Nut','Nut'),
+            ('Hammer','Hammer'),
+            ('Mallet','Mallet'),
+            ('Wrench','Wrench'),
+        )
+
         widgets ={
-            'retur_n' : forms.TextInput(attrs={'class':'form-control'}),
+            'Return' : forms.CheckboxSelectMultiple(choices=CHOICES,attrs={}),
             'start_date2' : forms.TextInput(attrs={'class':'form-control','placeholder':'DD/MM/YY'}),
             'end_date2' : forms.TextInput(attrs={'class':'form-control','placeholder':'DD/MM/YY'}),
-            # 'tools' : forms.MultipleChoiceField(choices=CHOICES,widget=Select2MultipleWidget),
+            'tools' : forms.CheckboxSelectMultiple(choices=CHOICES,attrs={})
             # 'site_staff' : forms.TextInput(attrs={'class':'form-control'}),
         }  
-    CHOICES = (
-        ("Cable","Cable"), 
-        ("Driller","Driller"),
-        ('Screw','Screw')
-    )
-    tools=forms.MultipleChoiceField(choices=CHOICES,widget=CheckboxSelectMultiple())
+    # CHOICES = (
+    #     ("Cable","Cable"), 
+    #     ("Driller","Driller"),
+    #     ('Screw','Screw'),
+    #     ('Screwdriver','Screwdriver'),
+    #     ('Nut','Nut'),
+    #     ('Hammer','Hammer'),
+    #     ('Mallet','Mallet'),
+    #     ('Wrench','Wrench'),
+    # )
+    # tools=forms.MultipleChoiceField(choices=CHOICES,required=False,widget=forms.CheckboxSelectMultiple(attrs={}))
+    # Return=forms.MultipleChoiceField(choices=CHOICES,required=False,widget=forms.CheckboxSelectMultiple(attrs={}))
+    
 
 
 
