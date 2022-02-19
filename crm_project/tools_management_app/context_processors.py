@@ -9,10 +9,10 @@ def countt(request):
         return {}
     else:
         try:
-            ct = CartList.objects.filter(cart_id=c_id(request))
-            cti = Items.objects.all().filter(cart=ct[:1])
+            ct = CartListt.objects.filter(cart_id=c_idd(request))
+            cti = Itemss.objects.all().filter(cart=ct[:1])
             for c in cti:
                 item_count+=c.quantity
-        except CartList.DoesNotExist:
+        except CartListt.DoesNotExist:
             item_count = 0
         return dict(itcc=item_count)        

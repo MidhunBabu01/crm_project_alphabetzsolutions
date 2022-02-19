@@ -105,7 +105,7 @@
                                               <div class="modal" id="myModal">
                                                 <div class="modal-dialog">
                                                   <div class="modal-content">
-                                              
+
                                                     <!-- Modal Header -->
                                                     <div class="modal-header">
                                                       <h4 class="modal-title">Tools</h4>
@@ -126,7 +126,7 @@
                                                         <tbody>
                                                           <tr>
                                                             <td>{{i.name}}</td>
-                                                            <td class="border-0 align-middle"><strong><h5><a href="{% url "tools_management_app:add_cart" i.id %}"><i class="fa fa-plus mr-1" style="font-size:13px;color:black" ></i></a>{{i.quantity}}<a href="{% url "tools_management_app:minus" i.id %}"><i class="fa fa-minus mr-1" style="font-size:13px;color:black"></i></h5></a></strong></td>
+                                                            <td class="border-0 align-middle"><strong><h5><a href="{% url "tools_management_app:addd_cart" i.id %}"><i class="fa fa-plus mr-1" style="font-size:13px;color:black" ></i></a>{{i.quantity}}<a href="{% url "tools_management_app:minus" i.id %}"><i class="fa fa-minus mr-1" style="font-size:13px;color:black"></i></h5></a></strong></td>
                                                         </td>
                                                             {% comment %} <td>def@somemail.com</td> {% endcomment %}
                                                           </tr>      

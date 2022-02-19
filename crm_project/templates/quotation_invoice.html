@@ -1,1336 +1,227 @@
 {% load static %}
-{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Mirrored from vyaparapp.in/invoice-generator by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Dec 2021 04:43:30 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
-    <!-- Google Tag Manager -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            '../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-K2VV52M');</script>
-    <!-- End Google Tag Manager -->
 
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
+    <!-- jQuery library -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
 
-    
-    <title>Invoice Generator Software | Bill Maker App Free Download</title>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+            integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+            integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+            crossorigin="anonymous"></script>
 
-    <meta name="description" content="Invoice Generator Software- Make bills for sale and purchase orders in just 20 seconds. Print, download &amp; share them with your customers easily.">
-    <meta property="og:title" content="Invoice Generator Software | Bill Maker App Free Download"/>
-    <meta property="og:image" content="https://vyaparwebsiteimages.vypcdn.in/desktop-hero-image.png"/>
-    <meta property="og:image:width" content="300" />
-    <meta property="og:image:height" content="300" />
-    <meta property="og:site_name" content="Vyapar App"/>
-    <meta property="og:description" content="Invoice Generator Software- Make bills for sale and purchase orders in just 20 seconds. Print, download &amp; share them with your customers easily."/>
-
-    <meta name="yandex-verification" content="5559b59e64695360" />
-    <meta name="p:domain_verify" content="a4daf9a199884bb7abe56019ffc09c32"/>
-    <meta charset="utf-8">
-    <meta name="csrf-token" content="m1IraA51xIYNxu4cXQx4o23pFpAajbS2wUNaXz5n">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="msvalidate.01" content="CE7B00AD9AFC15DAD1D261A43F989093" />
-    <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="{% static 'assets/css/intlTelInput.min.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/all.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/font-awesome.min.css' %}">
-    <!-- Compiled and minified CSS -->
-    
-
-    
-    <link type='text/css' href="{% static 'assets/css/inv.css' %}"
-    <link type="text/css" href="{% static 'assets/css/oldApp.css' %}" rel="stylesheet" >
-    <link type="text/css" href="{% static 'assets/css/paymentrevampdad7.css?version=0.24' %}" rel="stylesheet" >
-    <link type="text/css" href="{% static 'assets/css/login_panelfbde.css?version=0.7' %}" rel="stylesheet" >
-
-    
-
-    <link rel="stylesheet" href="{% static 'assets/css/layout-app7e0c.css?v=0.1' %}" />
-    <!--Bunch of favicons-->
-    <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x574abf.png?version=0.1">
-    <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x604abf.png?version=0.1">
-    <link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x724abf.png?version=0.1">
-    <link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x764abf.png?version=0.1">
-    <link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x1144abf.png?version=0.1">
-    <link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x1204abf.png?version=0.1">
-    <link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x1444abf.png?version=0.1">
-    <link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x1524abf.png?version=0.1">
-    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x1804abf.png?version=0.1">
-    <link rel="icon" type="image/png" sizes="192x192"  href="favicon/android-icon-192x1924abf.png?version=0.1">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x324abf.png?version=0.1">
-    <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x964abf.png?version=0.1">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x164abf.png?version=0.1">
-    <link rel="manifest" href="favicon/manifest.json">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="/favicon/ms-icon-144x144.png?version=0.1">
-    <meta name="theme-color" content="#ffffff">
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="m1IraA51xIYNxu4cXQx4o23pFpAajbS2wUNaXz5n">
-
-    <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta property="og:url" content="https://vyaparapp.in/invoice-generator"/>
-    <link rel="canonical" href="invoice-generator.html">
+    <!-- <link rel="stylesheet" href="./invoice.css"> -->
+    <style>
         
-    
-
-    <!-- Styles -->
-        <link rel="stylesheet" href="{% static 'assets/css/invoice-generator.css' %}" />
-    {% comment %} <style>
-        /* CSS overiding for the intlTelInput url('https://vyaparapp.in/images/intelTelInput/flags.png')*/
-        .iti-flag {background-image: url('images/intelTelInput/flags.png');}
-        
-        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-        .iti-flag {background-image: url('images/intelTelInput/flags%402x.png');}
+        .logo {
+            object-fit: contain;
+            height: 100px;
         }
-        
-                    #main-navigation{
-                margin-top: 35px;
+
+        .column-heading {
+            background-color: grey !important;
+            color: white;
+            font-weight: 600;
+        }
+
+        .heading-text {
+            font-weight: 600;
+            font-size: 20px;
+        }
+
+        .description {
+            font-weight: 400;
+            font-size: 14px;
+        }
+
+        .bold-text {
+            font-weight: 700;
+        }
+
+        .border-box {
+            border: 1px solid black;
+        }
+
+        .table tr, table td, table th {
+            border: 1px solid black;
+        }
+
+        .table td, table th {
+            padding: 1px !important;
+        }
+
+        .table td {
+            text-align: center;
+        }
+        .blank-td{
+            height: 27px;
+        }
+        @media print {
+            body {
+                zoom: 80%;
             }
-            </style> {% endcomment %}
-
-
-            <style>
-                .invoice-txt
-                {
-                    color:blue !important;
-                }
-            </style>
-    
-
-<!-- Scripts -->
-    <script>
-        window.Laravel = {"csrfToken":"m1IraA51xIYNxu4cXQx4o23pFpAajbS2wUNaXz5n"};
-    </script>
-    <script>
-        //    ....................................Start esktop Download Button Click performed New...................................................
-        function dwnldDesktopApplication(){
-//        }
-//        $.ajax({
-//            type: "POST",
-//            url: url,
-//            data: '',
-//            success: function(response) {
-////                $('#desktop_dwnld').modal('close');
-////                $("#dwnld-form_subBtn").removeClass('disabled');
-//
-//            },
-//            error: function () {
-////                $("#dwnld-form_subBtn").removeClass('disabled');
-//            }
-//        });
-
-            var link = document.createElement('a');
-            link.href = "https://desktop.vypcdn.in/VyaparApp.exe";
-            link.download = "VyaparApp.exe";
-            link.dispatchEvent(new MouseEvent('click'));
-            // e.preventDefault();
-            /* <![CDATA[ */
-
-
-            fbq('track', 'DownloadDesktop');
-            /* ]]> */
-
-            
-            //        if($("#user_contact").val().length != 0) {
-
-        };
-        //    ....................................End Desktop Download Button Click performed New...................................................
-    </script>
-    
-
+        }
+    </style>
+    <title>Invoice</title>
 </head>
+
 <body>
-<!-- Google Tag Manager (noscript) -->
-<div class="invoice-wrapper">
-        
-    <form method="post" id="invoice-form" action="https://vyaparapp.in/invoice-generator/pdf-invoice/1" enctype="multipart/form-data">
-        <input type="hidden" name="_token" value="m1IraA51xIYNxu4cXQx4o23pFpAajbS2wUNaXz5n">
-        
-        <div class="invoice-options">
-            <div class="invoice-theme-wrapper">
-                <div class="main-invoice-wrap" id="invoice">
-                    <div class="invoice-theme-1 process step-1" style="display: block;">
-                        <div class="invoice-block-1" style="display: flex;justify-content: space-between;align-items: center;">
-                            <div class="invoice-txt" style="font-size: 2.5rem;font-weight: bold;color: black;"><span>QUOTATION</span></div>
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                        </div>
-                        <div class="invoice-block-2" style="display: flex;justify-content: space-between;align-items: center;">
-                            <div class="company-details" style="width: 40%;position: relative;">
-                                <div class="company-name">
-                                    <label for="id_company_name">Company Name</label>
-                                    <select name="company_name" class="form-control" id="id_company_name">
-                                        <option value="Alphabet Solutionz">Atlas Kitchen</option>
-                                        {% comment %} <option option value="Alphabet Technologies">Alphabet Technologies</option> {% endcomment %}
-                                    </select>
-                                </div>
-                                <div class="company-addr">
-                                    <label for="id_company_address">Company Address</label>
-                                    <textarea name="company_address" class="form-control invoice-address" cols="40" rows="3" placeholder="company address" maxlength="250" required="" id="id_company_address" disabled>JassBuilding,Marappalam Road,Pattom,Trivandrum,Kerala</textarea>
-                                </div>
-                            </div>
-                            <div class="row" style="margin-top: 0em; width:40%">
-                                <img src="{% static 'assets/images/atlas-logo.png' %}">
-                                {% comment %} <div style="border: 1px dashed; padding-top: 1em; padding-bottom: 1em; text-align: center; background-color: rgb(247, 247, 247); border-radius: 5px; color: rgb(103, 103, 103); display: block;" id="file-div">
-                                    <label for="file" style=" font-size: 15px;" id="file-placeholder"><b><i class="fa fa-picture-o" aria-hidden="true" style="font-size: 30px"></i><br></b></label>
-                                    <input type="file" accept="image/jpeg, image/png" name="file" id="file" style="display: none; padding-bottom:10px" onchange="loadFile(event)">
-                                </div> {% endcomment %}
-                                
-                            </div>
-                        </div>
-                        {% for i in ct_items %}
-                        {% if forloop.first %}
-                        <div>
-                            <div class="invoice-serial col-4" style="margin-left:590px; margin-top:50px;">
-                                <div class="serial-no-invoice">INVOICE NO: AS00{{i.cart_id}}</div>
-                            </div>
-                        </div>
-                        {% endif %}
-                        {% endfor %}
-                        <p class="bill-txt">Bill To:</p>
-                        <div class="invoice-block-3">
-                            <div class="customer-details" style="width: 40%;position: relative;">
-                                <div class="cust-details">
-                                    <div class="cust-name">
-                                        {% comment %} {% if user.is_authenticated %} {% endcomment %}
-                                        {% comment %} <textarea type="text" name="customer_name" class='user-name' placeholder="customer name" style="height:52px;" maxlength="250" required="" id="id_customer_name" disabled>{{user.username}}</textarea> {% endcomment %}
-                                        {% for i in customer %}
-                                        <textarea type="text" name="customer_name" class='user-name' placeholder="customer name" style="height:52px;" maxlength="250" required="" id="id_customer_name" disabled>{{i.name}}</textarea>
-                                        {% comment %} <textarea type="text" name="customer_address" placeholder="customer address" maxlength="250" required="" id="id_customer_address" disabled>{{user.extendedusermodel.company_address}}</textarea> {% endcomment %}
-                                        <textarea type="text" name="customer_address" placeholder="customer address" maxlength="250" required="" id="id_customer_address" disabled>{{i.address}}</textarea>
-                                        {% endfor %}
-                                        {% comment %} <textarea type="text" name="customer_name" placeholder="customer name" maxlength="250" required="" id="id_customer_name"></textarea>
-                                        <div class="cust-addr">
-                                            <textarea type="text" name="customer_address" placeholder="customer address" maxlength="250" required="" id="id_customer_address"></textarea>
-                                        </div>     {% endcomment %}
-                                        
-                                    </div>
-                                    
-                                    {% comment %} <div class="cust-addr">
-                                        <textarea type="text" name="customer_address" placeholder="customer address" maxlength="250" required="" id="id_customer_address"></textarea> {% endcomment %}
-                                        {% comment %} <input type="text" name="customer_address" placeholder="customer address" maxlength="250" required="" id="id_customer_address"> {% endcomment %}
-                                    
-                                    {% comment %} </div> {% endcomment %}
-                                </div>
-                               
-                            </div>
-                            {% for i in ct_items %}
-                            {% if forloop.first %}
-                            
-                            <div class="cust-invoice-date">
-                                <div class="date">
-                                    Order Date : {{i.order_Date}}
-                                </div>
-                                <div class="due-date">
-                                    Due Date: {{i.due_date}}
-                                </div>
-                            </div>
-                            {% endif %}
-                            {% endfor %}
-                            
-                        </div>
-                        <div class="product-details">
-                            <table class="product-table">
-                                <thead>
-                                <tr>
-                                    <th width="20%">Item Name</th>
-                                    <th width="10%">Item Code</th>
-                                    <th width="10%">HSN code</th>
-                                    <th width="10%">Warranty</th>
-                                    <th width="10%">Quantity</th>
-                                    <th width="10%">Gst</th>
-                                    <th width="10%">Rate</th>
-                                    <th width="20%">Sub Total</th>
-                                <tbody>
-                                {% for i in ct_items %}
-                                <tr class="items-list">
-                                    {% comment %} <td class="serial_no">1</td> {% endcomment %}
-                                    
-                                    <td> 
-                                        
-                                        {% comment %} <input type="text" name="item_name" placeholder="add item" maxlength="250" required="" id="id_item_name"> {% endcomment %}
-                                        {{i.prodt.product_name}}
-                                    </td>
-                                    <td>
-                                         {% comment %} <input type="number" name="quantity" class="quantity" required="" id="id_quantity"> {% endcomment %}
-                                            {% comment %} {{forms.item_code}} {% endcomment %}
-                                        {{i.prodt.item_code}}
-                                    </td>
-                                    <td class="rate">
-                                        {{i.prodt.hsn}}
-                                        {% comment %} <input type="number" name="rate" placeholder="rate" required="" id="id_rate" class="rate"> {% endcomment %}
-                                        {% comment %} {{forms.rate}} {% endcomment %}
-                                    </td>
-                                    <td class="amount">
-                                        {{i.prodt.warranty}}
-                                        {% comment %} {{forms.quantity}} {% endcomment %}
-                                        {% comment %} <input type="number" name="amount" required="" id="id_amount"> {% endcomment %}
-                                        
-                                    </td>
-                                    <td class="amount">
-                                        {{i.quantity}}
-                                        {% comment %} <input type="number" name="uom" required="" id="id_uom"> {% endcomment %}
-                                        {% comment %} {{forms.UOM}} {% endcomment %}
-                                    </td>
-                                    <td class="amount">
-                                        {{i.prodt.gst}}%
-                                        {% comment %} <input type="text" name="warranty" required="" id="id_warranty"> {% endcomment %}
-                                        {% comment %} {{forms.warranty}} {% endcomment %}
-                                    </td>
-                                    <td class="amount">
-                                        <span class="currency-change type-inr">₹ </span>
-                                        {{i.prodt.price}}
-                                        {% comment %} <input type="number" name="hsncode" required="" id="id_hsncode"> {% endcomment %}
-                                        {% comment %} {{forms.hsn_code}} {% endcomment %}
-                                    </td>
-                                    <td class="amount">
-                                        {% comment %} <span class="currency-change type-inr">₹ </span> {% endcomment %}
-                                        {{i.total}}
-                                        {% comment %} <input type="number" name="hsncode" required="" id="id_hsncode"> {% endcomment %}
-                                        {% comment %} {{forms.hsn_code}} {% endcomment %}
-                                    </td>
-                                    <td class="remove-item" style="font-size: 20px; font-weight: bold; cursor: pointer;"></td>
-                                    
-                                </tr>
-                                {% endfor %}
-                                
-                                </tbody>
-                            </table>
-                            {% comment %} <button id="addrowitem">+ Add Item</button> {% endcomment %}
-                            
-                            {% comment %} <h3 class="head-txt width-40">Does your invoice include GST?</h3>
-                            <div class="row">
-                                <div class="col-6">
-                                    <input type="radio" id="yes" name="gst" value="yes" style="display: block; width: auto;">
-                                    <label for="yes">Yes</label>
-                                    <input type="radio" id="no" name="gst" value="no" style="display: block; width: auto;" checked="">
-                                    <label for="no">No</label>
-                                </div>
-                                <div class="col-6">
-                                    <div class="total-amount-wrap border-box" id="gst-div" style="display: none; margin-top: -20px"><span>GST %: &nbsp;&nbsp;</span><input type="number" name="gst" id="gst" placeholder="0.00%" min="0"> </div>
-                                    <input type="hidden" id="amount-without-gst" name="amount-without-gst">
-                                </div>
-                            </div> {% endcomment %}
-                            <div class="total-amount-wrap border-box"><span>Total : &nbsp;&nbsp;</span><span class="currency-total">₹ {{total}}</span> </div>
-                        </div>
-                        <div class="other-notes">
-                            {% comment %} <div class="notes-wrap">
-                                <h3 class="head-txt width-40">Notes:</h3>
-                                <input type="text" class="form-control "  name="notes" maxlength="250" required="" id="id_notes">
-                                
-                            </div> {% endcomment %}
-                            {% comment %} <div class="tnc-wrap"> {% endcomment %}
-                                {% comment %} <h3 class="head-txt width-40">Terms &amp; Conditions:</h3>
-                                <input type="text" class="form-control "  name="notes" maxlength="250" required="" id="id_notes"> {% endcomment %}
-                                
-                                {% comment %} <textarea name="company_address"  placeholder="company address" maxlength="250" required="" id="id_company_address" disabled>Sample Terms and conditions</textarea> {% endcomment %}
-                               
-                            {% comment %} </div> {% endcomment %}
-                        </div>
+
+<div class="container pb-3">
+    <div class="d-flex align-items-center">
+        <img src="{% static 'assets/images/atlas-logo.png' %}" style="height:250px;width:250px;" alt="alt" class="logo"/>
+        <div class="p-1">
+            <p class="heading-text mb-2">{{ order.seller.name }}</p>
+            <p class="description mb-2">{{ order.seller.desc }}</p>
+        </div>
+    </div>
+    <div class=" my-3">
+        {% for i in ct_items %}
+        {% if forloop.first %}
+        <div class="d-flex">
+            <p class="bold-text">Invoice No.</p>
+            <p class=""> &nbsp; AS00{{i.cart_id}}</p>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% for i in ct_items %}
+        {% if forloop.first %}
+        <div class="d-flex">
+            <p class="bold-text">Order Date :</p>
+            <p class=""> &nbsp;{{i.order_Date }}</p>
+        </div>
+        <div class="d-flex">
+            <p class="bold-text">Due Date :</p>
+            <p class=""> &nbsp;{{i.due_date }}</p>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+    <div class="p-1 ">
+        <div class="row">
+            <div class="col-6 ">
+                <div class="border-box ">
+                    <div class="column-heading text-center p-1">
+                        <p class="mb-0">Billing By</p>
                     </div>
-                    <div class="choose-template process step-2">
-                        <div id="slider">
-                            <div id="slider-nav">
-                                <a href="#" data-slide="0" data-theme="1" class="current">Preview</a>
-                            </div>
-                            <div id="slider-wrapper">
-                                <div class="slide">
-                                    <div id="content" style="width: 90%;"></div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="p-2">
+                        <p class="mb-1 bold-text">Atlas Kitchen</p>
+                        <p class="mb-0">JassBuilding,Marappalam Road,Pattom,</p>
+                        <p class="mb-0">Trivandrum,Kerala</p>
+                        {% comment %} <p class="mb-0">{{ order.seller.country }}</p> {% endcomment %}
                     </div>
-                    <div class="share-n-download process step-3">
-                        <p class="msg-txt">Yay! Your Invoice is ready. Choose one of the following options:</p>
-                        <div class="share-dwnld-options">
-                            <div class="options-block send-invoice">
-                                <i class="fas fa-paper-plane"></i>
-                                <p>Send</p>
-                            </div>
-                            <div class="options-block download-invoice">
-                                <i class="fas fa-file-pdf"></i>
-                                <p>Download</p>
-                            </div>
-                            <div class="options-block printe-invoice">
-                                <i class="fas fa-print"></i>
-                                <p>Print</p>
-                            </div>
+                    <div class="p-2">
+                        {% comment %} <div class="row">
+                            <div class="col-3 bold-text">GSTN</div>
+                            <div class="col-9">: {{ order.seller.gst_number }}</div>
                         </div>
+
+                        <div class="row">
+                            <div class="col-3 bold-text">PAN</div>
+                            <div class="col-9">: {{ order.seller.pan_number }}</div>
+                        </div> {% endcomment %}
+                        <div class="row">
+                            <div class="col-3 bold-text">Phone</div>
+                            <div class="col-9">:  +91-7558902444</div>
+                        </div>
+
                     </div>
                 </div>
-                <div class="next-button">
-                    {% comment %} <button type="button" id="prev-option" disabled="disabled">Previous</button> {% endcomment %}
+
+            </div>
+            <div class="col-6 ">
+                <div class="border-box ">
+                    <div class="column-heading text-center p-1">
+                        <p class="mb-0">Billing To</p>
+                    </div>
                     {% for i in customer %}
-                    <a href="{% url 'crm_app:invoice_pdf' i.id %}" id="download" class="btn btn-success">Confirm Order</a>
-                    {% endfor %}
+                    <div class="p-2">
+                        <p class="mb-1 bold-text">{{i.name}}</p>
+                        <p class="mb-0">{{i.address}},</p>
+                        <p class="mb-0">{{ i.state }}</p>
+                        {% comment %} <p class="mb-0">{{ order.seller.country }}</p>  {% endcomment %}
+                    </div>
+                    
+                    <div class="p-2">
+                        {% comment %} 
+                        <div class="row">
+                            <div class="col-3 bold-text">PAN</div>
+                            <div class="col-9">: {{ order.client.pan_number }}</div>
+                        </div> {% endcomment %}
+                        <div class="row">
+                            <div class="col-3 bold-text">Phone</div>
+                            <div class="col-9">: {{ i.phone }}</div>
+                        </div>
+                        {% endfor %}
+
+                    </div>
                 </div>
-            </div>
-            
-        
-    
-</div></form>
 
-
-<div id="desktop_dwnld" class="modal">
-<div class="modal-content">
-    <p style="font-size: 24px;color: #097788;" class="center">Welcome to Vyapar Desktop Version</p>
-    <p style="font-size: 20px;color: #097788;" class="center">Please fill the details below</p>
-    <form id="dwnld-form">
-
-        <input type="hidden" name="_token" value="m1IraA51xIYNxu4cXQx4o23pFpAajbS2wUNaXz5n">
-        <input type="hidden" value="IN" name="country" id="country">
-        <input type="hidden" value="Chennai" name="city" id="city">
-        <input type="hidden" value="Tamil Nadu" name="region" id="region">
-        <div class="row" id="user_input" style="margin-top: 10px;margin-bottom: 10px;"><div class="input-field col s8 offset-s2">
-                    <input id="user_contact" type="tel" name="user_contact" value="" class="validate" required="">
-                    <label for="user_contact">Phone Number<span class="red-text text-lighten-2">*</span></label>
-                </div>
-                <div class="input-field col s8 offset-s2">
-                    <input id="pin_code" onkeydown="pin(event)" value="" name="pin_code" type="text" class="validate" onchange="try{setCustomValidity('')}catch(e){}" oninvalid="setCustomValidity('Please Enter Valid Pin code.')">
-                    <label for="pin_code">Pin Code (Postal Code)<span class="red-text text-lighten-2">*</span></label>
-                </div></div>
-        <div class="row">
-            <div class="col s10 offset-s1">
-                <p class="center" style="color: #989898;margin-bottom: 10px;margin-top: 10px;"><i class="material-icons" style="color: #097788; text-shadow: 0 2px 4px rgba(0,0,0,0.3);margin-right: 4px;vertical-align: middle;font-size: 22px">security</i><span>Your data is safe with us. It is only to make your experience with Vyapar better.</span></p>
             </div>
         </div>
-        <p class="input-field center">
-            <button id="dwnld-form_subBtn" type="submit" style="margin:auto;" class="waves-effect waves-light btn"><i class="material-icons right">arrow_downward</i>Continue Download</button>
-        </p>
-    </form>
-</div>
-</div>
-<div id="mobile_dwnld" class="modal" style="width: 40%;">
-<div class="modal-content">
-    <p style="font-size: 24px;color: #097788;" class="center">Welcome to Vyapar Mobile Version</p>
-    <p style="font-size: 20px;color: #097788;" class="center">Please fill the details below to receive download link via SMS</p>
-    <form id="dwnld-form-mobile">
-
-        <input type="hidden" name="_token" value="m1IraA51xIYNxu4cXQx4o23pFpAajbS2wUNaXz5n">
-
-        <div class="row" id="mobile_link" style="margin-top: 20px;margin-bottom: 10px;">
-            <div class="input-field col s6 offset-s3">
-            <input placeholder="Enter your number" id="mobile_number" name="phone" type="text" class="validate">
-            <label for="mobile_number">Phone Number (For India Users)</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s10 offset-s1">
-                <p class="center" style="color: #989898;margin-bottom: 10px;margin-top: 10px;"><i class="material-icons" style="color: #097788; text-shadow: 0 2px 4px rgba(0,0,0,0.3);margin-right: 4px;vertical-align: middle;font-size: 22px">security</i><span>Your data is safe with us. It is only to make your experience with Vyapar better.</span></p>
-            </div>
-        </div>
-        <p class="input-field center">
-            <button id="dwnld-form_subBtn-mobile" type="submit" style="margin:auto;" class="waves-effect waves-light btn"><i class="material-icons right">arrow_downward</i>SMS Link</button>
-        </p>
-    </form>
-</div>
-</div>
-<div class="row" style="display: flex; justify-content: center;">
-<div id="desktop-dwnld-confirm" class="modal col s10 m6 l4">
-    <div class="modal-content">
-        <h4>Desktop Download</h4>
-        <p>Do you want to download vyapar desktop application ? </p>
     </div>
-    <div class="modal-footer">
-        <a class="modal-close waves-effect waves-green btn-flat">No</a>
-        <a class="dwnld-desktop-application modal-close waves-effect waves-green btn-flat" href="javascript:;" onclick="dwnldDesktopApplication()">Yes</a>
+    <div class="px-1 py-3">
+        <table class="table">
+            <thead>
+            <tr>
+                <th class="column-heading" scope="col">Items</th>
+                <th class="column-heading" scope="col">Item Code</th>
+                <th class="column-heading" scope="col">HSN</th>
+                <th class="column-heading" scope="col">Warranty</th>
+                <th class="column-heading" scope="col">Quantity </th>
+                <th class="column-heading" scope="col">Gst</th>
+                <th class="column-heading" scope="col">Rate</th>
+                <th class="column-heading" scope="col">Total(with GST)</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for i in ct_items %}
+                <tr>
+                    <th scope="row">{{i.prodt.product_name}}</th>
+                    <td>{{i.prodt.item_code}}</td>
+                    <td>{{i.prodt.hsn}}</td>
+                    <td>{{i.prodt.warranty}}</td>
+                    <td>{{i.quantity}}</td>
+                    <td>{{i.prodt.gst}}%</td>
+                    <td>₹ {{i.prodt.price}}</td>
+                    <td>{{i.total}}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
     </div>
+    <div class="d-flex justify-content-end">
+        <table>
+            <tbody>
+            <tr class="p-3">
+                <td>Grand Total </td>
+                <td class="d-flex justify-content-end">₹ {{total}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <button class="btn btn-success" onclick="window.print()">Print this page</button>
 </div>
-</div>
 
-<!-- Scripts -->
-
-<!-- Compiled and minified JavaScript -->
-
-<script src="/static/assets/js/jquery-3.1.1.min.js"></script>
-<script>
-//        var x = document.getElementById("demo");
-var lat;
-var long;
-var map;var param = {"considerIp": "true"};
-var locationDetails = {};
-
-$.ajax({
-    url:"https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyCmWhKJp5z6mIy7H4oxNO2OnG9manCl578",
-    type:"POST",
-    data : JSON.stringify(param),
-    contentType: "application/json; charset=utf-8",
-    success: function(success){
-        lat =  success.location.lat;
-        long=  success.location.lng;
-        lab_fun(lat,long);
-    },
-    error: function(XMLHttpRequest, textStatus, errorThrown) {
-        console.log("Status: " + textStatus); console.log("Error: " + errorThrown);
-    }
-});
-function lab_fun(lat,long) {
-    $.getJSON('https://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+long+'&key=AIzaSyCmWhKJp5z6mIy7H4oxNO2OnG9manCl578', function(data) {
-        try {
-            var results = data.results[0].address_components;
-            results.forEach(function (result) {
-                locationDetails[result.types[0]] = result.short_name;
-            });
-        } catch (error) {
-            locationDetails['country'] = 'IN';
-            try {
-                if(data['status'] != "ZERO_RESULTS"){
-                    locationDetails['error'] = "Error in location getting. In getcountry.blade page";
-                    locationDetails['errorObject'] = error;
-                    locationDetails['data'] = data;
-                }
-            }
-            catch (e) {
-                locationDetails['error'] = e;
-            }
-        }
-//            console.log(locationDetails);
-        $.ajax({
-            url:"https://vyaparapp.in/set/session/countryLocation",
-            type:"GET",
-            data : locationDetails,
-            success: function(success){
-                console.log(success);
-                $('#loader').hide();
-            },
-            error: function() {
-                $('#loader').hide();
-            },
-            beforeSend: function() {
-                $('#loader').show();
-            }
-        });
-    });
-}
-
-</script>
-
-
-<script type="text/javascript" src="/static/assets/js/intlTelInput.min.js"></script>
-<script type="text/javascript" src="/static/assets/js/materialize.min.js"></script>
+</body>
 {% comment %} <script>
-    function multiplyBy()
-    {
-      num1 = document.getElementById(
-        "id_rate").value;
-      num2 = document.getElementById(
-        "id_quantity").value;
-      document.getElementById(
-        "result").innerHTML = num1 * num2;
-    }
+    window.print();
+     {#give 10 seconds sleep#}
+    setTimeout(function () {
+        window.close();
+    }, 1000);
+
 </script> {% endcomment %}
-<script type="text/javascript">
 
-
-
-var currentDeviceType = "desktop";
-var checkDevice = () => {
-    if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|ipad|iris|kindle|Android|Silk|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(navigator.userAgent)
-        || /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(navigator.userAgent.substr(0,4))) {
-        currentDeviceType = "mobile";
-    } else {
-        currentDeviceType = "desktop";
-    }
-};
-// Check wether browser support service worker or not
-// if('serviceWorker' in navigator) {
-//     window.addEventListener('load', () => {
-//         // Registers the service-worker.js file
-//         navigator.serviceWorker.register('service-worker.js')
-//         // navigator.serviceWorker.register(...) returns a promise that resolves with a registration object once the service worker is successfully registered. If the registration fails, the promise will reject.
-//             .then(registration => {
-//                 console.log('Service Worker is registered', registration.scope);
-//             })
-//             .catch(err => {
-//                 console.error('Registration failed:', err);
-//             });
-//     });
-// }
-
-
-
-var nav_current_url = 'invoice-generator.html';
-//-------------------------------------------------------DESKTOP DOWNLOAD SCRIPT START--------------------------------------------------------------
-$(document).ready(function () {
-    checkDevice();
-    $('#user_input').html('<div class="input-field col s8 offset-s2">\n' +
-        '                        <input id="user_contact" type="tel" name="user_contact" value="" class="validate" required>\n' +
-        '                        <label for="user_contact">Phone Number<span class="red-text text-lighten-2">*</span></label>\n' +
-        '                    </div>\n' +
-        '                    <div class="input-field col s8 offset-s2">\n' +
-        '                        <input id="pin_code" onkeydown="pin(event)" value="" name="pin_code" type="text"  class="validate" onchange="try{setCustomValidity(\'\')}catch(e){}" oninvalid="setCustomValidity(\'Please Enter Valid Pin code.\')">\n' +
-        '                        <label for="pin_code">Pin Code (Postal Code)<span class="red-text text-lighten-2">*</span></label>\n' +
-        '                    </div>');
-    //
-    try{
-        $.getJSON('https://ipinfo.io/json', function(data) {
-            // debugger;
-            if(data.country != "IN"){
-                $('#user_input').html('<div class="input-field col s8 offset-s2">\n' +
-                    '                        <input id="user_contact" type="email" name="user_contact" value="" class="validate" required>\n' +
-                    '                        <label for="user_contact">Email <span class="red-text text-lighten-2">*</span></label>\n' +
-                    '                    </div>');
-            }
-            $('#country').val(data.country);
-            $('#region').val(data.region);
-            $('#city').val(data.city);
-        });
-    }
-    catch (e) {
-        console.log(e);
-    }
-
-});
-$('#mobile_dwnld').submit(function (e) {
-    e.preventDefault();
-    $("#dwnld-form_subBtn-mobile").addClass('disabled');
-    var url = 'mobile/download.html';
-    if($("#mobile_number").val().length != 0) {
-        $.ajax({
-            type: "POST",
-            url: url,
-            data: $("#dwnld-form-mobile").serialize(),
-            success: function(response) {
-                $('#mobile_dwnld').modal('close');
-                $("#dwnld-form_subBtn-mobile").removeClass('disabled');
-
-            },
-            error: function () {
-                $("#dwnld-form_subBtn-mobile").removeClass('disabled');
-            }
-        });
-    }
-
-
-});
-
-
-
-function isNumberKey(event){
-    if ((event.keyCode == 46 || event.keyCode == 8) )
-    {
-        //do nothing
-    }
-    else
-    {
-        if ( (event.keyCode < 48 || event.keyCode > 57) || (event.target.value).length > 15 )
-        {
-            event.preventDefault();
-        }
-    }
-}
-
-
-//------------------------------------ Desktop Download script END---------------------------------------------------------
-
-
-$(".spinner").hide();
-$(".modal").modal();
-$(".button-collapse").sideNav();
-(function($) {
-    $(function() {
-
-        $('.dropdown-button').dropdown({
-                inDuration: 300,
-                outDuration: 225,
-                hover: true, // Activate on hover
-                belowOrigin: true, // Displays dropdown below the button
-                alignment: 'right', // Displays dropdown with edge aligned to the left of button
-                gutter: -20
-            }
-        );
-        $('.fixed-nav ul li a[href="'+nav_current_url+'"]').closest('li').addClass('active');
-    }); // End Document Ready
-})(jQuery); // End of jQuery name space
-
-$('#gst_form').submit(function(event){
-    event.preventDefault();
-    $("#spinner").show();
-    $.ajax({
-        url: $('#gst_form').attr('action'),
-        type: "POST",
-        data : $('#gst_form').serialize(),
-        success: function(data){
-            $("#spinner").hide();
-            console.log("Your query has been submitted. We will reply you shortly.");
-//                    console.log(data);
-            $(".modal").modal('close');
-            $('#gst_form')[0].reset();
-        },
-        error: function (xhr, ajaxOptions, thrownError) {
-            $("#spinner").hide();
-            console.log(xhr.responseText);
-        }
-    });
-    return false;
-});
-
-
-</script>
-<script>
-$(function() {
-    var t = {
-        Android: function() {
-            return navigator.userAgent.match(/Android/i);
-        },
-        BlackBerry: function() {
-            return navigator.userAgent.match(/BlackBerry/i);
-        },
-        iOS: function() {
-            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-        },
-        Opera: function() {
-            return navigator.userAgent.match(/Opera Mini/i);
-        },
-        Windows: function() {
-            return (navigator.userAgent.match(/IEMobile/i) || navigator.userAgent.match(/WPDesktop/i));
-        },
-        any: function() {
-            return (t.Android() || t.BlackBerry() || t.iOS() || t.Opera() || t.Windows());
-        },
-    };
-                t.any() ? $('.download-nav').each(function() {
-            $('.download-nav').html('<span>Get our free Android app <a target="_blank" href="https://play.google.com/store/apps/details?id=in.android.vyapar" style="background:#097AA8; border-radius: 5px; color:#ffffff ; padding: 11px 10px 8px 10px; text-decoration: none;" ><b>DOWNLOAD ANDROID</b></a></span>', );
-        }) : $('.download-nav').each(function() {
-            $('.download-nav').html('<span>Get 30 days Free trial on Desktop Version<a class="dwnld-desktop-application" href="javascript:;" onclick="dwnldDesktopApplication()" style="border-radius: 5px; color:white ; padding: 11px 24px 8px 24px; text-decoration: none;margin: 6px 0px 6px 10px;"><b>Download for Desktop</b></a></span>', );
-        });
-    });
-            
-</script>
-
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        var clearError = () => $(".custom-has-error").each(function() {
-            $(this).removeClass('custom-has-error');
-        });
-        function validateDecimal(e,n) {
-            let validNumber = new RegExp('^[0-9]{1,'+n+'}(\\.\\d{0,2})?$') ; // /^[0-9]{1,n}(\.\d{0,3})?/
-            var t = e.target.value;
-            let oldValue = $(e.target).attr('data-val');
-            if(!(validNumber.test(t)) && t != '' && !isNaN(t)){
-                e.target.value = oldValue;
-            } else {
-                $(e.target).attr('data-val', e.target.value);
-            }
-        }
-        function addRow(){
-            let serial_no = $('.product-table tbody').find('tr').length + 1;
-            let currency = 'inr';    //  $('#currency-value').val();
-            let currency_class = (currency == 'inr') ? 'type-inr' : 'type-usd';
-            let symbol_cur = (currency == 'inr') ? '&#8377;' : '&#36;';
-            let content = '<tr class="items-list">'+
-                '<td class="serial_no">'+serial_no+'</td>'+
-                '<td><input type="text" maxlength="200" name="pr['+(serial_no -1)+'][name]" id="pr-name" placeholder="Add Item" autofocus /></td>'+
-                '<td><input type="number" name="pr['+(serial_no -1)+'][qty]" id="pr-qty" placeholder="0" class="text-right" /></td>'+
-                '<td class="rate"><span class="currency-change '+currency_class+'">'+symbol_cur+'</span><input type="number" id="pr-rate" name="pr['+(serial_no -1)+'][rate]" placeholder="0.00" class="text-right" /></td>'+
-                '<td class="amount"><span class="currency-change '+currency_class+'">'+symbol_cur+'</span><input type="number" id="pr-amount" name="pr['+(serial_no -1)+'][amount]" placeholder="0.00" class="text-right" /></td>'+
-                '<td class="remove-item" style="font-size: 20px; font-weight: bold; cursor: pointer;"><i class="far fa-times-circle"></i></td>'+
-                '</tr>';
-            $('.product-table tbody').append(content);
-        }
-        function onChangeCurrency(){
-            let currency = $('#currency-value').val();
-            let currency_class = (currency == 'inr') ? 'type-inr' : 'type-usd';
-            let symbol_cur = (currency == 'inr') ? '&#8377;' : '&#36;';
-            $('.currency-change').removeClass('type-inr').removeClass('type-usd').addClass(currency_class).html(symbol_cur);
-            $('.product-table tbody tr td').find('input').val('');
-            $('.product-table tbody tr td').find('input').val('');
-            $('#total-amount').val('');
-            $('.currency-total').html(symbol_cur);
-        }
-        function Popup(data)
-        {
-            var mywindow = window.open('', 'Vyapar', 'height=400,width=600');
-            mywindow.document.write(data);
-            mywindow.print();
-            mywindow.close();
-            return true;
-        }
-        $('#addrowitem').on('click', (e) => {
-            e.preventDefault();
-            addRow();
-        });
-        $('#currency-value').on('change', (e) => {
-            e.preventDefault();
-            onChangeCurrency();
-        });
-        $('.options-block.download-invoice').on('click',(e) => {
-            e.preventDefault();
-            $('#download-invoice-modal').modal('open');
-            // $('#invoice-form').submit();
-        });
-        $('#download-invoice-call').on('click',(e) => {
-            e.stopImmediatePropagation();
-            let sender_name = $('#company_name').val();
-            let sender_phone = $('#download_input_phone').val();
-            var mob_pattern = /^[6-9][0-9]{9}$/;
-            let theme = parseInt($('#slider-nav').find('.current').attr('data-slide'))+1;
-            $('#invoice-form').attr('action','/invoice-generator/pdf-invoice/'+theme);
-            // $('#download-invoice-modal').modal('close');
-            if(sender_phone == '' || sender_name == '' || sender_phone == null || sender_name == null){
-                alert('please fill all mandatory field !');
-            } else if(sender_phone && sender_name && mob_pattern.test(sender_phone)){
-                $('#download_input_phone').css('border-color','silver');
-                $('#invoice-form').append($("<input>").attr("type", "hidden").attr("name", "sender_name").val(sender_name));
-                $('#invoice-form').append($("<input>").attr("type", "hidden").attr("name", "sender_phone").val(sender_phone));
-                let validInput = validateInputs();
-                if(!validInput){
-                    return;
-                }
-                $('#invoice-form').submit();
-                $('#download-invoice-modal').modal('close');
-            } else if(!mob_pattern.test(sender_phone)){
-                $('#download_input_phone').css('border-color','red');
-                alert('Invalid mobile number !');
-            }else{
-                alert('please fill all mandatory field !');
-            }
-        });
-        $(document).on('click','.remove-item',function(e){
-            let total_row = $('.items-list');
-            if(total_row.length > 1){
-                $(this).parent().remove();
-                let prod_elem = $('.items-list #pr-name');
-                let qty_elem = $('.items-list #pr-qty');
-                let rate_elem = $('.items-list #pr-rate');
-                let amt_elem = $('.items-list #pr-amount');
-                $('.items-list').each(function(i){
-                    $(this).find('.serial_no').html(i+1);
-                    $(this).find('#pr-name').attr('name','pr['+i+'][name]');
-                    $(this).find('#pr-qty').attr('name','pr['+i+'][qty]');
-                    $(this).find('#pr-rate').attr('name','pr['+i+'][rate]');
-                    $(this).find('#pr-amount').attr('name','pr['+i+'][amount]');
-                });
-                getTotalAmount();
-            }else{
-                alert("Last row can't be deleted !");
-            }
-        });
-        $('.send-invoice').on('click',(e)=>{
-            e.preventDefault();
-            $('#mail_subject').val('Invoice from '+ $('#user-company').val()+' : #' + $('.invoice-number').val());
-            $('#email-invoice-modal').modal('open');
-        });
-        $('#email-invoice-call').on('click',(e)=>{
-            e.preventDefault();
-            let to_mail = $('#to_email_addr').val();
-            let from_mail = $('#from_email_addr').val();
-            let message_mail = $('#msg_email').val();
-            let theme = parseInt($('#slider-nav').find('.current').attr('data-slide'))+1;
-            if(to_mail && from_mail){
-                $('#invoice-form').append($("<input>").attr("type", "hidden").attr("name", "to_mail").val(to_mail));
-                $('#invoice-form').append($("<input>").attr("type", "hidden").attr("name", "from_mail").val(from_mail));
-                $('#invoice-form').append($("<input>").attr("type", "hidden").attr("name", "message").val(message_mail));
-                var form_data = $('#invoice-form').serializeArray();
-                form_data.push({name: 'file', value: ($('#logo-image').attr('src'))});
-                let validInput = validateInputs();
-                if(!validInput){
-                    return;
-                }
-                $('#spinner').show();
-                $.ajax({
-                    type: "POST",
-                    url: '/invoice-generator/send-invoice/'+theme,
-                    data: form_data,
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    success: function (res) {
-                        $('#email-invoice-modal').modal('close');
-                        $('#spinner').hide();
-                        if(res.status == 'success'){
-                            $('.message-res').html(res.message);
-                            $('#successModal').modal('open');
-                            // alert(res.message);
-                        }else{
-                            alert(res.message);
-                        }
-                    },
-                    beforeSend: () => {
-                        clearError();
-                    },
-                    error:function (xhr, ajaxOptions, thrownError){
-                        $("#spinner").hide()
-                        if(xhr.status == 409 || xhr.status == 422 || xhr.status == 404){
-                            let keys = { "to_mail" : "to_email_addr", "from_mail" : "from_email_addr"};
-                            $.each(xhr.responseJSON, ( key, value ) => {
-                                Materialize.toast(value[0], 3000, 'rounded red lighten-2');
-                                $("input[name='"+keys[key]+"']").parent().addClass('custom-has-error');
-                            });
-                        }
-                        else{
-                            // showModal("Some error occured");
-                            console.log(xhr.responseText);
-                        }
-                    }
-                }).always(function(){
-                    $('#spinner').hide();
-                });
-                // $('#invoice-form').submit();
-            }else{
-                alert('please fill all mandatory field !');
-            }
-        });
-        $(document).on('input','#pr-amount',function(e){
-            validateDecimal(e,20);
-        });
-        $(document).on('input','#gst',function(e){
-            getTotalAmount()
-        });
-        $(document).on('blur','#gst',function(e){
-            getTotalAmount()
-        });
-        $('input[type="radio"]').click(function() {
-            if($(this).attr('id') == 'no') {
-                $('#gst').val('');
-                $('#gst-div').fadeOut(300);
-                getTotalAmount();
-            }
-            else {
-                $('#gst-div').fadeIn(500);
-            }
-        });
-        $(document).on('blur','#pr-amount',function(e){
-            let rate = $(event.target).parent().parent().find('.rate #pr-rate').val();
-            let qty = $(event.target).parent().parent().find('td #pr-qty').val();
-            let value = parseFloat(e.target.value).toFixed(2);
-            let updated_rate = parseFloat(value/qty).toFixed(2) ;
-            if((isNaN(qty) || qty == 0 || qty == undefined) && value > 0 ){
-                $(event.target).parent().parent().find('td #pr-qty').val(1);
-                $(event.target).parent().parent().find('.rate #pr-rate').val(value);
-                $(event.target).val(value);
-            }else{
-                $(event.target).parent().parent().find('.rate #pr-rate').val(updated_rate);
-                $(event.target).val(value);
-            }
-            getTotalAmount();
-        });
-        $(document).on('input','#pr-qty',function(e){
-            validateDecimal(e,5);
-        });
-        $(document).on('input','#total-amount',function(e){
-            validateDecimal(e,20);
-        });
-        $(document).on('keyup','#pr-rate',function(e){
-            e.preventDefault();
-            validateDecimal(e,15);
-            let this_value = parseFloat(e.target.value);
-            let qty_value = parseFloat($(this).parent().parent().find('td #pr-qty').val());
-            if(isNaN(this_value) || isNaN(qty_value)){
-                $(this).parent().parent().find('td #pr-amount').val('');
-            }else{
-                $(this).parent().parent().find('td #pr-amount').val(((this_value)*(qty_value)).toFixed(2));
-            }
-            getTotalAmount();
-        });
-        $(document).on('blur','#pr-rate',function(e){
-            let value = parseFloat(e.target.value).toFixed(2);
-            $(event.target).val(value);
-        });
-        $(document).on('blur','#pr-name',function(e){
-            getTotalAmount();
-        });
-        $(document).on('keyup','#pr-qty',function(e){
-            e.preventDefault();
-            let qty_value = parseFloat(e.target.value);
-            let item_value = parseFloat($(this).parent().parent().find('td #pr-rate').val());
-            if(isNaN(qty_value) || isNaN(item_value)){
-                $(this).parent().parent().find('td #pr-amount').val('');
-            }else{
-                $(this).parent().parent().find('td #pr-amount').val(((item_value)*(qty_value)).toFixed(2));
-            }
-            getTotalAmount();
-        });
-        $('.printe-invoice').on('click',function (e) {
-            e.stopImmediatePropagation();
-            $('#print-invoice-modal').modal('open');
-        });
-        $('#print-invoice-call').on('click',function (e) {
-            e.stopImmediatePropagation();
-            let sender_name = $('#company_name_print').val();
-            let sender_phone = $('#print_input_phone').val();
-            var mob_pattern = /^[6-9][0-9]{9}$/;
-            let theme = parseInt($('#slider-nav').find('.current').attr('data-slide'))+1;
-            if(sender_phone == '' || sender_name == '' || sender_phone == null || sender_name == null){
-                alert('please fill all mandatory field !');
-            }else if(sender_name && sender_phone && mob_pattern.test(sender_phone)){
-                var form_data = $('#invoice-form').serializeArray();
-                form_data.push({name: 'sender_name', value: sender_name});
-                form_data.push({name: 'sender_phone', value: sender_phone});
-                form_data.push({name: 'amt_words', value: RsPaise($('#total-amount').val())},{name: 'file', value: ($('#logo-image').attr('src'))});
-                // form_data = form_data.serialize();
-                $('.spinner').show();
-                $('#print_input_phone').css('border-color','silver');
-                let validInput = validateInputs();
-                if(validInput === false){
-                    return;
-                }
-                $.ajax({
-                    type: "POST",
-                    url: '/invoice-generator/pdf-response/'+theme,
-                    data: form_data,
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    success: function (res) {
-                        $('#print-invoice-modal').modal('close');
-                        $('.spinner').hide();
-                        Popup(res);
-                    },
-                    error: function(e){
-                        alert('Error while printing invoice, please check input fields')
-                    }
-                }).always(function(){
-                    $('.spinner').hide();
-                });
-            }else if(!mob_pattern.test(sender_phone)){
-                $('#print_input_phone').css('border-color','red');
-                alert('Invalid mobile number !');
-            }else{
-                alert('please fill all mandatory field !');
-            }
-        });
-    });
-    function Slider( element ) {
-        this.el = document.querySelector( element );
-        this.init();
-    }
-    Slider.prototype = {
-        init: function() {
-            this.links = this.el.querySelectorAll( "#slider-nav a" );
-            this.wrapper = this.el.querySelector( "#slider-wrapper" );
-            this.navigate();
-        },
-        navigate: function() {
-            for( var i = 0; i < this.links.length; ++i ) {
-                var link = this.links[i];
-                this.slide( link );
-            }
-        },
-        slide: function( element ) {
-            var self = this;
-            element.addEventListener( "click", function( e ) {
-                e.preventDefault();
-                var a = this;
-                self.setCurrentLink( a );
-                var index = parseInt( a.getAttribute( "data-slide" ), 10 ) + 1;
-                var currentSlide = self.el.querySelector( ".slide:nth-child(" + index + ")" );
-                self.wrapper.style.left = "-" + currentSlide.offsetLeft + "px";
-            }, false);
-        },
-        setCurrentLink: function( link ) {
-            var parent = link.parentNode;
-            var a = parent.querySelectorAll( "a" );
-            link.className = "current";
-            for( var j = 0; j < a.length; ++j ) {
-                var cur = a[j];
-                if( cur !== link ) {
-                    cur.className = "";
-                }
-            }
-        }
-    };
-    function invoiceStage(){
-        this.init();
-    }
-    invoiceStage.prototype = {
-        init : function () {
-            $('.step-1').show();
-            $('.li-step1').removeClass('progtrckr-todo').addClass('progtrckr-done');
-            $('#prev-option').attr('disabled','disabled');
-        },
-        nextClick : function(){
-            let step_count = $('#step-count').val();
-            let validInput = validateInputs();
-            if(!validInput){
-                return;
-            } 
-            step_count++;
-            if(step_count >= 3 ){
-                $('#step-count').val(3);
-                $('#next-option').attr('disabled','disabled');
-                $('.progtrckr li').removeClass('progtrckr-todo').removeClass('progtrckr-done');
-                $('.li-step1,.li-step2,.li-step3').addClass('progtrckr-done');
-                $('#prev-option').removeAttr('disabled');
-            }else if(step_count <= 1){
-                $('#step-count').val(1);
-                $('.progtrckr li').removeClass('progtrckr-todo').removeClass('progtrckr-done');
-                $('.li-step2,.li-step3').addClass('progtrckr-todo');
-                $('.li-step1').addClass('progtrckr-done');
-                $('#next-option').removeAttr('disabled');
-                $('#prev-option').attr('disabled','disabled');
-            }else{
-                $('#step-count').val(step_count);
-                $('.progtrckr li').removeClass('progtrckr-todo').removeClass('progtrckr-done');
-                $('.li-step3').addClass('progtrckr-todo');
-                $('.li-step1,.li-step2').addClass('progtrckr-done');
-                $('#next-option').removeAttr('disabled');
-                $('#prev-option').removeAttr('disabled');
-            }
-            if(step_count == 2){
-                var form_data = $('#invoice-form').serializeArray();
-                $('#invoice-form').append($("<input>").attr("type", "hidden").attr("name", "amt_words").val(RsPaise($('#total-amount').val())));
-                form_data.push({name: 'amt_words', value: RsPaise($('#total-amount').val())},{name: 'file', value: ($('#logo-image').attr('src'))});
-                let theme = parseInt($('#slider-nav').find('.current').attr('data-slide'))+1;
-                if(!validInput){
-                    return;
-                }
-                $('.spinner').show();
-                $.ajax({
-                    type: "POST",
-                    url: '/invoice-generator/pdf-response/'+theme,
-                    data: form_data,
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    success: function (res) {
-                        setTimeout( function() {
-                            $('#content').html(res);
-                        }, 1 );
-                    },
-                    error: function(e){
-                        let error = Object.values(e.responseJSON);
-                        alert('Please validate input values, '+error);
-                        step_count=1;
-                        $('#step-count').val(1);
-                        $('.progtrckr li').removeClass('progtrckr-todo').removeClass('progtrckr-done');
-                        $('.li-step2,.li-step3').addClass('progtrckr-todo');
-                        $('.li-step1').addClass('progtrckr-done');
-                        $('#next-option').removeAttr('disabled');
-                        $('#prev-option').attr('disabled','disabled');
-                    }
-                }).always(function () {
-                    $('.process').hide();
-                    $('.step-'+step_count).show();
-                    $('.spinner').hide();
-                });
-            }
-            $('.process').hide();
-            $('.step-'+step_count).show();
-        },
-        prevClick : function () {
-            let step_count = $('#step-count').val();
-            step_count--;
-            $('.progtrckr li').removeClass('progtrckr-todo').removeClass('progtrckr-done');
-            if(step_count >= 3 ){
-                $('#step-count').val(3);
-                $('#next-option').attr('disabled','disabled');
-                $('.progtrckr li').removeClass('progtrckr-todo').removeClass('progtrckr-done');
-                $('.li-step1,.li-step2,.li-step3').addClass('progtrckr-done');
-                $('#prev-option').removeAttr('disabled');
-            }else if(step_count <= 1){
-                $('#step-count').val(1);
-                $('.progtrckr li').removeClass('progtrckr-todo').removeClass('progtrckr-done');
-                $('.li-step2,.li-step3').addClass('progtrckr-todo');
-                $('.li-step1').addClass('progtrckr-done');
-                $('#next-option').removeAttr('disabled');
-                $('#prev-option').attr('disabled','disabled');
-            }else{
-                $('#step-count').val(step_count);
-                $('.progtrckr li').removeClass('progtrckr-todo').removeClass('progtrckr-done');
-                $('.li-step3').addClass('progtrckr-todo');
-                $('.li-step1,.li-step2').addClass('progtrckr-done');
-                $('#next-option').removeAttr('disabled');
-                $('#prev-option').removeAttr('disabled');
-            }
-            $('.process').hide();
-            $('.step-'+step_count).show();
-        }
-    };
-    document.addEventListener( "DOMContentLoaded", function() {
-        var aSlider = new Slider( "#slider" );
-        var invoiceStep = new invoiceStage();
-        $('#next-option').on('click',(e)=>{
-            invoiceStep.nextClick();
-            $("body, html").scrollTop(0)
-        });
-        $('#prev-option').on('click',(e)=>{
-            invoiceStep.prevClick();
-            $("body, html").scrollTop(0)
-        });
-    });
-    function getTotalAmount(){
-        let all_amount_elm = $('.product-table tbody tr');
-        let total_amt = 0.00;
-        let gst = $('#gst').val()/100;
-        let amt_without_gst = 0.00;
-        all_amount_elm.each(function (index,data) {
-            let item_name = $(this).find('td #pr-name').val();
-            let item_qty = $(this).find('td #pr-qty').val();
-            let item_rate = $(this).find('td #pr-rate').val();
-            let item_amount = $(this).find('td #pr-amount').val();
-            if( !isNaN(item_amount) && item_amount != '' && item_amount != undefined){
-                let amt = (isNaN(item_amount) || item_amount == undefined) ? 0 : parseFloat(item_amount);
-                total_amt += amt;
-            }
-        });
-        amt_without_gst = total_amt;
-        total_amt += gst*amt_without_gst;
-        if(total_amt >= 0){
-            $('#total-amount').val(total_amt.toFixed(2));
-            $('#amount-without-gst').val(amt_without_gst.toFixed(2));
-        }else{
-            $('#total-amount').val((0.00).toFixed(2));
-        }
-    }
-    function checkItemsName(){
-        let all_amount_elm = $('.product-table tbody tr');
-        let total = $('#total-amount').val();   //&& Math.round(total) != 0
-        if(total != '' && total != undefined){
-            return true;
-        }else{
-            all_amount_elm.each(function (index,data) {
-                let item_name = $(this).find('td #pr-name').val();
-                if(item_name == '' || item_name == undefined){
-                    alert('Please Enter item name !');
-                    return false;
-                }
-            });
-        }
-    }
-    function Rs(amount){
-        var words = new Array();
-        words[0] = 'Zero';words[1] = 'One';words[2] = 'Two';words[3] = 'Three';words[4] = 'Four';words[5] = 'Five';words[6] = 'Six';words[7] = 'Seven';words[8] = 'Eight';words[9] = 'Nine';words[10] = 'Ten';words[11] = 'Eleven';words[12] = 'Twelve';words[13] = 'Thirteen';words[14] = 'Fourteen';words[15] = 'Fifteen';words[16] = 'Sixteen';words[17] = 'Seventeen';words[18] = 'Eighteen';words[19] = 'Nineteen';words[20] = 'Twenty';words[30] = 'Thirty';words[40] = 'Forty';words[50] = 'Fifty';words[60] = 'Sixty';words[70] = 'Seventy';words[80] = 'Eighty';words[90] = 'Ninety';var op;
-        amount = amount.toString();
-        var atemp = amount.split(".");
-        var number = atemp[0].split(",").join("");
-        var n_length = number.length;
-        var words_string = "";
-        if(n_length <= 9){
-            var n_array = new Array(0, 0, 0, 0, 0, 0, 0, 0, 0);
-            var received_n_array = new Array();
-            for (var i = 0; i < n_length; i++){
-                received_n_array[i] = number.substr(i, 1);}
-            for (var i = 9 - n_length, j = 0; i < 9; i++, j++){
-                n_array[i] = received_n_array[j];}
-            for (var i = 0, j = 1; i < 9; i++, j++){
-                if(i == 0 || i == 2 || i == 4 || i == 7){
-                    if(n_array[i] == 1){
-                        n_array[j] = 10 + parseInt(n_array[j]);
-                        n_array[i] = 0;}}}
-            value = "";
-            for (var i = 0; i < 9; i++){
-                if(i == 0 || i == 2 || i == 4 || i == 7){
-                    value = n_array[i] * 10;} else {
-                    value = n_array[i];}
-                if(value != 0){
-                    words_string += words[value] + " ";}
-                if((i == 1 && value != 0) || (i == 0 && value != 0 && n_array[i + 1] == 0)){
-                    words_string += "Crores ";}
-                if((i == 3 && value != 0) || (i == 2 && value != 0 && n_array[i + 1] == 0)){
-                    words_string += "Lakhs ";}
-                if((i == 5 && value != 0) || (i == 4 && value != 0 && n_array[i + 1] == 0)){
-                    words_string += "Thousand ";}
-                if(i == 6 && value != 0 && (n_array[i + 1] != 0 && n_array[i + 2] != 0)){
-                    words_string += "Hundred and ";} else if(i == 6 && value != 0){
-                    words_string += "Hundred ";}}
-            words_string = words_string.split(" ").join(" ");}
-        return words_string;
-    }
-    function RsPaise(n){
-        let nums = n.toString().split('.')
-        var whole = Rs(nums[0])
-        if(nums[1]==null)nums[1]=0;
-        if(nums[1].length == 1 )nums[1]=nums[1]+'0';
-        if(nums[1].length> 2){nums[1]=nums[1].substring(2,length - 1)}
-        if(nums.length == 2){
-            if(nums[0]<=9){nums[0]=nums[0]*10} else {nums[0]=nums[0]};
-            var fraction = Rs(nums[1])
-            if(whole=='' && fraction==''){op= 'Zero only';}
-            if(whole=='' && fraction!=''){op= 'paise ' + fraction + ' only';}
-            if(whole!='' && fraction==''){op='Rupees ' + whole + ' only';}
-            if(whole!='' && fraction!=''){op='Rupees ' + whole + 'and paise ' + fraction + ' only';}
-            amt = n;
-            if(amt > 999999999.99){return op='Oops!!! The amount is too big to convert';}
-            if(isNaN(amt) == true ){return op='Error : Amount in number appears to be incorrect. Please Check.';}
-            return op;
-        }
-    }
-    var loadFile = function(event) {
-        var image = document.getElementById('logo-image');
-        var file = document.getElementById('file');
-        image.src = URL.createObjectURL(event.target.files[0]);
-        toDataURL(image.src, function(dataUrl) {
-            document.getElementById('logo-image').src = dataUrl;
-            document.getElementById('logo-image').style.display = 'block'
-            document.getElementById('file-div').style.display = 'none'
-        })
-    };
-    function toDataURL(url, callback) {
-        var xhr = new XMLHttpRequest();
-        xhr.onload = function() {
-            var reader = new FileReader();
-            reader.onloadend = function() {
-                callback(reader.result);
-            }
-            reader.readAsDataURL(xhr.response);
-        };
-        xhr.open('GET.html', url);
-        xhr.responseType = 'blob';
-        xhr.send();
-    }
-    // RsPaise(Math.round(document.getElementById('amt').value*100)/100);
-    // console.log(RsPaise(10004.60));
-    $(document).ready(function() {
-        var today = new Date().toISOString().split('T')[0];
-        $("#due-date").attr('min', today);
-        $(".read-more-less-link").click(function() {
-            $(this).prev().toggle();
-            if($(this).text() === "Read more") {
-                $(this).text('Read less');
-            } else {
-                $(this).text('Read more');
-            }
-        })
-    })
-    $(window).bind("pageshow", function() {
-        var form = $('form');
-        document.getElementById('logo-image').style.display = 'none';
-        document.getElementById('file-div').style.display = 'block';
-        form[0].reset();
-    });
-    function validateInputs(){
-        let htmlTags = /^([a-zA-Z0-9 ,._@?!#/&-:])*$/;
-        let url = new RegExp("https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)");
-        let flag = true;
-        $('input[type="text"]').each(function(){
-            let input = $(this).val();
-
-            if(!htmlTags.test(input) || url.test(input)){
-                flag = false;
-            }
-        });
-
-        if(!flag){
-            alert('Please enter valid values in input fields');
-        }
-        return flag;
-    }
-</script>     
-</script>
-
-
-
-<!-- Facebook Pixel Code -->
-<script type="text/javascript">
-
-
-//get jwt token form logged in user
-</script>
-
-
-<!-- Mirrored from vyaparapp.in/invoice-generator by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Dec 2021 04:43:53 GMT -->
-
-</div>
+</html>

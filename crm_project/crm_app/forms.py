@@ -20,6 +20,7 @@ class CustomerAddForm(forms.ModelForm):
             'loaction' : forms.TextInput(attrs={'class':'form-control'}),
             'gst' : forms.TextInput(attrs={'class':'form-control'}),
             'category' : forms.Select(attrs={'class':'form-control'}),
+            'state' : forms.TextInput(attrs={'class':'form-control'}),
             'whatsapp_number' : forms.NumberInput(attrs={'class':'form-control'}),
             
         }

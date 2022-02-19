@@ -19,6 +19,7 @@ class Customer(models.Model):
     email = models.EmailField()
     image = models.ImageField(upload_to="pictures")
     loaction = models.CharField(max_length=50)
+    state = models.CharField(max_length=10,default='Kerala',blank=True,null=True)
     category_choices = (
         ("Person", "Person"),
         ("Contractor", "Contractor"),
