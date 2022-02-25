@@ -221,7 +221,7 @@ def Quotation_invoice(request,cart_items=None,total=0,count=0):
 @login_required
 def products(request):
     products = Products.objects.all()
-    return render(request,'products.html',{'products':products})
+    return render(request,'Wolmart eCommmerce Marketplace HTML Template.html',{'products':products})
 
 def Quotation_invoice_buy(request,customer_id,cart_items=None,total=0,count=0):
     customer = Customer.objects.filter(id=customer_id)

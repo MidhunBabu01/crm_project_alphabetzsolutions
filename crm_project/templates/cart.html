@@ -1,141 +1,522 @@
 {% load static %}
-<html>
+<!doctype html>
+<html lang="en">
+
+    
+<!-- Mirrored from preview.pichforest.com/samply/layouts/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 01 Dec 2021 12:27:11 GMT -->
 <head>
-    <title>Cart</title>
-    <link rel="stylesheet" href="{% static 'assets/css/cart2.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}" type="text/css">
-    <link rel="stylesheet" href="{% static 'assets/css/font-awesome.min.css' %}" type="text/css">
-    <script src="{% static 'assets/js/jquery-3.3.1.slim.min.js' %}"></script>
-    <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
-</head>
-<body>
-<div class="px-4 px-lg-0">
-  <!-- For demo purpose -->
-  <div class="container text-white py-5 text-center">
-    {% comment %} <h1 class="display-4">Bootstrap 4 shopping cart</h1>
-    <p class="lead mb-0">Build a fully structred shopping cart page using Bootstrap 4. </p>
-    <p class="lead">Snippet by <a href="https://bootstrapious.com/snippets" class="text-white font-italic">
-            <u>Bootstrapious</u></a>
-    </p> {% endcomment %}
-  </div>
-  <!-- End -->
-  <div class="pb-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
-          <!-- Shopping cart table -->
-          <div class="table-responsive">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col" class="border-0 bg-light">
-                    <div class="p-2 px-3 text-uppercase">Product</div>
-                  </th>
-                  <th scope="col" class="border-0 bg-light">
-                    <div class="py-2 text-uppercase">Price</div>
-                  </th>
-                  <th scope="col" class="border-0 bg-light">
-                    <div class="py-2 text-uppercase">Quantity</div>
-                  </th>
-                  <th scope="col" class="border-0 bg-light">
-                    <div class="py-2 text-uppercase">Gst</div>
-                  </th>
-                  <th scope="col" class="border-0 bg-light">
-                    <div class="py-2 text-uppercase">Subtotal</div>
-                  </th>
-                  <th scope="col" class="border-0 bg-light">
-                    <div class="py-2 text-uppercase">Remove</div>
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {% for i in ct_items %}
-                <tr>
-                  <th scope="row" class="border-0">
-                    <div class="p-2">
-                      <img src="{{i.prodt.photo.url}}" alt="" width="70" class="img-fluid rounded shadow-sm">
-                      <div class="ml-3 d-inline-block align-middle">
-                        <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle">{{i.prodt.product_name}}</a></h5><span class="text-muted font-weight-normal font-italic d-block">: </span>
-                      </div>
-                    </div>
-                  </th>
-                  <td class="border-0 align-middle"><strong>{{i.prodt.price}}</strong></td>
-                  <td class="border-0 align-middle"><strong><h5><a href="{% url 'crm_app:cartDetails' i.prodt.id %}"><i class="fa fa-plus" style="font-size:13px;color:black" ></i></a>{{i.quantity}}<a href="{% url 'crm_app:minus' i.prodt.id %}"><i class="fa fa-minus" style="font-size:13px;color:black"></i></h5></a></strong></td>
-                  <td class="border-0 align-middle"><strong>{{i.prodt.gst}}%</strong></td>
-                  <td class="border-0 align-middle"><strong>{{i.total}}</strong></td>
-                  <td class="border-0 align-middle"><a href="{% url 'crm_app:del_product' i.prodt.id %}" class="text-dark"><i class="fa fa-trash"></i></a></td>
-                </tr>
-                {% endfor %}
-                {% comment %} <tr>
-                  <th scope="row">
-                    <div class="p-2">
-                      <img src="https://bootstrapious.com/i/snippets/sn-cart/product-2.jpg" alt="" width="70" class="img-fluid rounded shadow-sm">
-                      <div class="ml-3 d-inline-block align-middle">
-                        <h5 class="mb-0"><a href="#" class="text-dark d-inline-block">Lumix camera lense</a></h5><span class="text-muted font-weight-normal font-italic">Category: Electronics</span>
-                      </div>
-                    </div>
-                  </th>
-                  <td class="align-middle"><strong>$79.00</strong></td>
-                  <td class="align-middle"><strong>3</strong></td>
-                  <td class="align-middle"><a href="#" class="text-dark"><i class="fa fa-trash"></i></a>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    <div class="p-2">
-                      <img src="https://bootstrapious.com/i/snippets/sn-cart/product-3.jpg" alt="" width="70" class="img-fluid rounded shadow-sm">
-                      <div class="ml-3 d-inline-block align-middle">
-                        <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block">Gray Nike running shoe</a></h5><span class="text-muted font-weight-normal font-italic">Category: Fashion</span>
-                      </div>
-                    </div>
-                    <td class="align-middle"><strong>$79.00</strong></td>
-                    <td class="align-middle"><strong>3</strong></td>
-                    <td class="align-middle"><a href="#" class="text-dark"><i class="fa fa-trash"></i></a>
-                    </td>
-                </tr> {% endcomment %}
-              </tbody>
-            </table>
-          </div>
-          <!-- End -->
-        </div>
-      </div>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <meta charset="utf-8" />
+        <title>Dashboard</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+        <meta content="Pichforest" name="author" />
+        <!-- App favicon -->
+        {% comment %} <link rel="stylesheet" href="{% static 'assets/css/cart2.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'assets/css/font-awesome.min.css' %}" type="text/css">
+        <script src="{% static 'assets/js/jquery-3.3.1.slim.min.js' %}"></script>
+        <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+        <link rel="shortcut icon" href="{% static 'assets/images/atlas-logo-small.png' %}"> {% endcomment %}
 
-      <div class="row py-5 p-4 bg-white rounded shadow-sm">
-        {% comment %} <div class="col-lg-6">
-          <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Coupon code</div>
-          <div class="p-4">
-            <p class="font-italic mb-4">If you have a coupon code, please enter it in the box below</p>
-            <div class="input-group mb-4 border rounded-pill p-2">
-              <input type="text" placeholder="Apply coupon" aria-describedby="button-addon3" class="form-control border-0">
-              <div class="input-group-append border-0">
-                <button id="button-addon3" type="button" class="btn btn-dark px-4 rounded-pill"><i class="fa fa-gift mr-2"></i>Apply coupon</button>
-              </div>
+        <!-- Bootstrap Css -->
+        <link href="{% static 'assets/css/bootstrap.min.css' %}" id="bootstrap-style" rel="stylesheet" type="text/css" />
+        <!-- Icons Css -->
+        <link href="{% static 'assets/css/icons.min.css' %}" rel="stylesheet" type="text/css" />
+        <!-- App Css-->
+        <link href="{% static 'assets/css/app.min.css' %}" id="app-style" rel="stylesheet" type="text/css" />
+        <!-- Dark Mode Css-->
+        <link href="{% static 'assets/css/dark-layout.min.css' %}" id="app-style" rel="stylesheet" type="text/css" />
+
+    </head>
+
+    <body data-sidebar="dark">
+
+    <!-- <body data-layout="horizontal" data-topbar="dark"> -->
+
+        <!-- Begin page -->
+        <div id="layout-wrapper">
+
+            
+            <header id="page-topbar">
+                <div class="navbar-header">
+                    <div class="d-flex">
+                        <!-- LOGO -->
+                        <div class="navbar-brand-box">
+                            <a href="index.html" class="logo logo-dark">
+                                <span class="logo-sm">
+                                    <img src="{% static 'assets/images/logo-sm.png' %}" alt="logo-sm" height="22">
+                                </span>
+                                <span class="logo-lg">
+                                    <img src="{% static 'assets/images/logo-dark.png' %}" alt="logo-dark" height="23">
+                                </span>
+                            </a>
+
+                            <a href="index.html" class="logo logo-light">
+                                <span class="logo-sm">
+                                    <img src="{% static 'assets/images/atlas-logo-small.png' %}" alt="logo-sm-light" height="22">
+                                </span>
+                                <span class="logo-lg">
+                                    <img src="{% static 'assets/images/atlas-logo.png' %}" alt="logo-light" height="23">
+                                </span>
+                            </a>
+                        </div>
+
+                        <button type="button" class="btn btn-sm px-3 font-size-16 vertinav-toggle header-item waves-effect" id="vertical-menu-btn">
+                            <i class="fa fa-fw fa-bars"></i>
+                        </button>
+
+                        <button type="button" class="btn btn-sm px-3 font-size-16 horinav-toggle header-item waves-effect waves-light" data-bs-toggle="collapse" data-bs-target="#topnav-menu-content">
+                            <i class="fa fa-fw fa-bars"></i>
+                        </button>
+
+                        <!-- App Search-->
+                        
+                        {% comment %} <form class="app-search d-none d-lg-block" action="{% url 'crm_app:lead_search' %}">
+                            <div class="input-group">
+                                <div class="form-outline">
+                                  <input id="search-input" name="q" placeholder="search"type="search" id="form1" class="form-control" />
+                                </div>
+                                <button id="search-button" type="submit" class="btn btn-primary">
+                                  <i class="fas fa-search"></i>
+                                </button>
+                              </div>
+                        </form> {% endcomment %}
+                    </div>
+
+                    <div class="d-flex">
+
+                        <div class="dropdown d-inline-block d-lg-none ms-2">
+                            <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-search-dropdown"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="mdi mdi-magnify"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
+                                aria-labelledby="page-header-search-dropdown">
+        
+                                <form class="p-3">
+                                    <div class="form-group m-0">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="Search ..." aria-label="Recipient's username">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-primary" type="submit"><i class="mdi mdi-magnify"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="dropdown d-inline-block">
+                            
+                            <div class="dropdown-menu dropdown-menu-end">
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="en">
+                                    <img src="{% static 'assets/images/flags/us.jpg' %}" alt="user-image" class="me-1" height="12"> <span class="align-middle">English</span>
+                                </a>
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="sp">
+                                    <img src="{% static 'assets/images/flags/spain.jpg' %}" alt="user-image" class="me-1" height="12"> <span class="align-middle">Spanish</span>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="gr">
+                                    <img src="{% static 'assets/images/flags/germany.jpg' %}" alt="user-image" class="me-1" height="12"> <span class="align-middle">German</span>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="it">
+                                    <img src="{% static 'assets/images/flags/italy.jpg' %}" alt="user-image" class="me-1" height="12"> <span class="align-middle">Italian</span>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="ru">
+                                    <img src="{% static 'assets/images/flags/russia.jpg' %}" alt="user-image" class="me-1" height="12"> <span class="align-middle">Russian</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="dropdown d-none d-lg-inline-block ms-1">
+                            <button type="button" class="btn header-item noti-icon waves-effect" data-toggle="fullscreen">
+                                <i class="mdi mdi-fullscreen"></i>
+                            </button>
+                        </div>
+
+                        <div class="dropdown d-inline-block">
+                            <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="d-none d-xl-inline-block ms-1">{{user.username}}</span>
+                                <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <!-- item-->
+                                <h6 class="dropdown-header"></h6>
+                                <a class="dropdown-item" href="{% url 'crm_app:logout' %}"><i class="mdi mdi-logout text-muted font-size-16 align-middle me-1"></i> <span class="align-middle" key="t-logout">Logout</span></a>
+                            </div>
+                        </div>
+                        
+                        <div class="dropdown d-inline-block">
+                            <button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">
+                                <i class="bx bx-cog bx-spin"></i>
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </header>
+
+            <!-- ========== Left Sidebar Start ========== -->
+            <div class="vertical-menu">
+
+                <div data-simplebar class="h-100">
+
+                    <!--- Sidemenu -->
+                    <div id="sidebar-menu">
+                        <!-- Left Menu Start -->
+                        <ul class="metismenu list-unstyled" id="side-menu">
+                            <li class="menu-title" key="t-menu">Menu</li>
+                            <li>
+                                <a href="{% url 'crm_app:index' %}" class="waves-effect">
+                                    <i class='bx bxs-dashboard'></i>
+                                    <span key="t-dashboard">Home</span>
+                                </a>
+                            </li>
+                            <li class="menu-title mt-3" key="t-more">More</li>
+                            <li>
+                                <a href="{% url 'crm_app:leads' %}">
+                                    <i class='bx bxs-grid'></i>
+                                    <span key="t-apps">Leads</span>
+                                </a>
+                               
+                            </li>
+                
+                            <li>
+                                <a href="{% url 'crm_app:customers' %}" class="waves-effect">
+                                    <i class='bx bx-user-circle' ></i>
+                                    <span key="t-authentication">Customer</span>
+                                </a>
+                                
+                            </li>
+
+                            <li>
+                                <a href="{% url 'crm_app:products' %}">
+                                    <i class='bx bx-file'></i>
+                                    <span key="t-pages">Product</span>
+                                </a>
+                                
+                            </li>
+                            <li>
+                                <a href="{% url 'crm_app:quotation_invoice' %}" class="waves-effect">
+                                    <i class='bx bx-briefcase'></i>
+                                    <span key="t-ui-elements">Quotation</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{% url 'crm_app:index' %}">
+                                    <i class='bx bxs-cube-alt'></i>
+                                    <span key="t-advancedkit">Sales Order</span>
+                                </a>
+                               
+                            </li>
+
+                            <li>
+                                <a href="{% url 'crm_app:index' %}" class="waves-effect">
+                                    <i class='bx bx-text'></i>
+                                    <span key="t-typography">Estimate</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{% url 'crm_app:index' %}" class="waves-effect">
+                                    <i class='bx bxs-magic-wand' ></i>
+                                    {% comment %} <span class="badge rounded-pill bg-danger float-end">2</span> {% endcomment %}
+                                    <span key="t-forms">Project Management</span>
+                                </a>
+                               
+                            </li>
+
+                            <li>
+                                <a href="{% url 'crm_app:index' %}" class="has-arrow waves-effect">
+                                    <i class='bx bx-table' ></i>
+                                    <span key="t-tables">Reports</span>
+                                </a>
+                               
+                            </li>
+
+                           
+                            </li>
+
+                        </ul>
+                    </div>
+                    <!-- Sidebar -->
+                </div>
             </div>
-          </div>
-          <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Instructions for seller</div>
-          <div class="p-4">
-            <p class="font-italic mb-4">If you have some information for the seller you can leave them in the box below</p>
-            <textarea name="" cols="30" rows="2" class="form-control"></textarea>
-          </div>
-        </div> {% endcomment %}
-        <div class="col-lg-6">
-          <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Order summary </div>
-          <div class="p-4">
-            <p class="font-italic mb-4">Shipping and additional costs are calculated based on values you have entered.</p>
-            <ul class="list-unstyled mb-4">
-              {% comment %} <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Order Subtotal </strong><strong>$390.00</strong></li>
-              <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Shipping and handling</strong><strong>$10.00</strong></li>
-              <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Tax</strong><strong>$0.00</strong></li> {% endcomment %}
-              <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Total</strong>
-                <h5 class="font-weight-bold">{{total}}</h5>
-              </li>
-            </ul><a href="{% url 'crm_app:customers' %}" class="btn btn-dark rounded-pill py-2 btn-block">Procceed to checkout</a>
-          </div>
-        </div>
-      </div>
+            <!-- Left Sidebar End -->
 
-    </div>
-  </div>
-</div>
-</body>
+            
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+              <div class="pb-5">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
+                      <!-- Shopping cart table -->
+                      <div class="table-responsive">
+                        <table class="table">
+                          <thead>
+                            <tr>
+                              <th scope="col" class="border-0 bg-light">
+                                <div class="p-2 px-3 text-uppercase">Product</div>
+                              </th>
+                              <th scope="col" class="border-0 bg-light">
+                                <div class="py-2 text-uppercase">Price</div>
+                              </th>
+                              <th scope="col" class="border-0 bg-light">
+                                <div class="py-2 text-uppercase">Quantity</div>
+                              </th>
+                              <th scope="col" class="border-0 bg-light">
+                                <div class="py-2 text-uppercase">Gst</div>
+                              </th>
+                              <th scope="col" class="border-0 bg-light">
+                                <div class="py-2 text-uppercase">Subtotal</div>
+                              </th>
+                              <th scope="col" class="border-0 bg-light">
+                                <div class="py-2 text-uppercase">Remove</div>
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {% for i in ct_items %}
+                            <tr>
+                              <th scope="row" class="border-0">
+                                <div class="p-2">
+                                  <img src="{{i.prodt.photo.url}}" alt="" width="70" class="img-fluid rounded shadow-sm">
+                                  <div class="ml-3 d-inline-block align-middle">
+                                    <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle">{{i.prodt.product_name}}</a></h5><span class="text-muted font-weight-normal font-italic d-block">: </span>
+                                  </div>
+                                </div>
+                              </th>
+                              <td class="border-0 align-middle"><strong>{{i.prodt.price}}</strong></td>
+                              <td class="border-0 align-middle"><strong><h5><a href="{% url 'crm_app:cartDetails' i.prodt.id %}"><i class="fa fa-plus" style="font-size:13px;color:black" ></i></a>{{i.quantity}}<a href="{% url 'crm_app:minus' i.prodt.id %}"><i class="fa fa-minus" style="font-size:13px;color:black"></i></h5></a></strong></td>
+                              <td class="border-0 align-middle"><strong>{{i.prodt.gst}}%</strong></td>
+                              <td class="border-0 align-middle"><strong>{{i.total}}</strong></td>
+                              <td class="border-0 align-middle"><a href="{% url 'crm_app:del_product' i.prodt.id %}" class="text-dark"><i class="fa fa-trash"></i></a></td>
+                            </tr>
+                            {% endfor %}
+                            
+                          </tbody>
+                        </table>
+                      </div>
+                      <!-- End -->
+                    </div>
+                  </div>
+            
+                  <div class="row py-5 p-4 bg-white rounded shadow-sm">
+                  
+                    <div class="col-lg-6">
+                      <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Order summary </div>
+                      <div class="p-4">
+                        <p class="font-italic mb-4">Shipping and additional costs are calculated based on values you have entered.</p>
+                        <ul class="list-unstyled mb-4">
+                       
+                          <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Grand Total</strong>
+                            <h5 class="font-weight-bold">{{total}}</h5>
+                          </li>
+                        </ul><a href="{% url 'crm_app:customers' %}" class="btn btn-dark rounded-pill py-2 btn-block">Procceed to checkout</a>
+                      </div>
+                    </div>
+                  </div>
+            
+                </div>
+              </div>
+                    <!-- container-fluid -->
+                </div>
+                <!-- End Page-content -->
+
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                {% comment %} <script>document.write(new Date().getFullYear())</script> © Samply. {% endcomment %}
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="text-sm-end d-none d-sm-block">
+                                    Design & Develop by Pichforest
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+                
+            </div>
+            <!-- end main content-->
+
+        </div>
+        <!-- END layout-wrapper -->
+        
+
+        <!-- Right Sidebar -->
+        <div class="right-bar">
+            <div data-simplebar class="h-100">
+                <div class="rightbar-title d-flex align-items-center bg-dark p-3">
+
+                    <h5 class="m-0 me-2 text-white">Theme Customizer</h5>
+
+                    <a href="javascript:void(0);" class="right-bar-toggle ms-auto">
+                        <i class="mdi mdi-close noti-icon"></i>
+                    </a>
+                </div>
+
+                <!-- Settings -->
+                <hr class="m-0" />
+
+                <div class="p-4">
+                    <h6 class="mb-3">Layout</h6>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout"
+                            id="layout-vertical" value="vertical">
+                        <label class="form-check-label" for="layout-vertical">Vertical</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout"
+                            id="layout-horizontal" value="horizontal">
+                        <label class="form-check-label" for="layout-horizontal">Horizontal</label>
+                    </div>
+
+                    <h6 class="mt-4 mb-3">Layout Mode</h6>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout-mode"
+                            id="layout-mode-light" value="light">
+                        <label class="form-check-label" for="layout-mode-light">Light</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout-mode"
+                            id="layout-mode-dark" value="dark">
+                        <label class="form-check-label" for="layout-mode-dark">Dark</label>
+                    </div>
+
+                    <h6 class="mt-4 mb-3">Layout Width</h6>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout-width"
+                            id="layout-width-fuild" value="fuild" onchange="document.body.setAttribute('data-layout-size', 'fluid')">
+                        <label class="form-check-label" for="layout-width-fuild">Fluid</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout-width"
+                            id="layout-width-boxed" value="boxed" onchange="document.body.setAttribute('data-layout-size', 'boxed')">
+                        <label class="form-check-label" for="layout-width-boxed">Boxed</label>
+                    </div>
+
+                    <h6 class="mt-4 mb-3">Layout Position</h6>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout-position"
+                            id="layout-position-fixed" value="fixed" onchange="document.body.setAttribute('data-layout-scrollable', 'false')">
+                        <label class="form-check-label" for="layout-position-fixed">Fixed</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout-position"
+                            id="layout-position-scrollable" value="scrollable" onchange="document.body.setAttribute('data-layout-scrollable', 'true')">
+                        <label class="form-check-label" for="layout-position-scrollable">Scrollable</label>
+                    </div>
+
+                    <h6 class="mt-4 mb-3">Topbar Color</h6>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="topbar-color"
+                            id="topbar-color-light" value="light" onchange="document.body.setAttribute('data-topbar', 'light')">
+                        <label class="form-check-label" for="topbar-color-light">Light</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="topbar-color"
+                            id="topbar-color-dark" value="dark" onchange="document.body.setAttribute('data-topbar', 'dark')">
+                        <label class="form-check-label" for="topbar-color-dark">Dark</label>
+                    </div>
+
+                    <h6 class="mt-4 mb-3 sidebar-setting">Sidebar Size</h6>
+
+                    <div class="form-check sidebar-setting">
+                        <input class="form-check-input" type="radio" name="sidebar-size"
+                            id="sidebar-size-default" value="default" onchange="document.body.setAttribute('data-sidebar-size', 'lg')">
+                        <label class="form-check-label" for="sidebar-size-default">Default</label>
+                    </div>
+                    <div class="form-check sidebar-setting">
+                        <input class="form-check-input" type="radio" name="sidebar-size"
+                            id="sidebar-size-compact" value="compact" onchange="document.body.setAttribute('data-sidebar-size', 'md')">
+                        <label class="form-check-label" for="sidebar-size-compact">Compact</label>
+                    </div>
+                    <div class="form-check sidebar-setting">
+                        <input class="form-check-input" type="radio" name="sidebar-size"
+                            id="sidebar-size-small" value="small" onchange="document.body.setAttribute('data-sidebar-size', 'sm')">
+                        <label class="form-check-label" for="sidebar-size-small">Small (Icon View)</label>
+                    </div>
+
+                    <h6 class="mt-4 mb-3 sidebar-setting">Sidebar Color</h6>
+
+                    <div class="form-check sidebar-setting">
+                        <input class="form-check-input" type="radio" name="sidebar-color"
+                            id="sidebar-color-light" value="light" onchange="document.body.setAttribute('data-sidebar', 'light')">
+                        <label class="form-check-label" for="sidebar-color-light">Light</label>
+                    </div>
+                    <div class="form-check sidebar-setting">
+                        <input class="form-check-input" type="radio" name="sidebar-color"
+                            id="sidebar-color-dark" value="dark" onchange="document.body.setAttribute('data-sidebar', 'dark')">
+                        <label class="form-check-label" for="sidebar-color-dark">Dark</label>
+                    </div>
+                    <div class="form-check sidebar-setting">
+                        <input class="form-check-input" type="radio" name="sidebar-color"
+                            id="sidebar-color-brand" value="brand" onchange="document.body.setAttribute('data-sidebar', 'brand')">
+                        <label class="form-check-label" for="sidebar-color-brand">Brand</label>
+                    </div>
+
+                    <h6 class="mt-4 mb-3">Direction</h6>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout-direction"
+                            id="layout-direction-ltr" value="ltr">
+                        <label class="form-check-label" for="layout-direction-ltr">LTR</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout-direction"
+                            id="layout-direction-rtl" value="rtl">
+                        <label class="form-check-label" for="layout-direction-rtl">RTL</label>
+                    </div>
+
+                </div>
+
+            </div> <!-- end slimscroll-menu-->
+        </div>
+        <!-- /Right-bar -->
+
+        <!-- Right bar overlay-->
+        <div class="rightbar-overlay"></div>
+
+        <!-- JAVASCRIPT -->
+        <script src="{% static 'assets/libs/jquery/jquery.min.js' %}"></script>
+        <script src="{% static 'assets/libs/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'assets/libs/metismenu/metisMenu.min.js' %}"></script>
+        <script src="{% static 'assets/libs/simplebar/simplebar.min.js' %}"></script>
+        <script src="{% static 'assets/libs/node-waves/waves.min.js' %}"></script>
+
+        <!-- apexcharts -->
+        <script src="{% static 'assets/libs/apexcharts/apexcharts.min.js' %}"></script>
+
+        <!-- dashboard init -->
+        <script src="{% static 'assets/js/pages/dashboard.init.js' %}"></script>
+
+        <!-- App js -->
+        <script src="{% static 'assets/js/app.js' %}"></script>
+    </body>
+
+
+<!-- Mirrored from preview.pichforest.com/samply/layouts/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 01 Dec 2021 12:27:11 GMT -->
 </html>
+
