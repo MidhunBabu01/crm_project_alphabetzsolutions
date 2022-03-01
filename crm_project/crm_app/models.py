@@ -128,21 +128,26 @@ class Quotation_Invoice(models.Model):
 
 
 
+class Product_Categoryy(models.Model):
+    name = models.CharField(max_length=30)
+    def __str__(self):
+        return self.name
 
 class Products(models.Model):
     def __str__(self):
         return self.product_name
 
     # slug = models.SlugField(max_length=250) 
+    category = models.ForeignKey(Product_Categoryy,on_delete=models.CASCADE)
     product_name = models.CharField(max_length=250)
     brand = models.CharField(max_length=25,blank=True)
     photo = models.ImageField(upload_to ='products')
-    desc = models.TextField()
-    hsn = models.CharField(max_length=25)
+    # desc = models.TextField()
+    hsn = models.CharField(max_length=25,blank=True,null=True)
     price = models.IntegerField()
-    warranty = models.CharField(max_length=250)
-    item_code = models.CharField(max_length=25)
-    uom = models.CharField(max_length=25)
+    warranty = models.CharField(max_length=250,blank=True,null=True)
+    item_code = models.CharField(max_length=25,blank=True,null=True)
+    uom = models.CharField(max_length=25,blank=True,null=True)
     gst1 = 5
     gst2 = 12
     gst3 = 18
