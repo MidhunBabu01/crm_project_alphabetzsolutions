@@ -52,5 +52,13 @@ urlpatterns = [
     path('product-new',views.product_new,name="product_new"),
     path('tools-management-update/<int:item_id>/',views.tools_management_update,name="tools_management_update"),
 
+    # PRODUCTS SECTION
+    path('cctv/',views.cctv,name="cctv"),
+    path('video-door-phone/',views.video_door_phone,name="video_door_phone"),
+    path('projector/',views.projector,name="projector"),
+
+    
+
+
 
 ]

@@ -266,7 +266,9 @@ def add_cart(request,product_id):
         ct = CartList.objects.create(cart_id=c_id(request))
         ct.save()
     try:
+        # staff_name = User.objects.get(username=request.user.username)
         c_items = Items.objects.get(prodt=product,cart=ct)
+        # c_items.user = staff_name
         if c_items.quantity < c_items.prodt.stock:
             c_items.quantity+=1
         c_items.save()
@@ -640,3 +642,17 @@ def product_new(request):
     return render(request,'product-new.html',{'products':products})
 
 
+
+# PRODUCT SECTION
+
+def cctv(request):
+    cctv_obj = Products.objects.filter(category__name ='Cctv')
+    return render(request,'cctv.html',{'products':cctv_obj})
+
+def video_door_phone(request):
+    video_door_phone = Products.objects.filter(category__name ='Video Door Phone')
+    return render(request,'video-door-phone.html',{'products':video_door_phone})
+
+def projector(request):
+    projector = Products.objects.filter(category__name ='Projector')
+    return render(request,'projector.html',{'products':projector})
