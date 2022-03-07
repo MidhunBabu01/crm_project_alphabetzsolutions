@@ -149,5 +149,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = 'crm_app:index'
 LOGIN_URL = 'crm_app:staff_login'
+# AUTH_USER_MODEL = 'acc_section.ExtendedUserModel'
 
 

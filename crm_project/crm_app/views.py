@@ -360,31 +360,32 @@ def register(request):
     if "username" in request.session:
         return redirect('crm_app:index')
     if request.method == 'POST':
-        if request.POST['password'] == request.POST['confirm_password']:
+        if request.POST.get('password1') == request.POST.get('password2'):
             try:
-                user = User.objects.get(username=request.POST['username'])
+                user = User.objects.get(username=request.POST.get('username'))
                 print('username already taken')
-                return render(request,'register.html',{'error':"Username alredy taken"})
+                return render(request,'staff_register.html',{'error':"Username alredy taken"})
                 
             except User.DoesNotExist:
-                user = User.objects.create_user(username = request.POST['username'], password = request.POST['password'],first_name=request.POST['first_name'],last_name=request.POST['last_name'],email=request.POST['email'])
-                phn = request.POST['phn']
-                age = request.POST['age']
-                company_name = request.POST['company_name']
-                company_address = request.POST['company_address']
-                title = request.POST['title']
-                dob = request.POST['dob']
-                gst = request.POST['gst']
-                extenduser = ExtendedUserModel(phn_number=phn,age=age,user=user,comapny_name=company_name,company_address=company_address,title=title,gst=gst,dob=dob)
+                
+                user = User.objects.create_user(username = request.POST.get('username'), password = request.POST.get('password1'),email=request.POST.get('email'))
+                emp_name = request.POST.get('emp_name')
+                address = request.POST.get('address')
+                dob = request.POST.get('dob')
+                bloodgroup = request.POST.get('bloodgroup')
+                phn = request.POST.get('phn')
+                staff = request.POST.get('staff')
+                superviser = request.POST.get('supervisor')
+                extenduser = ExtendedUserModel(dob=dob,phn_number=phn,employe_name=emp_name,user=user,address=address,blood_group=bloodgroup,is_staff2=staff,is_superviser=superviser)
                 extenduser.save();
                 print('user created')
                 auth.login(request,user)
-                return redirect('crm_app:login')
+                return redirect('crm_app:staff_login')
         else:
             print('password not matching')
-            return render(request,'register.html',{'error':'password doesnot match'})
+            return render(request,'staff_register.html',{'error':'password doesnot match'})
     else:
-        return render(request,'register.html')
+        return render(request,'staff_register.html')
 
 
 
@@ -439,30 +440,30 @@ def admin_register(request):
     return render(request,"admin-register.html")
 
 
-def sitestaff_register(request):
-    if request.method == "POST":
-        username = request.POST.get('username')
-        email = request.POST.get('email')
-        password1 = request.POST.get("password1")
-        password2 = request.POST.get("password2")  
-        if password1 == password2:
-            if User.objects.filter(username=username).exists():
-                print("username alredy exists")
-                messages.info(request,"username already exist")
-                return redirect("crm_app:sitestaff_register")
-            elif User.objects.filter(email=email).exists():
-                print("email alredy exists")
-                messages.info(request,"email  already registered")
-                return redirect("crm_app:sitestaff_register")
-            else:
-                user = User.objects.create_user(username=username,email=email,password=password1,is_active=True,is_staff=True)
-                user.save();
-                print('user created')
-                return redirect('crm_app:staff_login')
-        else:
-            print('Password Not Matched')
-            return redirect('crm_app:sitestaff_register')    
-    return render(request,"sitestaff-register.html")
+# def sitestaff_register(request):
+#     if request.method == "POST":
+#         username = request.POST.get('username')
+#         email = request.POST.get('email')
+#         password1 = request.POST.get("password1")
+#         password2 = request.POST.get("password2")  
+#         if password1 == password2:
+#             if User.objects.filter(username=username).exists():
+#                 print("username alredy exists")
+#                 messages.info(request,"username already exist")
+#                 return redirect("crm_app:sitestaff_register")
+#             elif User.objects.filter(email=email).exists():
+#                 print("email alredy exists")
+#                 messages.info(request,"email  already registered")
+#                 return redirect("crm_app:sitestaff_register")
+#             else:
+#                 user = User.objects.create_user(username=username,email=email,password=password1,is_active=True,is_staff=True)
+#                 user.save();
+#                 print('user created')
+#                 return redirect('crm_app:staff_login')
+#         else:
+#             print('Password Not Matched')
+#             return redirect('crm_app:sitestaff_register')    
+#     return render(request,"sitestaff-register.html")
 
 
 
@@ -513,34 +514,34 @@ def logout(request):
 
 # STAFF ACCOUNT SECTION
 
-def staff_register(request):
-    if "username" in request.session:
-        return redirect('crm_app:index')
-    if request.method == "POST":
-        username = request.POST.get("username")
-        email = request.POST.get("email")
-        password1 = request.POST.get("password1")
-        password2 = request.POST.get("password2")
-        if password1 == password2:
-            if User.objects.filter(username=username).exists():
-                print("username alredy exists")
-                messages.info(request,"Username already exist")
-                return redirect("crm_app:staff_register")
-            elif User.objects.filter(email=email).exists():
-                print("email alredy exists")
-                messages.info(request,"Email  already registered")
-                return redirect("crm_app:staff_register")
-            else:
-                user = User.objects.create_user(username=username, email=email,
-                                        password=password1)
-                user.save();
-                print("user created")
-        else:
-            print("password not matched")
-            return redirect('crm_app:staff_register')
-        return redirect("crm_app:staff_login")
-    else:
-        return render(request,'staff_register.html')
+# def staff_register(request):
+#     if "username" in request.session:
+#         return redirect('crm_app:index')
+#     if request.method == "POST":
+#         username = request.POST.get("username")
+#         email = request.POST.get("email")
+#         password1 = request.POST.get("password1")
+#         password2 = request.POST.get("password2")
+#         if password1 == password2:
+#             if User.objects.filter(username=username).exists():
+#                 print("username alredy exists")
+#                 messages.info(request,"Username already exist")
+#                 return redirect("crm_app:staff_register")
+#             elif User.objects.filter(email=email).exists():
+#                 print("email alredy exists")
+#                 messages.info(request,"Email  already registered")
+#                 return redirect("crm_app:staff_register")
+#             else:
+#                 user = User.objects.create_user(username=username, email=email,
+#                                         password=password1)
+#                 user.save();
+#                 print("user created")
+#         else:
+#             print("password not matched")
+#             return redirect('crm_app:staff_register')
+#         return redirect("crm_app:staff_login")
+#     else:
+#         return render(request,'staff_register.html')
 
 
 

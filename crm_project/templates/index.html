@@ -257,7 +257,7 @@
                                 </a>
                                 {% endif %}
                             </li> {% endcomment %}
-                            {% if user.is_authenticated and user.is_superuser or user.is_staff %}
+                            {% if user.is_authenticated and user.is_superuser or user.extendedusermodel.is_superviser == 'supervisor' %}
                             <li class="mm-active">
                                 <a href="javascript: void(0);" class="has-arrow waves-effect" aria-expanded="true">
                                     <i class="bx bx-table"></i>

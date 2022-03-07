@@ -9,11 +9,11 @@ class ExtendedUserModel(models.Model):
     def __str__(self):
         return self.user.username
     user = models.OneToOneField(User,on_delete=models.CASCADE)
-    comapny_name = models.CharField(max_length=250)
-    title = models.CharField(max_length=250)
-    company_address = models.TextField()
-    dob = models.CharField(max_length=10)
-    gst = models.IntegerField()
-    phn_number = models.CharField(max_length=13)
-    age = models.IntegerField()
-    
+    employe_name = models.CharField(max_length=25)
+    address = models.TextField()
+    dob = models.DateField()
+    blood_group = models.CharField(max_length=5)
+    phn_number = models.IntegerField(max_length=10)
+    is_staff2= models.CharField(max_length=10,blank=True,null=True)
+    is_superviser = models.CharField(max_length=10,blank=True,null=True)
+    # is_employee = models.BooleanField('Is employee', default=False)

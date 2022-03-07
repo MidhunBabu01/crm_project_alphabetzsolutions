@@ -13,13 +13,14 @@ urlpatterns = [
     path('index/', views.index, name='index'),
     path('logout/',views.logout,name="logout"),
     path('register/', views.register, name='register'),
+    # ADMIN REGISTER
     path('**admin-register**/', views.admin_register, name='admin_register'),
-    # SITE ADMIN REGISTER
-    path('**sitestaff-register**/', views.sitestaff_register, name='sitestaff_register'),
+    # SUPERVISOR AND STAFF  REGISTER
+    path('**staff-register**/',views.register,name="staff_register"),
+    # path('**sitestaff-register**/', views.sitestaff_register, name='sitestaff_register'),
     # staff account section
-    path('**staff-register**/',views.staff_register,name="staff_register"),
     # path('staff-login/',views.staff_login,name="staff_login"),
-    path('register/', views.register, name='register'),
+    # path('register/', views.register, name='register'),
     path('starter/', views.starter, name='starter'),
     path('customers/', views.customer, name='customers'),
     path('add-customer/', views.add_customer, name='add_customer'),
