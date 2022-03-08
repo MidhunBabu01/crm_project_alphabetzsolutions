@@ -55,15 +55,19 @@
                                         </div>
                                     
                                         <div class="mt-4 pt-3">
-                                            <form  method="post">
+                                            <form  method="post" enctype="multipart/form-data">
                                                 {% csrf_token %}
                                                     <div class="form-group">
                                                         <label for="recipient-name1" class="col-form-label">Employe Name</label>
-                                                        <input type="text" class="form-control" placeholder=" " name="emp_name" id="username" required="">
+                                                        <input type="text" class="form-control" placeholder=" " name="emp_name"  required="">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="recipient-name1" class="col-form-label">Employe Id</label>
                                                         <input type="text" class="form-control" placeholder=" " name="username" id="username" required="">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="recipient-name1" class="col-form-label">Photo</label>
+                                                        <input type="file" class="form-control" placeholder=" " name="user_img" id="username">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="recipient-email" class="col-form-label">Email</label>

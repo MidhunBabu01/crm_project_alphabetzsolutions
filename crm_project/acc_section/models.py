@@ -16,4 +16,5 @@ class ExtendedUserModel(models.Model):
     phn_number = models.IntegerField(max_length=10)
     is_staff2= models.CharField(max_length=10,blank=True,null=True)
     is_superviser = models.CharField(max_length=10,blank=True,null=True)
+    user_photo = models.ImageField(upload_to = 'pictures',blank=True,null=True)
     # is_employee = models.BooleanField('Is employee', default=False)

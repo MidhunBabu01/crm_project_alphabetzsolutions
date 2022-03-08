@@ -367,7 +367,6 @@ def register(request):
                 return render(request,'staff_register.html',{'error':"Username alredy taken"})
                 
             except User.DoesNotExist:
-                
                 user = User.objects.create_user(username = request.POST.get('username'), password = request.POST.get('password1'),email=request.POST.get('email'))
                 emp_name = request.POST.get('emp_name')
                 address = request.POST.get('address')
@@ -376,7 +375,9 @@ def register(request):
                 phn = request.POST.get('phn')
                 staff = request.POST.get('staff')
                 superviser = request.POST.get('supervisor')
-                extenduser = ExtendedUserModel(dob=dob,phn_number=phn,employe_name=emp_name,user=user,address=address,blood_group=bloodgroup,is_staff2=staff,is_superviser=superviser)
+                # if len(request.FILES) !=0:
+                user_img = request.FILES.get('user_img')
+                extenduser = ExtendedUserModel(user_photo=user_img,dob=dob,phn_number=phn,employe_name=emp_name,user=user,address=address,blood_group=bloodgroup,is_staff2=staff,is_superviser=superviser)
                 extenduser.save();
                 print('user created')
                 auth.login(request,user)
