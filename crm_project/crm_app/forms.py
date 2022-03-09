@@ -1,6 +1,6 @@
 from django_select2.forms import Select2MultipleWidget
 from django.forms import CheckboxSelectMultiple, widgets
-from.models import Customer, Leads, Quotation_Details
+from.models import Customer, Leads, Quotation_Details, Task
 from django import forms
 from flatpickr import DatePickerInput
 
@@ -117,6 +117,21 @@ class Quotation_DetailsForm(forms.ModelForm):
         widgets ={
             'quotation_details': forms.Select(attrs={'class':'form-control'})
 
+        }
+
+
+class TaskAddForm(forms.ModelForm):
+    class Meta:
+        model = Task
+        fields = '__all__'
+        widgets = {
+            'task_owner' : forms.TextInput(attrs={'class':'form-control'}),
+            'subjects': forms.TextInput(attrs={'class':'form-control'}),
+            'due_date' : forms.DateInput(attrs={'class':'form-control','type':'date'}),
+            'status' : forms.Select(attrs={'class':'form-control'}),
+            'priority' : forms.Select(attrs={'class':'form-control'}),
+            'desc' : forms.Textarea(attrs={'rows':'3','class':'form-control'}),
+            
         }
 
 

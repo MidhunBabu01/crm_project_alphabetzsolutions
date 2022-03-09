@@ -1,8 +1,8 @@
 from django.core.exceptions import ObjectDoesNotExist, RequestAborted
 from django.http.response import HttpResponse, ResponseHeaders
 from django.shortcuts import redirect, render,get_object_or_404
-from crm_app.models import Customer, Leads, Products,CartList,Items,Quotation_Details
-from .forms import CustomerAddForm, LeadAddForm, ProjectManagementAddForm,ToolsManagementUpdate,Quotation_DetailsForm
+from crm_app.models import Customer, Leads, Products,CartList,Items,Quotation_Details, Task
+from .forms import CustomerAddForm, LeadAddForm, ProjectManagementAddForm,ToolsManagementUpdate,TaskAddForm,Quotation_DetailsForm
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.models import User,auth
 from django.contrib.auth import authenticate
@@ -658,3 +658,37 @@ def video_door_phone(request):
 def projector(request):
     projector = Products.objects.filter(category__name ='Projector')
     return render(request,'projector.html',{'products':projector})
+
+
+# TASK MODULE
+    
+def task(request):
+    task_list = Task.objects.all()
+    return render(request,'task.html',{'task_list':task_list})
+
+
+
+def add_task(request):
+    form = TaskAddForm()
+    if request.method == 'POST':
+        form = TaskAddForm(request.POST)
+        if form.is_valid():
+            form.save()
+            print('task created')
+            return redirect('crm_app:task')
+    else:
+        TaskAddForm()
+    return render(request,'task-add.html',{'form':form})
+
+
+def edit_task(request,task_id):
+    if request.method == 'POST':
+        update = Task.objects.filter(id=task_id).first()
+        fm = TaskAddForm(request.POST,instance=update)
+        if fm.is_valid():
+            fm.save();
+            return redirect('crm_app:task')
+    else:
+        update = Task.objects.get(id=task_id)
+        fm = TaskAddForm(instance=update)
+    return render(request,'edit-task.html',{'form':fm})

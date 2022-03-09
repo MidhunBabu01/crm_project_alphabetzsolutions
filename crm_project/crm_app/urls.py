@@ -52,6 +52,10 @@ urlpatterns = [
     path('project-management-update/<int:item_id>/',views.ProjectManagementUpdate,name="project_management_update"),
     path('product-new',views.product_new,name="product_new"),
     path('tools-management-update/<int:item_id>/',views.tools_management_update,name="tools_management_update"),
+    path('task/', views.task, name='task'),
+    path('add-task/', views.add_task, name='add_task'),
+    path('edit-task/<int:task_id>/', views.edit_task, name='edit_task'),
+ 
 
     # PRODUCTS SECTION
     path('cctv/',views.cctv,name="cctv"),

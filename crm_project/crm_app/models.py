@@ -204,7 +204,23 @@ class Quotation_Details(models.Model):
 
 
 
-# class Tools(models.Model):
-#     def __str__(self):
-#         return self.name
-#     name = models.CharField(max_length=250)
+class Task(models.Model):
+    task_owner = models.CharField(max_length=25)
+    subjects = models.CharField(max_length=50)
+    due_date = models.DateField()
+    status_choices = (
+        ('Not Stared','Not Started'),
+        ('Deferred','Deferred'),
+        ('In Progress','In Progress'),
+        ('Completed','Completed'),
+        ('Waiting For Approval','Waiting For Approval'),
+    )
+    status = models.CharField(choices=status_choices,max_length=50)
+    priority_choices = (
+        ('High','High'),
+        ('Highest','Highest'),
+        ('Low','Low'),
+        ('Lowest','Lowest')
+    )
+    priority = models.CharField(choices=priority_choices,max_length=50)
+    desc = models.TextField(blank=True,null=True)
