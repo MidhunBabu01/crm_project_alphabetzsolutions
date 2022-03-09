@@ -125,12 +125,14 @@ class TaskAddForm(forms.ModelForm):
         model = Task
         fields = '__all__'
         widgets = {
+            'staff_name' : forms.Select(attrs={'class':'form-control'}),
             'task_owner' : forms.TextInput(attrs={'class':'form-control'}),
             'subjects': forms.TextInput(attrs={'class':'form-control'}),
             'due_date' : forms.DateInput(attrs={'class':'form-control','type':'date'}),
             'status' : forms.Select(attrs={'class':'form-control'}),
             'priority' : forms.Select(attrs={'class':'form-control'}),
             'desc' : forms.Textarea(attrs={'rows':'3','class':'form-control'}),
+            
             
         }
 

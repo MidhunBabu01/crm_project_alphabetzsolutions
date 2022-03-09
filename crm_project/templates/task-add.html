@@ -21,7 +21,7 @@
 <head>
         
         <meta charset="utf-8" />
-        <title>Login | Samply - Admin & Dashboard Template</title>
+        <title></title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="Pichforest" name="author" />
@@ -64,7 +64,35 @@
                                         </div>
                                         <form method='post' enctype='multipart/form-data'>
                                             {% csrf_token %}
-                                            {{form}}
+                                            {% comment %} {{form}} {% endcomment %}
+                                            <div class="mb-3">
+                                                <label for="username" class="fw-semibold">Staff Name</label>
+                                                {{form.staff_name}}
+                                           </div>
+                                           <div class="mb-3">
+                                                <label for="username" class="fw-semibold">Task Owner</label>
+                                                {{form.subjects}}
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="username" class="fw-semibold">Subjects</label>
+                                                {{form.task_owner}}
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="username" class="fw-semibold">Due Date</label>
+                                                {{form.due_date}}
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="username" class="fw-semibold">Status</label>
+                                                {{form.status}}
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="username" class="fw-semibold">Priority</label>
+                                                {{form.priority}}
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="username" class="fw-semibold">Priority</label>
+                                                {{form.desc}}
+                                            </div>
                                             <input type="submit" class="btn btn-success mr-3" value="submit">
                                         </form>
                                         <div class="mt-4 pt-3">

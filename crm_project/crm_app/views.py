@@ -692,3 +692,9 @@ def edit_task(request,task_id):
         update = Task.objects.get(id=task_id)
         fm = TaskAddForm(instance=update)
     return render(request,'edit-task.html',{'form':fm})
+
+
+def delete_task(request,task_id):
+    obj = Task.objects.filter(id=task_id)
+    obj.delete()
+    return redirect('crm_app:task')
