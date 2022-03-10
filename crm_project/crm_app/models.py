@@ -205,8 +205,10 @@ class Quotation_Details(models.Model):
 
 
 class Task(models.Model):
+    def __str__(self):
+        return self.staff_name.username
+        
     staff_name = models.ForeignKey(User,on_delete=models.CASCADE,blank=True,null=True)
-    task_owner = models.CharField(max_length=25)
     subjects = models.CharField(max_length=50)
     due_date = models.DateField()
     status_choices = (

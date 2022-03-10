@@ -14,11 +14,7 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.AddField(
-            model_name='task',
-            name='staff_name',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL),
-        ),
+        
         migrations.AlterField(
             model_name='items',
             name='due_date',

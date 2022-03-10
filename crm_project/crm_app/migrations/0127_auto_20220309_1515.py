@@ -26,9 +26,5 @@ class Migration(migrations.Migration):
             name='date',
             field=models.DateField(default=datetime.datetime(2022, 3, 9, 15, 15, 54, 331547)),
         ),
-        migrations.AlterField(
-            model_name='task',
-            name='desc',
-            field=models.TextField(blank=True, null=True),
-        ),
+       
     ]

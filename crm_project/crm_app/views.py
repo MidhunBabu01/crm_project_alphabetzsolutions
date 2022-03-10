@@ -663,8 +663,9 @@ def projector(request):
 # TASK MODULE
     
 def task(request):
-    task_list = Task.objects.all()
-    return render(request,'task.html',{'task_list':task_list})
+    task_list = Task.objects.filter(staff_name__username = request.user.username)
+    all_task_list = Task.objects.all()
+    return render(request,'task.html',{'task_list':task_list,'all_task_list':all_task_list})
 
 
 

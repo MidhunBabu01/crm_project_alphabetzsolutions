@@ -863,73 +863,47 @@
                                         </div>
 
                                         {% if user.is_authenticated and user.is_superuser %}
-                                        <h4 class="card-title mb-4">1</h4>
+                                        <h4 class="card-title mb-4"></h4>
                                         <a href="{% url 'crm_app:add_task' %}" class="btn btn-success">Add Task</a>
                                         <div class="table-responsive">
                                             <table class="table table-hover table-borderless align-middle table-centered table-nowrap mb-0">
                                                 <thead class="table-light">
                                                     <tr>
-                                                        <th>Staff Name</th>
-                                                        <th>Date</th>
-                                                        <th>Company Name</th>
-                                                        <th>Address</th>
-                                                        <th>Phone Number 1</th>
-                                                        <th>Phone Number 2</th>
-                                                        <th>Owner/Contact Person</th>
-                                                        <th>IT/NON IT</th>
-                                                        <th>Requirements</th>
-                                                        <th>Stage 1</th>
-                                                        <th>Stage 2</th>
-                                                        <th>Lead Source</th>
+                                                        <th>Task Owner</th>
+                                                        <th>Subjects</th>
+                                                        <th>Due Date</th>
+                                                        <th>Status</th>
+                                                        <th>Priority</th>
+                                                        <th>Description</th>
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
-                                                {% for i in all_leads %} 
+                                                {% for i in all_task_list %} 
                                                 <tbody>
                                                     <tr>
                                                         <td>
                                                            {{i.staff_name}}  
                                                         </td>
                                                         <td>
+                                                            {{i.subjects}}  
+                                                        </td>
+                                                        <td>
                                                             {% comment %} <img src="{{i.photo.url}}" alt="user" class="rounded-circle h-auto avatar-xs me-2"> {% endcomment %}
-                                                            <span>{{i.date}}</span>
+                                                            <span>{{i.due_date}}</span>
                                                         </td>
                                                         <td>
-                                                            {{i.company_name}}
+                                                            {{i.status}}
                                                         </td>
                                                         <td>
-                                                            {{i.address}}
+                                                            {{i.priority}}
                                                         </td>
                                                         <td>
-                                                            {{i.phone1}}
+                                                            {{i.desc}}
                                                             {% comment %} <img src="{{i.photo.url}}" alt="user" class="rounded-circle h-auto avatar-xs me-2"> {% endcomment %}
                                                         </td>
                                                         <td>
-                                                            {{i.phone2}}
-                                                        </td>
-                                                        <td>
-                                                            <span class="badge bg-success bg-soft text-success">{{i.owner}}</span>
-                                                        </td>
-                                                        <td>
-                                                            {{i.department}}
-                                                        </td>
-                                                        <td>
-                                                            {{i.requirements}}
-                                                        </td>
-
-                                                        <td>
-                                                            {{i.stage1}}
-                                                        </td>
-
-                                                        <td>
-                                                            {{i.stage2}}
-                                                        </td>
-                                                        <td>
-                                                            {{i.lead_source}}
-                                                        </td>
-                                                        <td>
-                                                        <a href="{% url 'crm_app:leads_edit' i.id %}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
-                                                        <a href="{% url 'crm_app:leads_delete' i.id %}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                                                        <a href="{% url 'crm_app:edit_task' i.id %}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
+                                                        <a href="{% url 'crm_app:delete_task' i.id %}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
                                                         {% comment %} <form action="{% url 'crm_app:leads_delete' i.id %}" method="post" class="d-inline">
                                                             {% csrf_token %}
                                                             <input type="submit" class="btn btn-danger" value="Delete"><i class="fas fa-trash"></i>
@@ -1114,7 +1088,6 @@
                                         </div>
                                         {% else %}
                                         <h4 class="card-title mb-4">1</h4>
-                                        <a href="{% url 'crm_app:add_task' %}" class="btn btn-success">Add Task</a>
                                         <div class="table-responsive">
                                             <table class="table table-hover table-borderless align-middle table-centered table-nowrap mb-0">
                                                 <thead class="table-light">
@@ -1132,7 +1105,7 @@
                                                 <tbody>
                                                     <tr>
                                                         <td>
-                                                           {{i.task_owner}}  
+                                                           {{i.staff_name}}  
                                                         </td>
                                                         <td>
                                                             {{i.subjects}}  

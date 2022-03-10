@@ -11,12 +11,6 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.AddField(
-            model_name='task',
-            name='desc',
-            field=models.TextField(default=1),
-            preserve_default=False,
-        ),
         migrations.AlterField(
             model_name='items',
             name='due_date',

@@ -11,16 +11,6 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.CreateModel(
-            name='Task',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('task_owner', models.CharField(max_length=25)),
-                ('due_date', models.DateField()),
-                ('status', models.CharField(choices=[('Not Stared', 'Not Started'), ('Deferred', 'Deferred'), ('In Progress', 'In Progress'), ('Completed', 'Completed'), ('Waiting For Approval', 'Waiting For Approval')], max_length=50)),
-                ('priority', models.CharField(choices=[('High', 'High'), ('Highest', 'Highest'), ('Low', 'Low'), ('Lowest', 'Lowest')], max_length=50)),
-            ],
-        ),
         migrations.AlterField(
             model_name='items',
             name='due_date',
