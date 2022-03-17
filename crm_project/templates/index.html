@@ -504,10 +504,12 @@
                                 </div>
                             </div> 
 
+                            
+
                         </div> 
                         {% else %}
                         <div class="row">
-                            <div class="col-md-6 col-xl-3">
+                            <div class="col-md-6 col-xl-2">
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="float-end">
@@ -526,7 +528,7 @@
                                 </div>
                             </div> <!-- end col-->
 
-                            <div class="col-md-6 col-xl-3">
+                            <div class="col-md-6 col-xl-2">
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="float-end">
@@ -546,7 +548,7 @@
                                 </div>
                             </div> <!-- end col-->
 
-                            <div class="col-md-6 col-xl-3">
+                            <div class="col-md-6 col-xl-2">
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="float-end">
@@ -579,6 +581,26 @@
                                         <div>
                                             <p class="text-muted text-uppercase fw-semibold">Pending Leads</p>
                                             <h4 class="mb-1 mt-1"><span class="counter-value" data-target="{{pending_leads}}">0</span></h4>
+                                        </div>
+                                        {% comment %} <p class="text-muted mt-3 mb-0"><span class="badge badge-soft-warning me-1"><i class="mdi mdi-arrow-up-bold me-1"></i>0.55%</span> since last week {% endcomment %}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div> <!-- end col-->
+
+                            <div class="col-md-6 col-xl-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="float-end">
+                                            <div class="avatar-sm mx-auto mb-4">
+                                                <span class="avatar-title rounded-circle bg-light font-size-24">
+                                                    <i class="mdi mdi-cart-check text-success"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <p class="text-muted text-uppercase fw-semibold">Tasks</p>
+                                            <h4 class="mb-1 mt-1"><span class="counter-value" data-target="{{tasks}}">0</span></h4>
                                         </div>
                                         {% comment %} <p class="text-muted mt-3 mb-0"><span class="badge badge-soft-warning me-1"><i class="mdi mdi-arrow-up-bold me-1"></i>0.55%</span> since last week {% endcomment %}
                                         </p>

@@ -62,11 +62,46 @@
                                             <h5>Edit Task</h5>
                                             {% comment %} <p class="text-muted">Sign in to continue to Samply.</p> {% endcomment %}
                                         </div>
+                                        {% if user.is_authenticated and user.is_superuser %}
                                         <form method='post' enctype='multipart/form-data'>
                                             {% csrf_token %}
-                                            {{form}}
+                                            <div class="mb-3">
+                                                <label for="username" class="fw-semibold">Staff Name</label>
+                                                {{form.staff_name}}
+                                            </div> 
+                                            <div class="mb-3">
+                                                <label for="username" class="fw-semibold">Subjects</label>
+                                                {{form.subjects}}
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="username" class="fw-semibold">Due Date</label>
+                                                {{form.due_date}}
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="username" class="fw-semibold">Status</label>
+                                                {{form.status}}
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="username" class="fw-semibold">Priority</label>
+                                                {{form.priority}}
+                                            </div>
+                                            
+                                            <div class="mb-3">
+                                                <label for="username" class="fw-semibold">Description</label>
+                                                {{form.desc}}
+                                            </div>
                                             <input type="submit" class="btn btn-success mr-3" value="submit">
                                         </form>
+                                        {% else %}
+                                        <form method='post' enctype='multipart/form-data'>
+                                            {% csrf_token %}
+                                            <div class="mb-3">
+                                                <label for="username" class="fw-semibold">Status</label>
+                                                {{staff_fm.status}}
+                                            </div>
+                                            <input type="submit" class="btn btn-success mr-3" value="submit">
+                                        </form>
+                                        {% endif %}
                                         <div class="mt-4 pt-3">
                                             {% comment %} <form method='post' enctype='multipart/form-data'>
                                                 {% csrf_token %}

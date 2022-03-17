@@ -65,10 +65,12 @@
                                         <form method='post' enctype='multipart/form-data'>
                                             {% csrf_token %}
                                             {% comment %} {{form}} {% endcomment %}
+                                            {% comment %} {% if user.is_authenticated and user.is_superuser %} {% endcomment %}
                                             <div class="mb-3">
                                                 <label for="username" class="fw-semibold">Staff Name</label>
                                                 {{form.staff_name}}
-                                           </div>
+                                            </div>
+                                           {% comment %} {% endif %} {% endcomment %}
                                            <div class="mb-3">
                                                 <label for="username" class="fw-semibold">Subjects</label>
                                                 {{form.subjects}}

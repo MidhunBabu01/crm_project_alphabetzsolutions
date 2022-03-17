@@ -2,7 +2,7 @@ from django.core.exceptions import ObjectDoesNotExist, RequestAborted
 from django.http.response import HttpResponse, ResponseHeaders
 from django.shortcuts import redirect, render,get_object_or_404
 from crm_app.models import Customer, Leads, Products,CartList,Items,Quotation_Details, Task
-from .forms import CustomerAddForm, LeadAddForm, ProjectManagementAddForm,ToolsManagementUpdate,TaskAddForm,Quotation_DetailsForm
+from .forms import  CustomerAddForm, LeadAddForm, ProjectManagementAddForm,ToolsManagementUpdate,TaskAddForm,StaffTaskAddForm,Quotation_DetailsForm
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.models import User,auth
 from django.contrib.auth import authenticate
@@ -36,6 +36,7 @@ def index(request):
         today_closed_leadss = Leads.objects.filter(date=today_date,lead_status="close leads").count()
         total_pending_leadss = Leads.objects.filter(lead_status = "pending leads").count()
         today_pending_leadss = Leads.objects.filter(lead_status = "pending leads",date=today_date).count()
+        tasks = Task.objects.filter(staff_name__username= request.user.username).count()
         recent_open_leads = Leads.objects.filter(lead_status = "open leads").order_by('-id')[:5]
 
         context = {
@@ -50,7 +51,8 @@ def index(request):
             'pending_leads':pending_leads,
             'today_closed_leadss':today_closed_leadss,
             'today_pending_leadss':today_pending_leadss,
-            'recent_open_leads':recent_open_leads
+            'recent_open_leads':recent_open_leads,
+            'tasks':tasks
         }
         return render(request,'index.html',context)
     else:
@@ -659,12 +661,11 @@ def projector(request):
     projector = Products.objects.filter(category__name ='Projector')
     return render(request,'projector.html',{'products':projector})
 
-
 # TASK MODULE
     
 def task(request):
-    task_list = Task.objects.filter(staff_name__username = request.user.username)
-    all_task_list = Task.objects.all()
+    task_list = Task.objects.filter(staff_name__username = request.user.username).order_by('-id')
+    all_task_list = Task.objects.all().order_by('-id')
     return render(request,'task.html',{'task_list':task_list,'all_task_list':all_task_list})
 
 
@@ -674,11 +675,12 @@ def add_task(request):
     if request.method == 'POST':
         form = TaskAddForm(request.POST)
         if form.is_valid():
-            form.save()
+            data = form.save(commit=False)
+            data.save() 
             print('task created')
             return redirect('crm_app:task')
     else:
-        TaskAddForm()
+        form = TaskAddForm()
     return render(request,'task-add.html',{'form':form})
 
 
@@ -686,13 +688,24 @@ def edit_task(request,task_id):
     if request.method == 'POST':
         update = Task.objects.filter(id=task_id).first()
         fm = TaskAddForm(request.POST,instance=update)
-        if fm.is_valid():
-            fm.save();
-            return redirect('crm_app:task')
+        staff_fm = StaffTaskAddForm(request.POST,instance=update)
+        try:
+            if staff_fm.is_valid():
+                staff_fm.save()
+                print(request.POST)
+                return redirect('crm_app:task')
+                
+        except:
+            if fm.is_valid():                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+                fm.save()
+                print('updated')
+                return redirect('crm_app:task')
     else:
         update = Task.objects.get(id=task_id)
         fm = TaskAddForm(instance=update)
-    return render(request,'edit-task.html',{'form':fm})
+        staff_fm = StaffTaskAddForm(instance=update)
+        print('not updated')
+    return render(request,'edit-task.html',{'form':fm,'staff_fm':staff_fm})
 
 
 def delete_task(request,task_id):

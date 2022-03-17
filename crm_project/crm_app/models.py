@@ -208,22 +208,22 @@ class Task(models.Model):
     def __str__(self):
         return self.staff_name.username
         
-    staff_name = models.ForeignKey(User,on_delete=models.CASCADE,blank=True,null=True)
-    subjects = models.CharField(max_length=50)
-    due_date = models.DateField()
-    status_choices = (
-        ('Not Stared','Not Started'),
+    staff_name = models.ForeignKey(User,on_delete=models.CASCADE,null=True)
+    subjects = models.CharField(max_length=50,blank=True,null=True)
+    due_date = models.DateField(blank=True,null=True)
+    status_choices = ( 
+        ('Not Started','Not Started'),
         ('Deferred','Deferred'),
         ('In Progress','In Progress'),
         ('Completed','Completed'),
         ('Waiting For Approval','Waiting For Approval'),
     )
-    status = models.CharField(choices=status_choices,max_length=50)
+    status = models.CharField(choices=status_choices,max_length=50,blank=True,null=True)
     priority_choices = (
         ('High','High'),
         ('Highest','Highest'),
         ('Low','Low'),
-        ('Lowest','Lowest')
+        ('Lowest','Lowest'),
     )
-    priority = models.CharField(choices=priority_choices,max_length=50)
+    priority = models.CharField(choices=priority_choices,max_length=50,blank=True,null=True)
     desc = models.TextField(blank=True,null=True)
