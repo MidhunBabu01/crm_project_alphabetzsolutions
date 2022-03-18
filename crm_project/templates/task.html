@@ -893,7 +893,19 @@
                                                             
                                                         </td>
                                                         <td>
+                                                            {% if i.status == 'Completed'%}
+                                                            <span class="badge bg-success bg-soft text-success">{{i.status}}</span>
+                                                            {% elif i.status == 'Not Started' %}
+                                                            <span class="badge bg-danger bg-soft text-danger">{{i.status}}</span>
+                                                            {% elif i.status == 'In Progress' %}
+                                                            <span class="badge rounded-pill bg-info bg-soft text-info">{{i.status}}</span>  
+                                                            {% elif i.status == 'Waiting For Approval' %}
+                                                            <span class="badge bg-warning bg-soft text-warning rounded-pill">{{i.status}}</span>  
+                                                            {% elif i.status == 'Deferred' %}
+                                                            <span class="badge bg-dark bg-soft text-dark rounded-pill">{{i.status}}</span>  
+                                                            {% else %}
                                                             {{i.status}}
+                                                            {% endif %}
                                                             
                                                         </td>
                                                         <td>
