@@ -176,7 +176,7 @@ class Items(models.Model):
     def __str__(self):
         return self.prodt.product_name
 
-    # user = models.ForeignKey(User,on_delete=models.CASCADE)
+    customer = models.ForeignKey(Customer,on_delete=models.CASCADE,max_length=25, blank=True,null=True)
     prodt = models.ForeignKey(Products,on_delete=models.CASCADE)
     cart = models.ForeignKey(CartList,on_delete=models.CASCADE)
     quantity = models.IntegerField()

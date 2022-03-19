@@ -237,14 +237,13 @@ def Quotation_invoice_buy(request,customer_id,cart_items=None,total=0,count=0):
         return redirect("crm_app:cart2")
     return render(request,"quotation_invoice.html",{"ct_items":ct_items, "total":total, "count":count,'customer':customer})
 
-
 def cart(request,total=0,count=0,cart_items=None):
     try:
         ct = CartList.objects.get(cart_id=c_id(request))
         ct_items = Items.objects.filter(cart=ct,active=True) 
         for i in ct_items:
             total += i.total
-            count += i.quantity    
+            count += i.quantity
     except ObjectDoesNotExist:
         return redirect("crm_app:cart2")
     return render(request,"cart.html",{"ct_items":ct_items, "total":total, "count":count})
@@ -259,9 +258,9 @@ def c_id(request):
         carttt_id = request.session.create()
     return carttt_id
 
-
 def add_cart(request,product_id):
     product = Products.objects.get(id=product_id)
+
     try:
         ct = CartList.objects.get(cart_id=c_id(request))
     except CartList.DoesNotExist:
