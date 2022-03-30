@@ -33,6 +33,9 @@ urlpatterns = [
     path('open-leads/', views.open_leads, name='open_leads'),
     path('closed-leads/', views.closed_leads, name='closed_leads'),
     path('lead-search/', views.lead_search, name='lead_search'),
+    path('lead-search-result/', views.lead_search_admin, name='lead_search_admin'),
+
+    
     path('customer-profile/<int:customer_id>', views.customer_profile, name='customer_profile'),
     path('quotation-invoice/', views.Quotation_invoice, name='quotation_invoice'),
     path('products/', views.products, name='products'),

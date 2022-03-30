@@ -41,35 +41,35 @@ class Leads(models.Model):
     def __str__(self):
         return self.company_name
     staff_name = models.ForeignKey(User,on_delete=models.CASCADE)
-    no = models.IntegerField()
-    date = models.DateField(default=datetime.now())
-    company_name = models.CharField(max_length=250)
-    address = models.CharField(max_length=250)
-    phone1 = models.CharField(max_length=10)
-    phone2 = models.CharField(max_length=10)
-    owner = models.CharField(max_length=250)
+    no = models.IntegerField(blank=False,null=False)
+    date = models.DateField(default=datetime.now(),blank=False, null=False)
+    company_name = models.CharField(max_length=250,blank=True, null=True)
+    address = models.CharField(max_length=250,blank=False, null=False)
+    phone1 = models.CharField(max_length=10,blank=False, null=False)
+    phone2 = models.CharField(max_length=10,blank=False, null=False)
+    owner = models.CharField(max_length=250,blank=False, null=False)
     choice = (
         ('IT','IT'),
         ('NON IT','NON IT')
     )
-    department = models.CharField(max_length=10,choices=choice)
-    requirements = models.CharField(max_length=250)
-    remarks = models.CharField(max_length=250)
-    stage1 = models.CharField(max_length=250)
-    stage2 = models.CharField(max_length=250)
-    lead_choices = (
+    department = models.CharField(max_length=10,choices=choice,blank=False, null=False)
+    requirements = models.CharField(max_length=250,blank=False, null=False)
+    remarks = models.CharField(max_length=250,blank=True, null=True)
+    stage1 = models.CharField(max_length=250,blank=True, null=True)
+    stage2 = models.CharField(max_length=250,blank=True, null=True)
+    lead_choices = ( 
         ('pending leads','pending leads'),
         ('open leads','open leads'),
         ('close leads','close leads')
     )
-    lead_status = models.CharField(max_length=25,choices=lead_choices)
+    lead_status = models.CharField(max_length=25,choices=lead_choices,blank=False, null=False)
     source_choices = (
         ('Facebook','Facebook'),
         ('Youtube','Youtube'),
         ('Website','Website'),
         ('Newspaper','Newspaper'),
     )
-    lead_source = models.CharField(max_length=25,choices=source_choices)
+    lead_source = models.CharField(max_length=25,choices=source_choices,blank=False,null=False)
     # PROJECT MANAGEMENT SECTION
     status_choices = (
         ('Pending','Pending'),

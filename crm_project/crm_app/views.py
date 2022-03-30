@@ -111,6 +111,7 @@ def add_leads(request):
             data = fm.save(commit=False)
             staff_name = User.objects.get(username=request.user.username)
             data.staff_name = staff_name
+            print(request.user)
             data.save()
             return redirect('crm_app:leads')
     else:
@@ -174,6 +175,14 @@ def lead_search(request):
     if 'q' in request.GET:
         Query = request.GET.get('q')
         lead = Leads.objects.all().filter(Q(company_name__icontains=Query),staff_name__username=request.user.username)
+    return render(request,'lead-search-result.html',{"lead":lead,"query":Query})
+
+def lead_search_admin(request):
+    lead = None
+    Query = None
+    if 'q' in request.GET:
+        Query = request.GET.get('q')
+        lead = Leads.objects.all().filter(Q(company_name__icontains=Query) | Q(staff_name__username__icontains=Query))
     return render(request,'lead-search-result.html',{"lead":lead,"query":Query})
 
 

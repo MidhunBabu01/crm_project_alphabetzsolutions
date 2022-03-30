@@ -35,7 +35,7 @@ class LeadAddForm(forms.ModelForm):
         exclude = ['staff_name','status','start_date','end_date','tools','Return','start_date2','end_date2','site_staff_name']
         widgets ={
             'no' : forms.TextInput(attrs={'class':'form-control'}),
-            'date' : DatePickerInput(attrs={'class':'form-control'}),
+            'date' : DatePickerInput(attrs={'class':'form-control','type':'date'}),
             'company_name' : forms.TextInput(attrs={'class':'form-control'}),
             'phone1' : forms.TextInput(attrs={'class':'form-control'}),
             'address' : forms.TextInput(attrs={'class':'form-control'}),
