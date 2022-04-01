@@ -29,6 +29,7 @@ def index(request):
         today_leads = Leads.objects.filter(date=today_date,staff_name__username=request.user.username).count()
         closed_leads = Leads.objects.filter(lead_status="close leads",staff_name__username=request.user.username).count()
         pending_leads = Leads.objects.filter(lead_status = "pending leads",staff_name__username=request.user.username).count()
+        tasks = Task.objects.filter(staff_name__username= request.user.username).count()
         # ADMIN SIDE
         total_leadss = Leads.objects.all().count()
         today_leadss = Leads.objects.filter(date=today_date).count()
@@ -36,10 +37,10 @@ def index(request):
         today_closed_leadss = Leads.objects.filter(date=today_date,lead_status="close leads").count()
         total_pending_leadss = Leads.objects.filter(lead_status = "pending leads").count()
         today_pending_leadss = Leads.objects.filter(lead_status = "pending leads",date=today_date).count()
-        tasks = Task.objects.filter(staff_name__username= request.user.username).count()
         recent_open_leads = Leads.objects.filter(lead_status = "open leads").order_by('-id')[:5]
 
         context = {
+            
             'my_open_leads':my_open_leads,
             'total_leads':total_leads,
             'today_leads':today_leads,
@@ -672,9 +673,22 @@ def projector(request):
 # TASK MODULE
     
 def task(request):
+    taskss = Task.objects.all().count()
+    tasks = Task.objects.filter(staff_name__username= request.user.username).count()
     task_list = Task.objects.filter(staff_name__username = request.user.username).order_by('-id')
     all_task_list = Task.objects.all().order_by('-id')
-    return render(request,'task.html',{'task_list':task_list,'all_task_list':all_task_list})
+    form = TaskAddForm()
+    if request.method == 'POST':
+        form = TaskAddForm(request.POST)
+        if form.is_valid():
+            data = form.save(commit=False)
+            data.save() 
+            print('task created')
+            return redirect('crm_app:task')
+    else:
+        form = TaskAddForm()
+        
+    return render(request,'task.html',{'task_list':task_list,'all_task_list':all_task_list,'form':form,'taskss':taskss,'tasks':tasks})
 
 
 
