@@ -352,7 +352,7 @@
             <!-- ============================================================== -->
             <div class="main-content">
 
-                <div class="page-content">
+                <div class="page-content ">
                     <div class="container-fluid">
 
                         <!-- start page title -->
@@ -817,78 +817,89 @@
                         </div> {% endcomment %}
                         <!-- end row -->
 
-                        <div class="row">
+                        <div class="row ">
                             <div class="col-12">
                                 <div class="card">
-                                    <div class="card-header justify-content-between d-flex align-items-center">
+                                    <div class="card-header">
                                         <h4 class="card-title">Edit Task</h4>
                                     </div><!-- end card header -->
                                     {% if user.is_authenticated and user.is_superuser %}
                                     <div class="card-body">
-                                        <div class="row">
+                                        <div class="row  justify-content-center">
+                                            <div class="col-lg-6">
                                         <form method='POST'>
                                             {% csrf_token %}
-                                            <div class="col-xl-6">
+                                            <div class="col-xl-12">
                                                 <div class="mb-3 row">
-                                                    <label for="example-text-input" class="col-md-2 col-form-label">Staff Name</label>
-                                                    <div class="col-md-10">
+                                                    <label for="example-text-input" class="col-md-3 col-form-label text-end">Staff Name</label>
+                                                    <div class="col-md-9">
                                                         {{form.staff_name}}
                                                     </div>
                                                 </div><!-- end row -->
                                                 <div class="mb-3 row">
-                                                    <label for="example-search-input" class="col-md-2 col-form-label">Subjects</label>
-                                                    <div class="col-md-10">
+                                                    <label for="example-search-input" class="col-md-3 col-form-label text-end">Subjects</label>
+                                                    <div class="col-md-9">
                                                         {{form.subjects}}
                                                     </div>
                                                 </div><!-- end row -->
                                                 <div class="mb-3 row">
-                                                    <label for="example-email-input" class="col-md-2 col-form-label">Due Date</label>
-                                                    <div class="col-md-10">
+                                                    <label for="example-email-input" class="col-md-3 col-form-label text-end">Due Date</label>
+                                                    <div class="col-md-9">
                                                         {{form.due_date}}
                                                     </div>
                                                 </div><!-- end row -->
                                                 <div class="mb-3 row">
-                                                    <label for="example-url-input" class="col-md-2 col-form-label">Status</label>
-                                                    <div class="col-md-10">
+                                                    <label for="example-url-input" class="col-md-3 col-form-label text-end">Status</label>
+                                                    <div class="col-md-9">
                                                         {{form.status}}
                                                     </div>
                                                 </div><!-- end row -->
                                                 <div class="mb-3 row">
-                                                    <label for="example-tel-input" class="col-md-2 col-form-label">Priority</label>
-                                                    <div class="col-md-10">
+                                                    <label for="example-tel-input" class="col-md-3 col-form-label text-end">Priority</label>
+                                                    <div class="col-md-9">
                                                         {{form.priority}}
                                                     </div>
                                                 </div><!-- end row -->
                                                 <div class="mb-3 row">
-                                                    <label for="example-password-input" class="col-md-2 col-form-label">Description</label>
-                                                    <div class="col-md-10">
+                                                    <label for="example-password-input" class="col-md-3 col-form-label text-end">Description</label>
+                                                    <div class="col-md-9">
                                                         {{form.desc}}
                                                     </div>
                                                 </div>
-                                                <input type="submit" class="btn btn-info" value="Update">
+                                                <div class="mb-3 row">
+                                                    <div class="col-md-12">
+                                                <input type="submit" class="btn btn-info float-end" value="Update">
+                                                    </div>
+                                                </div>
                                                 <!-- end row -->
                                                
                                             </div><!-- end col -->
-                                        </form>
+                                        </form></div>
                                         </div><!-- end row -->
                                     </div><!-- end card body -->
                                     {% else %}
                                     <div class="card-body">
-                                        <div class="row">
-                                        <form method='POST'>
-                                            {% csrf_token %}
-                                            <div class="col-xl-6">
-                                                <div class="mb-3 row">
-                                                    <label for="example-text-input" class="col-md-2 col-form-label">Staff Name</label>
-                                                    <div class="col-md-10">
-                                                        {{staff_fm.status}}
-                                                    </div>
-                                                </div><!-- end row -->
-                                                <input type="submit" class="btn btn-info" value="Update">
-                                            </div><!-- end col -->
-                                        </form>
-                                        </div><!-- end row -->
-                                    </div><!-- end card body -->
+                                        <div class="row  justify-content-center">
+                                            <div class="col-lg-6">
+                                                <form method='POST'>
+                                                    {% csrf_token %}
+                                                    <div class="col-xl-12">
+                                                        <div class="mb-3 row">
+                                                            <label for="example-text-input" class="col-md-3 col-form-label text-end">Status</label>
+                                                            <div class="col-md-9">
+                                                                {{staff_fm.status}}
+                                                            </div>
+                                                        </div><!-- end row -->     
+                                                        <div class="mb-3 row">
+                                                            <div class="col-md-12">
+                                                                <input type="submit" class="btn btn-info float-end" value="Update">
+                                                            </div>
+                                                        </div>
+                                                    </div><!-- end col -->
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
                                     {% endif %}
                                 </div><!-- end card -->
                             </div><!-- end col -->

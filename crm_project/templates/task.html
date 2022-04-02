@@ -24,7 +24,7 @@
         <!-- Dark Mode Css-->
         <link href="{% static 'assets/css/dark-layout.min.css' %}" id="app-style" rel="stylesheet" type="text/css" />
 
-        <link rel="shortcut icon" href="{% static 'assets2/images/favicon.ico' %}">
+        {% comment %} <link rel="shortcut icon" href="{% static 'assets2/images/favicon.ico' %}"> {% endcomment %}
 
         <!-- Bootstrap Css -->
         <link href="{% static 'assets2/css/bootstrap.min.css' %}" id="bootstrap-style" rel="stylesheet" type="text/css" />
@@ -363,21 +363,7 @@
                     <div class="container-fluid">
 
                         <!-- start page title -->
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                                    {% comment %} <h4 class="mb-sm-0 font-size-18">Task Information</h4> {% endcomment %}
-
-                                    {% comment %} <div class="page-title-right">
-                                        <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);"></a></li>
-                                            <li class="breadcrumb-item active">Dashboard</li>
-                                        </ol>
-                                    </div> {% endcomment %}
-
-                                </div>
-                            </div>
-                        </div>
+                        
                         <!-- end page title -->
 
                         {% comment %} <div class="row">
@@ -895,16 +881,7 @@
                                 
                                                             <div class="col-md-6">
                                                                 <div class="d-flex flex-wrap align-items-start justify-content-md-end mt-2 mt-md-0 gap-2 mb-3">
-                                                                    {% comment %} <div>
-                                                                        <ul class="nav nav-pills">
-                                                                            <li class="nav-item">
-                                                                                <a class="nav-link active" href="contacts-list.html" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="List" aria-label="List"><i class="uil uil-list-ul"></i></a>
-                                                                            </li>
-                                                                            <li class="nav-item">
-                                                                                <a class="nav-link" href="contacts-grid.html" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Grid" aria-label="Grid"><i class="uil uil-apps"></i></a>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div> {% endcomment %}
+                                                                   
                                                                     <div>
                                                                         <a href="{% url 'crm_app:add_task' %}" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#addContactModal"><i class="fa-add fa me-1"></i> Add New</a>
                                                                     </div>                                                    
@@ -1024,9 +1001,18 @@
                                                                             
                                                                         </td>
                                                                         <td>{{i.desc}}</td>
-                                                                        <td style="display:flex">
-                                                                            <a href="{% url 'crm_app:edit_task' i.id %}"  class="btn btn-sm btn-white text-success me-2"><i class="far fa-edit me-1"></i> Edit</a><br>
-                                                                            <a href="{% url 'crm_app:delete_task' i.id %}" class="btn btn-sm btn-white text-danger"><i class="far fa-trash-alt me-1"></i>Delete</a>
+                                                                        <td>
+                                                                            <div class="dropdown">
+                                                                                <a href="#" class="dropdown-toggle card-drop" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                                    <i class="mdi mdi-dots-horizontal font-size-18 text-muted"></i>
+                                                                                </a>
+                                                                                <ul class="dropdown-menu dropdown-menu-end">
+                                                                                    <li><a href="{% url 'crm_app:edit_task' i.id %}" class="dropdown-item"><i class="mdi mdi-pencil font-size-16 text-success me-1"></i>
+                                                                                            Edit</a></li>
+                                                                                    <li><a href="{% url 'crm_app:delete_task' i.id %}" class="dropdown-item"><i class="mdi mdi-trash-can font-size-16 text-danger me-1"></i>
+                                                                                            Delete</a></li>
+                                                                                </ul>
+                                                                            </div>
                                                                         </td>
                                                                     </tr><!-- end tr -->
                                                                     
@@ -1124,8 +1110,18 @@
                                                                             
                                                                         </td>
                                                                         <td>{{i.desc}}</td>
-                                                                        <td style="display:flex">
-                                                                            <a href="{% url 'crm_app:edit_task' i.id %}" class="btn btn-sm btn-white text-success me-2"><i class="far fa-edit me-1"></i> Edit</a><br>
+                                                                        <td>
+                                                                            <div class="dropdown">
+                                                                                <a href="#" class="dropdown-toggle card-drop" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                                    <i class="mdi mdi-dots-horizontal font-size-18 text-muted"></i>
+                                                                                </a>
+                                                                                <ul class="dropdown-menu dropdown-menu-end">
+                                                                                    <li><a href="{% url 'crm_app:edit_task' i.id %}" class="dropdown-item"><i class="mdi mdi-pencil font-size-16 text-success me-1"></i>
+                                                                                            Edit</a></li>
+                                                                                    {% comment %} <li><a href="{% url 'crm_app:delete_task' i.id %}" class="dropdown-item"><i class="mdi mdi-trash-can font-size-16 text-danger me-1"></i>
+                                                                                            Delete</a></li> {% endcomment %}
+                                                                                </ul>
+                                                                            </div>
                                                                         </td>
                                                                     </tr><!-- end tr -->
                                                                     
@@ -1360,6 +1356,21 @@
         <script src="{% static 'assets2/libs/feather-icons/feather.min.js' %}"></script>
 
         <script src="{% static 'assets2/js/app.js' %}"></script>
+
+        <!-- apexcharts -->
+        <script src="{% static 'assets/libs/apexcharts/apexcharts.min.js' %}"></script>
+
+        <!-- dashboard init -->
+        <script src="{% static 'assets/js/pages/dashboard.init.js' %}"></script>
+
+        <!-- App js -->
+        <script src="{% static 'assets/js/app.js' %}"></script>
+
+        <script src="{% static 'assets/libs/jquery/jquery.min.js' %}"></script>
+        <script src="{% static 'assets/libs/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'assets/libs/metismenu/metisMenu.min.js' %}"></script>
+        <script src="{% static 'assets/libs/simplebar/simplebar.min.js' %}"></script>
+        <script src="{% static 'assets/libs/node-waves/waves.min.js' %}"></script>
 
         <!-- apexcharts -->
         <script src="{% static 'assets/libs/apexcharts/apexcharts.min.js' %}"></script>

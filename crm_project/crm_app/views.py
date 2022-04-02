@@ -30,6 +30,16 @@ def index(request):
         closed_leads = Leads.objects.filter(lead_status="close leads",staff_name__username=request.user.username).count()
         pending_leads = Leads.objects.filter(lead_status = "pending leads",staff_name__username=request.user.username).count()
         tasks = Task.objects.filter(staff_name__username= request.user.username).count()
+        task_list = Task.objects.filter(staff_name__username = request.user.username).order_by('-id')
+
+        completed_taskss = Task.objects.filter(status ='Completed',staff_name__username = request.user.username).count()
+        pending_defferedd = Task.objects.filter(status='Deferred',staff_name__username = request.user.username).count()
+        pending_not_startedd = Task.objects.filter(status='Not Started',staff_name__username = request.user.username).count()
+        pending_inprogrsss = Task.objects.filter(status='In Progress',staff_name__username = request.user.username).count()
+        pending_waiting_for_approvall = Task.objects.filter(status='Waiting For Approval',staff_name__username = request.user.username).count()
+        pending_taskss= pending_defferedd + pending_not_startedd + pending_inprogrsss + pending_waiting_for_approvall
+
+
         # ADMIN SIDE
         total_leadss = Leads.objects.all().count()
         today_leadss = Leads.objects.filter(date=today_date).count()
@@ -38,9 +48,24 @@ def index(request):
         total_pending_leadss = Leads.objects.filter(lead_status = "pending leads").count()
         today_pending_leadss = Leads.objects.filter(lead_status = "pending leads",date=today_date).count()
         recent_open_leads = Leads.objects.filter(lead_status = "open leads").order_by('-id')[:5]
+        all_task_list = Task.objects.all().order_by('-id')[:5]
+        taskss = Task.objects.all().count()
+        completed_tasks = Task.objects.filter(status ='Completed').count()
+        pending_deffered = Task.objects.filter(status='Deferred').count()
+        pending_not_started = Task.objects.filter(status='Not Started').count()
+        pending_inprogrss = Task.objects.filter(status='In Progress').count()
+        pending_waiting_for_approval = Task.objects.filter(status='Waiting For Approval').count()
+        pending_tasks = pending_deffered + pending_not_started + pending_inprogrss + pending_waiting_for_approval
+        
 
         context = {
-            
+            'pending_taskss':pending_taskss,
+            'completed_taskss':completed_taskss,
+            'pending_tasks':pending_tasks,
+            'completed_tasks':completed_tasks,
+            'taskss':taskss,
+            'task_list':task_list,
+            'all_task_list' : all_task_list,
             'my_open_leads':my_open_leads,
             'total_leads':total_leads,
             'today_leads':today_leads,
@@ -734,3 +759,11 @@ def delete_task(request,task_id):
     obj = Task.objects.filter(id=task_id)
     obj.delete()
     return redirect('crm_app:task')
+
+
+
+
+
+def search_task(request):
+    
+    return render(request,'task-serach-result.html')
