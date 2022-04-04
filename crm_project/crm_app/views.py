@@ -123,11 +123,23 @@ def add_customer(request):
 
 
 def leads(request):
+    fm = LeadAddForm()
+    if request.method == 'POST':
+        fm = LeadAddForm(request.POST,request.FILES)
+        if fm.is_valid():
+            data = fm.save(commit=False)
+            staff_name = User.objects.get(username=request.user.username)
+            data.staff_name = staff_name
+            print(request.user)
+            data.save()
+            return redirect('crm_app:leads')
+    else:
+        fm = LeadAddForm()
     # STAFF SIDE
     leads = Leads.objects.filter(staff_name__username=request.user.username).order_by('-id')
     # ADMIN SIDE
     all_leads = Leads.objects.all().order_by('-id')
-    return render(request,"leads.html",{'leads':leads,'all_leads':all_leads})
+    return render(request,"leads.html",{'leads':leads,'all_leads':all_leads,'form':fm})
 
 def add_leads(request):
     fm = LeadAddForm()
