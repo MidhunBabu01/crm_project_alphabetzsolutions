@@ -230,7 +230,11 @@ def pending_lead_search(request):
     if 'q' in request.GET:
         Query = request.GET.get('q')
         junk_lead = Leads.objects.all().filter(Q(company_name__icontains=Query),staff_name__username=request.user.username,lead_status='pending leads')
-    return render(request,'pending-lead-serch.html',{"junk_lead":junk_lead,"query":Query})
+
+    if 'q' in request.GET:
+        Query = request.GET.get('q')
+        junk_leads = Leads.objects.all().filter(Q(company_name__icontains=Query)| Q(staff_name__username__icontains=Query),lead_status='pending leads')
+    return render(request,'pending-lead-serch.html',{"junk_lead":junk_lead,"query":Query,'junk_leads':junk_leads})
 
 
 def open_lead_search(request):

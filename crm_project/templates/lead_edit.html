@@ -846,123 +846,90 @@
                                         <a href="https://getbootstrap.com/docs/5.1/forms/form-control/" target="_blank" class="btn btn-sm btn-soft-secondary">Docs <i class="mdi mdi-arrow-right align-middle"></i></a>
                                     </div><!-- end card header -->
                                     <div class="card-body">
-                                    <form method='post'>
-                                        {% csrf_token %}
-                                        <div class="row">
-                                            <div class="col-xl-6">
-                                                <div class="mb-3 row">
-                                                    <label for="example-text-input" class="col-md-2 col-form-label">Sl No:</label>
-                                                    <div class="col-md-10">
-                                                        {{form.no}}
-                                                        {% comment %} <input class="form-control" type="text" value="Artisanal kale" id="example-text-input"> {% endcomment %}
-                                                    </div>
-                                                </div><!-- end row -->
-                                                <div class="mb-3 row">
-                                                    <label for="example-search-input" class="col-md-2 col-form-label">Date:</label>
-                                                    <div class="col-md-10">
-                                                        {{form.date}}
-                                                        {% comment %} <input class="form-control" type="search" value="How do I shoot web" id="example-search-input"> {% endcomment %}
-                                                    </div>
-                                                </div><!-- end row -->
-                                                <div class="mb-3 row">
-                                                    <label for="example-email-input" class="col-md-2 col-form-label">Company Name:</label>
-                                                    <div class="col-md-10">
-                                                        {{form.company_name}}
-                                                        {% comment %} <input class="form-control" type="email" value="bootstrap@example.com" id="example-email-input"> {% endcomment %}
-                                                    </div>
-                                                </div><!-- end row -->
-                                                <div class="mb-3 row">
-                                                    <label for="example-url-input" class="col-md-2 col-form-label">Phone1:</label>
-                                                    <div class="col-md-10">
-                                                        {{form.phone1}}
-                                                        {% comment %} <input class="form-control" type="url" value="https://getbootstrap.com" id="example-url-input"> {% endcomment %}
-                                                    </div>
-                                                </div><!-- end row -->
-                                                <div class="mb-3 row">
-                                                    <label for="example-tel-input" class="col-md-2 col-form-label">Phone2:</label>
-                                                    <div class="col-md-10">
-                                                        {{form.phone2}}
-                                                        {% comment %} <input class="form-control" type="tel" value="1-(555)-555-5555" id="example-tel-input"> {% endcomment %}
-                                                    </div>
-                                                </div><!-- end row -->
-                                                <div class="mb-3 row">
-                                                    <label for="example-password-input" class="col-md-2 col-form-label">Address:</label>
-                                                    <div class="col-md-10">
-                                                        {{form.address}}
-                                                        {% comment %} <input class="form-control" type="password" value="hunter2" id="example-password-input"> {% endcomment %}
-                                                    </div>
-                                                </div><!-- end row -->
-                                                <div class="mb-3 row">
-                                                    <label for="example-number-input" class="col-md-2 col-form-label">Owner/Contact Person:</label>
-                                                    <div class="col-md-10">
-                                                        {{form.owner}}
-                                                        {% comment %} <input class="form-control" type="number" value="42" id="example-number-input"> {% endcomment %}
-                                                    </div>
-                                                </div><!-- end row -->
-                                                <div class="mb-3 mb-lg-0 row">
-                                                    <label for="example-datetime-local-input" class="col-md-2 col-form-label">Department:</label>
-                                                    <div class="col-md-10">
-                                                        {{form.department}}
-                                                        {% comment %} <input class="form-control" type="datetime-local" value="2019-08-19T13:45:00" id="example-datetime-local-input"> {% endcomment %}
-                                                    </div>
-                                                </div><!-- end row -->
-                                            </div><!-- end col -->
-    
-                                            <div class="col-xl-6">
-                                                <div class="row mb-3 mt-3 mt-xl-0">
-                                                    <label for="example-date-input" class="col-md-2 col-form-label">Requirements:</label>
-                                                    <div class="col-md-10">
-                                                        {{form.requirements}}
-                                                        {% comment %} <input class="form-control" type="date" value="2019-08-19" id="example-date-input"> {% endcomment %}
-                                                    </div>
-                                                </div><!-- end row -->
-                                                <div class="row mb-3">
-                                                    <label for="example-month-input" class="col-md-2 col-form-label">Remarks:</label>
-                                                    <div class="col-md-10">
-                                                        {{form.remarks}}
-                                                        {% comment %} <input class="form-control" type="month" value="2019-08" id="example-month-input"> {% endcomment %}
-                                                    </div>
-                                                </div><!-- end row -->
-                                                <div class="row mb-3">
-                                                    <label for="example-week-input" class="col-md-2 col-form-label">Stage1:</label>
-                                                    <div class="col-md-10">
-                                                        {{form.stage1}}
-                                                        {% comment %} <input class="form-control" type="week" value="2019-W33" id="example-week-input"> {% endcomment %}
-                                                    </div>
-                                                </div><!-- end row -->
-                                                <div class="row mb-3">
-                                                    <label for="example-time-input" class="col-md-2 col-form-label">Stage2:</label>
-                                                    <div class="col-md-10">
-                                                        {{form.stage2}}
-                                                        {% comment %} <input class="form-control" type="time" value="13:45:00" id="example-time-input"> {% endcomment %}
-                                                    </div>
-                                                </div><!-- end row -->
-                                                <div class="row mb-3">
-                                                    <label for="example-color-input" class="col-md-2 col-form-label">Lead Status:</label>
-                                                    <div class="col-md-10">
-                                                        {{form.lead_status}}
-                                                        {% comment %} <input type="color" class="form-control form-control-color mw-100" id="example-color-input" value="#038edc" title="Choose your color"> {% endcomment %}
-                                                    </div>
-                                                </div><!-- end row -->
-                                                <div class="row mb-3">
-                                                    <label for="example-color-input" class="col-md-2 col-form-label">Lead Source:</label>
-                                                    <div class="col-md-10">
-                                                        {{form.lead_source}}
-                                                        {% comment %} <input type="color" class="form-control form-control-color mw-100" id="example-color-input" value="#038edc" title="Choose your color"> {% endcomment %}
-                                                    </div>
-                                                </div><!-- end row -->
-                                                <div class="row mb-3">
-                                                    <div class="col-md-12">
-                                                        <div class="text-end">
-                                                            <input type="submit"  class="btn btn-info" value='Update'>
-                                                        </div>
-                                                        
-                                                        {% comment %} <input type="color" class="form-control form-control-color mw-100" id="example-color-input" value="#038edc" title="Choose your color"> {% endcomment %}
-                                                    </div>
-                                                </div><!-- end row -->
-                                            </div><!-- end col -->
-                                        </div><!-- end row -->
-                                    </form>
+                                        <form method="post">
+                                            {% csrf_token %}
+                                            <div class="row mt-3" >
+                                                <div class="col-lg-6">
+                                                    <label for="id_no">No:</label>
+                                                    {{form.no}}
+                                                </div>
+                                                                                    <!--  -->
+                                                <div class="col-lg-6">
+                                                    <label for="id_date">Date:</label>
+                                                    {{form.date}}
+                                                </div>
+                                                                                                            <!--  -->
+                                            </div>
+                                            <div class="row mt-3">
+                                                <div class="col-lg-6">
+                                                    <label for="id_company_name">Company name:</label>
+                                                    {{form.company_name}}
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label for="id_address">Address:</label>
+                                                    {{form.address}}
+                                                </div>
+                                                                                                            <!--  -->
+                                            </div>
+                                            <div class="row mt-3">
+                                                <div class="col-lg-6">
+                                                    <label for="id_phone1">Phone1:</label>
+                                                    {{form.phone1}}
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label for="id_phone2">Phone2:</label>
+                                                    {{form.phone2}}
+                                                </div>
+                                            </div>
+                                            <div class="row mt-3">
+                                                <div class="col-lg-6">
+                                                    <label for="id_phone1">Owner:</label>
+                                                    {{form.owner}}
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label for="id_phone2">Department:</label>
+                                                    {{form.department}}
+                                                </div>
+                                            </div>
+                                            <div class="row mt-3">
+                                                <div class="col-lg-6">
+                                                    <label for="id_requirements">Requirements:</label>
+                                                    {{form.requirements}}
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label for="id_remarks">Remarks:</label>
+                                                    {{form.remarks}}
+                                                </div>
+                                            </div>
+                                            <div class="row mt-3">
+                                                <div class="col-lg-6">
+                                                    <label for="id_stage1">Stage1:</label>
+                                                    {{form.stage1}}
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label for="id_stage2">Stage2:</label>
+                                                    {{form.stage2}}
+                                                </div>
+                                            </div>
+                                            <div class="row mt-3">
+                                            <div class="col-lg-6">
+                                                            
+                                                <label for="id_lead_status">Lead status:</label>
+                                                {{form.lead_status}}
+                                                
+                                            </div>
+                                                                                                            <!--  -->
+                                            <div class="col-lg-6">       
+                                                <label for="id_lead_source">Lead source:</label>
+                                                {{form.lead_source}}
+                                            </div>
+                                            </div>
+                                            <div class="row mt-5">
+                                                <div class="col-lg-12">
+                                                    <input type="submit" class="btn btn-success float-end" value="submit">
+                                                </div>
+                                            </div>
+                                        </form>
                                     </div><!-- end card body -->
                                 </div><!-- end card -->
                             </div><!-- end col -->
