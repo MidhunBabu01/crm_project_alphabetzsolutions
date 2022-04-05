@@ -256,10 +256,15 @@ def open_lead_search(request):
 def closed_lead_search(request):
     closed_lead = None
     Query = None
+    # for staff
     if 'q' in request.GET:
         Query = request.GET.get('q')
         closed_lead = Leads.objects.all().filter(Q(company_name__icontains=Query),staff_name__username=request.user.username,lead_status='close leads')
-    return render(request,'closed-lead-serch.html',{"closed_lead":closed_lead,"query":Query})
+    # for admin
+    if 'q' in request.GET:
+        Query = request.GET.get('q')
+        closed_leads = Leads.objects.all().filter(Q(company_name__icontains=Query)| Q(staff_name__username__icontains=Query),lead_status='close leads')
+    return render(request,'closed-lead-serch.html',{"closed_lead":closed_lead,"query":Query,'closed_leads':closed_leads})
 
 
 

@@ -23,6 +23,16 @@
         <!-- Dark Mode Css-->
         <link href="{% static 'assets/css/dark-layout.min.css' %}" id="app-style" rel="stylesheet" type="text/css" />
 
+
+        <link rel="stylesheet" href="{% static 'assets2/libs/gridjs/theme/mermaid.min.css' %}">
+
+        <!-- Bootstrap Css -->
+        <link href="{% static 'assets2/css/bootstrap.min.css' %}" id="bootstrap-style" rel="stylesheet" type="text/css">
+        <!-- Icons Css -->
+        <link href="{% static 'assets2/css/icons.min.css' %}" rel="stylesheet" type="text/css">
+        <!-- App Css-->
+        <link href="{% static 'assets2/css/app.min.css' %}" id="app-style" rel="stylesheet" type="text/css">
+
     </head>
 
     <body data-sidebar="dark">
@@ -66,12 +76,12 @@
                         </button>
 
                         <!-- App Search-->
-                        {% comment %} <form class="app-search d-none d-lg-block" action="{% url 'crm_app:lead_search' %}">
+                        {% comment %} <form class="app-search d-none d-lg-block">
                             <div class="input-group">
                                 <div class="form-outline">
                                   <input id="search-input" name="q" placeholder="search"type="search" id="form1" class="form-control" />
                                 </div>
-                                <button id="search-button" type="submit" class="btn btn-primary">
+                                <button id="search-button" type="button" class="btn btn-primary">
                                   <i class="fas fa-search"></i>
                                 </button>
                               </div>
@@ -173,13 +183,16 @@
                         <!-- Left Menu Start -->
                         <ul class="metismenu list-unstyled" id="side-menu">
                             <li class="menu-title" key="t-menu">Menu</li>
+                
                             <li>
                                 <a href="{% url 'crm_app:index' %}" class="waves-effect">
                                     <i class='bx bxs-dashboard'></i>
                                     <span key="t-dashboard">Home</span>
                                 </a>
                             </li>
+
                             <li class="menu-title mt-3" key="t-more">More</li>
+
                             <li>
                                 <a href="{% url 'crm_app:leads' %}">
                                     <i class='bx bxs-grid'></i>
@@ -203,84 +216,67 @@
                                     <i class='bx bx-user-circle' ></i>
                                     <span key="t-authentication">Customer</span>
                                 </a>
-                                {% comment %} <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="{% url 'crm_app:login' %}" key="t-login">Login</a></li>
-                                    <li><a href="{% url 'crm_app:register' %}" key="t-register">Register</a></li> {% endcomment %}
-                                    {% comment %} <li><a href="auth-recoverpw.html" key="t-recover-password">Recover Password</a></li>
-                                    <li><a href="auth-lock-screen.html" key="t-lock-screen">Lock Screen</a></li>
-                                    <li><a href="auth-confirm-mail.html" key="t-confirm-mail">Confirm Mail</a></li>
-                                    <li><a href="auth-email-verification.html" key="t-email-verification">Email Verification</a></li>
-                                    <li><a href="auth-two-step-verification.html" key="t-two-step-verification">Two Step Verification</a></li> {% endcomment %}
-                                {% comment %} </ul> {% endcomment %}
-                            </li>
+                            
+                            </li> 
 
-                            <li>
+                            {% comment %} <li>
                                 <a href="{% url 'crm_app:products' %}">
                                     <i class='bx bx-file'></i>
-                                    <span key="t-pages">Product</span>
+                                    <span key="t-pages">Products</span>
                                 </a>
-                                {% comment %} <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="{% url 'crm_app:starter' %}" key="t-starter-page">Starter Page</a></li>
-                                    <li><a href="pages-preloader.html" key="t-preloader">Preloader</a></li>
-                                    <li><a href="pages-profile.html" key="t-profile">Profile</a></li>
-                                    <li><a href="pages-invoice.html" key="t-invoice">Invoice</a></li>
-                                    <li><a href="pages-maintenance.html" key="t-maintenance">Maintenance</a></li>
-                                    <li><a href="pages-comingsoon.html" key="t-coming-soon">Coming Soon</a></li>
-                                    <li><a href="pages-timeline.html" key="t-timeline">Timeline</a></li>
-                                    <li><a href="pages-pricing.html" key="t-pricing">Pricing</a></li>
-                                    <li><a href="pages-404.html" key="t-error-404">Error 404</a></li>
-                                    <li><a href="pages-500.html" key="t-error-500">Error 500</a></li>
-                                </ul> {% endcomment %}
-                            </li>
-                            <li>
+                                
+                            </li> {% endcomment %}
+                            {% comment %} <li>
                                 <a href="{% url 'crm_app:quotation_invoice' %}" class="waves-effect">
                                     <i class='bx bx-briefcase'></i>
                                     <span key="t-ui-elements">Quotation</span>
                                 </a>
+                            </li> {% endcomment %}
+                           
+                            <li>
+                                <a href="{% url 'crm_app:task' %}" class="waves-effect">
+                                    <i class='bx bx-cube-alt'></i>
+                                    <span key="t-ui-elements">Task</span>
+                                </a>
                             </li>
 
-                            <li>
+                            {% comment %} <li>
                                 <a href="{% url 'crm_app:index' %}">
                                     <i class='bx bxs-cube-alt'></i>
                                     <span key="t-advancedkit">Sales Order</span>
                                 </a>
-                                {% comment %} <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="advanced-sweet-alert.html" key="t-sweet-alert">Sweet-Alert</a></li>
-                                    <li><a href="advanced-rangeslider.html" key="t-range-slider">Range Slider</a></li>
-                                    <li><a href="advanced-notifications.html" key="t-notifications">Notifications</a></li>
-                                    <li><a href="advanced-carousel.html" key="t-carousel">Carousel</a></li>
-                                </ul> {% endcomment %}
-                            </li>
+            
+                            </li> {% endcomment %}
 
-                            <li>
+                            {% comment %} <li>
                                 <a href="{% url 'crm_app:index' %}" class="waves-effect">
                                     <i class='bx bx-text'></i>
                                     <span key="t-typography">Estimate</span>
                                 </a>
-                            </li>
+                            </li> {% endcomment %}
 
-                            <li>
-                                <a href="{% url 'crm_app:index' %}" class="waves-effect">
+                            {% comment %} <li>
+                                {% if user.is_authenticated and user.is_superuser or user.is_staff %}
+                                <a href="{% url 'crm_app:project_management' %}" class="waves-effect">
                                     <i class='bx bxs-magic-wand' ></i>
-                                    {% comment %} <span class="badge rounded-pill bg-danger float-end">2</span> {% endcomment %}
                                     <span key="t-forms">Project Management</span>
                                 </a>
-                                {% comment %} <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="form-elements.html" key="t-form-elements">Form Elements</a></li>
-                                    <li><a href="form-advanced.html" key="t-form-advanced">Form Advanced</a></li>
-                                </ul> {% endcomment %}
-                            </li>
-
-                            <li>
-                                <a href="{% url 'crm_app:index' %}" class="has-arrow waves-effect">
-                                    <i class='bx bx-table' ></i>
-                                    <span key="t-tables">Reports</span>
+                                {% endif %}
+                            </li> {% endcomment %}
+                            {% comment %} {% if user.is_authenticated and user.is_superuser or user.extendedusermodel.is_superviser == 'supervisor' %}
+                            <li class="mm-active">
+                                <a href="javascript: void(0);" class="has-arrow waves-effect" aria-expanded="true">
+                                    <i class="bx bx-table"></i>
+                                    <span key="t-tables">Project Management</span>
                                 </a>
-                                {% comment %} <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="tables-bootstrap.html" key="t-bootstrap-tables">Bootstrap Tables</a></li>
-                                    <li><a href="tables-datatable.html" key="t-data-tables">Data Tables</a></li>
-                                </ul> {% endcomment %}
+                                <ul class="sub-menu mm-collapse mm-show" aria-expanded="false" style="">
+                                    <li><a href="{% url 'crm_app:project_management' %}" key="t-bootstrap-tables">Project Management</a></li>
+                                    <li><a href="{% url 'crm_app:tools_management' %}" key="t-data-tables">Tools Management</a></li>
+                                </ul>
                             </li>
+                            {% endif %} {% endcomment %}
+
+                            
 
                             {% comment %} <li>
                                 <a href="charts.html" class="waves-effect">
@@ -344,21 +340,7 @@
                     <div class="container-fluid">
 
                         <!-- start page title -->
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                                    <h4 class="mb-sm-0 font-size-18">All Leads</h4>
-
-                                    {% comment %} <div class="page-title-right">
-                                        <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);"></a></li>
-                                            <li class="breadcrumb-item active">Dashboard</li>
-                                        </ol>
-                                    </div> {% endcomment %}
-
-                                </div>
-                            </div>
-                        </div>
+                       
                         <!-- end page title -->
 
                         {% comment %} <div class="row">
@@ -823,7 +805,7 @@
                             <div class="col-lg-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <div class="float-end">
+                                        {% comment %} <div class="float-end">
                                             <ul class="list-inline mb-0">
                                                 <li class="list-inline-item me-2">
                                                     <div class="dropdown">
@@ -834,282 +816,239 @@
                                                         </a>
         
                                                         <div class="dropdown-menu dropdown-menu-end">
-                                                            <a class="dropdown-item" href="{% url 'crm_app:junk_leads' %}">Junk Leads</a>
+                                                            <a class="dropdown-item" href="{% url 'crm_app:junk_leads' %}">Pending Leads</a>
                                                             <a class="dropdown-item" href="{% url 'crm_app:open_leads' %}">Open Leads</a>
                                                             <a class="dropdown-item" href="{% url 'crm_app:closed_leads' %}">Closed Leads</a>   
                                                         </div>
                                                     </div>
                                                 </li>
-                                                <li class="list-inline-item">
-                                                    <div class="dropdown ms-3">
-                                                        <a class="dropdown-toggle text-reset" href="#"
-                                                            data-bs-toggle="dropdown" aria-haspopup="true"
-                                                            aria-expanded="false">
-                                                            <span class="text-muted">Sort By:</span> <span class="fw-semibold">Name<i class="mdi mdi-chevron-down ms-1"></i></span>
-                                                        </a>
-        
-                                                        <div class="dropdown-menu dropdown-menu-end">
-                                                            <a class="dropdown-item" href="#">ID</a>
-                                                            <a class="dropdown-item" href="#">Job title</a>
-                                                            <a class="dropdown-item" href="#">Name</a>
-                                                            <a class="dropdown-item" href="#">Location</a>
-                                                            <a class="dropdown-item" href="#">Email</a>
-                                                            <a class="dropdown-item" href="#">Phone</a>
-                                                        </div>
-                                                    </div>
-                                                </li>
+
                                             </ul>
+                                        </div> {% endcomment %}
+
+                                        {% if user.is_authenticated and user.is_superuser %}
+                                        <h4 class="card-title mb-4">Search Result</h4>
+                                        {% comment %} <div class="col-md-6">
+                                            <div class="d-flex flex-wrap align-items-start justify-content-md-start mt-2 mt-md-0 gap-2 mb-3">
+                                                <div>
+                                                    <a href="{% url 'crm_app:add_leads' %}" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#addContactModal"><i class="fa-add fa me-1"></i> Add New</a>
+                                                </div>                                                    
+                                            </div>
+                                        </div><!-- end col --> {% endcomment %}
+                                        {% comment %} <a href="{% url 'crm_app:add_leads' %}" class="btn btn-success">Add New Leads</a> {% endcomment %}
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="">
+                                                    <div class="card-body">
+                                                        <div class="row">
+                                                      
+                                                        </div><!-- end row -->
+                
+                                                        <!-- Modal -->
+                                                        <div class="container">
+                                                            <div class="row">
+                                                                  <div class="col-lg-12 col-xl-12">
+                                                                    <div class="modal fade" id="addContactModal" tabindex="-1" aria-labelledby="addContactModalLabel" aria-hidden="true" style="display: none;">
+                                                                        <div class="modal-dialog modal-lg modal-dialog-centered">
+                                                                           
+                                                                        </div>
+                                                                    </div>
+                                                                  </div>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <!-- end modal -->
+                
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <div class="card">
+                                                                    {% comment %} <form class="app-search d-none d-lg-block" action="{% url 'crm_app:lead_search_admin' %}">
+                                                                        <div class="input-group">
+                                                                            <div class="form-outline">
+                                                                              <input id="search-input" name="q" placeholder="search"type="search" id="form1" class="form-control" />
+                                                                            </div>
+                                                                            <button id="search-button" type="submit" class="btn btn-primary">
+                                                                              <i class="fas fa-search"></i>
+                                                                            </button>
+                                                                          </div>
+                                                                    </form> {% endcomment %}
+                                                                    <div class="card-body">
+                                                                        <div id="table-gridjs"><div role="complementary" class="gridjs gridjs-container" style="width: 100%;"><div class="gridjs-head"><div class="gridjs-search"></div></div><div class="gridjs-wrapper" style="height: auto;"><table role="grid" class="gridjs-table" style="height: auto;">
+                                                                            <thead class="gridjs-thead">
+                                                                                <tr class="gridjs-tr">
+                                                                                    <th data-column-id="name" class="gridjs-th gridjs-th-sort" tabindex="0" style="min-width: 82px; width: 113px;"><div class="gridjs-th-content">Staff Name</div><button tabindex="-1" aria-label="Sort column ascending" title="Sort column ascending" class="gridjs-sort gridjs-sort-neutral"></button></th>
+                                                                                    <th data-column-id="email" class="gridjs-th gridjs-th-sort" tabindex="0" style="min-width: 177px; width: 246px;"><div class="gridjs-th-content">Date</div><button tabindex="-1" aria-label="Sort column ascending" title="Sort column ascending" class="gridjs-sort gridjs-sort-neutral"></button></th>
+                                                                                    <th data-column-id="position" class="gridjs-th gridjs-th-sort" tabindex="0" style="min-width: 229px; width: 317px;"><div class="gridjs-th-content">Company Name</div><button tabindex="-1" aria-label="Sort column ascending" title="Sort column ascending" class="gridjs-sort gridjs-sort-neutral"></button></th>
+                                                                                    <th data-column-id="company" class="gridjs-th gridjs-th-sort" tabindex="0" style="min-width: 121px; width: 168px;"><div class="gridjs-th-content">Address</div><button tabindex="-1" aria-label="Sort column ascending" title="Sort column ascending" class="gridjs-sort gridjs-sort-neutral"></button></th>
+                                                                                    <th data-column-id="country" class="gridjs-th gridjs-th-sort" tabindex="0" style="min-width: 116px; width: 160px;"><div class="gridjs-th-content">Phone Number 1</div><button tabindex="-1" aria-label="Sort column ascending" title="Sort column ascending" class="gridjs-sort gridjs-sort-neutral"></button></th>
+                                                                                    <th data-column-id="country" class="gridjs-th gridjs-th-sort" tabindex="0" style="min-width: 116px; width: 160px;"><div class="gridjs-th-content">Phone Number 2</div><button tabindex="-1" aria-label="Sort column ascending" title="Sort column ascending" class="gridjs-sort gridjs-sort-neutral"></button></th>
+                                                                                    <th data-column-id="country" class="gridjs-th gridjs-th-sort" tabindex="0" style="min-width: 116px; width: 160px;"><div class="gridjs-th-content">Owner/Contact Person</div><button tabindex="-1" aria-label="Sort column ascending" title="Sort column ascending" class="gridjs-sort gridjs-sort-neutral"></button></th>
+                                                                                    <th data-column-id="country" class="gridjs-th gridjs-th-sort" tabindex="0" style="min-width: 116px; width: 160px;"><div class="gridjs-th-content">IT/NON IT</div><button tabindex="-1" aria-label="Sort column ascending" title="Sort column ascending" class="gridjs-sort gridjs-sort-neutral"></button></th>
+                                                                                    <th data-column-id="country" class="gridjs-th gridjs-th-sort" tabindex="0" style="min-width: 116px; width: 160px;"><div class="gridjs-th-content">Requirements</div><button tabindex="-1" aria-label="Sort column ascending" title="Sort column ascending" class="gridjs-sort gridjs-sort-neutral"></button></th>
+                                                                                    <th data-column-id="country" class="gridjs-th gridjs-th-sort" tabindex="0" style="min-width: 116px; width: 160px;"><div class="gridjs-th-content">Stage1</div><button tabindex="-1" aria-label="Sort column ascending" title="Sort column ascending" class="gridjs-sort gridjs-sort-neutral"></button></th>
+                                                                                    <th data-column-id="country" class="gridjs-th gridjs-th-sort" tabindex="0" style="min-width: 116px; width: 160px;"><div class="gridjs-th-content">Stage2</div><button tabindex="-1" aria-label="Sort column ascending" title="Sort column ascending" class="gridjs-sort gridjs-sort-neutral"></button></th>
+                                                                                    <th data-column-id="country" class="gridjs-th gridjs-th-sort" tabindex="0" style="min-width: 116px; width: 160px;"><div class="gridjs-th-content">Lead Source</div><button tabindex="-1" aria-label="Sort column ascending" title="Sort column ascending" class="gridjs-sort gridjs-sort-neutral"></button></th>
+                                                                                    <th data-column-id="country" class="gridjs-th gridjs-th-sort" tabindex="0" style="min-width: 116px; width: 160px;"><div class="gridjs-th-content">Action</div><button tabindex="-1" aria-label="Sort column ascending" title="Sort column ascending" class="gridjs-sort gridjs-sort-neutral"></button></th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            {% for i in closed_leads %} 
+                                                                            <tbody class="gridjs-tbody">
+                                                                                <tr class="gridjs-tr">
+                                                                                    <td data-column-id="name" class="gridjs-td">{{i.staff_name}}</td>
+                                                                                    <td data-column-id="email" class="gridjs-td">{{i.date}}</td>
+                                                                                    <td data-column-id="position" class="gridjs-td"> {{i.company_name}}</td>
+                                                                                    <td data-column-id="company" class="gridjs-td"> {{i.address}}</td>
+                                                                                    <td data-column-id="country" class="gridjs-td">{{i.phone1}}</td>
+                                                                                    <td data-column-id="name" class="gridjs-td">{{i.phone2}}</td>
+                                                                                    <td data-column-id="name" class="gridjs-td">{{i.owner}}</td>
+                                                                                    <td data-column-id="email" class="gridjs-td">{{i.department}}</td>
+                                                                                    <td data-column-id="position" class="gridjs-td"> {{i.requirements}}</td>
+                                                                                    <td data-column-id="company" class="gridjs-td"> {{i.stage1}}</td>
+                                                                                    <td data-column-id="country" class="gridjs-td">{{i.stage2}}</td>
+
+                                                                                    <td data-column-id="name" class="gridjs-td">{{i.lead_source}}</td>
+                                                                                    <td>
+                                                                                        <div class="dropdown">
+                                                                                            <a href="#" class="dropdown-toggle card-drop" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                                                <i class="mdi mdi-dots-horizontal font-size-18 text-muted"></i>
+                                                                                            </a>
+                                                                                            <ul class="dropdown-menu dropdown-menu-end">
+                                                                                                <li><a href="{% url 'crm_app:leads_edit' i.id %}" class="dropdown-item"><i class="mdi mdi-pencil font-size-16 text-success me-1"></i>
+                                                                                                        Edit</a></li>
+                                                                                                <li><a href="{% url 'crm_app:leads_delete' i.id %}" class="dropdown-item"><i class="mdi mdi-trash-can font-size-16 text-danger me-1"></i>
+                                                                                                        Delete</a></li>
+                                                                                            </ul>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                            {% endfor %}
+                                                                        </table>
+                                                                    </div>
+                                                                    {% comment %} <div class="gridjs-footer">
+                                                                        <div class="gridjs-pagination">
+                                                                            <div role="status" aria-live="polite" class="gridjs-summary" title="Page 1 of 2">Showing <b>1</b> to <b>5</b> of <b>10</b> results</div><div class="gridjs-pages"><button tabindex="0" role="button" disabled="" title="Previous" aria-label="Previous" class="">Previous</button><button tabindex="0" role="button" class="gridjs-currentPage" title="Page 1" aria-label="Page 1">1</button><button tabindex="0" role="button" class="" title="Page 2" aria-label="Page 2">2</button><button tabindex="0" role="button" title="Next" aria-label="Next" class="">Next</button></div></div></div><div id="gridjs-temp" class="gridjs-temp"></div>
+                                                                        </div>
+                                                                    </div> {% endcomment %}
+                                                                    </div>
+                                                                    <!-- end card body -->
+                                                                </div>
+                                                                <!-- end card -->
+                                                            </div>
+                                                            <!-- end col -->
+                                                        </div>
+                                                    </div><!-- end card body -->
+                                                </div><!-- end card -->
+                                            </div><!-- end col -->
                                         </div>
-
-                                        <h4 class="card-title mb-4">1</h4>
-                                        <a href="{% url 'crm_app:add_leads' %}" class="btn btn-success">Add New Leads</a>
-                                        <div class="table-responsive">
-                                            <table class="table table-hover table-borderless align-middle table-centered table-nowrap mb-0">
-                                                <thead class="table-light">
-                                                    <tr>
-                                                        <th>Sl.No</th>
-                                                        <th>Date</th>
-                                                        <th>Company Name</th>
-                                                        <th>Address</th>
-                                                        <th>Phone Number 1</th>
-                                                        <th>Phone Number 2</th>
-                                                        <th>Owner/Contact Person</th>
-                                                        <th>IT/NON IT</th>
-                                                        <th>Requirements</th>
-                                                        <th>Stage 1</th>
-                                                        <th>Stage 2</th>
-                                                        <th>Lead Source</th>
-                                                        <th>Action</th>
-                                                    </tr>
-                                                </thead>
-                                                {% for i in closed_lead %} 
-                                                <tbody>
-                                                    <tr>
-                                                        <td>
-                                                           {{i.no}}  
-                                                        </td>
-                                                        <td>
-                                                            {% comment %} <img src="{{i.photo.url}}" alt="user" class="rounded-circle h-auto avatar-xs me-2"> {% endcomment %}
-                                                            <span>{{i.date}}</span>
-                                                        </td>
-                                                        <td>
-                                                            {{i.company_name}}
-                                                        </td>
-                                                        <td>
-                                                            {{i.address}}
-                                                        </td>
-                                                        <td>
-                                                            {{i.phone1}}
-                                                            {% comment %} <img src="{{i.photo.url}}" alt="user" class="rounded-circle h-auto avatar-xs me-2"> {% endcomment %}
-                                                        </td>
-                                                        <td>
-                                                            {{i.phone2}}
-                                                        </td>
-                                                        <td>
-                                                            <span class="badge bg-success bg-soft text-success">{{i.owner}}</span>
-                                                        </td>
-                                                        <td>
-                                                            {{i.department}}
-                                                        </td>
-                                                        <td>
-                                                            {{i.requirements}}
-                                                        </td>
-
-                                                        <td>
-                                                            {{i.stage1}}
-                                                        </td>
-
-                                                        <td>
-                                                            {{i.stage2}}
-                                                        </td>
-                                                        <td>
-                                                            {{i.lead_source}}
-                                                        </td>
-                                                        <td>
-                                                        <a href="{% url 'crm_app:leads_edit' i.id %}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
-                                                        <a href="{% url 'crm_app:leads_delete' i.id %}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
-                                                        {% comment %} <form action="{% url 'crm_app:leads_delete' i.id %}" method="post" class="d-inline">
-                                                            {% csrf_token %}
-                                                            <input type="submit" class="btn btn-danger" value="Delete"><i class="fas fa-trash"></i>
-                                                        </form> {% endcomment %}
-                                                        </td>   
-                                                        {% comment %} <td>
-                                                            <div class="dropdown">
-                                                                <a class="text-muted dropdown-toggle font-size-16" role="button"
-                                                                    data-bs-toggle="dropdown" aria-haspopup="true">
-                                                                    <i class="mdi mdi-dots-vertical"></i>
-                                                                </a>
-                                                                <div class="dropdown-menu dropdown-menu-end">
-                                                                    <a class="dropdown-item" href="#">Action</a>
-                                                                    <a class="dropdown-item" href="#">Another action</a>
-                                                                    <a class="dropdown-item" href="#">Something else here</a>
+                                        {% else %}
+                                        <h4 class="card-title mb-4">Serach Result</h4>
+                                        {% comment %} <div class="col-md-6">
+                                            <div class="d-flex flex-wrap align-items-start justify-content-md-start mt-2 mt-md-0 gap-2 mb-3">
+                                                <div>
+                                                    <a href="{% url 'crm_app:add_leads' %}" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#addContactModal"><i class="fa-add fa me-1"></i> Add New</a>
+                                                </div>                                                    
+                                            </div>
+                                        </div><!-- end col --> {% endcomment %}
+                                        {% comment %} <a href="{% url 'crm_app:add_leads' %}" class="btn btn-success">Add New Leads</a> {% endcomment %}
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="">
+                                                    <div class="card-body">
+                                                        <div class="row">
+                                                      
+                                                        </div><!-- end row -->
+                
+                                                        <!-- Modal -->
+                                                        <div class="container">
+                                                            <div class="row">
+                                                                <div class="col-lg-12 col-xl-12">
+                                                                    <div class="modal fade" id="addContactModal" tabindex="-1" aria-labelledby="addContactModalLabel" aria-hidden="true" style="display: none;">
+                                                                        <div class="modal-dialog modal-lg modal-dialog-centered">
+                                                                            
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </td> {% endcomment %}
-                                                    </tr>
-                                                    <!-- end /tr -->
+                                                        </div>
+                                                        
+                                                        <!-- end modal -->
+                
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <div class="card">
+                                                                    
+                                                                    <div class="card-body">
+                                                                        <div id="table-gridjs"><div role="complementary" class="gridjs gridjs-container" style="width: 100%;"><div class="gridjs-head"><div class="gridjs-search"></div></div><div class="gridjs-wrapper" style="height: auto;"><table role="grid" class="gridjs-table" style="height: auto;">
+                                                                            <thead class="gridjs-thead">
+                                                                                <tr class="gridjs-tr">
+                                                                                    <th data-column-id="name" class="gridjs-th gridjs-th-sort" tabindex="0" style="min-width: 82px; width: 113px;"><div class="gridjs-th-content">Sl No</div><button tabindex="-1" aria-label="Sort column ascending" title="Sort column ascending" class="gridjs-sort gridjs-sort-neutral"></button></th>
+                                                                                    <th data-column-id="email" class="gridjs-th gridjs-th-sort" tabindex="0" style="min-width: 177px; width: 246px;"><div class="gridjs-th-content">Date</div><button tabindex="-1" aria-label="Sort column ascending" title="Sort column ascending" class="gridjs-sort gridjs-sort-neutral"></button></th>
+                                                                                    <th data-column-id="position" class="gridjs-th gridjs-th-sort" tabindex="0" style="min-width: 229px; width: 317px;"><div class="gridjs-th-content">Company Name</div><button tabindex="-1" aria-label="Sort column ascending" title="Sort column ascending" class="gridjs-sort gridjs-sort-neutral"></button></th>
+                                                                                    <th data-column-id="company" class="gridjs-th gridjs-th-sort" tabindex="0" style="min-width: 121px; width: 168px;"><div class="gridjs-th-content">Address</div><button tabindex="-1" aria-label="Sort column ascending" title="Sort column ascending" class="gridjs-sort gridjs-sort-neutral"></button></th>
+                                                                                    <th data-column-id="country" class="gridjs-th gridjs-th-sort" tabindex="0" style="min-width: 116px; width: 160px;"><div class="gridjs-th-content">Phone Number 1</div><button tabindex="-1" aria-label="Sort column ascending" title="Sort column ascending" class="gridjs-sort gridjs-sort-neutral"></button></th>
+                                                                                    <th data-column-id="country" class="gridjs-th gridjs-th-sort" tabindex="0" style="min-width: 116px; width: 160px;"><div class="gridjs-th-content">Phone Number 2</div><button tabindex="-1" aria-label="Sort column ascending" title="Sort column ascending" class="gridjs-sort gridjs-sort-neutral"></button></th>
+                                                                                    <th data-column-id="country" class="gridjs-th gridjs-th-sort" tabindex="0" style="min-width: 116px; width: 160px;"><div class="gridjs-th-content">Owner/Contact Person</div><button tabindex="-1" aria-label="Sort column ascending" title="Sort column ascending" class="gridjs-sort gridjs-sort-neutral"></button></th>
+                                                                                    <th data-column-id="country" class="gridjs-th gridjs-th-sort" tabindex="0" style="min-width: 116px; width: 160px;"><div class="gridjs-th-content">IT/NON IT</div><button tabindex="-1" aria-label="Sort column ascending" title="Sort column ascending" class="gridjs-sort gridjs-sort-neutral"></button></th>
+                                                                                    <th data-column-id="country" class="gridjs-th gridjs-th-sort" tabindex="0" style="min-width: 116px; width: 160px;"><div class="gridjs-th-content">Requirements</div><button tabindex="-1" aria-label="Sort column ascending" title="Sort column ascending" class="gridjs-sort gridjs-sort-neutral"></button></th>
+                                                                                    <th data-column-id="country" class="gridjs-th gridjs-th-sort" tabindex="0" style="min-width: 116px; width: 160px;"><div class="gridjs-th-content">Stage1</div><button tabindex="-1" aria-label="Sort column ascending" title="Sort column ascending" class="gridjs-sort gridjs-sort-neutral"></button></th>
+                                                                                    <th data-column-id="country" class="gridjs-th gridjs-th-sort" tabindex="0" style="min-width: 116px; width: 160px;"><div class="gridjs-th-content">Stage2</div><button tabindex="-1" aria-label="Sort column ascending" title="Sort column ascending" class="gridjs-sort gridjs-sort-neutral"></button></th>
+                                                                                    <th data-column-id="country" class="gridjs-th gridjs-th-sort" tabindex="0" style="min-width: 116px; width: 160px;"><div class="gridjs-th-content">Lead Source</div><button tabindex="-1" aria-label="Sort column ascending" title="Sort column ascending" class="gridjs-sort gridjs-sort-neutral"></button></th>
+                                                                                    <th data-column-id="country" class="gridjs-th gridjs-th-sort" tabindex="0" style="min-width: 116px; width: 160px;"><div class="gridjs-th-content">Action</div><button tabindex="-1" aria-label="Sort column ascending" title="Sort column ascending" class="gridjs-sort gridjs-sort-neutral"></button></th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            {% for i in closed_lead %} 
+                                                                            <tbody class="gridjs-tbody">
+                                                                                <tr class="gridjs-tr">
+                                                                                    <td data-column-id="name" class="gridjs-td">{{i.no}}</td>
+                                                                                    <td data-column-id="email" class="gridjs-td">{{i.date}}</td>
+                                                                                    <td data-column-id="position" class="gridjs-td"> {{i.company_name}}</td>
+                                                                                    <td data-column-id="company" class="gridjs-td"> {{i.address}}</td>
+                                                                                    <td data-column-id="country" class="gridjs-td">{{i.phone1}}</td>
+                                                                                    <td data-column-id="name" class="gridjs-td">{{i.phone2}}</td>
+                                                                                    <td data-column-id="name" class="gridjs-td">{{i.owner}}</td>
+                                                                                    <td data-column-id="email" class="gridjs-td">{{i.department}}</td>
+                                                                                    <td data-column-id="position" class="gridjs-td"> {{i.requirements}}</td>
+                                                                                    <td data-column-id="company" class="gridjs-td"> {{i.stage1}}</td>
+                                                                                    <td data-column-id="country" class="gridjs-td">{{i.stage2}}</td>
 
-                                                    {% comment %} <tr>
-                                                        <td>
-                                                            #SD002
-                                                        </td>
-                                                        <td>
-                                                            <img src="{% static 'assets/images/users/avatar-2.jpg' %}" alt="user" class="rounded-circle h-auto avatar-xs me-2">
-                                                            <span>Paul J. Friend</span>
-                                                        </td>
-                                                        <td>
-                                                            Developer
-                                                        </td>
-                                                        <td>
-                                                            pauljfrnd@jourrapide.com
-                                                        </td>
-                                                        <td>
-                                                            937-330-1634
-                                                        </td>
-                                                        <td>
-                                                            <span class="badge bg-success bg-soft text-success">Active</span>
-                                                        </td>
-                                                        <td>
-                                                            New York
-                                                        </td>
-                                                        <td>
-                                                            <div class="dropdown">
-                                                                <a class="text-muted dropdown-toggle font-size-16" role="button"
-                                                                    data-bs-toggle="dropdown" aria-haspopup="true">
-                                                                    <i class="mdi mdi-dots-vertical"></i>
-                                                                </a>
-                                                                <div class="dropdown-menu dropdown-menu-end">
-                                                                    <a class="dropdown-item" href="#">Action</a>
-                                                                    <a class="dropdown-item" href="#">Another action</a>
-                                                                    <a class="dropdown-item" href="#">Something else here</a>
+                                                                                    <td data-column-id="name" class="gridjs-td">{{i.lead_source}}</td>
+                                                                                    <td>
+                                                                                        <div class="dropdown">
+                                                                                            <a href="#" class="dropdown-toggle card-drop" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                                                <i class="mdi mdi-dots-horizontal font-size-18 text-muted"></i>
+                                                                                            </a>
+                                                                                            <ul class="dropdown-menu dropdown-menu-end">
+                                                                                                <li><a href="{% url 'crm_app:leads_edit' i.id %}" class="dropdown-item"><i class="mdi mdi-pencil font-size-16 text-success me-1"></i>
+                                                                                                        Edit</a></li>
+                                                                                                <li><a href="{% url 'crm_app:leads_delete' i.id %}" class="dropdown-item"><i class="mdi mdi-trash-can font-size-16 text-danger me-1"></i>
+                                                                                                        Delete</a></li>
+                                                                                            </ul>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                            {% endfor %}
+                                                                        </table>
+                                                                    </div>
+                                                                    {% comment %} <div class="gridjs-footer">
+                                                                        <div class="gridjs-pagination">
+                                                                            <div role="status" aria-live="polite" class="gridjs-summary" title="Page 1 of 2">Showing <b>1</b> to <b>5</b> of <b>10</b> results</div><div class="gridjs-pages"><button tabindex="0" role="button" disabled="" title="Previous" aria-label="Previous" class="">Previous</button><button tabindex="0" role="button" class="gridjs-currentPage" title="Page 1" aria-label="Page 1">1</button><button tabindex="0" role="button" class="" title="Page 2" aria-label="Page 2">2</button><button tabindex="0" role="button" title="Next" aria-label="Next" class="">Next</button></div></div></div><div id="gridjs-temp" class="gridjs-temp"></div>
+                                                                        </div>
+                                                                    </div> {% endcomment %}
+                                                                    </div>
+                                                                    <!-- end card body -->
                                                                 </div>
+                                                                <!-- end card -->
                                                             </div>
-                                                        </td>
-                                                    </tr> {% endcomment %}
-                                                    <!-- end /tr -->
-
-                                                    {% comment %} <tr>
-                                                        <td>
-                                                            #SD003
-                                                        </td>
-                                                        <td>
-                                                            <img src="{% static 'assets/images/users/avatar-3.jpg' %}" alt="user" class="rounded-circle h-auto avatar-xs me-2">
-                                                            <span>Kathryn S. Collier</span>
-                                                        </td>
-                                                        <td>
-                                                            Owner
-                                                        </td>
-                                                        <td>
-                                                            annac@hotmai.us
-                                                        </td>
-                                                        <td>
-                                                            (216) 76 298 896
-                                                        </td>
-                                                        <td>
-                                                            <span class="badge bg-success bg-soft text-success">Active</span>
-                                                        </td>
-                                                        <td>
-                                                            Philippines
-                                                        </td>
-                                                        <td>
-                                                            <div class="dropdown">
-                                                                <a class="text-muted dropdown-toggle font-size-16" role="button"
-                                                                    data-bs-toggle="dropdown" aria-haspopup="true">
-                                                                    <i class="mdi mdi-dots-vertical"></i>
-                                                                </a>
-                                                                <div class="dropdown-menu dropdown-menu-end">
-                                                                    <a class="dropdown-item" href="#">Action</a>
-                                                                    <a class="dropdown-item" href="#">Another action</a>
-                                                                    <a class="dropdown-item" href="#">Something else here</a>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <!-- end /tr -->
-
-                                                    <tr> {% endcomment %}
-                                                        {% comment %} <td>
-                                                            #SD004
-                                                        </td>
-                                                        <td>
-                                                            <img src="{% static 'assets/images/users/avatar-4.jpg' %}" alt="user" class="rounded-circle h-auto avatar-xs me-2">
-                                                            <span>Labeeb Ghali</span>
-                                                        </td>
-                                                        <td>
-                                                            Designer
-                                                        </td>
-                                                        <td>
-                                                            labebswad@teleworm.us
-                                                        </td>
-                                                        <td>
-                                                            050 414 8778
-                                                        </td>
-                                                        <td>
-                                                            <span class="badge bg-danger bg-soft text-danger">Blocked</span>
-                                                        </td>
-                                                        <td>
-                                                            United Kingdom
-                                                        </td>
-                                                        <td>
-                                                            <div class="dropdown">
-                                                                <a class="text-muted dropdown-toggle font-size-16" role="button"
-                                                                    data-bs-toggle="dropdown" aria-haspopup="true">
-                                                                    <i class="mdi mdi-dots-vertical"></i>
-                                                                </a>
-                                                                <div class="dropdown-menu dropdown-menu-end">
-                                                                    <a class="dropdown-item" href="#">Action</a>
-                                                                    <a class="dropdown-item" href="#">Another action</a>
-                                                                    <a class="dropdown-item" href="#">Something else here</a>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr> {% endcomment %}
-                                                    <!-- end /tr -->
-
-                                                    {% comment %} <tr>
-                                                        <td>
-                                                            #SD005
-                                                        </td>
-                                                        <td>
-                                                            <img src="{% static 'assets/images/users/avatar-5.jpg' %}" alt="user" class="rounded-circle h-auto avatar-xs me-2">
-                                                            <span>Timothy Kauper</span>
-                                                        </td>
-                                                        <td>
-                                                            Founder
-                                                        </td>
-                                                        <td>
-                                                            thykauper@rhyta.com
-                                                        </td>
-                                                        <td>
-                                                            (216) 75 612 706
-                                                        </td>
-                                                        <td>
-                                                            <span class="badge bg-success bg-soft text-success">Active</span>
-                                                        </td>
-                                                        <td>
-                                                            Denmark
-                                                        </td>
-                                                        <td>
-                                                            <div class="dropdown">
-                                                                <a class="text-muted dropdown-toggle font-size-16" role="button"
-                                                                    data-bs-toggle="dropdown" aria-haspopup="true">
-                                                                    <i class="mdi mdi-dots-vertical"></i>
-                                                                </a>
-                                                                <div class="dropdown-menu dropdown-menu-end">
-                                                                    <a class="dropdown-item" href="#">Action</a>
-                                                                    <a class="dropdown-item" href="#">Another action</a>
-                                                                    <a class="dropdown-item" href="#">Something else here</a>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr> {% endcomment %}
-                                                    <!-- end /tr -->
-                                                </tbody>
-                                                {% endfor %}
-                                            </table>
-                                            <!-- end table -->
-
+                                                            <!-- end col -->
+                                                        </div>
+                                                    </div><!-- end card body -->
+                                                </div><!-- end card -->
+                                            </div><!-- end col -->
                                         </div>
+                                        {% endif %}
+                                        
                                         <!--end table-responsive-->
                                     </div>
                                 </div>
