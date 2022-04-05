@@ -227,10 +227,12 @@ def lead_search_admin(request):
 def pending_lead_search(request):
     junk_lead = None
     Query = None
+    # for staff
     if 'q' in request.GET:
         Query = request.GET.get('q')
         junk_lead = Leads.objects.all().filter(Q(company_name__icontains=Query),staff_name__username=request.user.username,lead_status='pending leads')
 
+    # for admin
     if 'q' in request.GET:
         Query = request.GET.get('q')
         junk_leads = Leads.objects.all().filter(Q(company_name__icontains=Query)| Q(staff_name__username__icontains=Query),lead_status='pending leads')
@@ -240,10 +242,15 @@ def pending_lead_search(request):
 def open_lead_search(request):
     open_lead = None
     Query = None
+    # for staff
     if 'q' in request.GET:
         Query = request.GET.get('q')
         open_lead = Leads.objects.all().filter(Q(company_name__icontains=Query),staff_name__username=request.user.username,lead_status='open leads')
-    return render(request,'open-lead-serch.html',{"open_lead":open_lead,"query":Query})
+    # for admin
+    if 'q' in request.GET:
+        Query = request.GET.get('q')
+        open_leads = Leads.objects.all().filter(Q(company_name__icontains=Query)| Q(staff_name__username__icontains=Query),lead_status='open leads')
+    return render(request,'open-lead-serch.html',{"open_lead":open_lead,"query":Query,'open_leads':open_leads})
 
 
 def closed_lead_search(request):
