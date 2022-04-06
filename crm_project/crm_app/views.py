@@ -100,11 +100,60 @@ def starter(request):
 
 
 def customer(request):
+    # CUSTOMER ADD FORM
+    form = CustomerAddForm()
+    if request.method == 'POST':
+        form = CustomerAddForm(request.POST, request.FILES)
+        if form.is_valid():
+            data = form.save(commit=False)
+            staff_name = User.objects.get(username=request.user.username)
+            data.staff_name = staff_name
+            data.save()
+            return redirect('crm_app:customers')
+    else:
+        form = CustomerAddForm()
+
     # STAFF VIEW
     customer = Customer.objects.filter(staff_name__username=request.user.username)
     # ADMIN VIEW
     customerr = Customer.objects.all()
-    return render(request,"customer.html",{'customer':customer,'customerr':customerr})
+    return render(request,"customer.html",{'customer':customer,'customerr':customerr,'form':form})
+
+
+def customer_update(request,cust_id):
+    if request.method == 'POST':
+        update = Customer.objects.filter(id=cust_id).first()
+        fm = CustomerAddForm(request.POST,request.FILES,instance=update)
+        if fm.is_valid():
+            fm.save()
+            return redirect('crm_app:customers') 
+    else:
+        update = Customer.objects.filter(id=cust_id).first()
+        fm = CustomerAddForm(instance=update)
+    return render(request,'customer-update.html',{'form':fm})
+
+
+
+def customer_delete(request,cust_id):
+    obj = Customer.objects.filter(id=cust_id)
+    obj.delete()
+    return redirect('crm_app:customers')
+
+
+
+def customer_search(request):
+    customer = None
+    Query = None
+    # for staff
+    if 'q' in request.GET:
+        Query = request.GET.get('q')
+        customer = Customer.objects.all().filter(Q(name__icontains=Query),staff_name__username=request.user.username)
+
+    # for admin
+    if 'q' in request.GET:
+        Query = request.GET.get('q')
+        customerr = Customer.objects.all().filter(Q(name__icontains=Query)| Q(staff_name__username__icontains=Query))
+    return render(request,'customer-search-result.html',{'query':Query,'customer':customer,'customerr':customerr})
 
 
 def add_customer(request):

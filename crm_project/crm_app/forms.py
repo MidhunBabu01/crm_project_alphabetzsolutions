@@ -16,7 +16,7 @@ class CustomerAddForm(forms.ModelForm):
             'address' : forms.TextInput(attrs={'class':'form-control'}),
             'phone' : forms.NumberInput(attrs={'class':'form-control'}),
             'email' : forms.TextInput(attrs={'class':'form-control'}),
-            'photo' : forms.TextInput(attrs={'class':'form-control-file'}),
+            # 'image' : forms.ImageField(),
             'loaction' : forms.TextInput(attrs={'class':'form-control'}),
             'gst' : forms.TextInput(attrs={'class':'form-control'}),
             'category' : forms.Select(attrs={'class':'form-control'}),

@@ -12,24 +12,24 @@ from multiselectfield import MultiSelectField
 class Customer(models.Model):
     def __str__(self):
         return self.name
-    staff_name = models.ForeignKey(User,on_delete=models.CASCADE)
-    name = models.CharField(max_length=250)
-    address = models.CharField(max_length=250)
-    phone = models.CharField(max_length=10)
-    email = models.EmailField()
-    image = models.ImageField(upload_to="pictures")
-    loaction = models.CharField(max_length=50)
-    state = models.CharField(max_length=10,default='Kerala',blank=True,null=True)
+    staff_name = models.ForeignKey(User,on_delete=models.CASCADE,blank=True,null=True)
+    name = models.CharField(max_length=250,blank=False,null=False)
+    address = models.CharField(max_length=250,blank=False,null=False)
+    phone = models.CharField(max_length=10,blank=False,null=False)
+    email = models.EmailField(blank=True,null=True)
+    image = models.ImageField(upload_to="pictures",blank=True,null=True)
+    loaction = models.CharField(max_length=50,blank=False,null=False)
+    state = models.CharField(max_length=10,default='Kerala',blank=False,null=False)
     category_choices = (
         ("Person", "Person"),
         ("Contractor", "Contractor"),
         ("Company", "Company"),
     )
-    gst = models.CharField(max_length=50,blank=True)
+    gst = models.CharField(max_length=50,blank=True,null=True)
     category = models.CharField(choices=category_choices,max_length=100,default='1')
-    whatsapp_number = models.CharField(max_length=10)
-    last_transaction = models.CharField(max_length=250,blank=True)
-    total_transaction = models.CharField(max_length=250,blank=True)
+    whatsapp_number = models.CharField(max_length=10,blank=True,null=True)
+    last_transaction = models.CharField(max_length=250,blank=True,null=True)
+    total_transaction = models.CharField(max_length=250,blank=True,null=True)
 
 
 # class Tools(models.Model):

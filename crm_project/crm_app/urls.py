@@ -23,7 +23,11 @@ urlpatterns = [
     # path('register/', views.register, name='register'),
     path('starter/', views.starter, name='starter'),
     path('customers/', views.customer, name='customers'),
+    path('customer-edit/<int:cust_id>/', views.customer_update, name='customer_update'),
     path('add-customer/', views.add_customer, name='add_customer'),
+    path('customer-delete/<int:cust_id>/', views.customer_delete, name='customer_delete'),
+    path('customer-search-result', views.customer_search, name='customer_search'),
+    
     path('leads/', views.leads, name='leads'),
     path('add-leads/', views.add_leads, name='add_leads'),
     path('leads-update/<int:item_id>', views.lead_update, name='leads_edit'),
@@ -34,7 +38,6 @@ urlpatterns = [
     path('closed-leads/', views.closed_leads, name='closed_leads'),
     path('lead-search/', views.lead_search, name='lead_search'),
     path('lead-search-result/', views.lead_search_admin, name='lead_search_admin'),
-
     path('customer-profile/<int:customer_id>', views.customer_profile, name='customer_profile'),
     path('quotation-invoice/', views.Quotation_invoice, name='quotation_invoice'),
     path('products/', views.products, name='products'),
@@ -58,6 +61,7 @@ urlpatterns = [
     path('add-task/', views.add_task, name='add_task'),
     path('edit-task/<int:task_id>/', views.edit_task, name='edit_task'),
     path('delete-task/<int:task_id>/', views.delete_task, name='delete_task'),
+    
     
  
 
