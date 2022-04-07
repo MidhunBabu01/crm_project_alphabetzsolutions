@@ -477,7 +477,7 @@ def register(request):
             try:
                 user = User.objects.get(username=request.POST.get('username'))
                 print('username already taken')
-                return render(request,'staff_register.html',{'error':"Username alredy taken"})
+                return render(request,'staff_register.html',{'error':"Employee Id alredy taken"})
                 
             except User.DoesNotExist:
                 user = User.objects.create_user(username = request.POST.get('username'), password = request.POST.get('password1'),email=request.POST.get('email'))
@@ -497,7 +497,7 @@ def register(request):
                 return redirect('crm_app:staff_login')
         else:
             print('password not matching')
-            return render(request,'staff_register.html',{'error':'password doesnot match'})
+            return render(request,'staff_register.html',{'error':'Password Does Not Match'})
     else:
         return render(request,'staff_register.html')
 
@@ -541,7 +541,7 @@ def admin_register(request):
                 return redirect("crm_app:admin_register")
             elif User.objects.filter(email=email).exists():
                 print("email alredy exists")
-                messages.info(request,"email  already registered")
+                messages.info(request,"email already registered")
                 return redirect("crm_app:admin_register")
             else:
                 user = User.objects.create_user(username=username,email=email,password=password1,is_superuser=True,is_active=True,is_staff=True)
@@ -550,6 +550,7 @@ def admin_register(request):
                 return redirect('crm_app:staff_login')
         else:
             print('Password Not Matched')
+            messages.info(request,"Incorrect Password")
             return redirect('crm_app:admin_register')    
     return render(request,"admin-register.html")
 

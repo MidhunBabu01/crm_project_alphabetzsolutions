@@ -146,6 +146,11 @@
                         <div class="dropdown d-inline-block">
                             <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {% if user.extendedusermodel.user_photo == '' %}
+                            <img class="rounded-circle header-profile-user" src="{% static 'assets/images/user.png' %}" alt="Header Avatar">
+                            {% else %}
+                            <img class="rounded-circle header-profile-user" src="{{user.extendedusermodel.user_photo.url}}" alt="Header Avatar">
+                            {% endif %}
                                 <span class="d-none d-xl-inline-block ms-1">{{user.username}}</span>
                                 <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                             </button>
