@@ -12,7 +12,7 @@ urlpatterns = [
     path('',views.staff_login,name="staff_login"),
     path('index/', views.index, name='index'),
     path('logout/',views.logout,name="logout"),
-    path('register/', views.register, name='register'),
+    # path('register/', views.register, name='register'),
     # ADMIN REGISTER
     path('**admin-register**/', views.admin_register, name='admin_register'),
     # SUPERVISOR AND STAFF  REGISTER

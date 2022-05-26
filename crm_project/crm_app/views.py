@@ -470,8 +470,6 @@ def search(request):
 # ACCOUNT_SECTION
 # CUSTOMER ACCOUNT SECTION
 def register(request):
-    if "username" in request.session:
-        return redirect('crm_app:index')
     if request.method == 'POST':
         if request.POST.get('password1') == request.POST.get('password2'):
             try:
@@ -486,10 +484,12 @@ def register(request):
                 dob = request.POST.get('dob')
                 bloodgroup = request.POST.get('bloodgroup')
                 phn = request.POST.get('phn')
+                print(phn)
                 staff = request.POST.get('staff')
                 superviser = request.POST.get('supervisor')
                 # if len(request.FILES) !=0:
                 user_img = request.FILES.get('user_img')
+                print(user_img)
                 extenduser = ExtendedUserModel(user_photo=user_img,dob=dob,phn_number=phn,employe_name=emp_name,user=user,address=address,blood_group=bloodgroup,is_staff2=staff,is_superviser=superviser)
                 extenduser.save();
                 print('user created')
@@ -498,8 +498,7 @@ def register(request):
         else:
             print('password not matching')
             return render(request,'staff_register.html',{'error':'Password Does Not Match'})
-    else:
-        return render(request,'staff_register.html')
+    return render(request,'staff_register.html')
 
 
 
